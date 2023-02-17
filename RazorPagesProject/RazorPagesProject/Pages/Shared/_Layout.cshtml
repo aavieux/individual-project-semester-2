@@ -40,12 +40,12 @@
     @*NAVIGATION BAR*@
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="#">Dashboard</a>
+        <a asp-page="./Index">Dashboard</a>
         <a href="#">Students</a>
         <a href="#">Grades</a>
         <a href="#">Teachers</a>
         <a href="#">Events</a>
-        <a href="#">Contact</a>
+        <a asp-page="./Contact">Contact</a>
     </div>
 
     <div id="main">
@@ -56,11 +56,13 @@
         function openNav() {
             document.getElementById("mySidenav").style.width = "250px";
             document.getElementById("main").style.marginLeft = "250px";
+            //document.getElementById("mySidenav").style.zIndex = "2";
         }
 
         function closeNav() {
             document.getElementById("mySidenav").style.width = "0";
             document.getElementById("main").style.marginLeft = "0";
+            //document.getElementById("mySidenav").style.zIndex = "1";
         }
     </script>
     @*NAVIGATION BAR*@

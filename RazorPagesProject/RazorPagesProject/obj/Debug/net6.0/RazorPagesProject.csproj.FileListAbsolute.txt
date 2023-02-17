@@ -29,3 +29,10 @@ C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\Razo
 C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\RazorPagesProject\obj\Debug\net6.0\RazorPagesProject.pdb
 C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\RazorPagesProject\obj\Debug\net6.0\RazorPagesProject.genruntimeconfig.cache
 C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\RazorPagesProject\obj\Debug\net6.0\ref\RazorPagesProject.dll
+C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\RazorPagesProject\bin\Debug\net6.0\System.Data.SqlClient.dll
+C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\RazorPagesProject\bin\Debug\net6.0\runtimes\win-arm64\native\sni.dll
+C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\RazorPagesProject\bin\Debug\net6.0\runtimes\win-x64\native\sni.dll
+C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\RazorPagesProject\bin\Debug\net6.0\runtimes\win-x86\native\sni.dll
+C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\RazorPagesProject\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\RazorPagesProject\bin\Debug\net6.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\RazorPagesProject\obj\Debug\net6.0\RazorPagesProject.csproj.CopyComplete

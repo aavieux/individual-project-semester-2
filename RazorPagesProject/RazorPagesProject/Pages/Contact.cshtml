@@ -1,0 +1,31 @@
+﻿@page
+@model RazorPagesProject.Pages.ContactModel
+@{
+    ViewData["Title"] = "Contact";
+}
+<link href="https://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet">
+<div class="devision1">
+    <p id="support_text">Get in touch with us! Our team is here to help with any questions or concerns you may have. Fill out the form on the right and we'll get back to you as soon as possible. We pride ourselves on excellent customer support and look forward to hearing from you! </p>
+    <img id="support_image" src="https://www.geniecrawl.com/images/content/website-support-and-maintenance.jpg" alt="support image" <img/>
+</div>
+<form class="devision2" method="post">
+    <label for="fname">First Name</label>
+    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+
+    <label for="lname">Last Name</label>
+    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+
+    <label for="school">School</label>
+    <select id="school" name="school_select">
+        <option value="school1">Fontys Hogeschool</option>
+        <option value="school2">TUe</option>
+        <option value="school3">JADS</option>
+    </select>
+    <label for="email">Email</label>
+    <input type="text" id="email" name="email" placeholder="Your email..">
+
+    <label for="subject">Subject</label>
+    <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+
+    <input type="submit" value="Submit">
+</form>
