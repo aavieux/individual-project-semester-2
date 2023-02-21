@@ -5,6 +5,14 @@
       "PackagePath": "staticwebassets\\RazorPagesProject.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\sando\\Repositories\\individual-project-semester-2\\RazorPagesProject\\RazorPagesProject\\wwwroot\\Models\\Administration.cs",
+      "PackagePath": "staticwebassets\\Models\\Administration.cs"
+    },
+    {
+      "Id": "C:\\Users\\sando\\Repositories\\individual-project-semester-2\\RazorPagesProject\\RazorPagesProject\\wwwroot\\Models\\Teacher.cs",
+      "PackagePath": "staticwebassets\\Models\\Teacher.cs"
+    },
+    {
       "Id": "C:\\Users\\sando\\Repositories\\individual-project-semester-2\\RazorPagesProject\\RazorPagesProject\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

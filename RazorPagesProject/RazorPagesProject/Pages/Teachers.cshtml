@@ -1,0 +1,39 @@
+﻿@page
+@model RazorPagesProject.Pages.TeachersModel
+@{
+    ViewData["Title"] = "Teachers";
+}
+
+<table id="teachers_table">
+    <thead>
+        <tr class = "border" role="row">
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Role </th>
+            <th>Class</th>
+            @*user number hidden*@
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var teacher in Model.teachers)
+        {
+            <tr class="sorting_1" role="row">
+                <td tabindex="0">
+                    <a class="no-decoration" asp-page="./_UserView" asp-route-userIdTeacher="@teacher.Userid">
+                        @teacher.Firstname
+                    </a>
+                </td>
+                <td tabindex="0">
+                    @teacher.Lastname
+                </td>
+                <td tabindex="0">
+                    @teacher.Role
+                </td>
+                <td tabindex="0">
+                    @teacher.Class
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

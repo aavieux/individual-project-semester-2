@@ -43,7 +43,7 @@
         <a asp-page="./Index">Dashboard</a>
         <a href="#">Students</a>
         <a href="#">Grades</a>
-        <a href="#">Teachers</a>
+        <a asp-page="./Teachers">Teachers</a>
         <a href="#">Events</a>
         <a asp-page="./Contact">Contact</a>
     </div>
@@ -66,6 +66,7 @@
         }
     </script>
     @*NAVIGATION BAR*@
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()

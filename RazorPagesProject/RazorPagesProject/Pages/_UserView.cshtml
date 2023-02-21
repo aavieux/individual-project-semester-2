@@ -1,0 +1,41 @@
+﻿@page 
+@model RazorPagesProject.Pages._UserViewModel
+@{
+}
+
+<div class="portlet-title sticky" bis_skin_checked="1">
+    <div class="caption" bis_skin_checked="1">
+        @Model.currentTeacher.Firstname @Model.currentTeacher.Lastname
+        (@Model.currentTeacher.Role)
+    </div>
+</div>
+<div class="tab-content no-space" bis_skin_checked="1">
+
+    <div class="profile-content" bis_skin_checked="1">
+
+        <div class="form-group" bis_skin_checked="1">
+            <label class="label-info">First name:</label>
+            <div class="value-info" bis_skin_checked="1"><p class="form-control-static">@Model.currentTeacher.Firstname</p></div>
+        </div>
+
+        <div class="form-group" bis_skin_checked="1">
+            <label class="label-info">Last name:</label>
+            <div class="value-info" bis_skin_checked="1"><p class="form-control-static">@Model.currentTeacher.Lastname</p></div>
+        </div>
+
+        <div class="form-group" bis_skin_checked="1">
+            <label class="label-info">Phone:</label>
+            <div class="value-info" bis_skin_checked="1"><p>@Model.currentTeacher.PhoneNumber</p></div>
+        </div>
+
+        <div class="form-group" bis_skin_checked="1">
+            <label class="label-info">Email:</label>
+            <div class="value-info" bis_skin_checked="1"><p>@Model.currentTeacher.Email</p></div>
+        </div>
+
+        <div class="form-group" bis_skin_checked="1">
+            <label class="label-info">Class:</label>
+            <div class="value-info" bis_skin_checked="1"><p>@Model.currentTeacher.Class</p></div>
+        </div>
+    </div>
+</div>

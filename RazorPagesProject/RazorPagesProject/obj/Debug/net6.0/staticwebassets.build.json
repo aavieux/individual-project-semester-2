@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "pOeI5GxWZyvrI/glwe5Da92TOdCoO8B9+Xegfq+ylgk=",
+  "Hash": "L1QwVuxaVVoX8dAdR+XKyXxOtzy6apFYIXMLiltzjLU=",
   "Source": "RazorPagesProject",
   "BasePath": "_content/RazorPagesProject",
   "Mode": "Default",
@@ -1069,6 +1069,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Identity": "C:\\Users\\sando\\Repositories\\individual-project-semester-2\\RazorPagesProject\\RazorPagesProject\\wwwroot\\Models\\Administration.cs",
+      "SourceId": "RazorPagesProject",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\sando\\Repositories\\individual-project-semester-2\\RazorPagesProject\\RazorPagesProject\\wwwroot\\",
+      "BasePath": "_content/RazorPagesProject",
+      "RelativePath": "Models/Administration.cs",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Models\\Administration.cs"
+    },
+    {
+      "Identity": "C:\\Users\\sando\\Repositories\\individual-project-semester-2\\RazorPagesProject\\RazorPagesProject\\wwwroot\\Models\\Teacher.cs",
+      "SourceId": "RazorPagesProject",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\sando\\Repositories\\individual-project-semester-2\\RazorPagesProject\\RazorPagesProject\\wwwroot\\",
+      "BasePath": "_content/RazorPagesProject",
+      "RelativePath": "Models/Teacher.cs",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Models\\Teacher.cs"
     }
   ]
 }

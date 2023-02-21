@@ -78,6 +78,7 @@ body {
     }
 }
 /*NAVIGATION BAR*/
+/*CONTACT*/
 .container {
     /*background-color: black;*/
     position: absolute;
@@ -91,7 +92,7 @@ main.pb-3 {
     position: absolute;
     height: -webkit-fill-available;
     width: -webkit-fill-available;
-    margin-left: 8px;
+    /*margin-left: 8px;*/
     margin-right: 8px;
     margin-top: 8px;
     margin-bottom: 8px;
@@ -161,4 +162,77 @@ p#support_text {
     border: 2px solid blue;
     border-radius: 10px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+/*CONTACT*/
+/*TEACHERS*/
+table#teachers_table {
+    border: 1px solid #e7ecf1;
+    width: 100%;
+    margin: 0 auto;
+    clear: both;
+    border-collapse: separate;
+    border-spacing: 0;
+    box-sizing: content-box;
+    border-bottom: 1px solid #111;
+}
+
+#teachers_table th, #teachers_table td {
+    width: 25%;
+    text-align: center;
+    border-bottom: 1px;
+    padding: 10px;
+    border-style: inset;
+    border-top: 0px;
+    border-right: 0px;
+    border-left: 0px;
+}
+a.no-decoration {
+    text-decoration: none;
+    color:#337ab7;
+}
+tr.border {
+    border-bottom: 5px;
+    border-style: solid;
+    border-color: black;
+    border-top: 0px;
+    border-right: 0px;
+    border-left: 0px;
+}
+/*TEACHERS*/
+/*USERVIEW*/
+.portlet-title.sticky {
+/*    background-color: yellow;*/
+    height: 100px;
+    position: absolute;
+    top: 0px;
+    width: -webkit-fill-available;
+}
+.tab-content.no-space {
+    height: -webkit-fill-available;
+/*    background-color: red;*/
+    position: unset;
+    /*bottom: 0px;*/
+    width: -webkit-fill-available;
+    margin-top: 100px;
+}
+.form-group {
+    display: list-item;
+    padding-left: 20px;
+}
+label.label-info {
+    width: 144.88px;
+    color:cornflowerblue;
+}
+.value-info {
+    font-size: xx-large;
+}
+.caption {
+    float: left;
+    display: inline-block;
+    font-size: 18px;
+    line-height: 18px;
+    padding: 10px 0;
+    font-size: xxx-large;
+    padding-left: 20px;
+    padding-top: 37px;
 }
