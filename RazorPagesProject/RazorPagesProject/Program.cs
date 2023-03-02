@@ -1,7 +1,9 @@
-using RazorPagesProject.wwwroot.Models;
+using RazorPagesProject.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
-Administration.GetTeachersFromDataBase();
+Administration.GenerateTeachersFromDataBase();
+Administration.GenerateClassesFromDataBase();
 
 // Add services to the container.
 builder.Services.AddRazorPages();

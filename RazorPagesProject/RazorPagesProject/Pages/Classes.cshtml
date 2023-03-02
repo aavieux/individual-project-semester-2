@@ -1,0 +1,43 @@
+﻿@page
+@model RazorPagesProject.Pages.ClassesModel
+@{
+    ViewData["Title"] = "Classes";
+}
+<table id="users_table">
+    <thead>
+        <tr class="border" role="row">
+            <th>Class Number</th>
+            <th>Students</th>
+            <th>Head Teacher</th>
+            @*user number hidden*@
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var _class in Model.classes)
+        {
+            <tr class="sorting_1" role="row">
+                <td tabindex="0">
+                    @_class.Name
+                </td>
+                <td tabindex="0">
+                    <a class="no-decoration" asp-page="./_ClassroomView" asp-route-className="@_class.Name">
+                        Students
+                    </a>
+                </td>
+                <td tabindex="0">
+                    @if (_class.TeacherID == 0)
+                    {
+                        <span>No Teacher</span>
+                    }
+                    else
+                    {
+                        <a class="no-decoration" asp-page="./_UserView" asp-route-userId="@_class.TeacherID">
+                            @_class.TeacherID
+                        </a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -4,13 +4,13 @@ using RazorPagesProject.Models;
 
 namespace RazorPagesProject.Pages
 {
-    public class TeachersModel : PageModel
+    public class ClassesModel : PageModel
     {
-        internal List<Teacher> teachers { get; set; }
+        internal List<Class> classes { get; set; }
 
         public void OnGet()
         {
-            teachers = Administration.GetTeachersFromLocal();
+            classes = Administration.GetClassesFromLocal();
         }
     }
 }

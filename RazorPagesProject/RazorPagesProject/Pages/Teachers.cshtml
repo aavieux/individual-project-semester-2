@@ -4,7 +4,7 @@
     ViewData["Title"] = "Teachers";
 }
 
-<table id="teachers_table">
+<table id="users_table">
     <thead>
         <tr class = "border" role="row">
             <th>First name</th>
@@ -20,7 +20,7 @@
         {
             <tr class="sorting_1" role="row">
                 <td tabindex="0">
-                    <a class="no-decoration" asp-page="./_UserView" asp-route-userIdTeacher="@teacher.Userid">
+                    <a class="no-decoration" asp-page="./_UserView" asp-route-userId="@teacher.Userid">
                         @teacher.Firstname
                     </a>
                 </td>
@@ -31,7 +31,16 @@
                     @teacher.Role
                 </td>
                 <td tabindex="0">
-                    @teacher.Class
+                    @if (teacher.Class == 0)
+                    {
+                        <span>No Class</span>
+                    }
+                    else
+                    {
+                        <a class="no-decoration" asp-page="./_ClassroomView" asp-route-className="@teacher.Class">
+                            @teacher.Class
+                        </a>
+                    }
                 </td>
             </tr>
         }

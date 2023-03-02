@@ -7,8 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="wwwroot\Models\Administration.cs" />
-    <Compile Include="wwwroot\Models\Teacher.cs" />
+    <Content Include="Models\Administration.cs" />
+    <Content Include="Models\Teacher.cs" />
+    <Content Include="Models\User.cs" />
   </ItemGroup>
 
   <ItemGroup>

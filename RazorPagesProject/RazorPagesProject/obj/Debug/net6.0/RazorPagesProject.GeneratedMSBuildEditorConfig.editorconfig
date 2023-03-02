@@ -16,6 +16,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\RazorPagesProject
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/sando/Repositories/individual-project-semester-2/RazorPagesProject/RazorPagesProject/Pages/Classes.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2xhc3Nlcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/sando/Repositories/individual-project-semester-2/RazorPagesProject/RazorPagesProject/Pages/Contact.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29udGFjdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -42,6 +46,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/sando/Repositories/individual-project-semester-2/RazorPagesProject/RazorPagesProject/Pages/Teachers.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGVhY2hlcnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sando/Repositories/individual-project-semester-2/RazorPagesProject/RazorPagesProject/Pages/_ClassroomView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0NsYXNzcm9vbVZpZXcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/sando/Repositories/individual-project-semester-2/RazorPagesProject/RazorPagesProject/Pages/_UserView.cshtml]

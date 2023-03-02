@@ -18,7 +18,7 @@ body {
 }
 /*NAVIGATION BAR*/
 .sidenav {
-    height: 100%;
+    height: -webkit-fill-available;
     width: 0;
     position: fixed;
     z-index: 1;
@@ -28,6 +28,10 @@ body {
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
+    -ms-overflow-style: none; /* for Internet Explorer, Edge */
+    scrollbar-width: none; 
+    overflow-y: scroll;
+
 }
 
 .sidenav a {
@@ -165,7 +169,7 @@ p#support_text {
 }
 /*CONTACT*/
 /*TEACHERS*/
-table#teachers_table {
+table#users_table {
     border: 1px solid #e7ecf1;
     width: 100%;
     margin: 0 auto;
@@ -176,7 +180,7 @@ table#teachers_table {
     border-bottom: 1px solid #111;
 }
 
-#teachers_table th, #teachers_table td {
+#users_table th, #users_table td {
     width: 25%;
     text-align: center;
     border-bottom: 1px;
@@ -221,10 +225,11 @@ tr.border {
 }
 label.label-info {
     width: 144.88px;
-    color:cornflowerblue;
+
 }
 .value-info {
     font-size: xx-large;
+    color: cornflowerblue;
 }
 .caption {
     float: left;
@@ -235,4 +240,9 @@ label.label-info {
     font-size: xxx-large;
     padding-left: 20px;
     padding-top: 37px;
+}
+
+/*CLASSROOM VIEW*/
+#users_table th.width20 {
+    width: 20%;
 }

@@ -1,18 +1,18 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using RazorPagesProject.wwwroot.Models;
+using RazorPagesProject.Models;
 
 namespace RazorPagesProject.Pages
 {
     public class _UserViewModel : PageModel
     {
         [BindProperty(SupportsGet = true)]
-        public string userIdTeacher { get; set; }
-        public Teacher currentTeacher { get; set; }
+        public int userId { get; set; }
+        public Teacher currentUser { get; set; }
         public void OnGet()
         {
-            userIdTeacher = Request.Query["userIdTeacher"];
-            currentTeacher = Administration.GetTeacherFromLocal(userIdTeacher);
+            userId = int.Parse(Request.Query["userId"]);
+            currentUser = Administration.GetTeacherFromLocal(userId);
         }
     }
 }

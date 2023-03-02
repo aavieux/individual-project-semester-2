@@ -1,0 +1,54 @@
+﻿@page
+@model RazorPagesProject.Pages._ClassroomViewModel
+@{
+}
+<table id="users_table">
+    <thead>
+        <tr class="border" role="row">
+            <th class="width20">First name</th>
+            <th class="width20">Last name</th>
+            <th class="width20">Email</th>
+            <th class ="width20">Phone Number</th>
+            <th class="width20">Grades </th>
+            @*user number hidden*@
+        </tr>
+    </thead>
+
+    <tbody>
+        @if (Model.students != null)// checks if there are any students
+        {
+            @foreach (var student in Model.students)
+            {
+                <tr class="sorting_1" role="row">
+                    <td tabindex="0">
+                        <a class="no-decoration" asp-page="./_UserView" asp-route-userId="@student.Userid">
+                            @student.Firstname
+                        </a>
+                    </td>
+                    <td tabindex="0">
+                        @student.Lastname
+                    </td>
+                    <td tabindex="0">
+                        @student.Email
+                    </td>
+                    <td tabindex="0">
+                        @student.PhoneNumber
+                    </td>
+                    <td tabindex="0">
+                        <a class="no-decoration" asp-page="./_GradesView" asp-route-userId="@student.Userid">
+                            <span>Grades</span>
+                        </a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr class="sorting_1" role="row">
+                <td tabindex="0">
+                    <span>No Students in this class!</span>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
