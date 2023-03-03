@@ -4,24 +4,28 @@ namespace RazorPagesProject.Models
 {
     public class Student : User
     {
-        private Dictionary<Subject, List<Grade>> grades;
+        private List<SubjectGrades> _gradebook;
+        public List<SubjectGrades> GradeBook { get { return _gradebook; }set { this._gradebook = value; } }
         public Student() { }
         public Student(string FirstName, string LastName, Role Role, int Class, string Email, string PhoneNumber, int UserID) : base(FirstName, LastName, Role, Class, Email, PhoneNumber, UserID)
         {
             Role = Role.STUDENT;
         }
-        public Dictionary<Subject, List<Grade>> GetGradeList()
+        public List<SubjectGrades> GetGradeBook()
         {
-            return grades;
+            return _gradebook;
         }
         public List<Grade> GetGradesBySubject(Subject subject)
         {
-            if (grades.ContainsKey(subject))
+            foreach (SubjectGrades subjectGrades in _gradebook)
             {
-                List<Grade> subjectGrades = grades[subject];
-                return subjectGrades;
+                if (subjectGrades.Subject == subject)
+                {
+                    return subjectGrades.Grades;
+                }
             }
             return null;
+            
         }
     }
 }

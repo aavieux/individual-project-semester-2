@@ -1,4 +1,4 @@
-﻿namespace RazorPagesProject.Models
+﻿namespace RazorPagesProject.Models.Enums
 {
     public enum Subject
     {

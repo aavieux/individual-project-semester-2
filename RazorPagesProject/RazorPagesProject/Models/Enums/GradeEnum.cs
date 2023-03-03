@@ -1,6 +1,6 @@
 ﻿namespace RazorPagesProject.Models.Enums
 {
-    public enum Grade
+    public enum GradeEnum
     {
         Outstanding,
         Good,
