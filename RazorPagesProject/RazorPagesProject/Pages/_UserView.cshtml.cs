@@ -8,11 +8,11 @@ namespace RazorPagesProject.Pages
     {
         [BindProperty(SupportsGet = true)]
         public int userId { get; set; }
-        public Teacher currentUser { get; set; }
+        public User currentUser { get; set; }
         public void OnGet()
         {
             userId = int.Parse(Request.Query["userId"]);
-            currentUser = Administration.GetTeacherFromLocal(userId);
+            currentUser = Administration.GetUserFromLocal(userId);
         }
     }
 }

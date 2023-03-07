@@ -3,6 +3,9 @@ using RazorPagesProject.Models;
 var builder = WebApplication.CreateBuilder(args);
 Administration.GenerateUsersFromDataBase();
 Administration.GenerateClassesFromDataBase();
+Administration.GenerateGradesFromDataBase();
+Administration.GenerateGradeBooksFromDataBase();
+Administration.PutGradesInGradeBooksAndThenInStudents();
 
 // Add services to the container.
 builder.Services.AddRazorPages();

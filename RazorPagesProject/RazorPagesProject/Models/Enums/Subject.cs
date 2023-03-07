@@ -2,11 +2,11 @@
 {
     public enum Subject
     {
-        Math,
-        English,
-        History,
-        Biology,
-        Science,
+        MATH,
+        ENGLISH,
+        HISTORY,
+        BIOLOGY,
+        SCIENCE,
         PE
     }
 }

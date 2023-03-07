@@ -11,10 +11,7 @@ namespace RazorPagesProject.Models
 
         public static List<SubjectGrades> subjectGrades = new List<SubjectGrades>();
         public static List<Grade> grades = new List<Grade>();
-        public Administration() 
-        {
-
-        }
+        public Administration() {}
         public static void GenerateUsersFromDataBase()
         {
             using (SqlConnection connection =
@@ -37,7 +34,7 @@ namespace RazorPagesProject.Models
                                 {
                                     Student student = new Student();
 
-                                    student.GradeBook = 
+                                    //student.GradeBook = tva se pravi v nachaloto na programata
 
                                     user = student;
                                 }
@@ -83,6 +80,18 @@ namespace RazorPagesProject.Models
             }
         }
         //---------------------------------------------------------//
+        public static User GetUserFromLocal(int userId)
+        {
+            foreach (User user in users)
+            {
+                if (user.Userid == userId)
+                {
+                    return user;
+                }
+            }
+            return null;
+        }
+        //---------------------------------------------------------//
         public static List<Teacher> GetTeachersFromLocal()
         {
             List<Teacher> teachers = new List<Teacher>();
@@ -107,47 +116,6 @@ namespace RazorPagesProject.Models
             return null;
         }
         //---------------------------------------------------------//
-        public static void GenerateStudentsFromDataBase()
-        {
-            using (SqlConnection connection =
-                   new SqlConnection("Server=localhost;Database=individual_project_semester2;Trusted_Connection=True;"))
-            {
-                connection.Open();
-                string query = "SELECT * FROM Students";
-
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        try
-                        {
-                            while (reader.Read())
-                            {
-                                Student student = new Student();
-                                student.Firstname = (string)reader["first_name_teacher"];
-                                student.Lastname = (string)reader["last_name_teacher"];
-                                student.Role = Enum.Parse<Role>(reader["role_teacher"].ToString());
-                                student.Class = (int)reader["class_teacher"];
-                                student.Email = (string)reader["email_teacher"];
-                                student.PhoneNumber = (string)reader["phonenumber_teacher"];
-                                student.Userid = (int)reader["userid_student"];
-
-                                users.Add(student);
-                            }
-                        }
-                        catch (SqlException xException)
-                        {
-                            Console.WriteLine("Error loading teachers from database!");
-                        }
-                        finally
-                        {
-                            reader.Close();
-                            connection.Close();
-                        }
-                    }
-                }
-            }
-        }
         public static List<Student> GetStudentsFromLocal()
         {
             List<Student> students = new List<Student>();
@@ -159,7 +127,7 @@ namespace RazorPagesProject.Models
                 }
             }
             return students;
-        }
+        } // because there are students amongst teachers in users
         public static Student? GetStudentFromLocal(int Userid)
         {
             foreach (Student student in GetStudentsFromLocal())
@@ -295,7 +263,7 @@ namespace RazorPagesProject.Models
                                 {
                                     grade.IdGrade = (int)reader["id_grade"];
                                     grade.IdSubjectGrades = (int)reader["id_subjectGrades"];
-                                    grade.Grade = Enum.Parse<GradeEnum>(reader["grade"].ToString());
+                                    grade.GradeEnum = Enum.Parse<GradeEnum>(reader["grade"].ToString());
 
                                     grades.Add(grade);
                                 }
@@ -318,6 +286,79 @@ namespace RazorPagesProject.Models
                 }
             }
         }
+        //---------------------------------------------------------//
+        //---------------------------------------------------------//
+        public static void PutGradesInGradeBooksAndThenInStudents()
+        {
+            foreach (Grade grade in grades)
+            {
+                if (GetSubjectGradesById(grade.IdSubjectGrades) != null)
+                {
+                    GetSubjectGradesById(grade.IdSubjectGrades).Grades.Add(grade);
+                }
+            }
+            foreach (SubjectGrades subjectGrades in subjectGrades)
+            {  
+                if (GetStudentFromLocal(subjectGrades.IdUser) != null)
+                {
+                    GetStudentFromLocal(subjectGrades.IdUser).GradeBook.Add(subjectGrades);
+                }
+            }
+        }
+        //---------------------------------------------------------//
+        //---------------------------------------------------------//
+        public static SubjectGrades? GetSubjectGradesById(int subjectGradesId)
+        {
+            foreach (SubjectGrades subjectGrades in subjectGrades)
+            {
+                if (subjectGrades.Id == subjectGradesId)
+                {
+                    return subjectGrades;
+                }
+            }
+            return null;
+        }
+
+
+        //public static void GetGradeBookFromDataBase(int UserId)
+        //{
+        //    using (SqlConnection connection =
+        //           new SqlConnection("Server=localhost;Database=individual_project_semester2;Trusted_Connection=True;"))
+        //    {
+        //        connection.Open();
+        //        string query = $"SELECT id_subjectGrades FROM SubjectGrades WHERE id_user LIKE {UserId}";
+
+        //        using (SqlCommand command = new SqlCommand(query, connection))
+        //        {
+        //            using (SqlDataReader reader = command.ExecuteReader())
+        //            {
+        //                try
+        //                {
+        //                    while (reader.Read())
+        //                    {
+        //                        try
+        //                        {
+        //                            return 
+        //                        }
+        //                        catch (Exception)
+        //                        {
+        //                            Console.WriteLine("Error getting subjectgrades from database!");
+        //                        }
+        //                    }
+        //                }
+        //                catch (SqlException xException)
+        //                {
+        //                    Console.WriteLine("Error loading subjectgrades from database!");
+        //                }
+        //                finally
+        //                {
+        //                    reader.Close();
+        //                    connection.Close();
+        //                }
+        //            }
+        //        }
+        //    }
+        //}
 
     }
 }

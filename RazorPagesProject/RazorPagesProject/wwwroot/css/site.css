@@ -48,6 +48,9 @@ body {
     border-color: white;
     border-style: groove;
 }
+.sidenav::-webkit-scrollbar {
+    display: none;
+}
 
 .sidenav a:hover {
     background-color: #f44049;

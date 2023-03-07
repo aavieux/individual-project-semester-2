@@ -2,9 +2,9 @@
 {
     public enum GradeEnum
     {
-        Outstanding,
-        Good,
-        Sufficient,
-        Undefined
+        OUTSTANDING,
+        GOOD,
+        SUFFICIENT,
+        UNDEFINED
     }
 }

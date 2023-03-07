@@ -11,6 +11,7 @@ namespace RazorPagesProject.Pages
         internal List<Student> students { get; set; }
         public void OnGet()
         {
+            students = new List<Student>();
             className = int.Parse(Request.Query["className"]);
 
             try
@@ -23,9 +24,7 @@ namespace RazorPagesProject.Pages
             catch (Exception)
             {
                 Console.WriteLine("StudentsIds was null or smth");
-
             }
-           
         }
     }
 }

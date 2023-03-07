@@ -4,7 +4,7 @@
     {
         private int _nameClass;
         private int? _teacherIdClass;
-        private List<int> studentsIds = new List<int>() {123};
+        private List<int> studentsIds = new List<int>() {1234}; //TODO
 
         public int Name { get { return _nameClass; } set { this._nameClass = value; } }
         public int? TeacherID { get { return this._teacherIdClass; } set { this._teacherIdClass = value; } }
@@ -18,7 +18,7 @@
             this._nameClass = name;
             this._teacherIdClass = teacherid;
         }
-        public List<int> GetStudentsIds() { return studentsIds; }
+        public List<int> GetStudentsIds() { return studentsIds; }//TODO
         public void ChangeTeacher(int newTeacherID) 
         {
             foreach (Teacher teacher in Administration.GetTeachersFromLocal())
