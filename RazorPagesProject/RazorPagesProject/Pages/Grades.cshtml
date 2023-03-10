@@ -1,0 +1,65 @@
+﻿@page
+@model RazorPagesProject.Pages.GradesModel
+@{
+    ViewData["Title"] = "Grades";
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="topnav" id="shrink">
+    <p id="searchlabel">
+        Enter a (part of) name of a student:
+    </p>
+    <div class="search-container">
+        <form method ="post">
+            <input class ="searchbar" type="text" placeholder="Search.." name="search">
+            <button type="submit" asp-page-handler="SearchByName" value="Submit"><i class="fa fa-search"></i></button>
+        </form>
+    </div>
+</div>
+
+@if (Model.currentStudents != null && Model.currentStudents.Count !=0)//checks if there are any searched students
+{
+    <table id="users_table">
+        <tbody>
+
+            @foreach (var student in Model.currentStudents)
+            {
+                <tr class="sorting_1" role="row">
+                    <td tabindex="0">
+                        <a class="no-decoration" asp-page="./_UserView" asp-route-userId="@student.Userid">
+                            @student.GetFullName()
+                        </a>
+                    </td>
+                    <td tabindex="0">
+                        @if (student.GradeBook == null)
+                        {
+                            <span>No Grades!</span>
+                        }
+                        else
+                        {
+                            @foreach (var subjectGrades in student.GradeBook)
+                            {
+                                <a class="no-decoration" asp-page="./_GradesView" asp-route-subjectGradesId="@subjectGrades.Id">
+                                    @subjectGrades.Subject
+                                </a>
+                            }
+                        }
+                    </td>
+                </tr>
+            } 
+        </tbody>
+    </table>
+}
+<script>
+    function openNav2() {
+        document.getElementById("shrink").style.marginLeft = "250px";
+        document.getElementById("users_table").style.marginLeft = "250px";
+        //document.getElementById("mySidenav").style.zIndex = "2";
+    }
+
+    function closeNav2() {
+        document.getElementById("shrink").style.marginLeft = "0";
+        document.getElementById("users_table").style.marginLeft = "0";
+        //document.getElementById("mySidenav").style.zIndex = "1";
+    }
+</script>

@@ -125,7 +125,7 @@ main.pb-3 {
     margin-bottom: 8px;
     right: 0px;
 }
-input[type=text], select, textarea {
+input.contact, select, textarea {
     width: 100%;
     padding: 13px;
     border: 1px solid #ccc;
@@ -174,13 +174,13 @@ p#support_text {
 /*TEACHERS*/
 table#users_table {
     border: 1px solid #e7ecf1;
-    width: 100%;
-    margin: 0 auto;
+    width:-webkit-fill-available;
     clear: both;
     border-collapse: separate;
     border-spacing: 0;
     box-sizing: content-box;
     border-bottom: 1px solid #111;
+    transition: margin-left 0.5s;
 }
 
 #users_table th, #users_table td {
@@ -204,6 +204,10 @@ tr.border {
     border-top: 0px;
     border-right: 0px;
     border-left: 0px;
+    transition: margin-left 0.5s ease;
+}
+tr.sorting_1 {
+    font-size: x-large;
 }
 /*TEACHERS*/
 /*USERVIEW*/
@@ -248,4 +252,102 @@ label.label-info {
 /*CLASSROOM VIEW*/
 #users_table th.width20 {
     width: 20%;
+}
+/*GRADES*/
+.topnav {
+    overflow: hidden;
+    background-color: #e9e9e9;
+}
+div#shrink {
+    transition: margin-left .5s;
+    border-style: outset;
+    border-width: 1px;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+}
+.topnav a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #2196F3;
+  color: white;
+}
+
+.topnav .search-container {
+  float: right;
+}
+
+.topnav input[type=text] {
+    padding: 13px;
+    border: 1px solid #ccc;
+/*    margin-bottom: 16px;*/
+    font-size: xx-large;
+}
+
+.topnav .search-container button {
+    float: right;
+    padding: 6px 10px;
+    /* margin-top: 8px; */
+    /* margin-right: 16px; */
+    background: #ddd;
+    font-size: 25px;
+    border: none;
+    cursor: pointer;
+    padding: 13px;
+    /* padding-top: 15px; */
+    height: 65px;
+}
+
+.topnav .search-container button:hover {
+  background: #ccc;
+}
+
+@media screen and (max-width: 600px) {
+  .topnav .search-container {
+    float: none;
+  }
+    .topnav a, .topnav input[type=text], .topnav .search-container button {
+        float: none;
+        display: block;
+        text-align: left;
+        width: 100%;
+        margin: 0;
+        padding: 14px;
+        margin-top: 8px;
+        font-size: 25px;
+        border: none;
+        width: max-content;
+    }
+  .topnav input[type=text] {
+    border: 1px solid #ccc;  
+  }
+}
+/*input[type="text"] {
+
+}*/
+p#searchlabel {
+    margin-bottom: auto;
+    /* width: 50%; */
+    /* margin: -11px; */
+    position: relative;
+    /* margin-left: 63%; */
+    font-size: xx-large;
+    /* text-align: -webkit-auto; */
+    margin-top: 11px;
+    right: 0px;
+    float: left;
+    margin-left: 20px;
 }

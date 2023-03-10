@@ -33,7 +33,7 @@
                     else
                     {
                         <a class="no-decoration" asp-page="./_UserView" asp-route-userId="@_class.TeacherID">
-                            @_class.TeacherID
+                            @Model.GetTeacherById(_class.TeacherID)
                         </a>
                     }
                 </td>

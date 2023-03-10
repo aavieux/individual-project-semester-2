@@ -39,10 +39,10 @@
 
     @*NAVIGATION BAR*@
     <div id="mySidenav" class="sidenav">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav(), closeNav2()">&times;</a>
         <a asp-page="./Index">Dashboard</a>
         <a href="#">Students</a>
-        <a href="#">Grades</a>
+        <a asp-page="./Grades">Grades</a>
         <a asp-page="./Classes">Classes</a>
         <a asp-page="./Teachers">Teachers</a>
         <a href="#">Events</a>
@@ -50,7 +50,7 @@
     </div>
 
     <div id="main">
-        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+        <span style="font-size:30px;cursor:pointer" onclick="openNav(), openNav2()">&#9776;</span>
     </div>
 
     <script>

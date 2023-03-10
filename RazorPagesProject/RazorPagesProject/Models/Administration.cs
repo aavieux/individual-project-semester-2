@@ -104,8 +104,12 @@ namespace RazorPagesProject.Models
             }
             return teachers;
         }
-        public static Teacher? GetTeacherFromLocal(int Userid)
+        public static Teacher? GetTeacherFromLocal(int? Userid)
         {
+            if (Userid == null )
+            {
+                return null;
+            }
             foreach (Teacher teacher in GetTeachersFromLocal())
             {
                 if (teacher.Userid == Userid)
@@ -114,6 +118,7 @@ namespace RazorPagesProject.Models
                 }
             }
             return null;
+
         }
         //---------------------------------------------------------//
         public static List<Student> GetStudentsFromLocal()
@@ -128,6 +133,18 @@ namespace RazorPagesProject.Models
             }
             return students;
         } // because there are students amongst teachers in users
+        public static List<Student>? GetStudentsFromLocalByPartOfName(string partOfName)
+        {
+            List<Student> students = new List<Student>();
+            foreach (Student student in GetStudentsFromLocal())
+            {
+                if (student.GetFullName().ToLower().Contains(partOfName))
+                {
+                    students.Add(student);
+                }
+            }
+            return students;
+        }
         public static Student? GetStudentFromLocal(int Userid)
         {
             foreach (Student student in GetStudentsFromLocal())

@@ -6,10 +6,6 @@ namespace RazorPagesProject.Pages
 {
     public class ContactModel : PageModel
     {
-        public void OnGet()
-        {
-
-        }
         public void OnPost()
         {
             // Retrieve the data from the form
