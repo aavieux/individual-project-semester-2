@@ -2,37 +2,20 @@
 @model RazorPagesProject.Pages._GradesViewModel
 @{
 }
-<table id="users_table">
+<table class="users_table">
     <thead>
         <tr class="border" role="row">
-            <th class="width20">Subject</th>
             <th class="width20">Grades</th>
             @*user number hidden*@
         </tr>
     </thead>
 
     <tbody>
-        @if (Model.studentid != null)// checks if there are any students
-        {
-            @foreach (var subjectGrades in Model.currentStudent.GradeBook)
-            {
-                <tr class="sorting_1" role="row">
-                    <td tabindex="0">
-                        @subjectGrades.Subject
-                    </td>
-                    <td tabindex="0">
-                        <a class="no-decoration" asp-page="./_GradesView" asp-route-subjectGradesId="@subjectGrades.Id">
-                            Grades
-                        </a>
-                    </td>       
-                </tr>
-            }
-        }
-        else
+        @foreach (var grade in Model.grades)
         {
             <tr class="sorting_1" role="row">
                 <td tabindex="0">
-                    <span>No Students in this class!</span>
+                    @grade.GradeEnum
                 </td>
             </tr>
         }

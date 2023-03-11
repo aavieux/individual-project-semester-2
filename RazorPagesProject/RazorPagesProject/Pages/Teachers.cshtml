@@ -1,10 +1,23 @@
 ﻿@page
+@using RazorPagesProject.Models;
 @model RazorPagesProject.Pages.TeachersModel
 @{
     ViewData["Title"] = "Teachers";
 }
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+<div class="topnav" id="shrink">
+    <p id="searchlabel">
+        Enter a (part of) name of a teacher:
+    </p>
+    <div class="search-container">
+        <form method ="post">
+            <input class ="searchbar" type="text" placeholder="Search.." name="search">
+            <button type="submit" asp-page-handler="SearchByName" value="Submit"><i class="fa fa-search"></i></button>
+        </form>
+    </div>
+</div>
 
-<table id="users_table">
+<table class="users_table">
     <thead>
         <tr class = "border" role="row">
             <th>First name</th>
@@ -16,12 +29,21 @@
     </thead>
 
     <tbody>
-        @foreach (var teacher in Model.teachers)
+
+        @if (Model.foundUsers == false)
+        {
+            Model.pastebinList = Model.teachers;
+        }
+        else
+        {
+            Model.pastebinList = Model.foundTeachers;
+        }
+        @foreach (var teacher in Model.pastebinList)
         {
             <tr class="sorting_1" role="row">
                 <td tabindex="0">
                     <a class="no-decoration" asp-page="./_UserView" asp-route-userId="@teacher.Userid">
-                        @teacher.Firstname
+                        <i class='fas fa-chalkboard-teacher'></i> @teacher.Firstname
                     </a>
                 </td>
                 <td tabindex="0">
@@ -44,5 +66,6 @@
                 </td>
             </tr>
         }
+        
     </tbody>
 </table>

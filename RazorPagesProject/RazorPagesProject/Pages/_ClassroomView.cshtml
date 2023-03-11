@@ -2,8 +2,16 @@
 @model RazorPagesProject.Pages._ClassroomViewModel
 @{
 }
-<table id="users_table">
+
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+<table class="users_table">
     <thead>
+        <tr class="border" role="row">
+
+            Class: @Model.className
+
+            @*user number hidden*@
+        </tr>
         <tr class="border" role="row">
             <th class="width20">First name</th>
             <th class="width20">Last name</th>
@@ -22,7 +30,7 @@
                 <tr class="sorting_1" role="row">
                     <td tabindex="0">
                         <a class="no-decoration" asp-page="./_UserView" asp-route-userId="@student.Userid">
-                            @student.Firstname
+                            <i class='fas fa-user-graduate'></i> @student.Firstname
                         </a>
                     </td>
                     <td tabindex="0">
@@ -35,8 +43,8 @@
                         @student.PhoneNumber
                     </td>
                     <td tabindex="0">
-                        <a class="no-decoration" asp-page="./_GradesView" asp-route-userId="@student.Userid">
-                            <span>Grades</span>
+                        <a class="no-decoration" asp-page="./_SubjectGradesView" asp-route-userId="@student.Userid">
+                            <i class='fas fa-book-open'></i> <span>Grades</span>
                         </a>
                     </td>
                 </tr>

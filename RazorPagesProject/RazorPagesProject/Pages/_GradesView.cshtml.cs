@@ -7,12 +7,14 @@ namespace RazorPagesProject.Pages
     public class _GradesViewModel : PageModel
     {
         [BindProperty(SupportsGet = true)]
-        internal int studentid { get; set; }
-        internal Student currentStudent { get; set; }
+        internal int subjectGradesId { get; set; }
+        internal List<Grade> grades;
         public void OnGet()
         {
-            studentid = int.Parse(Request.Query["userId"]);
-            currentStudent = Administration.GetStudentFromLocal(studentid);
+            grades = new List<Grade>();
+            subjectGradesId = int.Parse(Request.Query["subjectGradesId"]);
+
+            grades = Administration.GetSubjectGradesById(subjectGradesId).Grades;
         }
     }
 }

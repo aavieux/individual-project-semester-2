@@ -9,7 +9,7 @@ namespace RazorPagesProject.Models
         private Subject _subject;
         private int _idUser;
 
-        private List<Grade> grades;
+        private List<Grade> grades = new List<Grade>();
 
         public int Id { get { return _idSubjectGrades; } set { _idSubjectGrades = value; } }
         public Subject Subject { get { return _subject; } set { _subject = value; } }

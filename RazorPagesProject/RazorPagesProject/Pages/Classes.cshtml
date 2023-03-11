@@ -3,7 +3,9 @@
 @{
     ViewData["Title"] = "Classes";
 }
-<table id="users_table">
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<table class="users_table">
     <thead>
         <tr class="border" role="row">
             <th>Class Number</th>
@@ -22,7 +24,7 @@
                 </td>
                 <td tabindex="0">
                     <a class="no-decoration" asp-page="./_ClassroomView" asp-route-className="@_class.Name">
-                        Students
+                        <i class="fa fa-eye"></i> Students
                     </a>
                 </td>
                 <td tabindex="0">
@@ -33,7 +35,7 @@
                     else
                     {
                         <a class="no-decoration" asp-page="./_UserView" asp-route-userId="@_class.TeacherID">
-                            @Model.GetTeacherById(_class.TeacherID)
+                            <i class='fas fa-chalkboard-teacher'></i> @Model.GetTeacherNameById(_class.TeacherID)
                         </a>
                     }
                 </td>
@@ -41,3 +43,4 @@
         }
     </tbody>
 </table>
+

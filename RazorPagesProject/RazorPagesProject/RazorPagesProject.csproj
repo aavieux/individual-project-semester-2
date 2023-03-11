@@ -10,6 +10,7 @@
     <Content Include="Models\Administration.cs" />
     <Content Include="Models\Teacher.cs" />
     <Content Include="Models\User.cs" />
+    <Content Include="pictures\noname.png" />
   </ItemGroup>
 
   <ItemGroup>

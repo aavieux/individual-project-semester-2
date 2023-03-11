@@ -120,6 +120,18 @@ namespace RazorPagesProject.Models
             return null;
 
         }
+        public static List<Teacher>? GetTeachersFromLocalByPartOfName(string partOfName)
+        {
+            List<Teacher> teachers = new List<Teacher>();
+            foreach (Teacher teacher in GetTeachersFromLocal())
+            {
+                if (teacher.GetFullName().ToLower().Contains(partOfName.ToLower()))
+                {
+                    teachers.Add(teacher);
+                }
+            }
+            return teachers;
+        }
         //---------------------------------------------------------//
         public static List<Student> GetStudentsFromLocal()
         {
@@ -138,7 +150,7 @@ namespace RazorPagesProject.Models
             List<Student> students = new List<Student>();
             foreach (Student student in GetStudentsFromLocal())
             {
-                if (student.GetFullName().ToLower().Contains(partOfName))
+                if (student.GetFullName().ToLower().Contains(partOfName.ToLower()))
                 {
                     students.Add(student);
                 }

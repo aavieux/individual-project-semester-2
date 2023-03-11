@@ -48,6 +48,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/sando/Repositories/individual-project-semester-2/RazorPagesProject/RazorPagesProject/Pages/Students.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3R1ZGVudHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/sando/Repositories/individual-project-semester-2/RazorPagesProject/RazorPagesProject/Pages/Teachers.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGVhY2hlcnMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -58,6 +62,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/sando/Repositories/individual-project-semester-2/RazorPagesProject/RazorPagesProject/Pages/_GradesView.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0dyYWRlc1ZpZXcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sando/Repositories/individual-project-semester-2/RazorPagesProject/RazorPagesProject/Pages/_SubjectGradesView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1N1YmplY3RHcmFkZXNWaWV3LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/sando/Repositories/individual-project-semester-2/RazorPagesProject/RazorPagesProject/Pages/_UserView.cshtml]

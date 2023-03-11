@@ -4,7 +4,7 @@
     ViewData["Title"] = "Grades";
 }
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 <div class="topnav" id="shrink">
     <p id="searchlabel">
         Enter a (part of) name of a student:
@@ -19,7 +19,7 @@
 
 @if (Model.currentStudents != null && Model.currentStudents.Count !=0)//checks if there are any searched students
 {
-    <table id="users_table">
+    <table class="users_table">
         <tbody>
 
             @foreach (var student in Model.currentStudents)
@@ -27,7 +27,7 @@
                 <tr class="sorting_1" role="row">
                     <td tabindex="0">
                         <a class="no-decoration" asp-page="./_UserView" asp-route-userId="@student.Userid">
-                            @student.GetFullName()
+                            <i class='fas fa-user-graduate'></i> @student.GetFullName()
                         </a>
                     </td>
                     <td tabindex="0">
@@ -40,7 +40,7 @@
                             @foreach (var subjectGrades in student.GradeBook)
                             {
                                 <a class="no-decoration" asp-page="./_GradesView" asp-route-subjectGradesId="@subjectGrades.Id">
-                                    @subjectGrades.Subject
+                                    <i class='fas fa-edit'></i> @subjectGrades.Subject
                                 </a>
                             }
                         }
@@ -51,15 +51,11 @@
     </table>
 }
 <script>
-    function openNav2() {
+    function openNavGrades() {
         document.getElementById("shrink").style.marginLeft = "250px";
-        document.getElementById("users_table").style.marginLeft = "250px";
-        //document.getElementById("mySidenav").style.zIndex = "2";
     }
 
-    function closeNav2() {
+    function closeNavGrades() {
         document.getElementById("shrink").style.marginLeft = "0";
-        document.getElementById("users_table").style.marginLeft = "0";
-        //document.getElementById("mySidenav").style.zIndex = "1";
     }
 </script>

@@ -4,4 +4,90 @@
     ViewData["Title"] = "Home page";
 }
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+<div class="dashboard-main">
+
+    <div class="container2">
+      <h2>Classes Statistics</h2>
+      <div class="stats">
+        <div class="average">
+          <h3>Average Grade for the School</h3>
+          <p id="avg"></p>
+        </div>
+        <div class="best-performers">
+          <h3>Best Performing Students</h3>
+          <ul id="best"></ul>
+        </div>
+      </div>
+    </div>
+    <div class="container3">
+        <canvas id="myChart"></canvas>
+    </div>
+</div>
+
+
+
+
+<script>
+    // Sample data
+    const data = [65, 68, 70, 72, 73, 75, 77, 78, 80, 82, 85, 88, 90, 92, 94, 96, 98];
+
+    // Calculate mean and standard deviation
+    const mean = data.reduce((sum, x) => sum + x) / data.length;
+    const sd = Math.sqrt(data.reduce((sum, x) => sum + Math.pow(x - mean, 2)) / (data.length - 1));
+
+    // Generate x-axis labels
+    const labels = [];
+    for (let i = Math.min(...data); i <= Math.max(...data); i++) {
+        labels.push(i);
+    }
+
+    // Generate y-axis data
+    const dataPoints = labels.map((x) => {
+        return {
+            x: x,
+            y: (1 / (sd * Math.sqrt(2 * Math.PI))) * Math.exp(-0.5 * Math.pow((x - mean) / sd, 2)),
+        };
+    });
+
+    // Create chart
+    const ctx = document.getElementById('myChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [
+                {
+                    label: 'Bell Curve',
+                    data: dataPoints,
+                    fill: false,
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    pointRadius: 0,
+                    lineTension: 0.1,
+                    spanGaps: true,
+                },
+            ],
+        },
+        options: {
+            scales: {
+                xAxes: [
+                    {
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Grade',
+                        },
+                    },
+                ],
+                yAxes: [
+                    {
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Density',
+                        },
+                    },
+                ],
+            },
+        },
+    });
+</script>

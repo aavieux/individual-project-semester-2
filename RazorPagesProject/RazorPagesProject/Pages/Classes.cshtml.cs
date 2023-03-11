@@ -7,7 +7,7 @@ namespace RazorPagesProject.Pages
     public class ClassesModel : PageModel
     {
         internal List<Class> classes { get; set; }
-        internal string? GetTeacherById(int? Id)
+        internal string? GetTeacherNameById(int? Id)
         {
             if (Id == null)
             {

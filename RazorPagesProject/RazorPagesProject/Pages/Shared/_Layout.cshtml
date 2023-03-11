@@ -1,47 +1,19 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2681/2681880.png">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - RazorPagesProject</title>
-    @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />*@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    @*<link rel="stylesheet" href="~/RazorPagesProject.styles.css" asp-append-version="true" />*@
 </head>
 <body>
-    @*<header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">RazorPagesProject</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-
-    @*<header class="top_color">
-        <div class="top_color">
-
-        </div>
-    </header>*@
-
     @*NAVIGATION BAR*@
     <div id="mySidenav" class="sidenav">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav(), closeNav2()">&times;</a>
+        <img id="logo-img" src="https://cdn-icons-png.flaticon.com/512/2681/2681880.png">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <a asp-page="./Index">Dashboard</a>
-        <a href="#">Students</a>
+        <a asp-page="./Students">Students</a>
         <a asp-page="./Grades">Grades</a>
         <a asp-page="./Classes">Classes</a>
         <a asp-page="./Teachers">Teachers</a>
@@ -50,20 +22,21 @@
     </div>
 
     <div id="main">
-        <span style="font-size:30px;cursor:pointer" onclick="openNav(), openNav2()">&#9776;</span>
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
     </div>
 
     <script>
         function openNav() {
             document.getElementById("mySidenav").style.width = "250px";
             document.getElementById("main").style.marginLeft = "250px";
-            //document.getElementById("mySidenav").style.zIndex = "2";
+            document.getElementsByClassName("container")[0].style.marginLeft = "250px";
+
         }
 
         function closeNav() {
             document.getElementById("mySidenav").style.width = "0";
             document.getElementById("main").style.marginLeft = "0";
-            //document.getElementById("mySidenav").style.zIndex = "1";
+            document.getElementsByClassName("container")[0].style.marginLeft = "0";
         }
     </script>
     @*NAVIGATION BAR*@
