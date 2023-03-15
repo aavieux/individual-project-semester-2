@@ -471,3 +471,10 @@ p#searchlabel {
     float: left;
     margin-left: 20px;
 }
+/*GRADES view*/
+
+.grades-container{
+    display:block;
+}
+
+/*GRADES view*/

@@ -348,46 +348,17 @@ namespace RazorPagesProject.Models
             return null;
         }
 
-
-        //public static void GetGradeBookFromDataBase(int UserId)
-        //{
-        //    using (SqlConnection connection =
-        //           new SqlConnection("Server=localhost;Database=individual_project_semester2;Trusted_Connection=True;"))
-        //    {
-        //        connection.Open();
-        //        string query = $"SELECT id_subjectGrades FROM SubjectGrades WHERE id_user LIKE {UserId}";
-
-        //        using (SqlCommand command = new SqlCommand(query, connection))
-        //        {
-        //            using (SqlDataReader reader = command.ExecuteReader())
-        //            {
-        //                try
-        //                {
-        //                    while (reader.Read())
-        //                    {
-        //                        try
-        //                        {
-        //                            return 
-        //                        }
-        //                        catch (Exception)
-        //                        {
-        //                            Console.WriteLine("Error getting subjectgrades from database!");
-        //                        }
-        //                    }
-        //                }
-        //                catch (SqlException xException)
-        //                {
-        //                    Console.WriteLine("Error loading subjectgrades from database!");
-        //                }
-        //                finally
-        //                {
-        //                    reader.Close();
-        //                    connection.Close();
-        //                }
-        //            }
-        //        }
-        //    }
-        //}
-
+        public static int GetLastIdForGrades()
+        {
+            int highestId = 0;
+            foreach (Grade grade in grades)
+            {
+                if (grade.IdGrade>highestId)
+                {
+                    highestId = grade.IdGrade;
+                }
+            }
+            return highestId;
+        }
     }
 }

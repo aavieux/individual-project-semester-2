@@ -16,5 +16,10 @@ namespace RazorPagesProject.Models
         public int IdUser { get { return _idUser; } set { _idUser = value;} }
 
         public List<Grade> Grades { get { return grades; } set { grades = value; } }
+
+        public void AddGradeToGrades(Grade grade)
+        {
+            grades.Add(grade);
+        }
     }
 }

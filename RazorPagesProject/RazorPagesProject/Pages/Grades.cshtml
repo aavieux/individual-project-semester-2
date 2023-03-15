@@ -37,12 +37,8 @@
                         }
                         else
                         {
-                            @foreach (var subjectGrades in student.GradeBook)
-                            {
-                                <a class="no-decoration" asp-page="./_GradesView" asp-route-subjectGradesId="@subjectGrades.Id">
-                                    <i class='fas fa-edit'></i> @subjectGrades.Subject
-                                </a>
-                            }
+                          <a class="no-decoration" asp-page="./_GradesView" asp-route-userId="@student.Userid">
+                                    <i class='fas fa-edit'></i> Edit</a>
                         }
                     </td>
                 </tr>
