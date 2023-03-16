@@ -35,5 +35,6 @@ namespace RazorPagesProject.Models
         {
             return $"{_firstname} {_lastname}";
         }
+
     }
 }

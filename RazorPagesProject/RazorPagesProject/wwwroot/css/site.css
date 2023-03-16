@@ -483,11 +483,18 @@ table {
 }
 
 td, th {
-    border: 1px solid #dddddd;
+    border: 1px solid #a6a6a6;
     text-align: left;
     padding: 8px;
     overflow: visible;
 }
+/*table td:first-child {
+    width: 70px;
+}*/
+.width70px {
+    width: 70px;
+}
+
 
 th {
     background-color: #dddddd;
@@ -500,21 +507,63 @@ th {
     margin-right: 5px;
     line-height: 20px;
     text-align: center;
-    color: #2c6714;
+    /*color: #2c6714;*/
+    color: gray;
     border: 2px solid #cccbcb;
     border-radius: 3px;
-    border-color: seagreen;
+    /*border-color: seagreen;*/
     padding: inherit;
     margin-bottom: 2px;
+    background-color: white;
 }
-
     .grade-value:hover {
         transition: background-color 0.3s ease;
-        background-color: seagreen;
+        background-color: darkgray;
         color: white;
-        border-color: darkolivegreen;
+        border-color: darkgray;
         cursor: pointer;
     }
+
+
+button[name="Button1"] {
+    border: 2px solid #cccbcb;
+    border-color: dimgray;
+    color: dimgray;
+}
+    button[name="Button1"]:hover {
+        background-color: dimgray;
+        border-color: rgba(15, 0, 0, 0.3);
+    }
+
+button[name="Button2"] {
+    border: 2px solid;
+    border-color: gold;
+    color: darkgoldenrod;
+}
+    button[name="Button2"]:hover {
+        background-color: gold;
+        border-color: darkgoldenrod;
+    }
+
+button[name="Button3"] {
+    border: 2px solid #cccbcb;
+    border-color: seagreen;
+}
+    button[name="Button3"]:hover {
+        background-color: seagreen;
+    }
+
+button[name="Button4"] {
+    border-color: darkred;
+    color: darkred;
+}
+    button[name="Button4"]:hover {
+        background-color: darkred;
+        border-color: rgba(93, 0, 0, 1);
+        color: white;
+    }
+
+
 
 .plus-icon {
     display: inline-block;
@@ -550,11 +599,10 @@ th {
 .dropdown {
     position: absolute;
     top: -10px;
-    height: 42px;
-    left: 43px;
+    height: auto;
+    left: -10px;
     display: none;
     padding: 8px;
-    left: 28px;
 }
 
 .dropdown-item {
@@ -616,6 +664,11 @@ th {
     display: none;
     transition: opacity 0.3s ease;
     opacity: 0;
+}
+.x-text {
+    position: relative;
+    top: -12px;
+    left: -2px;
 }
 
 .grade-value:hover .x-icon {

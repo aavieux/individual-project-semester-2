@@ -13,7 +13,7 @@
 	<table>
 		<thead>
 			<tr>
-				<th>Number</th>
+				<th>Subject Number</th>
 				<th>Subject</th>
 				<th>First Semester</th>
 				<th>Second Semester</th>
@@ -23,8 +23,9 @@
 		<tbody>
 			@foreach (SubjectGrades subjectGrades in Model.currentStudent.GetGradeBook())
 			{
+				int i = 1;
 				<tr>
-					<td>Nr: X</td>
+					<td class="width70px">@i</td>
 					<td>@subjectGrades.Subject.ToString()</td>
 					<td>
 						@try
@@ -39,7 +40,11 @@
 										<input type="hidden" name="UserId" value="@Model.currentStudent.Userid" />
 
 										@grade.GradeEnum.ToString()
-										<button class="x-icon" asp-page-handler="DeleteGrade" type="submit" name="GradeId" value="@grade.IdGrade">x</button>
+										<button class="x-icon" asp-page-handler="DeleteGrade" type="submit" name="GradeId" value="@grade.IdGrade">
+											<p class="x-text">
+												x
+											</p>
+										</button>
 									</form>
 								}
 							}
@@ -84,11 +89,12 @@
 					</td>
 					<td>
 						@*<span class="grade-value">(SCND SEM GRADE)</span>*@
-
+							<p>No Grades Here!</p>
 						<span class="plus-icon">+</span>
 					</td>
-					<td>Year Nr X</td>
+					<td>2023</td>
 				</tr>
+				i++;
 			}
 		</tbody>
 	</table>

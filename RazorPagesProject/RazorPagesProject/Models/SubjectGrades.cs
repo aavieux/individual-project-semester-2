@@ -40,6 +40,7 @@ namespace RazorPagesProject.Models
 					try
 					{
                         command.ExecuteNonQuery();
+						Console.WriteLine("-----------------------------------");
 						Console.WriteLine("Records Inserted in DB Successfully");
 
 						grades.Add(grade);
@@ -72,6 +73,7 @@ namespace RazorPagesProject.Models
 					try
 					{
 						command.ExecuteNonQuery();
+						Console.WriteLine("-----------------------------------");
 						Console.WriteLine("Records Deleted From DB Successfully");
 
 						grades.RemoveAll(grade => grade.IdGrade == GradeId);
