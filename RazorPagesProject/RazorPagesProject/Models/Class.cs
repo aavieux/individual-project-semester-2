@@ -18,6 +18,7 @@
             this._nameClass = name;
             this._teacherIdClass = teacherid;
         }
+
         public List<int> GetStudentsIds() { return studentsIds; }//TODO
         public void ChangeTeacher(int newTeacherID) 
         {

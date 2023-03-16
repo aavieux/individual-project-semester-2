@@ -8,154 +8,6 @@
 <html>
 <head>
 	<title>Student Grades</title>
-	<style>
-		table {
-		  font-family: Arial, sans-serif;
-		  border-collapse: collapse;
-		  width: 100%;
-		}
-
-		td, th {
-			border: 1px solid #dddddd;
-			text-align: left;
-			padding: 8px;
-			overflow: visible;
-		}
-
-		th {
-		  background-color: #dddddd;
-		}
-
-		.grade-value {
-			font-weight: bold;
-			display: inline-block;
-			width: unset;
-			margin-right: 5px;
-			line-height: 20px;
-			text-align: center;
-			color: #2c6714;
-			border: 2px solid #cccbcb;
-			border-radius: 3px;
-			border-color: seagreen;
-			padding: inherit;
-			margin-bottom: 2px;
-		}
-
-		.grade-value:hover {
-			transition: background-color 0.3s ease;
-			background-color: seagreen;
-			color: white;
-			border-color: darkolivegreen;
-			cursor: pointer;
-
-		}
-
-		.plus-icon {
-			display: inline-block;
-			position: relative;
-			width: 20px;
-			height: 20px;
-			line-height: 20px;
-			text-align: center;
-			color: #2c6714;
-			border: 2px solid #cccbcb;
-			border-radius: 3px;
-			cursor: pointer;
-			transition: background-color 0.3s ease;
-			padding:inherit;
-		}
-
-			.plus-icon:hover .dropdown{
-				/*background-color: rgba(0, 0, 0, 0.05);*/
-				display: grid;
-			}
-
-			.plus-icon:before {
-				/*content: "+";*/
-				position: absolute;
-				top: 0;
-				left: 0;
-				right: 0;
-				bottom: 0;
-				margin: auto;
-				font-size: 14px;
-			}
-
-			.dropdown {
-				position: absolute;
-				top: -10px;
-				height: 42px;
-				left: 43px;
-				display: none;
-				padding: 8px;
-				left:28px;
-			}
-
-		.dropdown-item {
-			cursor: pointer;
-			padding: 9px;
-			border: solid;
-			border-width: 1px;
-			border-radius: 0%;
-		}
-		.details-icon {
-		  display: inline-block;
-		  position: absolute;
-		  top: -5px;
-		  right: -5px;
-		  width: 20px;
-		  height: 20px;
-		  line-height: 20px;
-		  text-align: center;
-		  color: #fff;
-		  background-color: red;
-		  border-radius: 50%;
-		  cursor: pointer;
-		  z-index: 1;
-		  transition: transform 0.3s ease;
-		}
-
-		.details-icon:hover {
-		  transform: rotate(45deg);
-		}
-
-		.grade-details.active::before {
-			content: '';
-			position: absolute;
-			top: 100%;
-			left: 0;
-			width: 100%;
-			padding: 10px;
-			background-color: #f9f9f9;
-			border: 1px solid #ddd;
-			border-top: none;
-			z-index: 2;
-		}
-		.x-icon{
-			position: relative;
-			width: 17px;
-			height: 17px;
-			font-size: 11px;
-			border: 2px solid #cccbcb;
-			cursor: pointer;
-			transition: background-color 0.3s ease;
-			/*display: inline-grid;*/
-			top: -15px;
-			right: -15px;
-			color: #fff;
-			background-color: red;
-			border-radius: 50%;
-			display: none;
-			transition: opacity 0.3s ease;
-			opacity: 0;
-		}
-
-		.grade-value:hover .x-icon {
-			display: inline-block;
-			opacity: 1;
-		}
-
-	</style>
 </head>
 	<div class="grades-container">
 	<table>
@@ -169,7 +21,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			@foreach (SubjectGrades subjectGrades in Model.currentStudent.GradeBook)
+			@foreach (SubjectGrades subjectGrades in Model.currentStudent.GetGradeBook())
 			{
 				<tr>
 					<td>Nr: X</td>
@@ -177,14 +29,18 @@
 					<td>
 						@try
 						{
-							if (subjectGrades.Grades.Count != 0)
+							if (subjectGrades.GetGrades().Count != 0)
 							{
-								@foreach (Grade grade in subjectGrades.Grades)
+								@foreach (Grade grade in subjectGrades.GetGrades())
 								{
-									<span class="grade-value grade-details" data-grade-id="@grade.IdGrade">
+									<form class="grade-value grade-details" method="post">
+
+										<input type="hidden" name="SubjectGradesId" value="@subjectGrades.Id" />
+										<input type="hidden" name="UserId" value="@Model.currentStudent.Userid" />
+
 										@grade.GradeEnum.ToString()
-										<span class="x-icon" onclick="showGradeDetails(this)">x</span>
-									</span>
+										<button class="x-icon" asp-page-handler="DeleteGrade" type="submit" name="GradeId" value="@grade.IdGrade">x</button>
+									</form>
 								}
 							}
 							else
@@ -203,9 +59,10 @@
 								+
 								<form class="dropdown" method="post">
 
-									<input type="hidden" name="subjectGradesId" value="@subjectGrades.Id" />
+									<input type="hidden" name="SubjectGradesId" value="@subjectGrades.Id" />
+									<input type="hidden" name="UserId" value="@Model.currentStudent.Userid" />
 
-									<button class="grade-value grade-details" asp-page-handler="AddGrade" type="submit" value="Submit" name="Button1">
+									<button class="grade-value grade-details" asp-page-handler="AddGrade" type="submit" value="Submit" name="Button1" >
 										UNDEFINED
 									</button>
 
@@ -237,53 +94,3 @@
 	</table>
 	</div>
 </html>
-@*<script>
-	function showGradeDetails(icon) {
-		var gradeId = $(icon).closest('.grade-details').data('grade-id');
-		window.location.href = '/grades/details?id=' + gradeId;
-	}
-	function createDetailsBox(gradeElem) {
-		// create the box element
-		var boxElem = document.createElement("div");
-		boxElem.classList.add("details-box");
-
-		// create the close button
-		var closeBtn = document.createElement("span");
-		closeBtn.classList.add("close-btn");
-		closeBtn.innerHTML = "&times;";
-		closeBtn.onclick = function () {
-			boxElem.style.display = "none";
-		};
-
-		// create the title
-		var titleElem = document.createElement("h3");
-		titleElem.innerText = "Grade Details";
-
-		// create the grade text
-		var gradeText = gradeElem.innerText;
-
-		// create the grade element
-		var gradeElem2 = document.createElement("span");
-		gradeElem2.classList.add("grade-value");
-		gradeElem2.innerText = gradeText;
-
-		// add the elements to the box
-		boxElem.appendChild(closeBtn);
-		boxElem.appendChild(titleElem);
-		boxElem.appendChild(gradeElem2);
-
-		// add the box to the DOM
-		document.body.appendChild(boxElem);
-
-		// set the position of the box
-		var gradeRect = gradeElem.getBoundingClientRect();
-		var boxRect = boxElem.getBoundingClientRect();
-		var top = gradeRect.top - boxRect.height - 10;
-		var left = gradeRect.right - boxRect.width + 20;
-		boxElem.style.top = top + "px";
-		boxElem.style.left = left + "px";
-
-		// show the box
-		boxElem.style.display = "block";
-	}
-</script>*@

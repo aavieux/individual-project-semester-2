@@ -476,5 +476,152 @@ p#searchlabel {
 .grades-container{
     display:block;
 }
+table {
+    font-family: Arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    overflow: visible;
+}
+
+th {
+    background-color: #dddddd;
+}
+
+.grade-value {
+    font-weight: bold;
+    display: inline-block;
+    width: unset;
+    margin-right: 5px;
+    line-height: 20px;
+    text-align: center;
+    color: #2c6714;
+    border: 2px solid #cccbcb;
+    border-radius: 3px;
+    border-color: seagreen;
+    padding: inherit;
+    margin-bottom: 2px;
+}
+
+    .grade-value:hover {
+        transition: background-color 0.3s ease;
+        background-color: seagreen;
+        color: white;
+        border-color: darkolivegreen;
+        cursor: pointer;
+    }
+
+.plus-icon {
+    display: inline-block;
+    position: relative;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    color: #2c6714;
+    border: 2px solid #cccbcb;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    padding: inherit;
+}
+
+    .plus-icon:hover .dropdown {
+        /*background-color: rgba(0, 0, 0, 0.05);*/
+        display: grid;
+    }
+
+    .plus-icon:before {
+        /*content: "+";*/
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        font-size: 14px;
+    }
+
+.dropdown {
+    position: absolute;
+    top: -10px;
+    height: 42px;
+    left: 43px;
+    display: none;
+    padding: 8px;
+    left: 28px;
+}
+
+.dropdown-item {
+    cursor: pointer;
+    padding: 9px;
+    border: solid;
+    border-width: 1px;
+    border-radius: 0%;
+}
+
+.details-icon {
+    display: inline-block;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    color: #fff;
+    background-color: red;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 1;
+    transition: transform 0.3s ease;
+}
+
+    .details-icon:hover {
+        transform: rotate(45deg);
+    }
+
+.grade-details.active::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-top: none;
+    z-index: 2;
+}
+
+.x-icon {
+    position: relative;
+    width: 17px;
+    height: 17px;
+    font-size: 11px;
+    border: 2px solid #cccbcb;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    /*display: inline-grid;*/
+    top: -15px;
+    right: -15px;
+    color: #fff;
+    background-color: red;
+    border-radius: 50%;
+    display: none;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+}
+
+.grade-value:hover .x-icon {
+    display: inline-block;
+    opacity: 1;
+}
+
 
 /*GRADES view*/

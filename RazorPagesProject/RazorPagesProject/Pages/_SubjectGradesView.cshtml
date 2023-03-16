@@ -9,14 +9,13 @@
         <tr class="border" role="row">
             <th class="width20">Subject</th>
             <th class="width20">Grades</th>
-            @*user number hidden*@
         </tr>
     </thead>
 
     <tbody>
-        @if (Model.studentid != null)// checks if there are any students
+        @if (Model.studentid != null)// checks if there are any students// it is always true
         {
-            @foreach (var subjectGrades in Model.currentStudent.GradeBook)
+            @foreach (var subjectGrades in Model.currentStudent.GetGradeBook())
             {
                 <tr class="sorting_1" role="row">
                     <td tabindex="0">

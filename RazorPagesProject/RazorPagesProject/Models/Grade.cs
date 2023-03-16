@@ -12,10 +12,7 @@ namespace RazorPagesProject.Models
         public int IdSubjectGrades { get { return _idSubjectGrades; } set { _idSubjectGrades = value;} }
         public GradeEnum GradeEnum { get { return _grade; }set { _grade = value; } }
 
-        public Grade()
-        {
-
-        }
+        public Grade(){}
 		public Grade(int idGrade,int idSubjectGrades,GradeEnum grade)
 		{
             this._idGrade = idGrade;
