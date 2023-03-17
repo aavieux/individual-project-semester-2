@@ -13,8 +13,6 @@ namespace WindowsFormsAppProject
 {
 	public partial class connectedUser : Form
 	{
-		
-
 		public connectedUser()
 		{
 			InitializeComponent();
