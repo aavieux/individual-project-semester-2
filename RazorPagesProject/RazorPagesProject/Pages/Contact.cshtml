@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Contact";
 }
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link href="https://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet">
 <div class="devision1">
     <p id="support_text">Get in touch with us! Our team is here to help with any questions or concerns you may have. Fill out the form on the right and we'll get back to you as soon as possible. We pride ourselves on excellent customer support and look forward to hearing from you! </p>
@@ -49,12 +50,39 @@
     <input type="submit" value="Submit">
     @if (TempData.ContainsKey("SuccessMessage"))
     {
-        <div class="alert alert-success">
+        <div class="alert-success">
             @TempData["SuccessMessage"]
         </div>
     }
 </form>
 <style>
+    .alert-success {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 15px;
+        background-color: #d4edda;
+        color: #155724;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        visibility: visible; /* Change opacity to visibility */
+        transition: visibility 0.5s ease-in-out; /* Change transition to visibility */
 
+    }
 
+        .alert-success.hide {
+            visibility: hidden; /* Change opacity to visibility */
+        }
 </style>
+<script>
+    $(document).ready(function () {
+        setTimeout(function () {
+            $(".alert-success").addClass("hide"); // Add the "hide" class instead of fading out
+        }, 3000);
+    });
+
+    $(document).ready(function () {
+        $('input[type="text"], textarea',).val('');
+    });
+
+</script>
+
