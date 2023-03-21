@@ -1,6 +1,7 @@
+using ClassLibrary.Controllers;
+using ClassLibrary.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using RazorPagesProject.Models;
 
 namespace RazorPagesProject.Pages
 {
@@ -9,22 +10,22 @@ namespace RazorPagesProject.Pages
         [BindProperty(SupportsGet = true)]
         public int className { get; set; }
         internal List<Student> students { get; set; }
+
+        //private UserManager userManager { get; set; }
+        //private GradeManager gradeManager { get; set; }
+        internal ClassManager classManager { get; set; }
+
+        public _ClassroomViewModel()
+        {
+            //gradeManager = new GradeManager();
+            classManager = new ClassManager();
+            //userManager = new UserManager();
+        }
+
         public void OnGet()
         {
-            students = new List<Student>();
             className = int.Parse(Request.Query["className"]);
-
-            try
-            {
-                foreach (int studentID in Administration.GetClassFromLocal(className).GetStudentsIds())
-                {
-                    students.Add(Administration.GetStudentFromLocal(studentID));
-                }
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("StudentsIds was null or smth");
-            }
+            students = classManager.GetClassStudentsById(className);// add exception check
         }
     }
 }

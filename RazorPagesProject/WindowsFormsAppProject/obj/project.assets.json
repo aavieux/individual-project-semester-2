@@ -147,21 +147,18 @@
           }
         }
       },
-      "RazorPagesProject/1.0.0": {
+      "ClassLibrary/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
           "System.Data.SqlClient": "4.8.5"
         },
         "compile": {
-          "bin/placeholder/RazorPagesProject.dll": {}
+          "bin/placeholder/ClassLibrary.dll": {}
         },
         "runtime": {
-          "bin/placeholder/RazorPagesProject.dll": {}
-        },
-        "frameworkReferences": [
-          "Microsoft.AspNetCore.App"
-        ]
+          "bin/placeholder/ClassLibrary.dll": {}
+        }
       }
     }
   },
@@ -479,15 +476,15 @@
         "version.txt"
       ]
     },
-    "RazorPagesProject/1.0.0": {
+    "ClassLibrary/1.0.0": {
       "type": "project",
-      "path": "../RazorPagesProject/RazorPagesProject.csproj",
-      "msbuildProject": "../RazorPagesProject/RazorPagesProject.csproj"
+      "path": "../ClassLibrary/ClassLibrary.csproj",
+      "msbuildProject": "../ClassLibrary/ClassLibrary.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0-windows7.0": [
-      "RazorPagesProject >= 1.0.0"
+      "ClassLibrary >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -522,8 +519,8 @@
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "projectReferences": {
-            "C:\\Users\\sando\\Repositories\\individual-project-semester-2\\RazorPagesProject\\RazorPagesProject\\RazorPagesProject.csproj": {
-              "projectPath": "C:\\Users\\sando\\Repositories\\individual-project-semester-2\\RazorPagesProject\\RazorPagesProject\\RazorPagesProject.csproj"
+            "C:\\Users\\sando\\Repositories\\individual-project-semester-2\\RazorPagesProject\\ClassLibrary\\ClassLibrary.csproj": {
+              "projectPath": "C:\\Users\\sando\\Repositories\\individual-project-semester-2\\RazorPagesProject\\ClassLibrary\\ClassLibrary.csproj"
             }
           }
         }
@@ -556,7 +553,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }

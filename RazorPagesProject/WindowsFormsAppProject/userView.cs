@@ -1,4 +1,4 @@
-﻿using RazorPagesProject.Models;
+﻿using ClassLibrary.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,7 +23,7 @@ namespace WindowsFormsAppProject
 		private void DisplayContent()
 		{
 			listBox1.Items.Clear();
-			listBox1.Items.Add(Administration.GetStudentFromLocal(userId).GetFullName());
+			listBox1.Items.Add(GetStudentFromLocal(userId).GetFullName());
 		}
 	}
 }

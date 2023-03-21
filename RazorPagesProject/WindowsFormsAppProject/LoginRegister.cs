@@ -1,6 +1,6 @@
 
+using ClassLibrary.Models;
 using Microsoft.VisualBasic.ApplicationServices;
-using RazorPagesProject.Models;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
@@ -19,20 +19,13 @@ namespace Housing_Project
             tabControlLoginRegister.SelectTab("tabPageLogin");
             loginwrongcredentialslbl.Visible = false;
             registerlbl.Visible = false;
-            LoadData();
+            LoadLogInData();
         }
 
         //Method to deserialise all managers with their specific content from the files
-        private void LoadData()
+        private void LoadLogInData()
         {
-            try
-            {
-
-            }
-            catch (Exception)
-            {
-                return;
-            }
+           
         }
 
         //Method to reset the fields
@@ -156,57 +149,52 @@ namespace Housing_Project
 
         private void loginbtn_Click(object sender, EventArgs e)
         {
-			//string email = loginemailtxt.Text;
-			//string password = loginpasswordtxt.Text;
-			//bool foundUser = false;
-			//Tenant tenant = new Tenant("", "", "", "");
-			//Supervisor supervisor = new Supervisor("", "", "", "");
+            //string email = loginemailtxt.Text;
+            //string password = loginpasswordtxt.Text;
+            //bool foundUser = false;
+            //Tenant tenant = new Tenant("", "", "", "");
+            //Supervisor supervisor = new Supervisor("", "", "", "");
 
-			//if (email.Contains("student.com"))
-			//{
-			//    foreach (Tenant t in userManager.GetTenants())
-			//    {
-			//        if (t.Email == email && t.Password == password)
-			//        {
-			//            foundUser = true;
-			//            tenant = t;
-			//        }
-			//    }    
-			//    if (foundUser == true)
-			//    {
-			//        OpenUser(tenant);
-			//    }
-			//    else
-			//        loginwrongcredentialslbl.Visible = true;
-			//}
+            //if (email.Contains("student.com"))
+            //{
+            //    foreach (Tenant t in userManager.GetTenants())
+            //    {
+            //        if (t.Email == email && t.Password == password)
+            //        {
+            //            foundUser = true;
+            //            tenant = t;
+            //        }
+            //    }    
+            //    if (foundUser == true)
+            //    {
+            //        OpenUser(tenant);
+            //    }
+            //    else
+            //        loginwrongcredentialslbl.Visible = true;
+            //}
 
-			//else if (email.Contains("supervisor.com"))
-			//{
-			//    foreach (Supervisor s in userManager.GetSupervisors())
-			//    {
-			//        if (s.Email == email && s.Password == password)
-			//        {
-			//            foundUser = true;
-			//            supervisor = s;
-			//        }
-			//    }
+            //else if (email.Contains("supervisor.com"))
+            //{
+            //    foreach (Supervisor s in userManager.GetSupervisors())
+            //    {
+            //        if (s.Email == email && s.Password == password)
+            //        {
+            //            foundUser = true;
+            //            supervisor = s;
+            //        }
+            //    }
 
-			//    if (foundUser == true)
-			//    {
-			//        OpenUser(supervisor);
-			//    }
-			//    else
-			//        loginwrongcredentialslbl.Visible = true;
-			//}
-			//else
-			//{
-			//    loginwrongcredentialslbl.Visible = true;
-			//}
-			Administration.GenerateUsersFromDataBase();
-			Administration.GenerateClassesFromDataBase();
-			Administration.GenerateGradesFromDataBase();
-			Administration.GenerateGradeBooksFromDataBase();
-			Administration.PutGradesInGradeBooksAndThenInStudents();
+            //    if (foundUser == true)
+            //    {
+            //        OpenUser(supervisor);
+            //    }
+            //    else
+            //        loginwrongcredentialslbl.Visible = true;
+            //}
+            //else
+            //{
+            //    loginwrongcredentialslbl.Visible = true;
+            //}
 
 			this.Hide();
             connectedUser connectedUser = new connectedUser();

@@ -1,99 +1,45 @@
-﻿using RazorPagesProject.Models.Enums;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using ClassLibrary.Controllers;
+using ClassLibrary.Models.Enums;
 
-namespace RazorPagesProject.Models
+namespace ClassLibrary.Models
 {
-    public class SubjectGrades
+	public class SubjectGrades
 
-    {
-        private int _idSubjectGrades;
-        private Subject _subject;
-        private int _idUser;
+	{
+		private int _idSubjectGrades;
+		private Subject _subject;
+		private int _idUser;
 
-        private List<Grade> grades = new List<Grade>();
+		private List<Grade> grades;
+		//private GradeManager gradeManager;
 
-        public int Id { get { return _idSubjectGrades; } set { _idSubjectGrades = value; } }
-        public Subject Subject { get { return _subject; } set { _subject = value; } }
-        public int IdUser { get { return _idUser; } set { _idUser = value;} }
+		public int Id { get { return _idSubjectGrades; } set { _idSubjectGrades = value; } }
+		public Subject Subject { get { return _subject; } set { _subject = value; } }
+		public int IdUser { get { return _idUser; } set { _idUser = value; } }
 
-        //public List<Grade> Grades { get { return grades; } set { grades = value; } }
-
-        public List <Grade> GetGrades() 
-        { 
-            return grades; 
-        }
-		public void AddGradeToGrades(Grade grade)
+		public List<Grade> Grades { get { return grades; } set { grades = value; } }
+		public SubjectGrades()
 		{
-			grades.Add(grade);
+			//gradeManager = new GradeManager();
 		}
 
-		public void AddNewGradeToGradesAndDB(Grade grade)
-        {
-			using (SqlConnection connection =
-				   new SqlConnection("Server=localhost;Database=individual_project_semester2;Trusted_Connection=True;"))
-			{
-				connection.Open();
-				string query = $"INSERT INTO Grades (id_grade, id_subjectGrades, grade) VALUES ({grade.IdGrade}, {_idSubjectGrades}, '{grade.GradeEnum.ToString()}');";
-
-				using (SqlCommand command = new SqlCommand(query, connection))
-				{
-					try
-					{
-                        command.ExecuteNonQuery();
-						Console.WriteLine("-----------------------------------");
-						Console.WriteLine("Records Inserted in DB Successfully");
-
-						grades.Add(grade);
-						Administration.AddGrade(grade);
-						Console.WriteLine("Records Inserted Locally Successfully");
-
-					}
-					catch (SqlException e)
-					{
-						Console.WriteLine("Error Generated. Details: " + e.ToString());
-					}
-					finally
-					{
-						connection.Close();
-					}
-				}
-			}
-			
-        }
-		public void DeleteGradeFromGradesAndDBById(int GradeId)
-		{
-			using (SqlConnection connection =
-				   new SqlConnection("Server=localhost;Database=individual_project_semester2;Trusted_Connection=True;"))
-			{
-				connection.Open();
-				string query = $"DELETE FROM Grades WHERE id_grade LIKE '{GradeId}'";
-
-				using (SqlCommand command = new SqlCommand(query, connection))
-				{
-					try
-					{
-						command.ExecuteNonQuery();
-						Console.WriteLine("-----------------------------------");
-						Console.WriteLine("Records Deleted From DB Successfully");
-
-						grades.RemoveAll(grade => grade.IdGrade == GradeId);
-						Administration.GetGrades().RemoveAll(grade => grade.IdGrade == GradeId);
-
-						Console.WriteLine("Records Deleted From Local Successfully");
-
-					}
-					catch (SqlException e)
-					{
-						Console.WriteLine("Error Generated. Details: " + e.ToString());
-					}
-					finally
-					{
-						connection.Close();
-					}
-				}
-			}
-
-		}
-
-	}
+		//public List<Grade> GetGrades()
+		//{
+		//	return gradeManager.GetGrades(_idSubjectGrades);
+		//}
+		//public void AddGradeToGrades(Grade grade)
+		//{
+		//	gradeManager.AddGradeToSubjectGrades(_idSubjectGrades,grade);
+		//}
+  //      public void DeleteGrade(int gradeId)
+  //      {
+  //          gradeManager.DeleteGradeFromSubjectGrades(_idSubjectGrades, gradeId);
+  //      }
+    }
 }

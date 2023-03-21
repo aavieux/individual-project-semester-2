@@ -15,11 +15,11 @@
     <tbody>
         @if (Model.studentid != null)// checks if there are any students// it is always true
         {
-            @foreach (var subjectGrades in Model.currentStudent.GetGradeBook())
+            @foreach (var subjectGrades in Model.GetGradeBookByStudent(Model.currentStudent))
             {
                 <tr class="sorting_1" role="row">
                     <td tabindex="0">
-                        @if (subjectGrades.Subject == Models.Enums.Subject.ENGLISH)
+                        @if (subjectGrades.Subject == ClassLibrary.Models.Enums.Subject.ENGLISH)
                         {
                             <i class="fa fa-pencil"></i>
                         }

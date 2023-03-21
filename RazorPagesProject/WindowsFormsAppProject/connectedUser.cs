@@ -1,4 +1,4 @@
-﻿using RazorPagesProject.Models;
+﻿using ClassLibrary.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,22 +13,23 @@ namespace WindowsFormsAppProject
 {
 	public partial class connectedUser : Form
 	{
-		public connectedUser()
+        public connectedUser()
 		{
-			InitializeComponent();
+
+            InitializeComponent();
 			DisplayData();
 		}
 		private void DisplayData()
 		{
 			//teachers
 			listBoxTeachers.Items.Clear();
-			foreach (Teacher teacher in Administration.GetTeachersFromLocal())
+			foreach (Teacher teacher in administration.GetTeachersFromLocal())
 			{
 				listBoxTeachers.Items.Add($"UserID: {teacher.Userid} - {teacher.GetFullName()} - {teacher.Role} - Class: {teacher.Class}");
 			}
 			//students
 			listBoxStudents.Items.Clear();
-			foreach (Student student in Administration.GetStudentsFromLocal())
+			foreach (Student student in administration.GetStudentsFromLocal())
 			{
 				listBoxStudents.Items.Add($"UserID: {student.Userid} - {student.GetFullName()} - {student.Role} - Class: {student.Class}");
 			}
@@ -41,7 +42,7 @@ namespace WindowsFormsAppProject
 			int userId = int.Parse(listBoxStudents.SelectedItem.ToString().Substring(start, end - start));
 
 			this.Hide();
-			userView userView= new userView(userId);
+			userView userView= new userView(userId, administration);
 			userView.ShowDialog();
 			this.Show();
 		}

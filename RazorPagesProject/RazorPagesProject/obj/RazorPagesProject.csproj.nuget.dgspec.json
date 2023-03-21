@@ -4,14 +4,14 @@
     "C:\\Users\\sando\\Repositories\\individual-project-semester-2\\RazorPagesProject\\RazorPagesProject\\RazorPagesProject.csproj": {}
   },
   "projects": {
-    "C:\\Users\\sando\\Repositories\\individual-project-semester-2\\RazorPagesProject\\RazorPagesProject\\RazorPagesProject.csproj": {
+    "C:\\Users\\sando\\Repositories\\individual-project-semester-2\\RazorPagesProject\\ClassLibrary\\ClassLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\sando\\Repositories\\individual-project-semester-2\\RazorPagesProject\\RazorPagesProject\\RazorPagesProject.csproj",
-        "projectName": "RazorPagesProject",
-        "projectPath": "C:\\Users\\sando\\Repositories\\individual-project-semester-2\\RazorPagesProject\\RazorPagesProject\\RazorPagesProject.csproj",
+        "projectUniqueName": "C:\\Users\\sando\\Repositories\\individual-project-semester-2\\RazorPagesProject\\ClassLibrary\\ClassLibrary.csproj",
+        "projectName": "ClassLibrary",
+        "projectPath": "C:\\Users\\sando\\Repositories\\individual-project-semester-2\\RazorPagesProject\\ClassLibrary\\ClassLibrary.csproj",
         "packagesPath": "C:\\Users\\sando\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\sando\\Repositories\\individual-project-semester-2\\RazorPagesProject\\RazorPagesProject\\obj\\",
+        "outputPath": "C:\\Users\\sando\\Repositories\\individual-project-semester-2\\RazorPagesProject\\ClassLibrary\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\programms\\Visual Studio\\shared components\\NuGetPackages"
@@ -61,6 +61,69 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\sando\\Repositories\\individual-project-semester-2\\RazorPagesProject\\RazorPagesProject\\RazorPagesProject.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\sando\\Repositories\\individual-project-semester-2\\RazorPagesProject\\RazorPagesProject\\RazorPagesProject.csproj",
+        "projectName": "RazorPagesProject",
+        "projectPath": "C:\\Users\\sando\\Repositories\\individual-project-semester-2\\RazorPagesProject\\RazorPagesProject\\RazorPagesProject.csproj",
+        "packagesPath": "C:\\Users\\sando\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\sando\\Repositories\\individual-project-semester-2\\RazorPagesProject\\RazorPagesProject\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "D:\\programms\\Visual Studio\\shared components\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\sando\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\sando\\Repositories\\individual-project-semester-2\\RazorPagesProject\\ClassLibrary\\ClassLibrary.csproj": {
+                "projectPath": "C:\\Users\\sando\\Repositories\\individual-project-semester-2\\RazorPagesProject\\ClassLibrary\\ClassLibrary.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
             },
@@ -68,7 +131,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

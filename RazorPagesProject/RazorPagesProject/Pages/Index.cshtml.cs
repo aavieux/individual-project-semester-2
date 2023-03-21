@@ -1,21 +1,18 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ClassLibrary.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Data.SqlClient;
+using System.Text.Json;
+using System.Text;
 
 namespace RazorPagesProject.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
-
-        public IndexModel(ILogger<IndexModel> logger)
-        {
-            _logger = logger;
-        }
-
+        public IndexModel(){}
         public void OnGet()
         {
-
+            
         }
     }
 }

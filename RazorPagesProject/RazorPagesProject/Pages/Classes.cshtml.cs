@@ -1,27 +1,33 @@
+using ClassLibrary.Controllers;
+using ClassLibrary.DatabaseHelpers;
+using ClassLibrary.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using RazorPagesProject.Models;
 
 namespace RazorPagesProject.Pages
 {
+    
     public class ClassesModel : PageModel
     {
         internal List<Class> classes { get; set; }
-        internal string? GetTeacherNameById(int? Id)
+
+        internal ClassManager classManager { get; set; }
+        internal UserManager UserManager { get; set; }
+
+        public ClassesModel()
         {
-            if (Id == null)
-            {
-                return null;
-            }
-            else
-            {
-                string? teacherFullName = Administration.GetTeacherFromLocal(Id).GetFullName();
-                return teacherFullName;
-            }
+            classManager = new ClassManager();
+            UserManager = new UserManager();
         }
+
         public void OnGet()
         {
-            classes = Administration.GetClassesFromLocal();
+            classes = classManager.GetAllClasses();
         }
+        public string GetTeacherNameById(int teacherId)
+        {
+            return UserManager.GetTeacherById(teacherId).GetFullName();
+        }
+        
     }
 }

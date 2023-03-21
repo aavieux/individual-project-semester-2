@@ -1,5 +1,5 @@
 ﻿@page
-@using RazorPagesProject.Models;
+@using ClassLibrary.Models;
 @model RazorPagesProject.Pages._GradesViewModel
 @{
 }
@@ -21,7 +21,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			@foreach (SubjectGrades subjectGrades in Model.currentStudent.GetGradeBook())
+			@foreach (SubjectGrades subjectGrades in Model.GetGradeBookFromStudent(Model.currentStudent))
 			{
 				int i = 1;
 				<tr>
@@ -30,23 +30,27 @@
 					<td>
 						@try
 						{
-							if (subjectGrades.GetGrades().Count != 0)
+							if (Model.GetGradesFromSubjectGrades(subjectGrades) != null)
 							{
-								@foreach (Grade grade in subjectGrades.GetGrades())
+								if (Model.GetGradesFromSubjectGrades(subjectGrades).Count != 0)
 								{
-									<form class="grade-value grade-details" method="post">
+									@foreach (Grade grade in Model.GetGradesFromSubjectGrades(subjectGrades))
+									{
+										<form class="grade-value grade-details" method="post">
 
-										<input type="hidden" name="SubjectGradesId" value="@subjectGrades.Id" />
-										<input type="hidden" name="UserId" value="@Model.currentStudent.Userid" />
+											<input type="hidden" name="SubjectGradesId" value="@subjectGrades.Id" />
+											<input type="hidden" name="UserId" value="@Model.currentStudent.Userid" />
 
-										@grade.GradeEnum.ToString()
-										<button class="x-icon" asp-page-handler="DeleteGrade" type="submit" name="GradeId" value="@grade.IdGrade">
-											<p class="x-text">
-												x
-											</p>
-										</button>
-									</form>
+											@grade.GradeEnum.ToString()
+											<button class="x-icon" asp-page-handler="DeleteGrade" type="submit" name="GradeId" value="@grade.IdGrade">
+												<p class="x-text">
+													x
+												</p>
+											</button>
+										</form>
+									}
 								}
+								
 							}
 							else
 							{

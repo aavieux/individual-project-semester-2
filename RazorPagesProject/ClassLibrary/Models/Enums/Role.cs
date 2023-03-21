@@ -1,4 +1,4 @@
-﻿namespace RazorPagesProject.Models.Enums
+﻿namespace ClassLibrary.Models.Enums
 {
     public enum Role
     {

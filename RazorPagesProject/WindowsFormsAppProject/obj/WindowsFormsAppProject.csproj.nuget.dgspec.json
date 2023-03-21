@@ -4,14 +4,14 @@
     "C:\\Users\\sando\\Repositories\\individual-project-semester-2\\RazorPagesProject\\WindowsFormsAppProject\\WindowsFormsAppProject.csproj": {}
   },
   "projects": {
-    "C:\\Users\\sando\\Repositories\\individual-project-semester-2\\RazorPagesProject\\RazorPagesProject\\RazorPagesProject.csproj": {
+    "C:\\Users\\sando\\Repositories\\individual-project-semester-2\\RazorPagesProject\\ClassLibrary\\ClassLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\sando\\Repositories\\individual-project-semester-2\\RazorPagesProject\\RazorPagesProject\\RazorPagesProject.csproj",
-        "projectName": "RazorPagesProject",
-        "projectPath": "C:\\Users\\sando\\Repositories\\individual-project-semester-2\\RazorPagesProject\\RazorPagesProject\\RazorPagesProject.csproj",
+        "projectUniqueName": "C:\\Users\\sando\\Repositories\\individual-project-semester-2\\RazorPagesProject\\ClassLibrary\\ClassLibrary.csproj",
+        "projectName": "ClassLibrary",
+        "projectPath": "C:\\Users\\sando\\Repositories\\individual-project-semester-2\\RazorPagesProject\\ClassLibrary\\ClassLibrary.csproj",
         "packagesPath": "C:\\Users\\sando\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\sando\\Repositories\\individual-project-semester-2\\RazorPagesProject\\RazorPagesProject\\obj\\",
+        "outputPath": "C:\\Users\\sando\\Repositories\\individual-project-semester-2\\RazorPagesProject\\ClassLibrary\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\programms\\Visual Studio\\shared components\\NuGetPackages"
@@ -61,14 +61,11 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -100,8 +97,8 @@
           "net6.0-windows7.0": {
             "targetAlias": "net6.0-windows",
             "projectReferences": {
-              "C:\\Users\\sando\\Repositories\\individual-project-semester-2\\RazorPagesProject\\RazorPagesProject\\RazorPagesProject.csproj": {
-                "projectPath": "C:\\Users\\sando\\Repositories\\individual-project-semester-2\\RazorPagesProject\\RazorPagesProject\\RazorPagesProject.csproj"
+              "C:\\Users\\sando\\Repositories\\individual-project-semester-2\\RazorPagesProject\\ClassLibrary\\ClassLibrary.csproj": {
+                "projectPath": "C:\\Users\\sando\\Repositories\\individual-project-semester-2\\RazorPagesProject\\ClassLibrary\\ClassLibrary.csproj"
               }
             }
           }
@@ -134,7 +131,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

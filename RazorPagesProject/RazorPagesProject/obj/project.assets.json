@@ -146,6 +146,19 @@
             "rid": "win"
           }
         }
+      },
+      "ClassLibrary/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "System.Data.SqlClient": "4.8.5"
+        },
+        "compile": {
+          "bin/placeholder/ClassLibrary.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ClassLibrary.dll": {}
+        }
       }
     }
   },
@@ -462,11 +475,16 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "ClassLibrary/1.0.0": {
+      "type": "project",
+      "path": "../ClassLibrary/ClassLibrary.csproj",
+      "msbuildProject": "../ClassLibrary/ClassLibrary.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "System.Data.SqlClient >= 4.8.5"
+      "ClassLibrary >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -500,7 +518,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\sando\\Repositories\\individual-project-semester-2\\RazorPagesProject\\ClassLibrary\\ClassLibrary.csproj": {
+              "projectPath": "C:\\Users\\sando\\Repositories\\individual-project-semester-2\\RazorPagesProject\\ClassLibrary\\ClassLibrary.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -512,12 +534,6 @@
     "frameworks": {
       "net6.0": {
         "targetAlias": "net6.0",
-        "dependencies": {
-          "System.Data.SqlClient": {
-            "target": "Package",
-            "version": "[4.8.5, )"
-          }
-        },
         "imports": [
           "net461",
           "net462",
@@ -537,7 +553,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }

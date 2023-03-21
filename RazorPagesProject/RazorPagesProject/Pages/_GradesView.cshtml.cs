@@ -1,7 +1,8 @@
+using ClassLibrary.Controllers;
+using ClassLibrary.Models;
+using ClassLibrary.Models.Enums;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using RazorPagesProject.Models;
-using RazorPagesProject.Models.Enums;
 using System.Diagnostics;
 using System.Reflection;
 
@@ -10,16 +11,24 @@ namespace RazorPagesProject.Pages
     public class _GradesViewModel : PageModel
     {
 		[BindProperty(SupportsGet = true)]
-		internal int studentid { get; set; }
+        internal int studentid { get; set; }
 		internal Student currentStudent { get; set; }
-		public void OnGet()
+
+        internal GradeManager gradeManager { get; set; }
+        internal UserManager UserManager { get; set; }
+        public _GradesViewModel()
+        {
+            gradeManager = new GradeManager();
+            UserManager = new UserManager();
+        }
+        public void OnGet()
 		{
-			studentid = int.Parse(Request.Query["userId"]);//tuka e problema nisht one mu se puska sled kato cukna da addna grade
-			currentStudent = Administration.GetStudentFromLocal(studentid);
+            studentid = int.Parse(Request.Query["userId"]);//tuka e problema nisht one mu se puska sled kato cukna da addna grade
+			currentStudent = UserManager.GetStudentById(studentid);
 		}
 		public async Task<IActionResult> OnPostAddGrade(string Button1, string Button2, string Button3, string Button4,int SubjectGradesId, int UserId) 
 		{
-			string buttonClicked = null;
+            string buttonClicked = null;
 			int currentSubjectGradesId = SubjectGradesId;
 
 			if (Button1 != null)
@@ -41,8 +50,8 @@ namespace RazorPagesProject.Pages
 
 			try
 			{
-				Grade currentGrade = new Grade(Administration.GetNextAvailableId(), currentSubjectGradesId, Enum.Parse<GradeEnum>(buttonClicked));
-				Administration.GetSubjectGradesById(currentSubjectGradesId).AddNewGradeToGradesAndDB(currentGrade);
+				Grade currentGrade = new Grade(Enum.Parse<GradeEnum>(buttonClicked));
+				gradeManager.AddGradeToSubjectGrades(currentSubjectGradesId, currentGrade);
 			}
 			catch (Exception)
 			{
@@ -55,10 +64,9 @@ namespace RazorPagesProject.Pages
 		public async Task<IActionResult> OnPostDeleteGrade(int GradeId, int SubjectGradesId, int UserId)
 		{
 			int currentSubjectGradesId = SubjectGradesId;
-
 			try
 			{
-				Administration.GetSubjectGradesById(currentSubjectGradesId).DeleteGradeFromGradesAndDBById(GradeId);
+                gradeManager.DeleteGradeFromSubjectGrades(currentSubjectGradesId, GradeId);
 			}
 			catch (Exception)
 			{
@@ -67,5 +75,22 @@ namespace RazorPagesProject.Pages
 
 			return RedirectToPage("/_GradesView", new { userId = UserId });
 		}
+
+		public List<SubjectGrades> GetGradeBookFromStudent(Student currentStudent)
+		{
+			return gradeManager.GetGradeBookByUserId(currentStudent.Userid);
+		}
+		public List<Grade>? GetGradesFromSubjectGrades(SubjectGrades subjectGrades)
+		{
+			return gradeManager.GetGradesBySubjectGrades(subjectGrades);
+		}
+		public void PutGradesIntoSubjectGradesAndToStudent(List<Grade> grades, List<SubjectGrades> subjectGrades, Student student)
+		{
+			foreach (Grade grade in grades)
+			{
+				
+			}
+		}
+
 	}
 }
