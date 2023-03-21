@@ -8,7 +8,7 @@
     ".NETCoreApp,Version=v6.0": {
       "WindowsFormsAppProject/1.0.0": {
         "dependencies": {
-          "RazorPagesProject": "1.0.0"
+          "ClassLibrary": "1.0.0"
         },
         "runtime": {
           "WindowsFormsAppProject.dll": {}
@@ -89,12 +89,12 @@
         }
       },
       "System.Security.Principal.Windows/4.7.0": {},
-      "RazorPagesProject/1.0.0": {
+      "ClassLibrary/1.0.0": {
         "dependencies": {
           "System.Data.SqlClient": "4.8.5"
         },
         "runtime": {
-          "RazorPagesProject.dll": {}
+          "ClassLibrary.dll": {}
         }
       }
     }
@@ -168,7 +168,7 @@
       "path": "system.security.principal.windows/4.7.0",
       "hashPath": "system.security.principal.windows.4.7.0.nupkg.sha512"
     },
-    "RazorPagesProject/1.0.0": {
+    "ClassLibrary/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

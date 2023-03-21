@@ -5,12 +5,6 @@ C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\Wind
 C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\WindowsFormsAppProject\obj\Debug\net6.0-windows\WindowsFormsAppProject.AssemblyInfoInputs.cache
 C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\WindowsFormsAppProject\obj\Debug\net6.0-windows\WindowsFormsAppProject.AssemblyInfo.cs
 C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\WindowsFormsAppProject\obj\Debug\net6.0-windows\WindowsFormsAppProject.csproj.CoreCompileInputs.cache
-C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\WindowsFormsAppProject\bin\Debug\net6.0-windows\RazorPagesProject.deps.json
-C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\WindowsFormsAppProject\bin\Debug\net6.0-windows\RazorPagesProject.runtimeconfig.json
-C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\WindowsFormsAppProject\bin\Debug\net6.0-windows\appsettings.Development.json
-C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\WindowsFormsAppProject\bin\Debug\net6.0-windows\appsettings.json
-C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\WindowsFormsAppProject\bin\Debug\net6.0-windows\RazorPagesProject.staticwebassets.runtime.json
-C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\WindowsFormsAppProject\bin\Debug\net6.0-windows\RazorPagesProject.exe
 C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\WindowsFormsAppProject\bin\Debug\net6.0-windows\WindowsFormsAppProject.exe
 C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\WindowsFormsAppProject\bin\Debug\net6.0-windows\WindowsFormsAppProject.deps.json
 C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\WindowsFormsAppProject\bin\Debug\net6.0-windows\WindowsFormsAppProject.runtimeconfig.json
@@ -22,8 +16,6 @@ C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\Wind
 C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\WindowsFormsAppProject\bin\Debug\net6.0-windows\runtimes\win-x86\native\sni.dll
 C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\WindowsFormsAppProject\bin\Debug\net6.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\WindowsFormsAppProject\bin\Debug\net6.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
-C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\WindowsFormsAppProject\bin\Debug\net6.0-windows\RazorPagesProject.dll
-C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\WindowsFormsAppProject\bin\Debug\net6.0-windows\RazorPagesProject.pdb
 C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\WindowsFormsAppProject\obj\Debug\net6.0-windows\WindowsFormsAppProject.csproj.CopyComplete
 C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\WindowsFormsAppProject\obj\Debug\net6.0-windows\WindowsFormsAppProject.dll
 C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\WindowsFormsAppProject\obj\Debug\net6.0-windows\refint\WindowsFormsAppProject.dll
@@ -32,3 +24,5 @@ C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\Wind
 C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\WindowsFormsAppProject\obj\Debug\net6.0-windows\ref\WindowsFormsAppProject.dll
 C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\WindowsFormsAppProject\obj\Debug\net6.0-windows\WindowsFormsAppProject.connectedUser.resources
 C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\WindowsFormsAppProject\obj\Debug\net6.0-windows\WindowsFormsAppProject.userView.resources
+C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\WindowsFormsAppProject\bin\Debug\net6.0-windows\ClassLibrary.dll
+C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\WindowsFormsAppProject\bin\Debug\net6.0-windows\ClassLibrary.pdb

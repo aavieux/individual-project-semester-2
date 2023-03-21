@@ -1,4 +1,5 @@
-﻿using ClassLibrary.Models;
+﻿using ClassLibrary.Controllers;
+using ClassLibrary.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,9 +14,12 @@ namespace WindowsFormsAppProject
 {
 	public partial class userView : Form
 	{
+		private UserManager userManager;
 		int userId;
+
 		public userView(int userId)
 		{
+			this.userManager = new UserManager();
 			this.userId = userId;
 			InitializeComponent();
 			DisplayContent();
@@ -23,7 +27,7 @@ namespace WindowsFormsAppProject
 		private void DisplayContent()
 		{
 			listBox1.Items.Clear();
-			listBox1.Items.Add(GetStudentFromLocal(userId).GetFullName());
+			listBox1.Items.Add(userManager.GetStudentById(userId).GetFullName());
 		}
 	}
 }

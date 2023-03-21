@@ -1,36 +1,60 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Data.SqlClient;
+using System.ComponentModel.DataAnnotations;
+using ClassLibrary.Controllers;
+using ClassLibrary.Models;
 
 namespace RazorPagesProject.Pages
 {
     public class ContactModel : PageModel
     {
+        public FeedbackManager feedbackManager { get; set; }
+        public ContactModel() 
+        { 
+            feedbackManager = new FeedbackManager();
+        }
+        //bool messageBox = false;
+        [BindProperty]
+        [Required(ErrorMessage = "Please enter your first name.")]
+        public string firstname { get; set; }
+
+        [BindProperty]
+        [Required(ErrorMessage = "Please enter your last name.")]
+        public string lastname { get; set; }
+
+        [BindProperty]
+        [Required(ErrorMessage = "Please enter your school name.")]
+        public string school_select { get; set; }
+
+        [BindProperty]
+        [Required(ErrorMessage = "Please enter your email adress.")]
+        public string email { get; set; }
+
+        [BindProperty]
+        [Required(ErrorMessage = "Please enter a subject.")]
+        public string subject { get; set; }
+
         public void OnPost()
         {
-            // Retrieve the data from the form
-            string firstname = Request.Form["firstname"];
-            string lastname = Request.Form["lastname"];
-            string school = Request.Form["school_select"];
-            string email = Request.Form["email"];
-            string subject = Request.Form["subject"];
-
-            // Save the data to the database
-            try
+            if (ModelState.IsValid)
             {
-                using (SqlConnection connection = new SqlConnection("Server=localhost;Database=individual_project_semester2;Trusted_Connection=True;"))
+                try
                 {
-                    connection.Open();
-                    SqlCommand command = new SqlCommand($"INSERT INTO Contact (first_name_contact, last_name_contact, school_contact, email_contact, subject_contact) VALUES ('{firstname}','{lastname}','{school}','{email}','{subject}')", connection);
-                    command.ExecuteNonQuery();
-                    connection.Close();
-                    Console.WriteLine("Successfully updated the database!");
+                    Feedback feedback = new Feedback(firstname,lastname,school_select,email,subject);
+                    feedbackManager.AddFeedback(feedback);
+                    DisplayMessage();
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Error updating the database!");
                 }
             }
-            catch (Exception)
-            {
-                Console.WriteLine("Error updating the database!");
-            }
+        }
+        public void DisplayMessage()
+        {
+            TempData["SuccessMessage"] = "Successfully sent the feedback! Thank you!";
+            Redirect("/Contact");
         }
     }
 }

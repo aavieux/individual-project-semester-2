@@ -6,26 +6,55 @@
 <link href="https://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet">
 <div class="devision1">
     <p id="support_text">Get in touch with us! Our team is here to help with any questions or concerns you may have. Fill out the form on the right and we'll get back to you as soon as possible. We pride ourselves on excellent customer support and look forward to hearing from you! </p>
-    <img id="support_image" src="https://www.geniecrawl.com/images/content/website-support-and-maintenance.jpg" alt="support image" <img/>
+    <img id="support_image" src="https://www.geniecrawl.com/images/content/website-support-and-maintenance.jpg" alt="support image">
 </div>
 <form class="devision2" method="post">
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+
     <label for="fname">First Name</label>
-    <input class="contact" type="text" id="fname" name="firstname" placeholder="Your name..">
+    <input class="contact" type="text" id="fname" name="firstname" placeholder="Your name.."
+           data-val="true"
+           data-val-required="Please enter your first name."
+           asp-for="firstname">
 
     <label for="lname">Last Name</label>
-    <input class="contact" type="text" id="lname" name="lastname" placeholder="Your last name..">
+    <input class="contact" type="text" id="lname" name="lastname" placeholder="Your last name.." data-val="true"
+           data-val-required="Please enter your first name."
+           asp-for="lastname">
 
     <label for="school">School</label>
-    <select id="school" name="school_select">
+    <select id="school" name="school_select" data-val="true"
+            data-val-required="Please enter your school name."
+            asp-for="school_select">
+
         <option value="Fontys Hogeschool">Fontys Hogeschool</option>
         <option value="TUe">TUe</option>
         <option value="JADS">JADS</option>
+        <option value="Other">Other</option>
+
     </select>
     <label for="email">Email</label>
-    <input class="contact" type="text" id="email" name="email" placeholder="Your email..">
+    <input class="contact" type="text" id="email" name="email" placeholder="Your email.." data-val="true"
+           data-val-required="Please enter your email adress."
+           asp-for="email">
 
     <label for="subject">Subject</label>
-    <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+    <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px" 
+        data-val="true"
+        data-val-required="Please enter Please enter a subject."
+        asp-for="subject">
+    </textarea>
 
     <input type="submit" value="Submit">
+    @if (TempData.ContainsKey("SuccessMessage"))
+    {
+        <div class="alert alert-success">
+            @TempData["SuccessMessage"]
+        </div>
+    }
 </form>
+<style>
+
+
+</style>
