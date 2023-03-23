@@ -19,9 +19,26 @@ namespace ClassLibrary.Controllers
         {
             return databaseHelper.GetAllFeedbacksFromDB();
         }
+        public Feedback GetFeedbackById(int feedbackId) 
+        {
+            var result = databaseHelper.GetFeedbackByIdFromDB(feedbackId);
+            if (result != null)
+            {
+                return result;
+            }
+            return null;
+        }
         public void AddFeedback(Feedback feedback)
         {
             databaseHelper.AddFeedbackToDB(feedback);
+        }
+        public bool UpdateFeedback(Feedback feedback)
+        {
+            if (databaseHelper.UpdateFeedbackToDB(feedback))
+            {
+                return true;
+            }
+            return false;
         }
         public void DeleteFeedback(Feedback feedback)
         {

@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.ComponentModel.DataAnnotations;
 using ClassLibrary.Controllers;
 using ClassLibrary.Models;
+using ClassLibrary.Models.Enums;
 
 namespace RazorPagesProject.Pages
 {
@@ -41,7 +42,7 @@ namespace RazorPagesProject.Pages
             {
                 try
                 {
-                    Feedback feedback = new Feedback(firstname,lastname,school_select,email,subject);
+                    Feedback feedback = new Feedback(firstname,lastname,school_select,email,subject, Status.OPEN);
                     feedbackManager.AddFeedback(feedback);
                     DisplayMessage();
                 }

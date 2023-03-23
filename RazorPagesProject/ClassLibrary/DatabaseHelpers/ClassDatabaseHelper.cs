@@ -33,7 +33,7 @@ namespace ClassLibrary.DatabaseHelpers
                                     Class _class = new Class((int)reader["name_class"]);
                                     try
                                     {
-                                        _class.TeacherID = (int)reader["teacher_id_class"];
+                                        _class.TeacherID = (int)reader["user_class"];
                                     }
                                     catch (Exception)
                                     {

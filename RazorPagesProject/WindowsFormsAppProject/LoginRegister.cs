@@ -25,7 +25,7 @@ namespace Housing_Project
         //Method to deserialise all managers with their specific content from the files
         private void LoadLogInData()
         {
-           
+
         }
 
         //Method to reset the fields
@@ -64,13 +64,13 @@ namespace Housing_Project
 
         private void registerbtn_Click_1(object sender, EventArgs e)
         {
-            try 
+            try
             {
                 string name = fullnametxt.Text;
                 string email = emailadresstxt.Text;
                 string phone = phonenumbertxt.Text;
                 string password = passwordtxt.Text;
-                bool exists = false; 
+                bool exists = false;
 
                 if (!String.IsNullOrEmpty(name) && !String.IsNullOrEmpty(email) && !String.IsNullOrEmpty(phone) && !String.IsNullOrEmpty(password))
                 {
@@ -83,7 +83,7 @@ namespace Housing_Project
                     //        {
                     //            exists = true;
                     //        }
-                            
+
                     //    }
                     //    if(exists == false)
                     //    {
@@ -134,7 +134,7 @@ namespace Housing_Project
                     ClearFields();
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
@@ -196,7 +196,7 @@ namespace Housing_Project
             //    loginwrongcredentialslbl.Visible = true;
             //}
 
-			this.Hide();
+            this.Hide();
             connectedUser connectedUser = new connectedUser();
             connectedUser.ShowDialog();
             this.Close();

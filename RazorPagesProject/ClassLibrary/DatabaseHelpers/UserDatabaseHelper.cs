@@ -90,7 +90,90 @@ namespace ClassLibrary.DatabaseHelpers
 
             }
         }
+        internal bool UpdateUserToDB(User user)
+        {
+            using (SqlConnection connection =
+                   new SqlConnection("Server=localhost;Database=individual_project_semester2;Trusted_Connection=True;"))
+            {
+                try
+                {
+                    connection.Open();
+                    string query = $"UPDATE Users SET first_name_user = '{user.Firstname}', last_name_user = '{user.Lastname}', role_user = '{user.Role}', class_user = '{user.Class.ToString()}', email_user = '{user.Email}', phonenumber_user = '{user.PhoneNumber}' WHERE id_user = '{user.Userid}'";
 
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            try
+                            {
+                                command.ExecuteNonQuery();
+                                Console.WriteLine("-----------------------------------");
+                                Console.WriteLine("Records Inserted in DB Successfully");
+                                return true;
+                            }
+                            catch (SqlException xException)
+                            {
+                                Console.WriteLine("Error updating the database!");
+                                return false;
+                            }
+                            finally
+                            {
+                                reader.Close();
+                                connection.Close();
+                            }
+                        }
+                    }
+                }
+                catch
+                {
+                    Console.WriteLine("Could not open a connection to the database!");
+                    return false;
+                }
+
+            }
+        }
+        internal bool DeleteUserFromDB(int userId)
+        {
+            using (SqlConnection connection =
+                   new SqlConnection("Server=localhost;Database=individual_project_semester2;Trusted_Connection=True;"))
+            {
+                try
+                {
+                    connection.Open();
+                    string query = $"DELETE FROM Users WHERE id_user LIKE '{userId}';";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            try
+                            {
+                                command.ExecuteNonQuery();
+                                Console.WriteLine("-----------------------------------");
+                                Console.WriteLine("Records Inserted in DB Successfully");
+                                return true;
+                            }
+                            catch (SqlException xException)
+                            {
+                                Console.WriteLine("Error updating the database!");
+                                return false;
+                            }
+                            finally
+                            {
+                                reader.Close();
+                                connection.Close();
+                            }
+                        }
+                    }
+                }
+                catch
+                {
+                    Console.WriteLine("Could not open a connection to the database!");
+                    return false;
+                }
+
+            }
+        }
 
     }
 }

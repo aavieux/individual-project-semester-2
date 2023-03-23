@@ -107,5 +107,22 @@ namespace ClassLibrary.Controllers
             }
             return students;
         }
+
+        public bool UpdateUser(User user)
+        {
+            if (dbHelper.UpdateUserToDB(user))
+            {
+                return true;
+            }
+            return false;
+        }
+        public bool DeleteUser(int userId) 
+        {
+            if (dbHelper.DeleteUserFromDB(userId))
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

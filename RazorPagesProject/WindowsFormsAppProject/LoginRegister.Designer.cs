@@ -28,291 +28,277 @@
         /// </summary>
         private void InitializeComponent()
         {
-			this.tabPageRegister = new System.Windows.Forms.TabPage();
-			this.pictureBox2 = new System.Windows.Forms.PictureBox();
-			this.registerlbl = new System.Windows.Forms.Label();
-			this.passwordlbl = new System.Windows.Forms.Label();
-			this.emailadresslbl = new System.Windows.Forms.Label();
-			this.phonenumberlbl = new System.Windows.Forms.Label();
-			this.fullnamelbl = new System.Windows.Forms.Label();
-			this.passwordtxt = new System.Windows.Forms.TextBox();
-			this.emailadresstxt = new System.Windows.Forms.TextBox();
-			this.phonenumbertxt = new System.Windows.Forms.TextBox();
-			this.fullnametxt = new System.Windows.Forms.TextBox();
-			this.registerbtn = new System.Windows.Forms.Button();
-			this.label4 = new System.Windows.Forms.Label();
-			this.tabPageLogin = new System.Windows.Forms.TabPage();
-			this.loginpasswordtxt = new System.Windows.Forms.TextBox();
-			this.loginemailtxt = new System.Windows.Forms.TextBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.loginwrongcredentialslbl = new System.Windows.Forms.Label();
-			this.loginemaillbl = new System.Windows.Forms.Label();
-			this.loginpasswordlbl = new System.Windows.Forms.Label();
-			this.loginbtn = new System.Windows.Forms.Button();
-			this.tabControlLoginRegister = new System.Windows.Forms.TabControl();
-			this.tabPageRegister.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-			this.tabPageLogin.SuspendLayout();
-			this.tabControlLoginRegister.SuspendLayout();
-			this.SuspendLayout();
-			// 
-			// tabPageRegister
-			// 
-			this.tabPageRegister.BackColor = System.Drawing.Color.Transparent;
-			this.tabPageRegister.Controls.Add(this.pictureBox2);
-			this.tabPageRegister.Controls.Add(this.registerlbl);
-			this.tabPageRegister.Controls.Add(this.passwordlbl);
-			this.tabPageRegister.Controls.Add(this.emailadresslbl);
-			this.tabPageRegister.Controls.Add(this.phonenumberlbl);
-			this.tabPageRegister.Controls.Add(this.fullnamelbl);
-			this.tabPageRegister.Controls.Add(this.passwordtxt);
-			this.tabPageRegister.Controls.Add(this.emailadresstxt);
-			this.tabPageRegister.Controls.Add(this.phonenumbertxt);
-			this.tabPageRegister.Controls.Add(this.fullnametxt);
-			this.tabPageRegister.Controls.Add(this.registerbtn);
-			this.tabPageRegister.Controls.Add(this.label4);
-			this.tabPageRegister.Location = new System.Drawing.Point(4, 4);
-			this.tabPageRegister.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-			this.tabPageRegister.Name = "tabPageRegister";
-			this.tabPageRegister.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-			this.tabPageRegister.Size = new System.Drawing.Size(445, 506);
-			this.tabPageRegister.TabIndex = 1;
-			this.tabPageRegister.Text = "Create account";
-			// 
-			// pictureBox2
-			// 
-			this.pictureBox2.Location = new System.Drawing.Point(192, 19);
-			this.pictureBox2.Name = "pictureBox2";
-			this.pictureBox2.Size = new System.Drawing.Size(35, 28);
-			this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-			this.pictureBox2.TabIndex = 29;
-			this.pictureBox2.TabStop = false;
-			// 
-			// registerlbl
-			// 
-			this.registerlbl.AutoSize = true;
-			this.registerlbl.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-			this.registerlbl.ForeColor = System.Drawing.Color.DodgerBlue;
-			this.registerlbl.Location = new System.Drawing.Point(9, 440);
-			this.registerlbl.Name = "registerlbl";
-			this.registerlbl.Size = new System.Drawing.Size(377, 32);
-			this.registerlbl.TabIndex = 28;
-			this.registerlbl.Text = "Already registered with this email!";
-			// 
-			// passwordlbl
-			// 
-			this.passwordlbl.AutoSize = true;
-			this.passwordlbl.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-			this.passwordlbl.Location = new System.Drawing.Point(20, 306);
-			this.passwordlbl.Name = "passwordlbl";
-			this.passwordlbl.Size = new System.Drawing.Size(70, 19);
-			this.passwordlbl.TabIndex = 26;
-			this.passwordlbl.Text = "Password:";
-			// 
-			// emailadresslbl
-			// 
-			this.emailadresslbl.AutoSize = true;
-			this.emailadresslbl.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-			this.emailadresslbl.Location = new System.Drawing.Point(20, 229);
-			this.emailadresslbl.Name = "emailadresslbl";
-			this.emailadresslbl.Size = new System.Drawing.Size(89, 19);
-			this.emailadresslbl.TabIndex = 25;
-			this.emailadresslbl.Text = "Email Adress:";
-			// 
-			// phonenumberlbl
-			// 
-			this.phonenumberlbl.AutoSize = true;
-			this.phonenumberlbl.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-			this.phonenumberlbl.Location = new System.Drawing.Point(20, 150);
-			this.phonenumberlbl.Name = "phonenumberlbl";
-			this.phonenumberlbl.Size = new System.Drawing.Size(105, 19);
-			this.phonenumberlbl.TabIndex = 24;
-			this.phonenumberlbl.Text = "Phone Number:";
-			// 
-			// fullnamelbl
-			// 
-			this.fullnamelbl.AutoSize = true;
-			this.fullnamelbl.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-			this.fullnamelbl.Location = new System.Drawing.Point(20, 79);
-			this.fullnamelbl.Name = "fullnamelbl";
-			this.fullnamelbl.Size = new System.Drawing.Size(73, 19);
-			this.fullnamelbl.TabIndex = 23;
-			this.fullnamelbl.Text = "Full Name:";
-			// 
-			// passwordtxt
-			// 
-			this.passwordtxt.Location = new System.Drawing.Point(20, 327);
-			this.passwordtxt.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-			this.passwordtxt.Name = "passwordtxt";
-			this.passwordtxt.PasswordChar = '*';
-			this.passwordtxt.Size = new System.Drawing.Size(401, 34);
-			this.passwordtxt.TabIndex = 22;
-			// 
-			// emailadresstxt
-			// 
-			this.emailadresstxt.Location = new System.Drawing.Point(20, 250);
-			this.emailadresstxt.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-			this.emailadresstxt.Name = "emailadresstxt";
-			this.emailadresstxt.Size = new System.Drawing.Size(401, 34);
-			this.emailadresstxt.TabIndex = 21;
-			// 
-			// phonenumbertxt
-			// 
-			this.phonenumbertxt.Location = new System.Drawing.Point(20, 174);
-			this.phonenumbertxt.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-			this.phonenumbertxt.Name = "phonenumbertxt";
-			this.phonenumbertxt.Size = new System.Drawing.Size(401, 34);
-			this.phonenumbertxt.TabIndex = 20;
-			// 
-			// fullnametxt
-			// 
-			this.fullnametxt.Location = new System.Drawing.Point(20, 100);
-			this.fullnametxt.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-			this.fullnametxt.Name = "fullnametxt";
-			this.fullnametxt.Size = new System.Drawing.Size(401, 34);
-			this.fullnametxt.TabIndex = 19;
-			// 
-			// registerbtn
-			// 
-			this.registerbtn.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-			this.registerbtn.Location = new System.Drawing.Point(20, 389);
-			this.registerbtn.Name = "registerbtn";
-			this.registerbtn.Size = new System.Drawing.Size(134, 34);
-			this.registerbtn.TabIndex = 18;
-			this.registerbtn.Text = "Register";
-			this.registerbtn.UseVisualStyleBackColor = true;
-			this.registerbtn.Click += new System.EventHandler(this.registerbtn_Click_1);
-			// 
-			// label4
-			// 
-			this.label4.AutoSize = true;
-			this.label4.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-			this.label4.Location = new System.Drawing.Point(20, 20);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(154, 28);
-			this.label4.TabIndex = 0;
-			this.label4.Text = "Create account";
-			// 
-			// tabPageLogin
-			// 
-			this.tabPageLogin.BackColor = System.Drawing.Color.Transparent;
-			this.tabPageLogin.Controls.Add(this.loginpasswordtxt);
-			this.tabPageLogin.Controls.Add(this.loginemailtxt);
-			this.tabPageLogin.Controls.Add(this.label1);
-			this.tabPageLogin.Controls.Add(this.loginwrongcredentialslbl);
-			this.tabPageLogin.Controls.Add(this.loginemaillbl);
-			this.tabPageLogin.Controls.Add(this.loginpasswordlbl);
-			this.tabPageLogin.Controls.Add(this.loginbtn);
-			this.tabPageLogin.Location = new System.Drawing.Point(4, 4);
-			this.tabPageLogin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-			this.tabPageLogin.Name = "tabPageLogin";
-			this.tabPageLogin.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-			this.tabPageLogin.Size = new System.Drawing.Size(445, 506);
-			this.tabPageLogin.TabIndex = 0;
-			this.tabPageLogin.Text = "Login Form";
-			// 
-			// loginpasswordtxt
-			// 
-			this.loginpasswordtxt.Location = new System.Drawing.Point(20, 209);
-			this.loginpasswordtxt.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-			this.loginpasswordtxt.Name = "loginpasswordtxt";
-			this.loginpasswordtxt.PasswordChar = '*';
-			this.loginpasswordtxt.Size = new System.Drawing.Size(401, 34);
-			this.loginpasswordtxt.TabIndex = 14;
-			// 
-			// loginemailtxt
-			// 
-			this.loginemailtxt.Location = new System.Drawing.Point(20, 107);
-			this.loginemailtxt.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-			this.loginemailtxt.Name = "loginemailtxt";
-			this.loginemailtxt.Size = new System.Drawing.Size(401, 34);
-			this.loginemailtxt.TabIndex = 2;
-			// 
-			// label1
-			// 
-			this.label1.AutoSize = true;
-			this.label1.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-			this.label1.Location = new System.Drawing.Point(20, 20);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(70, 28);
-			this.label1.TabIndex = 0;
-			this.label1.Text = "Log in";
-			// 
-			// loginwrongcredentialslbl
-			// 
-			this.loginwrongcredentialslbl.AutoSize = true;
-			this.loginwrongcredentialslbl.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-			this.loginwrongcredentialslbl.ForeColor = System.Drawing.Color.DodgerBlue;
-			this.loginwrongcredentialslbl.Location = new System.Drawing.Point(20, 451);
-			this.loginwrongcredentialslbl.Name = "loginwrongcredentialslbl";
-			this.loginwrongcredentialslbl.Size = new System.Drawing.Size(241, 37);
-			this.loginwrongcredentialslbl.TabIndex = 14;
-			this.loginwrongcredentialslbl.Text = "Wrong credentials!";
-			// 
-			// loginemaillbl
-			// 
-			this.loginemaillbl.AutoSize = true;
-			this.loginemaillbl.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-			this.loginemaillbl.Location = new System.Drawing.Point(20, 75);
-			this.loginemaillbl.Name = "loginemaillbl";
-			this.loginemaillbl.Size = new System.Drawing.Size(89, 19);
-			this.loginemaillbl.TabIndex = 12;
-			this.loginemaillbl.Text = "Email Adress:";
-			// 
-			// loginpasswordlbl
-			// 
-			this.loginpasswordlbl.AutoSize = true;
-			this.loginpasswordlbl.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-			this.loginpasswordlbl.Location = new System.Drawing.Point(20, 175);
-			this.loginpasswordlbl.Name = "loginpasswordlbl";
-			this.loginpasswordlbl.Size = new System.Drawing.Size(70, 19);
-			this.loginpasswordlbl.TabIndex = 13;
-			this.loginpasswordlbl.Text = "Password:";
-			// 
-			// loginbtn
-			// 
-			this.loginbtn.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.loginbtn.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-			this.loginbtn.Location = new System.Drawing.Point(20, 286);
-			this.loginbtn.Name = "loginbtn";
-			this.loginbtn.Size = new System.Drawing.Size(134, 34);
-			this.loginbtn.TabIndex = 0;
-			this.loginbtn.Text = "Log In";
-			this.loginbtn.UseVisualStyleBackColor = true;
-			this.loginbtn.Click += new System.EventHandler(this.loginbtn_Click);
-			// 
-			// tabControlLoginRegister
-			// 
-			this.tabControlLoginRegister.Alignment = System.Windows.Forms.TabAlignment.Bottom;
-			this.tabControlLoginRegister.Controls.Add(this.tabPageLogin);
-			this.tabControlLoginRegister.Controls.Add(this.tabPageRegister);
-			this.tabControlLoginRegister.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-			this.tabControlLoginRegister.Location = new System.Drawing.Point(91, 35);
-			this.tabControlLoginRegister.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-			this.tabControlLoginRegister.Name = "tabControlLoginRegister";
-			this.tabControlLoginRegister.Padding = new System.Drawing.Point(55, 6);
-			this.tabControlLoginRegister.SelectedIndex = 0;
-			this.tabControlLoginRegister.Size = new System.Drawing.Size(453, 553);
-			this.tabControlLoginRegister.TabIndex = 17;
-			this.tabControlLoginRegister.Click += new System.EventHandler(this.tabControlLoginRegister_Click);
-			// 
-			// LoginRegister
-			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(644, 634);
-			this.Controls.Add(this.tabControlLoginRegister);
-			this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-			this.Name = "LoginRegister";
-			this.Text = "Login/Register";
-			this.tabPageRegister.ResumeLayout(false);
-			this.tabPageRegister.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-			this.tabPageLogin.ResumeLayout(false);
-			this.tabPageLogin.PerformLayout();
-			this.tabControlLoginRegister.ResumeLayout(false);
-			this.ResumeLayout(false);
-
+            tabPageRegister = new TabPage();
+            registerlbl = new Label();
+            passwordlbl = new Label();
+            emailadresslbl = new Label();
+            phonenumberlbl = new Label();
+            fullnamelbl = new Label();
+            passwordtxt = new TextBox();
+            emailadresstxt = new TextBox();
+            phonenumbertxt = new TextBox();
+            fullnametxt = new TextBox();
+            registerbtn = new Button();
+            label4 = new Label();
+            tabPageLogin = new TabPage();
+            loginpasswordtxt = new TextBox();
+            loginemailtxt = new TextBox();
+            label1 = new Label();
+            loginwrongcredentialslbl = new Label();
+            loginemaillbl = new Label();
+            loginpasswordlbl = new Label();
+            loginbtn = new Button();
+            tabControlLoginRegister = new TabControl();
+            tabPageRegister.SuspendLayout();
+            tabPageLogin.SuspendLayout();
+            tabControlLoginRegister.SuspendLayout();
+            SuspendLayout();
+            // 
+            // tabPageRegister
+            // 
+            tabPageRegister.BackColor = Color.Transparent;
+            tabPageRegister.Controls.Add(registerlbl);
+            tabPageRegister.Controls.Add(passwordlbl);
+            tabPageRegister.Controls.Add(emailadresslbl);
+            tabPageRegister.Controls.Add(phonenumberlbl);
+            tabPageRegister.Controls.Add(fullnamelbl);
+            tabPageRegister.Controls.Add(passwordtxt);
+            tabPageRegister.Controls.Add(emailadresstxt);
+            tabPageRegister.Controls.Add(phonenumbertxt);
+            tabPageRegister.Controls.Add(fullnametxt);
+            tabPageRegister.Controls.Add(registerbtn);
+            tabPageRegister.Controls.Add(label4);
+            tabPageRegister.Location = new Point(4, 4);
+            tabPageRegister.Margin = new Padding(3, 2, 3, 2);
+            tabPageRegister.Name = "tabPageRegister";
+            tabPageRegister.Padding = new Padding(3, 2, 3, 2);
+            tabPageRegister.Size = new Size(445, 506);
+            tabPageRegister.TabIndex = 1;
+            tabPageRegister.Text = "Create account";
+            // 
+            // registerlbl
+            // 
+            registerlbl.AutoSize = true;
+            registerlbl.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            registerlbl.ForeColor = Color.DodgerBlue;
+            registerlbl.Location = new Point(9, 440);
+            registerlbl.Name = "registerlbl";
+            registerlbl.Size = new Size(377, 32);
+            registerlbl.TabIndex = 28;
+            registerlbl.Text = "Already registered with this email!";
+            // 
+            // passwordlbl
+            // 
+            passwordlbl.AutoSize = true;
+            passwordlbl.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            passwordlbl.Location = new Point(20, 306);
+            passwordlbl.Name = "passwordlbl";
+            passwordlbl.Size = new Size(70, 19);
+            passwordlbl.TabIndex = 26;
+            passwordlbl.Text = "Password:";
+            // 
+            // emailadresslbl
+            // 
+            emailadresslbl.AutoSize = true;
+            emailadresslbl.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            emailadresslbl.Location = new Point(20, 229);
+            emailadresslbl.Name = "emailadresslbl";
+            emailadresslbl.Size = new Size(89, 19);
+            emailadresslbl.TabIndex = 25;
+            emailadresslbl.Text = "Email Adress:";
+            // 
+            // phonenumberlbl
+            // 
+            phonenumberlbl.AutoSize = true;
+            phonenumberlbl.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            phonenumberlbl.Location = new Point(20, 150);
+            phonenumberlbl.Name = "phonenumberlbl";
+            phonenumberlbl.Size = new Size(105, 19);
+            phonenumberlbl.TabIndex = 24;
+            phonenumberlbl.Text = "Phone Number:";
+            // 
+            // fullnamelbl
+            // 
+            fullnamelbl.AutoSize = true;
+            fullnamelbl.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            fullnamelbl.Location = new Point(20, 79);
+            fullnamelbl.Name = "fullnamelbl";
+            fullnamelbl.Size = new Size(73, 19);
+            fullnamelbl.TabIndex = 23;
+            fullnamelbl.Text = "Full Name:";
+            // 
+            // passwordtxt
+            // 
+            passwordtxt.Location = new Point(20, 327);
+            passwordtxt.Margin = new Padding(3, 2, 3, 2);
+            passwordtxt.Name = "passwordtxt";
+            passwordtxt.PasswordChar = '*';
+            passwordtxt.Size = new Size(401, 34);
+            passwordtxt.TabIndex = 22;
+            // 
+            // emailadresstxt
+            // 
+            emailadresstxt.Location = new Point(20, 250);
+            emailadresstxt.Margin = new Padding(3, 2, 3, 2);
+            emailadresstxt.Name = "emailadresstxt";
+            emailadresstxt.Size = new Size(401, 34);
+            emailadresstxt.TabIndex = 21;
+            // 
+            // phonenumbertxt
+            // 
+            phonenumbertxt.Location = new Point(20, 174);
+            phonenumbertxt.Margin = new Padding(3, 2, 3, 2);
+            phonenumbertxt.Name = "phonenumbertxt";
+            phonenumbertxt.Size = new Size(401, 34);
+            phonenumbertxt.TabIndex = 20;
+            // 
+            // fullnametxt
+            // 
+            fullnametxt.Location = new Point(20, 100);
+            fullnametxt.Margin = new Padding(3, 2, 3, 2);
+            fullnametxt.Name = "fullnametxt";
+            fullnametxt.Size = new Size(401, 34);
+            fullnametxt.TabIndex = 19;
+            // 
+            // registerbtn
+            // 
+            registerbtn.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            registerbtn.Location = new Point(20, 389);
+            registerbtn.Name = "registerbtn";
+            registerbtn.Size = new Size(134, 34);
+            registerbtn.TabIndex = 18;
+            registerbtn.Text = "Register";
+            registerbtn.UseVisualStyleBackColor = true;
+            registerbtn.Click += registerbtn_Click_1;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
+            label4.Location = new Point(20, 20);
+            label4.Name = "label4";
+            label4.Size = new Size(154, 28);
+            label4.TabIndex = 0;
+            label4.Text = "Create account";
+            // 
+            // tabPageLogin
+            // 
+            tabPageLogin.BackColor = Color.Transparent;
+            tabPageLogin.Controls.Add(loginpasswordtxt);
+            tabPageLogin.Controls.Add(loginemailtxt);
+            tabPageLogin.Controls.Add(label1);
+            tabPageLogin.Controls.Add(loginwrongcredentialslbl);
+            tabPageLogin.Controls.Add(loginemaillbl);
+            tabPageLogin.Controls.Add(loginpasswordlbl);
+            tabPageLogin.Controls.Add(loginbtn);
+            tabPageLogin.Location = new Point(4, 4);
+            tabPageLogin.Margin = new Padding(3, 2, 3, 2);
+            tabPageLogin.Name = "tabPageLogin";
+            tabPageLogin.Padding = new Padding(3, 2, 3, 2);
+            tabPageLogin.Size = new Size(445, 506);
+            tabPageLogin.TabIndex = 0;
+            tabPageLogin.Text = "Login Form";
+            // 
+            // loginpasswordtxt
+            // 
+            loginpasswordtxt.Location = new Point(20, 209);
+            loginpasswordtxt.Margin = new Padding(3, 2, 3, 2);
+            loginpasswordtxt.Name = "loginpasswordtxt";
+            loginpasswordtxt.PasswordChar = '*';
+            loginpasswordtxt.Size = new Size(401, 34);
+            loginpasswordtxt.TabIndex = 14;
+            // 
+            // loginemailtxt
+            // 
+            loginemailtxt.Location = new Point(20, 107);
+            loginemailtxt.Margin = new Padding(3, 2, 3, 2);
+            loginemailtxt.Name = "loginemailtxt";
+            loginemailtxt.Size = new Size(401, 34);
+            loginemailtxt.TabIndex = 2;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(20, 20);
+            label1.Name = "label1";
+            label1.Size = new Size(70, 28);
+            label1.TabIndex = 0;
+            label1.Text = "Log in";
+            // 
+            // loginwrongcredentialslbl
+            // 
+            loginwrongcredentialslbl.AutoSize = true;
+            loginwrongcredentialslbl.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
+            loginwrongcredentialslbl.ForeColor = Color.DodgerBlue;
+            loginwrongcredentialslbl.Location = new Point(20, 451);
+            loginwrongcredentialslbl.Name = "loginwrongcredentialslbl";
+            loginwrongcredentialslbl.Size = new Size(241, 37);
+            loginwrongcredentialslbl.TabIndex = 14;
+            loginwrongcredentialslbl.Text = "Wrong credentials!";
+            // 
+            // loginemaillbl
+            // 
+            loginemaillbl.AutoSize = true;
+            loginemaillbl.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            loginemaillbl.Location = new Point(20, 75);
+            loginemaillbl.Name = "loginemaillbl";
+            loginemaillbl.Size = new Size(89, 19);
+            loginemaillbl.TabIndex = 12;
+            loginemaillbl.Text = "Email Adress:";
+            // 
+            // loginpasswordlbl
+            // 
+            loginpasswordlbl.AutoSize = true;
+            loginpasswordlbl.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            loginpasswordlbl.Location = new Point(20, 175);
+            loginpasswordlbl.Name = "loginpasswordlbl";
+            loginpasswordlbl.Size = new Size(70, 19);
+            loginpasswordlbl.TabIndex = 13;
+            loginpasswordlbl.Text = "Password:";
+            // 
+            // loginbtn
+            // 
+            loginbtn.Cursor = Cursors.Hand;
+            loginbtn.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            loginbtn.Location = new Point(20, 286);
+            loginbtn.Name = "loginbtn";
+            loginbtn.Size = new Size(134, 34);
+            loginbtn.TabIndex = 0;
+            loginbtn.Text = "Log In";
+            loginbtn.UseVisualStyleBackColor = true;
+            loginbtn.Click += loginbtn_Click;
+            // 
+            // tabControlLoginRegister
+            // 
+            tabControlLoginRegister.Alignment = TabAlignment.Bottom;
+            tabControlLoginRegister.Controls.Add(tabPageLogin);
+            tabControlLoginRegister.Controls.Add(tabPageRegister);
+            tabControlLoginRegister.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            tabControlLoginRegister.Location = new Point(91, 35);
+            tabControlLoginRegister.Margin = new Padding(3, 2, 3, 2);
+            tabControlLoginRegister.Name = "tabControlLoginRegister";
+            tabControlLoginRegister.Padding = new Point(55, 6);
+            tabControlLoginRegister.SelectedIndex = 0;
+            tabControlLoginRegister.Size = new Size(453, 553);
+            tabControlLoginRegister.TabIndex = 17;
+            tabControlLoginRegister.Click += tabControlLoginRegister_Click;
+            // 
+            // LoginRegister
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(644, 634);
+            Controls.Add(tabControlLoginRegister);
+            Margin = new Padding(3, 2, 3, 2);
+            Name = "LoginRegister";
+            Text = "Login/Register";
+            tabPageRegister.ResumeLayout(false);
+            tabPageRegister.PerformLayout();
+            tabPageLogin.ResumeLayout(false);
+            tabPageLogin.PerformLayout();
+            tabControlLoginRegister.ResumeLayout(false);
+            ResumeLayout(false);
         }
 
         #endregion
@@ -338,6 +324,5 @@
         private Button loginbtn;
         private TabControl tabControlLoginRegister;
         private Label registerlbl;
-        private PictureBox pictureBox2;
     }
 }
