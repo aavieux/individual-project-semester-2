@@ -131,5 +131,28 @@ namespace WindowsFormsAppProject
             }
             catch (Exception) { }
         }
+
+        private void listBoxTeachers_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                int start = listBoxTeachers.SelectedItem.ToString().IndexOf(":") + 2; // Adding 2 to exclude the ": " characters
+                int end = listBoxTeachers.SelectedItem.ToString().IndexOf(" -");
+                int userId = int.Parse(listBoxTeachers.SelectedItem.ToString().Substring(start, end - start));
+
+                this.Hide();
+                userView userView = new userView(userId);
+                userView.ShowDialog();
+                listBoxStudents.SelectedIndex = -1;
+                listBoxTeachers.SelectedIndex = -1;
+                this.Show();
+            }
+            catch (Exception) { }
+        }
+
+        private void addClass_btn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

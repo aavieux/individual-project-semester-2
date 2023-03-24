@@ -33,10 +33,10 @@
             listBoxTeachers = new ListBox();
             listBoxStudents = new ListBox();
             manageClasses_tab = new TabPage();
+            addClass_btn = new Button();
             listBoxClasses = new ListBox();
             manageFeedbacks_tab = new TabPage();
             listBoxFeedbacks = new ListBox();
-            addClass_btn = new Button();
             tabControlManager.SuspendLayout();
             manageUsers_tab.SuspendLayout();
             manageClasses_tab.SuspendLayout();
@@ -76,6 +76,7 @@
             listBoxTeachers.Name = "listBoxTeachers";
             listBoxTeachers.Size = new Size(753, 228);
             listBoxTeachers.TabIndex = 1;
+            listBoxTeachers.MouseDoubleClick += listBoxTeachers_MouseDoubleClick;
             // 
             // listBoxStudents
             // 
@@ -98,6 +99,17 @@
             manageClasses_tab.TabIndex = 2;
             manageClasses_tab.Text = "Manage Classes";
             manageClasses_tab.UseVisualStyleBackColor = true;
+            // 
+            // addClass_btn
+            // 
+            addClass_btn.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
+            addClass_btn.Location = new Point(429, 394);
+            addClass_btn.Name = "addClass_btn";
+            addClass_btn.Size = new Size(332, 61);
+            addClass_btn.TabIndex = 1;
+            addClass_btn.Text = "Add a Class";
+            addClass_btn.UseVisualStyleBackColor = true;
+            addClass_btn.Click += addClass_btn_Click;
             // 
             // listBoxClasses
             // 
@@ -130,16 +142,6 @@
             listBoxFeedbacks.Size = new Size(758, 452);
             listBoxFeedbacks.TabIndex = 0;
             listBoxFeedbacks.MouseDoubleClick += listBoxFeedbacks_MouseDoubleClick;
-            // 
-            // addClass_btn
-            // 
-            addClass_btn.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
-            addClass_btn.Location = new Point(429, 394);
-            addClass_btn.Name = "addClass_btn";
-            addClass_btn.Size = new Size(332, 61);
-            addClass_btn.TabIndex = 1;
-            addClass_btn.Text = "Add a Class";
-            addClass_btn.UseVisualStyleBackColor = true;
             // 
             // connectedUser
             // 

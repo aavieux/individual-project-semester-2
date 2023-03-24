@@ -42,12 +42,12 @@ namespace ClassLibrary.Controllers
         public void AddGradeToSubjectGrades(int idSubjectGrades, Grade grade)
         {
             dbHelper.AddGradeToDB(idSubjectGrades,grade);
-            Console.WriteLine("Records Inserted Locally Successfully");
+            Console.WriteLine($"Successfully added Grade with id:{grade.GradeEnum} into SubjectGrades with id: {idSubjectGrades}");
         }
         public void DeleteGradeFromSubjectGrades(int idSubjectGrades, int gradeId)
         {
             dbHelper.DeleteGradeByIdFromDB(gradeId);
-            Console.WriteLine("Records Inserted Locally Successfully");
+            Console.WriteLine($"Successfully deleted Grade with id:{gradeId} from SubjectGrades with id: {idSubjectGrades}");
         }
 
         public void AddSubjectGrades(SubjectGrades subjectGrades)
