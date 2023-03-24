@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RazorPagesProject", "RazorP
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WindowsFormsAppProject", "WindowsFormsAppProject\WindowsFormsAppProject.csproj", "{A2F14F03-9EFA-47FC-B46C-910C8A0A6CC0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary", "ClassLibrary\ClassLibrary.csproj", "{B0DE1093-6AD5-45B5-9A4F-0DA3C2232E4D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClassLibrary", "ClassLibrary\ClassLibrary.csproj", "{B0DE1093-6AD5-45B5-9A4F-0DA3C2232E4D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{2F06437C-B3DB-4128-9BBF-E1C8E24755E4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{B0DE1093-6AD5-45B5-9A4F-0DA3C2232E4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B0DE1093-6AD5-45B5-9A4F-0DA3C2232E4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B0DE1093-6AD5-45B5-9A4F-0DA3C2232E4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F06437C-B3DB-4128-9BBF-E1C8E24755E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F06437C-B3DB-4128-9BBF-E1C8E24755E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F06437C-B3DB-4128-9BBF-E1C8E24755E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F06437C-B3DB-4128-9BBF-E1C8E24755E4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

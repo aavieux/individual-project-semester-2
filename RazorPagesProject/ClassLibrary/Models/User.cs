@@ -42,7 +42,16 @@ namespace ClassLibrary.Models
 			this._phonenumber = PhoneNumber;
 			this._idUser = UserID;
         }
-		public string GetFullName()
+
+        public User(int userID, string firstName, string lastName, string email)
+        {
+            Firstname = firstName;
+            Lastname = lastName;
+            Email = email;
+            Userid = userID;
+        }
+
+        public string GetFullName()
 		{
 			return $"{_firstname} {_lastname}";
 		}

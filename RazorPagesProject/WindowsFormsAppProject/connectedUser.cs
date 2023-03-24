@@ -17,13 +17,18 @@ namespace WindowsFormsAppProject
         UserManager userManager;
         ClassManager classManager;
         FeedbackManager feedbackManager;
-        public connectedUser()
+
+        Manager currentManager;
+        public connectedUser(Manager manager)
         {
             userManager = new UserManager();
             classManager = new ClassManager();
             feedbackManager = new FeedbackManager();
+
+            currentManager = manager;
             InitializeComponent();
             DisplayUserData();
+            this.Text = $"Connected as {manager.GetFullName()}";
         }
         private void DisplayFeedbackData()
         {
@@ -53,7 +58,7 @@ namespace WindowsFormsAppProject
             listBoxClasses.Items.Clear();
             foreach (Class currentClass in classManager.GetAllClasses())
             {
-                listBoxClasses.Items.Add($"Class Name: {currentClass.Name}, Class Teacher: {userManager.GetTeacherById(currentClass.TeacherID).GetFullName()}");
+                listBoxClasses.Items.Add($"Class Name: {currentClass.Name}");
             }
         }
 
@@ -72,7 +77,7 @@ namespace WindowsFormsAppProject
                 listBoxTeachers.SelectedIndex = -1;
                 this.Show();
             }
-            catch (Exception){}
+            catch (Exception) { }
         }
 
         private void tabControlManager_SelectedIndexChanged(object sender, EventArgs e)
@@ -103,7 +108,7 @@ namespace WindowsFormsAppProject
                 listBoxFeedbacks.SelectedIndex = -1;
                 this.Show();
             }
-            catch (Exception){}
+            catch (Exception) { }
         }
 
         private void listBoxClasses_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -111,11 +116,11 @@ namespace WindowsFormsAppProject
             try
             {
                 string inputString = listBoxClasses.SelectedItem.ToString();
-                string prefix = "Class Name: ";
-                string suffix = ",";
-                int startIndex = inputString.IndexOf(prefix) + prefix.Length;
-                int endIndex = inputString.IndexOf(suffix, startIndex);
-                int idClass = int.Parse(inputString.Substring(startIndex, endIndex - startIndex));
+
+                int index = inputString.IndexOf(':'); // Find the index of the colon
+                string result = inputString.Substring(index + 2);
+
+                int idClass = int.Parse(result);
 
                 this.Hide();
 

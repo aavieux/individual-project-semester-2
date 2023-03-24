@@ -14,7 +14,7 @@ namespace ClassLibrary.Controllers
     public class GradeManager
     {
         private GradeDatabaseHelper dbHelper;
-        public GradeManager() 
+        public GradeManager()
         {
             this.dbHelper = new GradeDatabaseHelper();
         }

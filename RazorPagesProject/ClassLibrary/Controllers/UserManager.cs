@@ -22,7 +22,7 @@ namespace ClassLibrary.Controllers
         public List<Teacher> GetAllTeachers()
         {
             List<Teacher> teachers = new List<Teacher>();
-            foreach (User user in dbHelper.GetUsersFromDB())
+            foreach (User user in dbHelper.GetAllUsersFromDB())
             {
                 if (user.GetType() == typeof(Teacher))
                 {
@@ -34,7 +34,7 @@ namespace ClassLibrary.Controllers
         public List<Student> GetAllStudents()
         {
             List<Student> students = new List<Student>();
-            foreach (User user in dbHelper.GetUsersFromDB())
+            foreach (User user in dbHelper.GetAllUsersFromDB())
             {
                 if (user.GetType() == typeof(Student))
                 {
@@ -46,7 +46,7 @@ namespace ClassLibrary.Controllers
 
         public User GetUserById(int userId)
         {
-            foreach (User user in dbHelper.GetUsersFromDB())
+            foreach (User user in dbHelper.GetAllUsersFromDB())
             {
                 if (user.Userid == userId)
                 {
@@ -123,6 +123,11 @@ namespace ClassLibrary.Controllers
                 return true;
             }
             return false;
+        }
+
+        public List<Manager> GetAllManagers()
+        {
+            return dbHelper.GetAllManagersFromDB();
         }
     }
 }

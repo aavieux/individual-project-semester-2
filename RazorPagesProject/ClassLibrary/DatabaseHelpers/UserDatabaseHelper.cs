@@ -11,7 +11,7 @@ namespace ClassLibrary.DatabaseHelpers
 {
     public class UserDatabaseHelper
     {
-        internal List<User> GetUsersFromDB()
+        internal List<User> GetAllUsersFromDB()
         {
             using (SqlConnection connection =
                    new SqlConnection("Server=localhost;Database=individual_project_semester2;Trusted_Connection=True;"))
@@ -175,5 +175,57 @@ namespace ClassLibrary.DatabaseHelpers
             }
         }
 
+        internal List<Manager> GetAllManagersFromDB()
+        {
+            using (SqlConnection connection =
+                  new SqlConnection("Server=localhost;Database=individual_project_semester2;Trusted_Connection=True;"))
+            {
+                try
+                {
+                    connection.Open();
+                    string query = "SELECT * FROM Managers";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            try
+                            {
+                                List<Manager> inManagers = new List<Manager>();
+                                while (reader.Read())
+                                {
+                                    Manager manager = new Manager(
+                                        (int)reader["id_manager"], 
+                                        (string)reader["first_name_manager"], 
+                                        (string)reader["last_name_manager"], 
+                                        (string)reader["email_manager"], 
+                                        (string)reader["password_manager"]);
+
+                                    inManagers.Add(manager);
+
+                                }
+                                return inManagers;
+                            }
+                            catch (SqlException xException)
+                            {
+                                Console.WriteLine("Error loading managers from database!");
+                                return null;
+                            }
+                            finally
+                            {
+                                reader.Close();
+                                connection.Close();
+                            }
+                        }
+                    }
+                }
+                catch
+                {
+                    Console.WriteLine("Could not open a connection to the database!");
+                    return null;
+                }
+
+            }
+        }
     }
 }

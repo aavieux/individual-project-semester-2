@@ -36,6 +36,7 @@
             listBoxClasses = new ListBox();
             manageFeedbacks_tab = new TabPage();
             listBoxFeedbacks = new ListBox();
+            addClass_btn = new Button();
             tabControlManager.SuspendLayout();
             manageUsers_tab.SuspendLayout();
             manageClasses_tab.SuspendLayout();
@@ -50,7 +51,7 @@
             tabControlManager.Location = new Point(12, 12);
             tabControlManager.Name = "tabControlManager";
             tabControlManager.SelectedIndex = 0;
-            tabControlManager.Size = new Size(780, 510);
+            tabControlManager.Size = new Size(772, 492);
             tabControlManager.TabIndex = 0;
             tabControlManager.SelectedIndexChanged += tabControlManager_SelectedIndexChanged;
             // 
@@ -61,47 +62,51 @@
             manageUsers_tab.Location = new Point(4, 24);
             manageUsers_tab.Name = "manageUsers_tab";
             manageUsers_tab.Padding = new Padding(3);
-            manageUsers_tab.Size = new Size(772, 482);
+            manageUsers_tab.Size = new Size(764, 464);
             manageUsers_tab.TabIndex = 0;
             manageUsers_tab.Text = "Manage Users";
             manageUsers_tab.UseVisualStyleBackColor = true;
             // 
             // listBoxTeachers
             // 
+            listBoxTeachers.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             listBoxTeachers.FormattingEnabled = true;
-            listBoxTeachers.ItemHeight = 15;
-            listBoxTeachers.Location = new Point(6, 247);
+            listBoxTeachers.ItemHeight = 28;
+            listBoxTeachers.Location = new Point(6, 232);
             listBoxTeachers.Name = "listBoxTeachers";
-            listBoxTeachers.Size = new Size(753, 229);
+            listBoxTeachers.Size = new Size(753, 228);
             listBoxTeachers.TabIndex = 1;
             // 
             // listBoxStudents
             // 
+            listBoxStudents.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             listBoxStudents.FormattingEnabled = true;
-            listBoxStudents.ItemHeight = 15;
-            listBoxStudents.Location = new Point(6, 7);
+            listBoxStudents.ItemHeight = 28;
+            listBoxStudents.Location = new Point(6, 6);
             listBoxStudents.Name = "listBoxStudents";
-            listBoxStudents.Size = new Size(753, 214);
+            listBoxStudents.Size = new Size(753, 200);
             listBoxStudents.TabIndex = 0;
             listBoxStudents.MouseDoubleClick += listBoxStudents_MouseDoubleClick;
             // 
             // manageClasses_tab
             // 
+            manageClasses_tab.Controls.Add(addClass_btn);
             manageClasses_tab.Controls.Add(listBoxClasses);
             manageClasses_tab.Location = new Point(4, 24);
             manageClasses_tab.Name = "manageClasses_tab";
-            manageClasses_tab.Size = new Size(772, 482);
+            manageClasses_tab.Size = new Size(764, 464);
             manageClasses_tab.TabIndex = 2;
             manageClasses_tab.Text = "Manage Classes";
             manageClasses_tab.UseVisualStyleBackColor = true;
             // 
             // listBoxClasses
             // 
+            listBoxClasses.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             listBoxClasses.FormattingEnabled = true;
-            listBoxClasses.ItemHeight = 15;
+            listBoxClasses.ItemHeight = 28;
             listBoxClasses.Location = new Point(3, 3);
             listBoxClasses.Name = "listBoxClasses";
-            listBoxClasses.Size = new Size(766, 469);
+            listBoxClasses.Size = new Size(420, 452);
             listBoxClasses.TabIndex = 0;
             listBoxClasses.MouseDoubleClick += listBoxClasses_MouseDoubleClick;
             // 
@@ -110,26 +115,37 @@
             manageFeedbacks_tab.Controls.Add(listBoxFeedbacks);
             manageFeedbacks_tab.Location = new Point(4, 24);
             manageFeedbacks_tab.Name = "manageFeedbacks_tab";
-            manageFeedbacks_tab.Size = new Size(772, 482);
+            manageFeedbacks_tab.Size = new Size(764, 464);
             manageFeedbacks_tab.TabIndex = 1;
             manageFeedbacks_tab.Text = "Feedback Tickets";
             manageFeedbacks_tab.UseVisualStyleBackColor = true;
             // 
             // listBoxFeedbacks
             // 
+            listBoxFeedbacks.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             listBoxFeedbacks.FormattingEnabled = true;
-            listBoxFeedbacks.ItemHeight = 15;
+            listBoxFeedbacks.ItemHeight = 28;
             listBoxFeedbacks.Location = new Point(3, 3);
             listBoxFeedbacks.Name = "listBoxFeedbacks";
-            listBoxFeedbacks.Size = new Size(486, 469);
+            listBoxFeedbacks.Size = new Size(758, 452);
             listBoxFeedbacks.TabIndex = 0;
             listBoxFeedbacks.MouseDoubleClick += listBoxFeedbacks_MouseDoubleClick;
+            // 
+            // addClass_btn
+            // 
+            addClass_btn.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
+            addClass_btn.Location = new Point(429, 394);
+            addClass_btn.Name = "addClass_btn";
+            addClass_btn.Size = new Size(332, 61);
+            addClass_btn.TabIndex = 1;
+            addClass_btn.Text = "Add a Class";
+            addClass_btn.UseVisualStyleBackColor = true;
             // 
             // connectedUser
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(801, 529);
+            ClientSize = new Size(791, 511);
             Controls.Add(tabControlManager);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
@@ -152,5 +168,6 @@
         private ListBox listBoxFeedbacks;
         private TabPage manageClasses_tab;
         private ListBox listBoxClasses;
+        private Button addClass_btn;
     }
 }
