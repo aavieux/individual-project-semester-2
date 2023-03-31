@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataBaseClassLibrary.DTOs.DTOEnums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace DataBaseClassLibrary.DTOs
 {
-    internal class StudentDTO : UserDTO
+    public class StudentDTO : UserDTO
     {
 
-        private readonly List<SubjectGrades> _gradebook = new List<SubjectGrades>();
+        private List<SubjectGradesDTO> _gradebook = new List<SubjectGradesDTO>();
 
-        public readonly List<SubjectGrades> GradeBook
+        public List<SubjectGradesDTO> GradeBook
         {
             get { return _gradebook; }
             set { /* do nothing */ }

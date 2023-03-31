@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataBaseClassLibrary.DTOs.DTOEnums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace DataBaseClassLibrary.DTOs
 {
-    internal class UserDTO
+    public class UserDTO
     {
-        private readonly string _firstname;
-        private readonly string _lastname;
-        private readonly Role _role;
-        private readonly int? _class;
-        private readonly string? _email;
-        private readonly string? _phonenumber;
-        private readonly int _idUser;
+        private string _firstname;
+        private string _lastname;
+        private Role _role;
+        private int? _class;
+        private string? _email;
+        private string? _phonenumber;
+        private int _idUser;
 
         public string Firstname { get { return _firstname; } }
         public string Lastname { get { return _lastname; } }

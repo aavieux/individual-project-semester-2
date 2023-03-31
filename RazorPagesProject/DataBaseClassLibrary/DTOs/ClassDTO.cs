@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace DataBaseClassLibrary.DTOs
 {
-    internal class ClassDTO
+    public class ClassDTO
     {
-        private readonly int _name;
-        private readonly int _teacherID;
-        private readonly List<StudentDTO> _students;
+        private int _name;
+        private int _teacherID;
+        private List<StudentDTO> _students;
 
         public int Name { get { return _name; } }
         public int TeacherID { get { return _teacherID; } }
@@ -21,6 +21,11 @@ namespace DataBaseClassLibrary.DTOs
             _name = name;
             _teacherID = teacherID;
             _students = students;
+        }
+        public ClassDTO(int name, int teacherID)
+        {
+            _name = name;
+            _teacherID=teacherID;
         }
     }
 }

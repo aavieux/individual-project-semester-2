@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataBaseClassLibrary.DTOs
 {
-    internal class ManagerDTO : UserDTO
+    public class ManagerDTO : UserDTO
     {
         private readonly string password;
         public string Password { get { return this.password; } }

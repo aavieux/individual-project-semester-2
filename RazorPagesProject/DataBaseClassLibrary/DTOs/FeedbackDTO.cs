@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataBaseClassLibrary.DTOs.DTOEnums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace DataBaseClassLibrary.DTOs
 {
-    internal class FeedbackDTO
+    public class FeedbackDTO
     {
-        private readonly int _idTicket;
-        private readonly string _firstNameContact;
-        private readonly string _lastNameContact;
-        private readonly string _schoolContact;
-        private readonly string _emailContact;
-        private readonly string _subjectContact;
-        private readonly Status _statusContact;
+        private int _idTicket;
+        private string _firstNameContact;
+        private string _lastNameContact;
+        private string _schoolContact;
+        private string _emailContact;
+        private string _subjectContact;
+        private Status _statusContact;
 
         public int IdTicket { get { return _idTicket; } }
         public string FirstNameContact { get { return _firstNameContact; } }
