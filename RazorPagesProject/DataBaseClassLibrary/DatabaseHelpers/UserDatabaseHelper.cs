@@ -13,7 +13,7 @@ namespace DataBaseClassLibrary.DatabaseHelpers
 {
     public class UserDatabaseHelper
     {
-        internal List<UserDTO> GetAllUsersFromDB()
+        public List<UserDTO> GetAllUsersFromDB()
         {
             using (SqlConnection connection =
                    new SqlConnection("Server=localhost;Database=individual_project_semester2;Trusted_Connection=True;"))
@@ -32,42 +32,34 @@ namespace DataBaseClassLibrary.DatabaseHelpers
                                 List<UserDTO> inUsers = new List<UserDTO>();
                                 while (reader.Read())
                                 {
-                                    UserDTO user;
-
                                     if (Enum.Parse<Role>(reader["role_user"].ToString()).ToString() == "STUDENT")
                                     {
-                                        StudentDTO student = new StudentDTO();
+                                        TeacherDTO user = new TeacherDTO(
+                                            (string)reader["first_name_user"],
+                                            (string)reader["last_name_user"],
+                                            Enum.Parse<Role>(reader["role_user"].ToString()),
+                                            (int)reader["class_user"],
+                                            (string)reader["email_user"],
+                                            (string)reader["phonenumber_user"],
+                                            (int)reader["id_user"]
+                                            );
+                                        inUsers.Add(user);
 
                                         //student.GradeBook = tva se pravi v nachaloto na programata
-
-                                        user = student;
                                     }
-                                    else
+                                    else if (Enum.Parse<Role>(reader["role_user"].ToString()).ToString() == "TEACHER")
                                     {
-                                        user = new TeacherDTO();
+                                        StudentDTO user = new StudentDTO(
+                                            (string)reader["first_name_user"],
+                                            (string)reader["last_name_user"],
+                                            Enum.Parse<Role>(reader["role_user"].ToString()),
+                                            (int)reader["class_user"],
+                                            (string)reader["email_user"],
+                                            (string)reader["phonenumber_user"],
+                                            (int)reader["id_user"]
+                                            );
+                                        inUsers.Add(user);
                                     }
-
-                                    user.Firstname = (string)reader["first_name_user"];
-                                    user.Lastname = (string)reader["last_name_user"];
-
-                                    user.Role = Enum.Parse<Role>(reader["role_user"].ToString());
-                                    try
-                                    {
-                                        user.Class = (int)reader["class_user"];
-                                    }
-                                    catch (Exception)
-                                    {
-                                        user.Class = null;
-                                    }
-                                    //TODO
-                                    user.Email = (string)reader["email_user"];
-                                    user.PhoneNumber = (string)reader["phonenumber_user"];
-                                    user.Userid = (int)reader["id_user"];
-
-
-
-                                    inUsers.Add(user);
-
                                 }
                                 return inUsers;
                             }
@@ -92,7 +84,7 @@ namespace DataBaseClassLibrary.DatabaseHelpers
 
             }
         }
-        internal bool UpdateUserToDB(UserDTO user)
+        public bool UpdateUserToDB(UserDTO user)
         {
             using (SqlConnection connection =
                    new SqlConnection("Server=localhost;Database=individual_project_semester2;Trusted_Connection=True;"))
@@ -134,7 +126,7 @@ namespace DataBaseClassLibrary.DatabaseHelpers
 
             }
         }
-        internal bool DeleteUserFromDB(int userId)
+        public bool DeleteUserFromDB(int userId)
         {
             using (SqlConnection connection =
                    new SqlConnection("Server=localhost;Database=individual_project_semester2;Trusted_Connection=True;"))
@@ -177,7 +169,7 @@ namespace DataBaseClassLibrary.DatabaseHelpers
             }
         }
 
-        internal List<ManagerDTO> GetAllManagersFromDB()
+        public List<ManagerDTO> GetAllManagersFromDB()
         {
             using (SqlConnection connection =
                   new SqlConnection("Server=localhost;Database=individual_project_semester2;Trusted_Connection=True;"))

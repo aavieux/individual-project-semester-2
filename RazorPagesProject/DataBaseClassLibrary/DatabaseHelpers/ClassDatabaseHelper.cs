@@ -13,7 +13,7 @@ namespace DataBaseClassLibrary.DatabaseHelpers
 {
     public class ClassDatabaseHelper
     {
-        internal List<ClassDTO> GetClassesFromDB()
+        public List<ClassDTO> GetClassesFromDB()
         {
             using (SqlConnection connection =
                    new SqlConnection("Server=localhost;Database=individual_project_semester2;Trusted_Connection=True;"))
@@ -32,16 +32,24 @@ namespace DataBaseClassLibrary.DatabaseHelpers
                                 List<ClassDTO> inClasses = new List<ClassDTO>();
                                 while (reader.Read())
                                 {
-                                    ClassDTO _class = new ClassDTO((int)reader["name_class"]);
+                                    
                                     try
                                     {
-                                        _class.TeacherID = (int)reader["user_class"];
+                                        ClassDTO _class = new ClassDTO((int)reader["name_class"], (int)reader["user_class"]);
                                     }
                                     catch (Exception)
                                     {
-                                        _class.TeacherID = 0;
+                                        try
+                                        {
+                                            ClassDTO _class = new ClassDTO((int)reader["name_class"], 0);
+                                        }
+                                        catch (Exception)
+                                        {
+
+                                        }
+                                        
                                     }
-                                    inClasses.Add(_class);
+                                    
                                 }
                                 return inClasses;
                             }
@@ -65,7 +73,7 @@ namespace DataBaseClassLibrary.DatabaseHelpers
                 }
             }
         }
-        internal List<StudentDTO> GetClassStudentsFromDB(int classId)
+        public List<StudentDTO> GetClassStudentsFromDB(int classId)
         {
             using (SqlConnection connection =
                    new SqlConnection("Server=localhost;Database=individual_project_semester2;Trusted_Connection=True;"))
@@ -82,25 +90,14 @@ namespace DataBaseClassLibrary.DatabaseHelpers
                             List<StudentDTO> students = new List<StudentDTO>();
                             while (reader.Read())
                             {
-                                StudentDTO student = new StudentDTO();
-                                student.Firstname = (string)reader["first_name_user"];
-                                student.Lastname = (string)reader["last_name_user"];
-
-                                student.Role = Enum.Parse<Role>(reader["role_user"].ToString());
-                                try
-                                {
-                                    student.Class = (int)reader["class_user"];
-                                }
-                                catch (Exception)
-                                {
-                                    student.Class = null;
-                                }
-                                //TODO
-                                student.Email = (string)reader["email_user"];
-                                student.PhoneNumber = (string)reader["phonenumber_user"];
-                                student.Userid = (int)reader["id_user"];
-
-
+                                StudentDTO student = new StudentDTO(
+                                    (string)reader["first_name_user"], 
+                                    (string)reader["last_name_user"], 
+                                    Enum.Parse<Role>(reader["role_user"].ToString()), 
+                                    (int)reader["class_user"], 
+                                    (string)reader["email_user"], 
+                                    (string)reader["phonenumber_user"], 
+                                    (int)reader["id_user"]);
 
                                 students.Add(student);
                             }

@@ -1,4 +1,4 @@
-﻿using ClassLibrary.DatabaseHelpers;
+﻿
 using ClassLibrary.Models;
 using DataBaseClassLibrary.DatabaseHelpers;
 using System;
@@ -35,10 +35,12 @@ namespace ClassLibrary.Controllers
             }
             return null;
         }
+
+        //Move to Class
         public List<Student> GetClassStudentsById(int classId) 
         { 
             return dbHelper.GetClassStudentsFromDB(classId);
-        }
+        } 
         public void ChangeTeacher(Class currentClass,int newTeacherID)
         {
             UserManager userManager = new UserManager();

@@ -13,7 +13,7 @@ namespace DataBaseClassLibrary.DatabaseHelpers
 {
     public class GradeDatabaseHelper
     {
-        internal List<SubjectGradesDTO> GetGradeBooksFromDB()
+        public List<SubjectGradesDTO> GetGradeBooksFromDB()
         {
             using (SqlConnection connection =
                    new SqlConnection("Server=localhost;Database=individual_project_semester2;Trusted_Connection=True;"))
@@ -32,13 +32,13 @@ namespace DataBaseClassLibrary.DatabaseHelpers
                             {
                                 List<SubjectGradesDTO> inSubjectGrades = new List<SubjectGradesDTO>();
                                 while (reader.Read())
-                                {
-                                    SubjectGradesDTO _subjectGrades = new SubjectGradesDTO();
+                                { 
                                     try
                                     {
-                                        _subjectGrades.Id = (int)reader["id_subjectGrades"];
-                                        _subjectGrades.Subject = Enum.Parse<Subject>(reader["subject"].ToString());
-                                        _subjectGrades.IdUser = (int)reader["id_user"];
+                                        SubjectGradesDTO _subjectGrades = new SubjectGradesDTO(
+                                            (int)reader["id_subjectGrades"], 
+                                            Enum.Parse<Subject>(reader["subject"].ToString()), 
+                                            (int)reader["id_user"]);
 
                                         inSubjectGrades.Add(_subjectGrades);
                                     }
@@ -69,7 +69,7 @@ namespace DataBaseClassLibrary.DatabaseHelpers
                 }
             }
         }
-        internal List<GradeDTO> GetGradesFromDB()
+        public List<GradeDTO> GetGradesFromDB()
         {
             using (SqlConnection connection =
                    new SqlConnection("Server=localhost;Database=individual_project_semester2;Trusted_Connection=True;"))
@@ -88,12 +88,13 @@ namespace DataBaseClassLibrary.DatabaseHelpers
                                 List<GradeDTO> inGrades = new List<GradeDTO>();
                                 while (reader.Read())
                                 {
-                                    GradeDTO grade = new GradeDTO();
                                     try
                                     {
-                                        grade.IdGrade = (int)reader["id_grade"];
-                                        grade.IdSubjectGrades = (int)reader["id_subjectGrades"];
-                                        grade.GradeEnum = Enum.Parse<GradeEnum>(reader["grade"].ToString());
+                                        GradeDTO grade = new GradeDTO(
+                                            (int)reader["id_grade"], 
+                                            (int)reader["id_subjectGrades"], 
+                                            Enum.Parse<GradeEnum>(reader["grade"].ToString()));
+
 
                                         inGrades.Add(grade);
                                     }
@@ -124,7 +125,7 @@ namespace DataBaseClassLibrary.DatabaseHelpers
                 }
             }
         }
-		internal List<GradeDTO> GetGradesBySubjectGradesFromDB(int subjectGradesId)
+        public List<GradeDTO> GetGradesBySubjectGradesFromDB(int subjectGradesId)
         {
 			using (SqlConnection connection =
 				   new SqlConnection("Server=localhost;Database=individual_project_semester2;Trusted_Connection=True;"))
@@ -143,14 +144,14 @@ namespace DataBaseClassLibrary.DatabaseHelpers
 								List<GradeDTO> inGrades = new List<GradeDTO>();
 								while (reader.Read())
 								{
-                                    GradeDTO grade = new GradeDTO();
-									try
-									{
-										grade.IdGrade = (int)reader["id_grade"];
-										grade.IdSubjectGrades = (int)reader["id_subjectGrades"];
-										grade.GradeEnum = Enum.Parse<GradeEnum>(reader["grade"].ToString());
+                                    try 
+                                    {
+                                        GradeDTO grade = new GradeDTO(
+                                            (int)reader["id_grade"], 
+                                            (int)reader["id_subjectGrades"], 
+                                            Enum.Parse<GradeEnum>(reader["grade"].ToString()));
 
-										inGrades.Add(grade);
+                                        inGrades.Add(grade);
 									}
 									catch (Exception)
 									{
