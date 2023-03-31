@@ -1,6 +1,6 @@
-﻿using ClassLibrary.DatabaseHelpers;
-using ClassLibrary.Models;
+﻿using ClassLibrary.Models;
 using ClassLibrary.Models.Enums;
+using DataBaseClassLibrary.DatabaseHelpers;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -115,7 +115,7 @@ namespace ClassLibrary.Controllers
                 return true;
             }
             return false;
-        }
+        }// to user TODO
         public bool DeleteUser(int userId) 
         {
             if (dbHelper.DeleteUserFromDB(userId))
@@ -123,7 +123,7 @@ namespace ClassLibrary.Controllers
                 return true;
             }
             return false;
-        }
+        }// to user TODO
 
         public List<Manager> GetAllManagers()
         {

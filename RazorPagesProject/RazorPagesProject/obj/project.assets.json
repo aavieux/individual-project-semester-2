@@ -151,6 +151,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "DataBaseClassLibrary": "1.0.0",
           "System.Data.SqlClient": "4.8.5"
         },
         "compile": {
@@ -158,6 +159,19 @@
         },
         "runtime": {
           "bin/placeholder/ClassLibrary.dll": {}
+        }
+      },
+      "DataBaseClassLibrary/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "System.Data.SqlClient": "4.8.5"
+        },
+        "compile": {
+          "bin/placeholder/DataBaseClassLibrary.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DataBaseClassLibrary.dll": {}
         }
       }
     }
@@ -480,6 +494,11 @@
       "type": "project",
       "path": "../ClassLibrary/ClassLibrary.csproj",
       "msbuildProject": "../ClassLibrary/ClassLibrary.csproj"
+    },
+    "DataBaseClassLibrary/1.0.0": {
+      "type": "project",
+      "path": "../DataBaseClassLibrary/DataBaseClassLibrary.csproj",
+      "msbuildProject": "../DataBaseClassLibrary/DataBaseClassLibrary.csproj"
     }
   },
   "projectFileDependencyGroups": {

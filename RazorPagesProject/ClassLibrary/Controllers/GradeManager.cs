@@ -6,8 +6,8 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ClassLibrary.DatabaseHelpers;
 using System.Diagnostics;
+using DataBaseClassLibrary.DatabaseHelpers;
 
 namespace ClassLibrary.Controllers
 {
@@ -23,6 +23,7 @@ namespace ClassLibrary.Controllers
         {
             return dbHelper.GetGradesFromDB();
         }
+        //Add to the classes TODO
         public List<SubjectGrades> GetGradeBookByUserId(int userId)
         {
             List<SubjectGrades> gradebook = new List<SubjectGrades>();
@@ -49,12 +50,6 @@ namespace ClassLibrary.Controllers
             dbHelper.DeleteGradeByIdFromDB(gradeId);
             Console.WriteLine($"Successfully deleted Grade with id:{gradeId} from SubjectGrades with id: {idSubjectGrades}");
         }
-
-        public void AddSubjectGrades(SubjectGrades subjectGrades)
-        {
-            dbHelper.AddSubjectGradesToDB(subjectGrades);
-        }
-
         //public void PutGradesInGradeBooksAndThenInStudents()
         //{
         //    foreach (Grade grade in grades)

@@ -1,5 +1,7 @@
-﻿using ClassLibrary.Models;
-using ClassLibrary.Models.Enums;
+﻿//using ClassLibrary.Models;
+//using ClassLibrary.Models.Enums;
+using DataBaseClassLibrary.DTOs;
+using DataBaseClassLibrary.DTOs.DTOEnums;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -7,11 +9,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClassLibrary.DatabaseHelpers
+namespace DataBaseClassLibrary.DatabaseHelpers
 {
     public class ClassDatabaseHelper
     {
-        internal List<Class> GetClassesFromDB()
+        internal List<ClassDTO> GetClassesFromDB()
         {
             using (SqlConnection connection =
                    new SqlConnection("Server=localhost;Database=individual_project_semester2;Trusted_Connection=True;"))
@@ -27,10 +29,10 @@ namespace ClassLibrary.DatabaseHelpers
                         {
                             try
                             {
-                                List<Class> inClasses = new List<Class>();
+                                List<ClassDTO> inClasses = new List<ClassDTO>();
                                 while (reader.Read())
                                 {
-                                    Class _class = new Class((int)reader["name_class"]);
+                                    ClassDTO _class = new ClassDTO((int)reader["name_class"]);
                                     try
                                     {
                                         _class.TeacherID = (int)reader["user_class"];
@@ -63,7 +65,7 @@ namespace ClassLibrary.DatabaseHelpers
                 }
             }
         }
-        internal List<Student> GetClassStudentsFromDB(int classId)
+        internal List<StudentDTO> GetClassStudentsFromDB(int classId)
         {
             using (SqlConnection connection =
                    new SqlConnection("Server=localhost;Database=individual_project_semester2;Trusted_Connection=True;"))
@@ -77,10 +79,10 @@ namespace ClassLibrary.DatabaseHelpers
                     {
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
-                            List<Student> students = new List<Student>();
+                            List<StudentDTO> students = new List<StudentDTO>();
                             while (reader.Read())
                             {
-                                Student student = new Student();
+                                StudentDTO student = new StudentDTO();
                                 student.Firstname = (string)reader["first_name_user"];
                                 student.Lastname = (string)reader["last_name_user"];
 

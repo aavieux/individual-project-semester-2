@@ -1,5 +1,7 @@
-﻿using ClassLibrary.Models;
-using ClassLibrary.Models.Enums;
+﻿//using ClassLibrary.Models;
+//using ClassLibrary.Models.Enums;
+using DataBaseClassLibrary.DTOs;
+using DataBaseClassLibrary.DTOs.DTOEnums;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -8,11 +10,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace ClassLibrary.DatabaseHelpers
+namespace DataBaseClassLibrary.DatabaseHelpers
 {
     public class FeedbackDatabaseHelper
     {
-        public List<Feedback> GetAllFeedbacksFromDB()
+        public List<FeedbackDTO> GetAllFeedbacksFromDB()
         { 
             using (SqlConnection connection =
                   new SqlConnection("Server=localhost;Database=individual_project_semester2;Trusted_Connection=True;"))
@@ -28,10 +30,10 @@ namespace ClassLibrary.DatabaseHelpers
                         {
                             try
                             {
-                                List<Feedback> feedbacks = new List<Feedback>();
+                                List<FeedbackDTO> feedbacks = new List<FeedbackDTO>();
                                 while (reader.Read())
                                 {
-                                    Feedback feedback = new Feedback((int)reader["id_ticket"], 
+                                    FeedbackDTO feedback = new FeedbackDTO((int)reader["id_ticket"], 
                                         (string)reader["first_name_contact"], 
                                         (string)reader["last_name_contact"],
                                         (string)reader["school_contact"], 
@@ -65,9 +67,9 @@ namespace ClassLibrary.DatabaseHelpers
 
             }
         }
-        public Feedback GetFeedbackByIdFromDB(int feedbackId)
+        public FeedbackDTO GetFeedbackByIdFromDB(int feedbackId)
         {
-            foreach (Feedback feedback in GetAllFeedbacksFromDB())
+            foreach (FeedbackDTO feedback in GetAllFeedbacksFromDB())
             {
                 if (feedback.IdTicket == feedbackId)
                 {
@@ -76,7 +78,7 @@ namespace ClassLibrary.DatabaseHelpers
             }
             return null;
         }
-        public void AddFeedbackToDB(Feedback feedback)
+        public void AddFeedbackToDB(FeedbackDTO feedback)
         {
             try
             {
@@ -97,7 +99,7 @@ namespace ClassLibrary.DatabaseHelpers
                 Console.WriteLine("Error updating the database!");
             }
         }
-        public bool UpdateFeedbackToDB(Feedback feedback)
+        public bool UpdateFeedbackToDB(FeedbackDTO feedback)
         {
             
             using (SqlConnection connection =

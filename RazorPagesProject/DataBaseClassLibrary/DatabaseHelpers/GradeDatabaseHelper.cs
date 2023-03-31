@@ -1,5 +1,7 @@
-﻿using ClassLibrary.Models.Enums;
-using ClassLibrary.Models;
+﻿//using ClassLibrary.Models.Enums;
+//using ClassLibrary.Models;
+using DataBaseClassLibrary.DTOs;
+using DataBaseClassLibrary.DTOs.DTOEnums;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -7,11 +9,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClassLibrary.DatabaseHelpers
+namespace DataBaseClassLibrary.DatabaseHelpers
 {
     public class GradeDatabaseHelper
     {
-        internal List<SubjectGrades> GetGradeBooksFromDB()
+        internal List<SubjectGradesDTO> GetGradeBooksFromDB()
         {
             using (SqlConnection connection =
                    new SqlConnection("Server=localhost;Database=individual_project_semester2;Trusted_Connection=True;"))
@@ -28,10 +30,10 @@ namespace ClassLibrary.DatabaseHelpers
                         {
                             try
                             {
-                                List<SubjectGrades> inSubjectGrades = new List<SubjectGrades>();
+                                List<SubjectGradesDTO> inSubjectGrades = new List<SubjectGradesDTO>();
                                 while (reader.Read())
                                 {
-                                    SubjectGrades _subjectGrades = new SubjectGrades();
+                                    SubjectGradesDTO _subjectGrades = new SubjectGradesDTO();
                                     try
                                     {
                                         _subjectGrades.Id = (int)reader["id_subjectGrades"];
@@ -67,7 +69,7 @@ namespace ClassLibrary.DatabaseHelpers
                 }
             }
         }
-        internal List<Grade> GetGradesFromDB()
+        internal List<GradeDTO> GetGradesFromDB()
         {
             using (SqlConnection connection =
                    new SqlConnection("Server=localhost;Database=individual_project_semester2;Trusted_Connection=True;"))
@@ -83,10 +85,10 @@ namespace ClassLibrary.DatabaseHelpers
                         {
                             try
                             {
-                                List<Grade> inGrades = new List<Grade>();
+                                List<GradeDTO> inGrades = new List<GradeDTO>();
                                 while (reader.Read())
                                 {
-                                    Grade grade = new Grade();
+                                    GradeDTO grade = new GradeDTO();
                                     try
                                     {
                                         grade.IdGrade = (int)reader["id_grade"];
@@ -122,7 +124,7 @@ namespace ClassLibrary.DatabaseHelpers
                 }
             }
         }
-		internal List<Grade> GetGradesBySubjectGradesFromDB(int subjectGradesId)
+		internal List<GradeDTO> GetGradesBySubjectGradesFromDB(int subjectGradesId)
         {
 			using (SqlConnection connection =
 				   new SqlConnection("Server=localhost;Database=individual_project_semester2;Trusted_Connection=True;"))
@@ -138,10 +140,10 @@ namespace ClassLibrary.DatabaseHelpers
 						{
 							try
 							{
-								List<Grade> inGrades = new List<Grade>();
+								List<GradeDTO> inGrades = new List<GradeDTO>();
 								while (reader.Read())
 								{
-									Grade grade = new Grade();
+                                    GradeDTO grade = new GradeDTO();
 									try
 									{
 										grade.IdGrade = (int)reader["id_grade"];
@@ -177,11 +179,11 @@ namespace ClassLibrary.DatabaseHelpers
 				}
 			}
 		}
-		public void AddSubjectGradesToDB(SubjectGrades subjectGrades)
+		public void AddSubjectGradesToDB(SubjectGradesDTO subjectGrades)
         {
             //TODO
         }
-        public void AddGradeToDB(int idSubjectGrades ,Grade grade)
+        public void AddGradeToDB(int idSubjectGrades , GradeDTO grade)
         {
             using (SqlConnection connection =
                    new SqlConnection("Server=localhost;Database=individual_project_semester2;Trusted_Connection=True;"))

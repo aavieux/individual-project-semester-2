@@ -1,5 +1,7 @@
-﻿using ClassLibrary.Models.Enums;
-using ClassLibrary.Models;
+﻿//using ClassLibrary.Models.Enums;
+//using ClassLibrary.Models;
+using DataBaseClassLibrary.DTOs;
+using DataBaseClassLibrary.DTOs.DTOEnums;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -7,11 +9,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClassLibrary.DatabaseHelpers
+namespace DataBaseClassLibrary.DatabaseHelpers
 {
     public class UserDatabaseHelper
     {
-        internal List<User> GetAllUsersFromDB()
+        internal List<UserDTO> GetAllUsersFromDB()
         {
             using (SqlConnection connection =
                    new SqlConnection("Server=localhost;Database=individual_project_semester2;Trusted_Connection=True;"))
@@ -27,14 +29,14 @@ namespace ClassLibrary.DatabaseHelpers
                         {
                             try
                             {
-                                List<User> inUsers = new List<User>();
+                                List<UserDTO> inUsers = new List<UserDTO>();
                                 while (reader.Read())
                                 {
-                                    User user;
+                                    UserDTO user;
 
                                     if (Enum.Parse<Role>(reader["role_user"].ToString()).ToString() == "STUDENT")
                                     {
-                                        Student student = new Student();
+                                        StudentDTO student = new StudentDTO();
 
                                         //student.GradeBook = tva se pravi v nachaloto na programata
 
@@ -42,7 +44,7 @@ namespace ClassLibrary.DatabaseHelpers
                                     }
                                     else
                                     {
-                                        user = new Teacher();
+                                        user = new TeacherDTO();
                                     }
 
                                     user.Firstname = (string)reader["first_name_user"];
@@ -90,7 +92,7 @@ namespace ClassLibrary.DatabaseHelpers
 
             }
         }
-        internal bool UpdateUserToDB(User user)
+        internal bool UpdateUserToDB(UserDTO user)
         {
             using (SqlConnection connection =
                    new SqlConnection("Server=localhost;Database=individual_project_semester2;Trusted_Connection=True;"))
@@ -175,7 +177,7 @@ namespace ClassLibrary.DatabaseHelpers
             }
         }
 
-        internal List<Manager> GetAllManagersFromDB()
+        internal List<ManagerDTO> GetAllManagersFromDB()
         {
             using (SqlConnection connection =
                   new SqlConnection("Server=localhost;Database=individual_project_semester2;Trusted_Connection=True;"))
@@ -191,10 +193,10 @@ namespace ClassLibrary.DatabaseHelpers
                         {
                             try
                             {
-                                List<Manager> inManagers = new List<Manager>();
+                                List<ManagerDTO> inManagers = new List<ManagerDTO>();
                                 while (reader.Read())
                                 {
-                                    Manager manager = new Manager(
+                                    ManagerDTO manager = new ManagerDTO(
                                         (int)reader["id_manager"], 
                                         (string)reader["first_name_manager"], 
                                         (string)reader["last_name_manager"], 

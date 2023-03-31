@@ -45,10 +45,10 @@ namespace ClassLibrary.Models
 
         public User(int userID, string firstName, string lastName, string email)
         {
-            Firstname = firstName;
-            Lastname = lastName;
-            Email = email;
-            Userid = userID;
+            this._firstname = firstName;
+            this._lastname = lastName;
+            this._email = email;
+            this.Userid = userID;
         }
 
         public string GetFullName()
