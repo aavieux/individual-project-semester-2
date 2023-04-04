@@ -78,28 +78,31 @@ namespace DataBaseClassLibrary.DatabaseHelpers
             }
             return null;
         }
-        public void AddFeedbackToDB(FeedbackDTO feedback)
+        public void AddFeedbackToDB(FeedbackDTO feedbackDTO)
         {
-            try
+
+            using (SqlConnection connection = new SqlConnection("Server=localhost;Database=individual_project_semester2;Trusted_Connection=True;"))
             {
-                using (SqlConnection connection = new SqlConnection("Server=localhost;Database=individual_project_semester2;Trusted_Connection=True;"))
+                try
                 {
                     connection.Open();
 
-                    SqlCommand command = new SqlCommand($"INSERT INTO Contact (first_name_contact, last_name_contact, school_contact, email_contact, subject_contact, status_contact) VALUES ('{feedback.FirstNameContact}','{feedback.LastNameContact}','{feedback.SchoolContact}','{feedback.EmailContact}','{feedback.SubjectContact}','{feedback.StatusContact.ToString()}')", connection);
+                    SqlCommand command = new SqlCommand($"INSERT INTO Contact (first_name_contact, last_name_contact, school_contact, email_contact, subject_contact, status_contact) VALUES ('{feedbackDTO.FirstNameContact}','{feedbackDTO.LastNameContact}','{feedbackDTO.SchoolContact}','{feedbackDTO.EmailContact}','{feedbackDTO.SubjectContact}','{feedbackDTO.StatusContact.ToString()}')", connection);
                     command.ExecuteNonQuery();
-                    connection.Close();
                     Console.WriteLine("Successfully updated the database!");
 
-
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Error updating the database!");
+                }
+                finally
+                {
+                    connection.Close();
                 }
             }
-            catch (Exception)
-            {
-                Console.WriteLine("Error updating the database!");
-            }
         }
-        public bool UpdateFeedbackToDB(FeedbackDTO feedback)
+        public bool UpdateFeedbackToDB(FeedbackDTO feedbackDTO)
         {
             
             using (SqlConnection connection =
@@ -108,33 +111,29 @@ namespace DataBaseClassLibrary.DatabaseHelpers
                 try
                 {
                     connection.Open();
-                    string query = $"UPDATE Contact SET first_name_contact = '{feedback.FirstNameContact}', last_name_contact = '{feedback.LastNameContact}', school_contact = '{feedback.SchoolContact}', email_contact = '{feedback.EmailContact}', subject_contact = '{feedback.SubjectContact}', status_contact = '{feedback.StatusContact.ToString()}' WHERE id_ticket = '{feedback.IdTicket}'";
+                    string query = $"UPDATE Contact SET first_name_contact = '{feedbackDTO.FirstNameContact}', last_name_contact = '{feedbackDTO.LastNameContact}', school_contact = '{feedbackDTO.SchoolContact}', email_contact = '{feedbackDTO.EmailContact}', subject_contact = '{feedbackDTO.SubjectContact}', status_contact = '{feedbackDTO.StatusContact.ToString()}' WHERE id_ticket = '{feedbackDTO.IdTicket}'";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        using (SqlDataReader reader = command.ExecuteReader())
+                        try
                         {
-                            try
-                            {
-                                command.ExecuteNonQuery();
-                                Console.WriteLine("-----------------------------------");
-                                Console.WriteLine("Records Inserted in DB Successfully");
-                                return true;
-                            }
-                            catch (SqlException xException)
-                            {
-                                Console.WriteLine("Error updating the database!");
-                                return false;
-                            }
-                            finally
-                            {
-                                reader.Close();
-                                connection.Close();
-                            }
+                            command.ExecuteNonQuery();
+                            Console.WriteLine("-----------------------------------");
+                            Console.WriteLine("Records Inserted in DB Successfully");
+                            return true;
+                        }
+                        catch (SqlException xException)
+                        {
+                            Console.WriteLine("Error updating the database!");
+                            return false;
+                        }
+                        finally
+                        {
+                            connection.Close();
                         }
                     }
                 }
-                catch
+                catch(Exception ex)
                 {
                     Console.WriteLine("Could not open a connection to the database!");
                     return false;

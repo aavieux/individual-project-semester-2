@@ -28,11 +28,20 @@ namespace ClassLibrary.Mapper
             Student student = new Student(userDTO.Firstname, userDTO.Lastname, Enum.Parse<ClassLibrary.Models.Enums.Role>(userDTO.Role.ToString()), userDTO.Class, userDTO.Email, userDTO.PhoneNumber, userDTO.Userid);
             return student;
         }
+        //
         internal Teacher MapTeacherDTOtoTeacher(UserDTO userDTO)
         {
             Teacher teacher = new Teacher(userDTO.Firstname, userDTO.Lastname, Enum.Parse<ClassLibrary.Models.Enums.Role>(userDTO.Role.ToString()), userDTO.Class, userDTO.Email, userDTO.PhoneNumber, userDTO.Userid);
             return teacher;
         }
+        //
+        internal Manager MapManagerDTOtoManager(ManagerDTO managerDTO)
+        {
+            Manager manager = new Manager(managerDTO.Userid,managerDTO.Firstname, managerDTO.Lastname, managerDTO.Email, managerDTO.Password);
+            return manager;
+        }
+
+
 
     }
 }

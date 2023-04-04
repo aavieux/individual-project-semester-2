@@ -7,8 +7,9 @@ namespace RazorPagesProject.Pages
 {
     public class _UserViewModel : PageModel
     {
-        [BindProperty(SupportsGet = true)]
+        [BindProperty]
         internal int userId { get; set; }
+
         internal User currentUser { get; set; }
 
         private StatisticsManager statisticsManager;

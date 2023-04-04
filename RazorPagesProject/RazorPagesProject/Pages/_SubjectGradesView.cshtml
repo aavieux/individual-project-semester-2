@@ -13,7 +13,7 @@
     </thead>
 
     <tbody>
-        @if (Model.studentid != null)// checks if there are any students// it is always true
+        @if (Model.userId != null)// checks if there are any students// it is always true
         {
             @foreach (var subjectGrades in Model.currentStudent.GetGradeBook())
             {

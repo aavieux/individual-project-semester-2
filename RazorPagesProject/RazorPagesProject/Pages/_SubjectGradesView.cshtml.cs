@@ -8,19 +8,18 @@ namespace RazorPagesProject.Pages
     public class _SubjectGradesViewModel : PageModel
     {
         
-        [BindProperty(SupportsGet = true)]
-        internal int studentid { get; set; }
+        [BindProperty]
+        public int userId { get; set; }
         internal Student currentStudent { get; set; }
 
-        internal StatisticsManager statisticsManager;
+        private StatisticsManager statisticsManager;
         public _SubjectGradesViewModel()
         {
            statisticsManager = new StatisticsManager();
         }
         public void OnGet()
         {
-            studentid = int.Parse(Request.Query["userId"]);
-            currentStudent = statisticsManager.GetStudentById(studentid);
+            currentStudent = statisticsManager.GetStudentById(userId);
         }
     }
 }

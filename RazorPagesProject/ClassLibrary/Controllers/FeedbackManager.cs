@@ -18,6 +18,7 @@ namespace ClassLibrary.Controllers
         public FeedbackManager() 
         {
             databaseHelper = new FeedbackDatabaseHelper();
+            mapper = new FeedbackMapper();
         }
         public List<Feedback> GetAllFeedbacks()
         {

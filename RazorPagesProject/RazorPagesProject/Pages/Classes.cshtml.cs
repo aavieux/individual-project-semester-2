@@ -11,7 +11,7 @@ namespace RazorPagesProject.Pages
     {
         internal List<Class> classes { get; set; }
 
-        internal StatisticsManager statisticsManager;
+        private StatisticsManager statisticsManager;
 
         public ClassesModel()
         {

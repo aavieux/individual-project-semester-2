@@ -27,9 +27,9 @@ namespace RazorPagesProject.Pages
             foundUsers = false;
 
             teachers = statisticsManager.GetAllTeachers();
-            string partOfName = Request.Form["search"];
+            string search = Request.Form["search"];
             foundTeachers = new List<Teacher>();
-            foundTeachers = statisticsManager.GetTeachersByPartOfName(partOfName);
+            foundTeachers = statisticsManager.GetTeachersByPartOfName(search);
             if (foundTeachers.Count != 0)
             {
                 foundUsers = true;

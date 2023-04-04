@@ -14,12 +14,12 @@ namespace DataBaseClassLibrary.DTOs
 
         public int Name { get { return this._name; } }
         public int TeacherID { get { return this._teacherID; } }
-        public ClassDTO(int name, int teacherID, List<StudentDTO> students)
-        {
-            _name = name;
-            _teacherID = teacherID;
-            _students = students;
-        }
+        //public ClassDTO(int name, int teacherID, List<StudentDTO> students)
+        //{
+        //    _name = name;
+        //    _teacherID = teacherID;
+        //    _students = students;
+        //}
         public ClassDTO(int name, int teacherID)
         {
             _name = name;

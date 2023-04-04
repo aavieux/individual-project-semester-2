@@ -8,6 +8,9 @@ namespace RazorPagesProject.Pages
 {
     public class GradesModel : PageModel
     {
+        [BindProperty]
+        internal string search { get; set; }
+
         StatisticsManager statisticsManager;
         internal List<Student> currentStudents;
         public GradesModel()
@@ -20,9 +23,9 @@ namespace RazorPagesProject.Pages
         }
         public async Task<IActionResult> OnPostSearchByName()
         {
-            string partOfName = Request.Form["search"];
+            string search = Request.Form["search"];
             currentStudents = new List<Student>();
-            currentStudents = statisticsManager.GetStudentsByPartOfName(partOfName);
+            currentStudents = statisticsManager.GetStudentsByPartOfName(search);
             return Page();
         }
     }

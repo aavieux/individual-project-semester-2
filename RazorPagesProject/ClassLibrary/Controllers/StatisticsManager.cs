@@ -103,7 +103,7 @@ namespace ClassLibrary.Controllers
             List<Manager> managers = new List<Manager>();
             foreach (ManagerDTO managerDTO in userDbHelper.GetAllManagersFromDB())
             {
-                managers.Add((Manager)userMapper.MapUserDTOtoUser(managerDTO));
+                managers.Add((Manager)userMapper.MapManagerDTOtoManager(managerDTO));
             }
             return managers;
         } // to do mapping

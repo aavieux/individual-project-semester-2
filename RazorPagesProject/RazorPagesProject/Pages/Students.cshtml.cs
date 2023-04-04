@@ -7,6 +7,9 @@ namespace RazorPagesProject.Pages
 {
     public class StudentsModel : PageModel
     {
+        [BindProperty]
+        internal string search { get; set; }
+
         internal List<Student> students;
         internal List<Student> foundStudents { get; set; }
         internal List<Student> pastebinList { get; set; }
@@ -26,9 +29,9 @@ namespace RazorPagesProject.Pages
             foundUsers = false;
 
             students = statisticsManager.GetAllStudents();
-            string partOfName = Request.Form["search"];
+            string search = Request.Form["search"];
             foundStudents = new List<Student>();
-            foundStudents = statisticsManager.GetStudentsByPartOfName(partOfName);
+            foundStudents = statisticsManager.GetStudentsByPartOfName(search);
             if (foundStudents.Count != 0)
             {
                 foundUsers = true;

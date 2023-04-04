@@ -11,10 +11,10 @@ namespace RazorPagesProject.Pages
     public class _GradesViewModel : PageModel
     {
 		[BindProperty(SupportsGet = true)]
-        internal int studentid { get; set; }
+        internal int userId { get; set; }
 
-		private StatisticsManager statisticsManager;
 		internal Student currentStudent { get; set; }
+        private StatisticsManager statisticsManager;
 
         public _GradesViewModel()
         {
@@ -22,8 +22,7 @@ namespace RazorPagesProject.Pages
         }
         public void OnGet()
 		{
-            studentid = int.Parse(Request.Query["userId"]);//tuka e problema nisht one mu se puska sled kato cukna da addna grade
-			currentStudent = statisticsManager.GetStudentById(studentid);
+			currentStudent = statisticsManager.GetStudentById(userId);
 		}
 		public async Task<IActionResult> OnPostAddGrade(string Button1, string Button2, string Button3, string Button4,int SubjectGradesId, int UserId) 
 		{
@@ -50,7 +49,7 @@ namespace RazorPagesProject.Pages
 			try
 			{
 				Grade currentGrade = new Grade(Enum.Parse<GradeEnum>(buttonClicked));
-				currentStudent.AddGrade(currentSubjectGradesId, currentGrade);
+				statisticsManager.GetStudentById(UserId).AddGrade(currentSubjectGradesId, currentGrade);
 			}
 			catch (Exception)
 			{
@@ -65,7 +64,7 @@ namespace RazorPagesProject.Pages
 			int currentSubjectGradesId = SubjectGradesId; // to be removed
 			try
 			{
-                currentStudent.DeleteGrade(GradeId);
+                statisticsManager.GetStudentById(UserId).DeleteGrade(GradeId);
 			}
 			catch (Exception)
 			{
@@ -79,7 +78,7 @@ namespace RazorPagesProject.Pages
 		{
 			foreach (SubjectGrades subjectGrades1 in currentStudent.GetGradeBook())
 			{
-				if (subjectGrades == subjectGrades1)
+				if (subjectGrades.Id == subjectGrades1.Id)
 				{
 					return (subjectGrades.GetGrades());
 				}

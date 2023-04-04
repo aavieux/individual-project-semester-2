@@ -10,7 +10,7 @@ namespace RazorPagesProject.Pages
 {
     public class ContactModel : PageModel
     {
-        public FeedbackManager feedbackManager { get; set; }
+        private FeedbackManager feedbackManager { get; set; }
         public ContactModel() 
         { 
             feedbackManager = new FeedbackManager();

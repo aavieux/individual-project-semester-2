@@ -14,16 +14,16 @@ namespace WindowsFormsAppProject
 {
     public partial class connectedUser : Form
     {
-        UserManager userManager;
-        ClassManager classManager;
+
         FeedbackManager feedbackManager;
+        StatisticsManager statisticsManager;
 
         Manager currentManager;
         public connectedUser(Manager manager)
         {
-            userManager = new UserManager();
-            classManager = new ClassManager();
+
             feedbackManager = new FeedbackManager();
+            statisticsManager = new StatisticsManager();
 
             currentManager = manager;
             InitializeComponent();
@@ -42,13 +42,13 @@ namespace WindowsFormsAppProject
         {
             //teachers
             listBoxTeachers.Items.Clear();
-            foreach (Teacher teacher in userManager.GetAllTeachers())
+            foreach (Teacher teacher in statisticsManager.GetAllTeachers())
             {
                 listBoxTeachers.Items.Add($"UserID: {teacher.Userid} - {teacher.GetFullName()} - {teacher.Role} - Class: {teacher.Class}");
             }
             //students
             listBoxStudents.Items.Clear();
-            foreach (Student student in userManager.GetAllStudents())
+            foreach (Student student in statisticsManager.GetAllStudents())
             {
                 listBoxStudents.Items.Add($"UserID: {student.Userid} - {student.GetFullName()} - {student.Role} - Class: {student.Class}");
             }
@@ -56,7 +56,7 @@ namespace WindowsFormsAppProject
         private void DisplayClassData()
         {
             listBoxClasses.Items.Clear();
-            foreach (Class currentClass in classManager.GetAllClasses())
+            foreach (Class currentClass in statisticsManager.GetAllClasses())
             {
                 listBoxClasses.Items.Add($"Class Name: {currentClass.Name}");
             }
@@ -73,6 +73,7 @@ namespace WindowsFormsAppProject
                 this.Hide();
                 userView userView = new userView(userId);
                 userView.ShowDialog();
+                DisplayUserData();
                 listBoxStudents.SelectedIndex = -1;
                 listBoxTeachers.SelectedIndex = -1;
                 this.Show();
@@ -105,6 +106,7 @@ namespace WindowsFormsAppProject
                 this.Hide();
                 feedbackView feedbackView = new feedbackView(idTicket);
                 feedbackView.ShowDialog();
+                DisplayFeedbackData();
                 listBoxFeedbacks.SelectedIndex = -1;
                 this.Show();
             }
@@ -126,6 +128,7 @@ namespace WindowsFormsAppProject
 
                 classView classView = new classView(idClass);
                 classView.ShowDialog();
+                DisplayClassData();
                 listBoxClasses.SelectedIndex = -1;
                 this.Show();
             }
@@ -143,6 +146,7 @@ namespace WindowsFormsAppProject
                 this.Hide();
                 userView userView = new userView(userId);
                 userView.ShowDialog();
+                DisplayUserData();
                 listBoxStudents.SelectedIndex = -1;
                 listBoxTeachers.SelectedIndex = -1;
                 this.Show();

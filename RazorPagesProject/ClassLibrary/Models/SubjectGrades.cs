@@ -17,7 +17,7 @@ namespace ClassLibrary.Models
 		private Subject _subject;
 		private int _idUser;
 
-		private List<Grade> grades;
+		private List<Grade> grades = new List<Grade>();
 		//private GradeManager gradeManager;
 
 		public int Id { get { return _idSubjectGrades; } }

@@ -94,6 +94,7 @@ namespace DataBaseClassLibrary.DatabaseHelpers
 
                                 students.Add(student);
                             }
+                            connection.Close();
                             return students;
                         }
                     }

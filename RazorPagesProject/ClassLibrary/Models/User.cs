@@ -11,8 +11,8 @@ namespace ClassLibrary.Models
 {
 	public class User
 	{
-		private DataBaseClassLibrary.DatabaseHelpers.UserDatabaseHelper dbHelper;
-		private UserMapper mapper;
+		private DataBaseClassLibrary.DatabaseHelpers.UserDatabaseHelper dbHelper = new DataBaseClassLibrary.DatabaseHelpers.UserDatabaseHelper();
+		private UserMapper mapper = new UserMapper();
 
 		private string _firstname;
 		private string _lastname;
@@ -71,8 +71,8 @@ namespace ClassLibrary.Models
         }
         public bool Update()
         {
-
-            if (dbHelper.UpdateUserToDB(mapper.MapUserToUserDTO(this)))
+            User user = new User(this._firstname, this._lastname, this._role, this._class, this._email, this._phonenumber, this._idUser);
+            if (dbHelper.UpdateUserToDB(mapper.MapUserToUserDTO(user)))
             {
                 return true;
             }

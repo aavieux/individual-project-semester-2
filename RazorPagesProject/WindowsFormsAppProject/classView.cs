@@ -15,7 +15,7 @@ namespace WindowsFormsAppProject
     public partial class classView : Form
     {
         int idClass;
-        StatisticsManager statisticsManager;
+        private StatisticsManager statisticsManager;
 
         string currentStudentEdit;
         public classView(int idClass)
@@ -52,7 +52,7 @@ namespace WindowsFormsAppProject
 
             listBoxStudentsClass.Enabled = true;
             listBoxStudentsClass.Items.Clear();
-            foreach (Student student in currentClass.GetStudents)
+            foreach (Student student in statisticsManager.GetClassById(idClass).GetStudents())
             {
                 listBoxStudentsClass.Items.Add($"ID: {student.Userid} Name: {student.GetFullName()}");
             }

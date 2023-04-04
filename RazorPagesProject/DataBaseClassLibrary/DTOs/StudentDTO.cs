@@ -21,11 +21,11 @@ namespace DataBaseClassLibrary.DTOs
         {
 
         }
-        public StudentDTO(string FirstName, string LastName, Role Role, int Class, string Email, string PhoneNumber, int UserID, List<SubjectGradesDTO> Gradebook)
-            : base(FirstName, LastName, Role, Class, Email, PhoneNumber, UserID)
-        {
-            this._gradebook = Gradebook;
-        }
+        //public StudentDTO(string FirstName, string LastName, Role Role, int Class, string Email, string PhoneNumber, int UserID, List<SubjectGradesDTO> Gradebook)
+        //    : base(FirstName, LastName, Role, Class, Email, PhoneNumber, UserID)
+        //{
+        //    this._gradebook = Gradebook;
+        //}
 
     }
 }
