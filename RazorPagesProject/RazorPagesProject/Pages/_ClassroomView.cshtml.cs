@@ -13,19 +13,18 @@ namespace RazorPagesProject.Pages
 
         //private UserManager userManager { get; set; }
         //private GradeManager gradeManager { get; set; }
-        internal ClassManager classManager { get; set; }
+        internal StatisticsManager statisticsManager;
 
         public _ClassroomViewModel()
         {
-            //gradeManager = new GradeManager();
-            classManager = new ClassManager();
-            //userManager = new UserManager();
+            statisticsManager = new StatisticsManager();
+            students = new List<Student>();
         }
 
         public void OnGet()
         {
             className = int.Parse(Request.Query["className"]);
-            students = classManager.GetClassStudentsById(className);// add exception check
+            students = statisticsManager.GetClassById(className).GetStudents();// add exception check
         }
     }
 }

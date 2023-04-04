@@ -15,26 +15,24 @@ namespace WindowsFormsAppProject
     public partial class classView : Form
     {
         int idClass;
-        ClassManager classManager;
-        UserManager userManager;
+        StatisticsManager statisticsManager;
 
         string currentStudentEdit;
         public classView(int idClass)
         {
             this.idClass = idClass;
-            classManager = new ClassManager();
-            userManager = new UserManager();
+            statisticsManager = new StatisticsManager();
             InitializeComponent();
             DisplayData();
             GenerateDropdowns();
         }
         private void GenerateDropdowns()
         {
-            foreach (Class currentClass in classManager.GetAllClasses())
+            foreach (Class currentClass in statisticsManager.GetAllClasses())
             {
                 changeClass_comboBox.Items.Add(currentClass.Name);
             }
-            foreach (Teacher currentTeacher in userManager.GetAllTeachers())
+            foreach (Teacher currentTeacher in statisticsManager.GetAllTeachers())
             {
                 changeTeacher_comboBox.Items.Add(currentTeacher.GetFullName());
             }
@@ -54,12 +52,12 @@ namespace WindowsFormsAppProject
 
             listBoxStudentsClass.Enabled = true;
             listBoxStudentsClass.Items.Clear();
-            foreach (Student student in classManager.GetClassStudentsById(idClass))
+            foreach (Student student in currentClass.GetStudents)
             {
                 listBoxStudentsClass.Items.Add($"ID: {student.Userid} Name: {student.GetFullName()}");
             }
 
-            changeTeacher_comboBox.Text = userManager.GetTeacherById(classManager.GetClassById(idClass).TeacherID).GetFullName();
+            changeTeacher_comboBox.Text = statisticsManager.GetTeacherById(statisticsManager.GetClassById(idClass).TeacherID).GetFullName();
         }
 
         private void changeClass_btn_Click(object sender, EventArgs e)
@@ -87,15 +85,15 @@ namespace WindowsFormsAppProject
                 int endIndex = currentStudentEdit.IndexOf(suffix, startIndex);
                 int idUser = int.Parse(currentStudentEdit.Substring(startIndex, endIndex - startIndex));
 
-                User user = userManager.GetUserById(idUser);
-                foreach (Class currentClass in classManager.GetAllClasses())
+                User user = statisticsManager.GetUserById(idUser);
+                foreach (Class currentClass in statisticsManager.GetAllClasses())
                 {
                     if (currentClass.Name == int.Parse(changeClass_comboBox.Text))
                     {
-                        user.Class = int.Parse(changeClass_comboBox.Text);
+                        user.ChangeClass(int.Parse(changeClass_comboBox.Text));
                     }
                 }
-                if (userManager.UpdateUser(user) == false)
+                if (user.Update() == false)
                 {
                     DisplayError();
                 }

@@ -1,5 +1,4 @@
 using ClassLibrary.Controllers;
-using ClassLibrary.DatabaseHelpers;
 using ClassLibrary.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -9,14 +8,11 @@ namespace RazorPagesProject.Pages
 {
     public class GradesModel : PageModel
     {
-        internal UserManager userManager { get; set; }
-        internal GradeManager gradeManager { get; set; }
-
+        StatisticsManager statisticsManager;
         internal List<Student> currentStudents;
         public GradesModel()
         {
-            userManager = new UserManager();
-            gradeManager = new GradeManager();
+            statisticsManager = new StatisticsManager();
         }
         public void OnGet()
         {
@@ -26,12 +22,8 @@ namespace RazorPagesProject.Pages
         {
             string partOfName = Request.Form["search"];
             currentStudents = new List<Student>();
-            currentStudents = userManager.GetStudentsByPartOfName(partOfName);
+            currentStudents = statisticsManager.GetStudentsByPartOfName(partOfName);
             return Page();
-        }
-        public List<SubjectGrades> GetGradeBookByStudentId(int studentId)
-        {
-            return gradeManager.GetGradeBookByUserId(studentId);
         }
     }
 }

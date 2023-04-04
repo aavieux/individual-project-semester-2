@@ -91,10 +91,19 @@
       "System.Security.Principal.Windows/4.7.0": {},
       "ClassLibrary/1.0.0": {
         "dependencies": {
+          "DataBaseClassLibrary": "1.0.0",
           "System.Data.SqlClient": "4.8.5"
         },
         "runtime": {
           "ClassLibrary.dll": {}
+        }
+      },
+      "DataBaseClassLibrary/1.0.0": {
+        "dependencies": {
+          "System.Data.SqlClient": "4.8.5"
+        },
+        "runtime": {
+          "DataBaseClassLibrary.dll": {}
         }
       }
     }
@@ -169,6 +178,11 @@
       "hashPath": "system.security.principal.windows.4.7.0.nupkg.sha512"
     },
     "ClassLibrary/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DataBaseClassLibrary/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -10,12 +10,10 @@ namespace ClassLibrary.Models
     public class Manager : User
     {
         private string password;
-        public string Password { get { return this.password; } set { this.password = value; } }
+        public string Password { get { return this.password; } }
         public Manager(int UserID,string FirstName ,string LastName, string Email, string Password) : base(UserID, FirstName, LastName, Email) 
         { 
         this.password = Password;
-        }
-        public Manager() { }
-        
+        } 
     }
 }

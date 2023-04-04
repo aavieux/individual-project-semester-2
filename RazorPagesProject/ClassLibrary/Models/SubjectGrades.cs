@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ClassLibrary.Controllers;
 using ClassLibrary.Models.Enums;
+using DataBaseClassLibrary.DTOs;
 
 namespace ClassLibrary.Models
 {
@@ -19,27 +20,30 @@ namespace ClassLibrary.Models
 		private List<Grade> grades;
 		//private GradeManager gradeManager;
 
-		public int Id { get { return _idSubjectGrades; } set { _idSubjectGrades = value; } }
-		public Subject Subject { get { return _subject; } set { _subject = value; } }
-		public int IdUser { get { return _idUser; } set { _idUser = value; } }
+		public int Id { get { return _idSubjectGrades; } }
+		public Subject Subject { get { return _subject; } }
+		public int IdUser { get { return _idUser; }}
 
-		public List<Grade> Grades { get { return grades; } set { grades = value; } }
-		public SubjectGrades()
-		{
-			//gradeManager = new GradeManager();
-		}
+        public SubjectGrades(int id, Subject subject, int idUser)
+        {
+            //gradeManager = new GradeManager();
+            this._idSubjectGrades = id;
+            this._subject = subject;
+            this._idUser = idUser;
+        }
+        public SubjectGrades(int id, Subject subject, int idUser, List<Grade> Grades)
+        {
+            //gradeManager = new GradeManager();
+            this._idSubjectGrades = id;
+            this._subject = subject;
+            this._idUser = idUser;
+            this.grades = Grades;
+        }
+        public void AddGrade(Grade grade)
+        {
+            grades.Add(grade);
+        }
+        public List<Grade> GetGrades() { return grades; }
 
-		//public List<Grade> GetGrades()
-		//{
-		//	return gradeManager.GetGrades(_idSubjectGrades);
-		//}
-		//public void AddGradeToGrades(Grade grade)
-		//{
-		//	gradeManager.AddGradeToSubjectGrades(_idSubjectGrades,grade);
-		//}
-  //      public void DeleteGrade(int gradeId)
-  //      {
-  //          gradeManager.DeleteGradeFromSubjectGrades(_idSubjectGrades, gradeId);
-  //      }
     }
 }

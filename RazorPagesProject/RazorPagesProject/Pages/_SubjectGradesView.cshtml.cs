@@ -12,22 +12,15 @@ namespace RazorPagesProject.Pages
         internal int studentid { get; set; }
         internal Student currentStudent { get; set; }
 
-        internal GradeManager gradeManager { get; set; }
-        internal UserManager UserManager { get; set; }
+        internal StatisticsManager statisticsManager;
         public _SubjectGradesViewModel()
         {
-            gradeManager = new GradeManager();
-            UserManager = new UserManager();
+           statisticsManager = new StatisticsManager();
         }
         public void OnGet()
         {
             studentid = int.Parse(Request.Query["userId"]);
-            currentStudent = UserManager.GetStudentById(studentid);
+            currentStudent = statisticsManager.GetStudentById(studentid);
         }
-        public List<SubjectGrades> GetGradeBookByStudent(Student student)
-        {
-            return gradeManager.GetGradeBookByUserId(student.Userid);
-        }
-
     }
 }

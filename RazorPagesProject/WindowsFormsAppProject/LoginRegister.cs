@@ -13,10 +13,10 @@ namespace Housing_Project
 {
     public partial class LoginRegister : Form
     {
-        UserManager userManager;
+        StatisticsManager statisticsManager;
         public LoginRegister()
         {
-            userManager = new UserManager();
+            statisticsManager = new StatisticsManager();
             InitializeComponent();
             tabControlLoginRegister.SelectTab("tabPageLogin");
             loginwrongcredentialslbl.Visible = false;
@@ -137,24 +137,25 @@ namespace Housing_Project
             string email = loginemailtxt.Text;
             string password = loginpasswordtxt.Text;
             bool foundUser = false;
-            Manager foundManager = new Manager();
+
 
             if (email.Contains("@managers.garkov.com"))
             {
-                foreach (Manager manager in userManager.GetAllManagers())
+                foreach (Manager manager in statisticsManager.GetAllManagers())
                 {
                     if (manager.Email == email && manager.Password == password)
                     {
                         foundUser = true;
-                        foundManager = manager;
+                        Manager foundManager = manager;
+                        ConnectUser(foundManager);
                     }
                 }
-                if (foundUser == true)
+                if (foundUser == false)
                 {
-                    ConnectUser(foundManager);
-                }
-                else
                     loginwrongcredentialslbl.Visible = true;
+                }
+
+                   
             }
             else
             {

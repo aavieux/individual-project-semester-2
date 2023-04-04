@@ -36,18 +36,11 @@ namespace DataBaseClassLibrary.DatabaseHelpers
                                     try
                                     {
                                         ClassDTO _class = new ClassDTO((int)reader["name_class"], (int)reader["user_class"]);
+                                        inClasses.Add(_class);
                                     }
                                     catch (Exception)
                                     {
-                                        try
-                                        {
-                                            ClassDTO _class = new ClassDTO((int)reader["name_class"], 0);
-                                        }
-                                        catch (Exception)
-                                        {
 
-                                        }
-                                        
                                     }
                                     
                                 }

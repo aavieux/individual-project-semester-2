@@ -34,7 +34,7 @@ namespace DataBaseClassLibrary.DatabaseHelpers
                                 {
                                     if (Enum.Parse<Role>(reader["role_user"].ToString()).ToString() == "STUDENT")
                                     {
-                                        TeacherDTO user = new TeacherDTO(
+                                        StudentDTO user = new StudentDTO(
                                             (string)reader["first_name_user"],
                                             (string)reader["last_name_user"],
                                             Enum.Parse<Role>(reader["role_user"].ToString()),
@@ -44,12 +44,10 @@ namespace DataBaseClassLibrary.DatabaseHelpers
                                             (int)reader["id_user"]
                                             );
                                         inUsers.Add(user);
-
-                                        //student.GradeBook = tva se pravi v nachaloto na programata
                                     }
-                                    else if (Enum.Parse<Role>(reader["role_user"].ToString()).ToString() == "TEACHER")
+                                    else
                                     {
-                                        StudentDTO user = new StudentDTO(
+                                        TeacherDTO user = new TeacherDTO(
                                             (string)reader["first_name_user"],
                                             (string)reader["last_name_user"],
                                             Enum.Parse<Role>(reader["role_user"].ToString()),

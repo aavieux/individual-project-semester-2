@@ -10,3 +10,6 @@ C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\Clas
 C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\ClassLibrary\obj\Debug\net6.0\refint\ClassLibrary.dll
 C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\ClassLibrary\obj\Debug\net6.0\ClassLibrary.pdb
 C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\ClassLibrary\obj\Debug\net6.0\ref\ClassLibrary.dll
+C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\ClassLibrary\bin\Debug\net6.0\DataBaseClassLibrary.dll
+C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\ClassLibrary\bin\Debug\net6.0\DataBaseClassLibrary.pdb
+C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\ClassLibrary\obj\Debug\net6.0\ClassLibrary.csproj.CopyComplete

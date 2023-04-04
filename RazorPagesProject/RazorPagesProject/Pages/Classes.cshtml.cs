@@ -1,5 +1,5 @@
 using ClassLibrary.Controllers;
-using ClassLibrary.DatabaseHelpers;
+
 using ClassLibrary.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -11,22 +11,20 @@ namespace RazorPagesProject.Pages
     {
         internal List<Class> classes { get; set; }
 
-        internal ClassManager classManager { get; set; }
-        internal UserManager UserManager { get; set; }
+        internal StatisticsManager statisticsManager;
 
         public ClassesModel()
         {
-            classManager = new ClassManager();
-            UserManager = new UserManager();
+            statisticsManager = new StatisticsManager();
         }
 
         public void OnGet()
         {
-            classes = classManager.GetAllClasses();
+            classes = statisticsManager.GetAllClasses();
         }
         public string GetTeacherNameById(int teacherId)
         {
-            return UserManager.GetTeacherById(teacherId).GetFullName();
+            return statisticsManager.GetTeacherById(teacherId).GetFullName();
         }
         
     }

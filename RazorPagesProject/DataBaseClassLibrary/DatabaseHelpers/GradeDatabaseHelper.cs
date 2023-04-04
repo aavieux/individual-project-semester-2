@@ -125,61 +125,61 @@ namespace DataBaseClassLibrary.DatabaseHelpers
                 }
             }
         }
-        public List<GradeDTO> GetGradesBySubjectGradesFromDB(int subjectGradesId)
-        {
-			using (SqlConnection connection =
-				   new SqlConnection("Server=localhost;Database=individual_project_semester2;Trusted_Connection=True;"))
-			{
-				try
-				{
-					connection.Open();
-					string query = $"SELECT * FROM Grades WHERE id_subjectGrades LIKE '{subjectGradesId}'";
+  //      public List<GradeDTO> GetGradesBySubjectGradesFromDB(int subjectGradesId)
+  //      {
+		//	using (SqlConnection connection =
+		//		   new SqlConnection("Server=localhost;Database=individual_project_semester2;Trusted_Connection=True;"))
+		//	{
+		//		try
+		//		{
+		//			connection.Open();
+		//			string query = $"SELECT * FROM Grades WHERE id_subjectGrades LIKE '{subjectGradesId}'";
 
-					using (SqlCommand command = new SqlCommand(query, connection))
-					{
-						using (SqlDataReader reader = command.ExecuteReader())
-						{
-							try
-							{
-								List<GradeDTO> inGrades = new List<GradeDTO>();
-								while (reader.Read())
-								{
-                                    try 
-                                    {
-                                        GradeDTO grade = new GradeDTO(
-                                            (int)reader["id_grade"], 
-                                            (int)reader["id_subjectGrades"], 
-                                            Enum.Parse<GradeEnum>(reader["grade"].ToString()));
+		//			using (SqlCommand command = new SqlCommand(query, connection))
+		//			{
+		//				using (SqlDataReader reader = command.ExecuteReader())
+		//				{
+		//					try
+		//					{
+		//						List<GradeDTO> inGrades = new List<GradeDTO>();
+		//						while (reader.Read())
+		//						{
+  //                                  try 
+  //                                  {
+  //                                      GradeDTO grade = new GradeDTO(
+  //                                          (int)reader["id_grade"], 
+  //                                          (int)reader["id_subjectGrades"], 
+  //                                          Enum.Parse<GradeEnum>(reader["grade"].ToString()));
 
-                                        inGrades.Add(grade);
-									}
-									catch (Exception)
-									{
-										Console.WriteLine("Error getting grades from database!");
-									}
-								}
-								return inGrades;
-							}
-							catch (SqlException xException)
-							{
-								Console.WriteLine("Error loading grades from database!");
-								return null;
-							}
-							finally
-							{
-								reader.Close();
-								connection.Close();
-							}
-						}
-					}
-				}
-				catch (Exception)
-				{
-					Console.WriteLine("There was a problem in making a connection with the database!");
-					return null;
-				}
-			}
-		}
+  //                                      inGrades.Add(grade);
+		//							}
+		//							catch (Exception)
+		//							{
+		//								Console.WriteLine("Error getting grades from database!");
+		//							}
+		//						}
+		//						return inGrades;
+		//					}
+		//					catch (SqlException xException)
+		//					{
+		//						Console.WriteLine("Error loading grades from database!");
+		//						return null;
+		//					}
+		//					finally
+		//					{
+		//						reader.Close();
+		//						connection.Close();
+		//					}
+		//				}
+		//			}
+		//		}
+		//		catch (Exception)
+		//		{
+		//			Console.WriteLine("There was a problem in making a connection with the database!");
+		//			return null;
+		//		}
+		//	}
+		//}
 		public void AddSubjectGradesToDB(SubjectGradesDTO subjectGrades)
         {
             //TODO

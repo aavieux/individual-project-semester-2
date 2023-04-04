@@ -28,3 +28,6 @@ C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\Wind
 C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\WindowsFormsAppProject\bin\Debug\net6.0-windows\ClassLibrary.pdb
 C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\WindowsFormsAppProject\obj\Debug\net6.0-windows\WindowsFormsAppProject.feedbackView.resources
 C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\WindowsFormsAppProject\obj\Debug\net6.0-windows\WindowsFormsAppProject.classView.resources
+C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\WindowsFormsAppProject\bin\Debug\net6.0-windows\DataBaseClassLibrary.dll
+C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\WindowsFormsAppProject\bin\Debug\net6.0-windows\DataBaseClassLibrary.pdb
+C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\WindowsFormsAppProject\obj\Debug\net6.0-windows\WindowsFormsAppProject.addClass.resources

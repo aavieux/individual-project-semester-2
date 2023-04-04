@@ -1,5 +1,4 @@
 using ClassLibrary.Controllers;
-using ClassLibrary.DatabaseHelpers;
 using ClassLibrary.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -13,24 +12,24 @@ namespace RazorPagesProject.Pages
         internal List<Teacher> pastebinList { get; set; }
         internal bool foundUsers { get; set; }
 
-        private UserManager userManager { get; set; }
+        private StatisticsManager statisticsManager;
 
         public TeachersModel()
         {
-            userManager = new UserManager();
+            statisticsManager = new StatisticsManager();
         }
         public void OnGet()
         {
-            teachers = userManager.GetAllTeachers();
+            teachers = statisticsManager.GetAllTeachers();
         }
         public async Task<IActionResult> OnPostSearchByName()
         {
             foundUsers = false;
 
-            teachers = userManager.GetAllTeachers();
+            teachers = statisticsManager.GetAllTeachers();
             string partOfName = Request.Form["search"];
             foundTeachers = new List<Teacher>();
-            foundTeachers = userManager.GetTeachersByPartOfName(partOfName);
+            foundTeachers = statisticsManager.GetTeachersByPartOfName(partOfName);
             if (foundTeachers.Count != 0)
             {
                 foundUsers = true;

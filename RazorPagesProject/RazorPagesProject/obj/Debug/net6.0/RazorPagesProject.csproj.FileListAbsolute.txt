@@ -38,3 +38,5 @@ C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\Razo
 C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\RazorPagesProject\obj\Debug\net6.0\RazorPagesProject.csproj.CopyComplete
 C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\RazorPagesProject\bin\Debug\net6.0\ClassLibrary.dll
 C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\RazorPagesProject\bin\Debug\net6.0\ClassLibrary.pdb
+C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\RazorPagesProject\bin\Debug\net6.0\DataBaseClassLibrary.dll
+C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\RazorPagesProject\bin\Debug\net6.0\DataBaseClassLibrary.pdb

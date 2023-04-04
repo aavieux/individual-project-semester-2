@@ -8,14 +8,12 @@ namespace DataBaseClassLibrary.DTOs
 {
     public class ClassDTO
     {
-        private int _name;
-        private int _teacherID;
-        private List<StudentDTO> _students;
+        private readonly int _name;
+        private readonly int _teacherID;
+        private readonly List<StudentDTO> _students;
 
-        public int Name { get { return _name; } }
-        public int TeacherID { get { return _teacherID; } }
-        public List<StudentDTO> Students { get { return _students; } }
-
+        public int Name { get { return this._name; } }
+        public int TeacherID { get { return this._teacherID; } }
         public ClassDTO(int name, int teacherID, List<StudentDTO> students)
         {
             _name = name;

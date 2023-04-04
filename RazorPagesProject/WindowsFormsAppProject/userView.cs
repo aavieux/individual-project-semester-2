@@ -16,14 +16,12 @@ namespace WindowsFormsAppProject
 {
     public partial class userView : Form
     {
-        private UserManager userManager;
-        private ClassManager classManager;
+        private StatisticsManager statisticsManager;
         int userId;
 
         public userView(int userId)
         {
-            this.userManager = new UserManager();
-            this.classManager = new ClassManager();
+            this.statisticsManager = new StatisticsManager();
             this.userId = userId;
             InitializeComponent();
             GenerateDropdowns();
@@ -36,7 +34,7 @@ namespace WindowsFormsAppProject
         }
         private void GenerateDropdowns()
         {
-            foreach (Class currentClass in classManager.GetAllClasses())
+            foreach (Class currentClass in statisticsManager.GetAllClasses())
             {
                 class_comboBox.Items.Add(currentClass.Name);
             }
@@ -57,7 +55,7 @@ namespace WindowsFormsAppProject
         }
         private void DisplayContent()
         {
-            ClassLibrary.Models.User user = userManager.GetUserById(userId);
+            ClassLibrary.Models.User user = statisticsManager.GetUserById(userId);
 
             firstName_txt.Text = user.Firstname;
             lastName_txt.Text = user.Lastname;
@@ -113,7 +111,7 @@ namespace WindowsFormsAppProject
                     email_txt.Text, phone_txt.Text,
                     int.Parse(userId_txt.Text));
 
-                if (userManager.UpdateUser(currentUser) == false)
+                if (currentUser.Update() == false)
                 {
                     DisplayError();
                 }
@@ -123,7 +121,7 @@ namespace WindowsFormsAppProject
 
         private void deleteUser_btn_Click(object sender, EventArgs e)
         {
-            if (userManager.DeleteUser(int.Parse(userId_txt.Text)) == false)
+            if (statisticsManager.GetUserById(int.Parse(userId_txt.Text)).Delete() == false)
             {
                 DisplayError();
             }

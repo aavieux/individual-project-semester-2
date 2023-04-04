@@ -10,25 +10,22 @@ namespace DataBaseClassLibrary.DTOs
     public class StudentDTO : UserDTO
     {
 
-        private List<SubjectGradesDTO> _gradebook = new List<SubjectGradesDTO>();
+        private readonly List<SubjectGradesDTO> _gradebook = new List<SubjectGradesDTO>();
 
-        public List<SubjectGradesDTO> GradeBook
-        {
-            get { return _gradebook; }
-            set { /* do nothing */ }
-        }
-
-        public StudentDTO()
-        {
-            //userManager = new UserManager();
-            //gradeManager = new GradeManager();
-        }
-
+        //public List<SubjectGradesDTO> GradeBook
+        //{
+        //    get { return _gradebook; }
+        //}
         public StudentDTO(string FirstName, string LastName, Role Role, int Class, string Email, string PhoneNumber, int UserID)
             : base(FirstName, LastName, Role, Class, Email, PhoneNumber, UserID)
         {
 
         }
-        
+        public StudentDTO(string FirstName, string LastName, Role Role, int Class, string Email, string PhoneNumber, int UserID, List<SubjectGradesDTO> Gradebook)
+            : base(FirstName, LastName, Role, Class, Email, PhoneNumber, UserID)
+        {
+            this._gradebook = Gradebook;
+        }
+
     }
 }

@@ -1,4 +1,5 @@
 ﻿using ClassLibrary.Controllers;
+using ClassLibrary.Mapper;
 using ClassLibrary.Models.Enums;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,9 @@ namespace ClassLibrary.Models
 {
 	public class User
 	{
+		private DataBaseClassLibrary.DatabaseHelpers.UserDatabaseHelper dbHelper;
+		private UserMapper mapper;
+
 		private string _firstname;
 		private string _lastname;
 		private Role _role;
@@ -18,20 +22,16 @@ namespace ClassLibrary.Models
 		private string? _phonenumber;
 		private int _idUser;
 
-		public string Firstname { get { return _firstname; } set { this._firstname = value; } }
-		public string Lastname { get { return _lastname; } set { this._lastname = value; } }
-		public Role Role { get { return _role; } set { this._role = value; } }
-		public int? Class { get { return _class; } set { this._class = value; } }
-		public string Email { get { return _email; } set { this._email = value; } }
-		public string PhoneNumber { get { return _phonenumber; } set { _phonenumber = value; } }
-		public int Userid { get { return _idUser; } set { this._idUser = value; } }
+		public string Firstname { get { return _firstname; } }
+		public string Lastname { get { return _lastname; } }
+		public Role Role { get { return _role; } }
+		public int? Class { get { return _class; } }
+		public string Email { get { return _email; } }
+		public string PhoneNumber { get { return _phonenumber; } }
+		public int Userid { get { return _idUser; } }
 
 		//UserManager userManager;
 
-        public User() 
-		{
-			 //userManager = new UserManager();
-		}
 		public User(string FirstName, string LastName, Role Role, int? Class, string Email, string PhoneNumber, int UserID)
 		{
 			this._firstname = FirstName;
@@ -48,13 +48,52 @@ namespace ClassLibrary.Models
             this._firstname = firstName;
             this._lastname = lastName;
             this._email = email;
-            this.Userid = userID;
+            this._idUser = userID;
         }
+		
+		protected void UpdateRole(Role role) 
+		{ 
+			this._role = role; 
 
+		}
+        public void PromoteRole()
+        {
+            if (this.Role != Role.DIRECTOR)
+            {
+                Role newRole = Role;
+                newRole++;
+                UpdateRole(newRole);
+            }
+            else
+            {
+                Console.WriteLine($"Error Promoting User! The current role now is: {Role}");
+            }
+        }
+        public bool Update()
+        {
+
+            if (dbHelper.UpdateUserToDB(mapper.MapUserToUserDTO(this)))
+            {
+                return true;
+            }
+            return false;
+        }
+        public bool Delete()
+        {
+            if (dbHelper.DeleteUserFromDB(this._idUser))
+            {
+                return true;
+            }
+            return false;
+        }
+        public void ChangeClass(int newClassId)
+        {
+            this._class = newClassId;
+			//add logic
+        }
         public string GetFullName()
 		{
 			return $"{_firstname} {_lastname}";
 		}
 	}
 }
-

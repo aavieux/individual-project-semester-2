@@ -15,7 +15,7 @@
     <tbody>
         @if (Model.studentid != null)// checks if there are any students// it is always true
         {
-            @foreach (var subjectGrades in Model.GetGradeBookByStudent(Model.currentStudent))
+            @foreach (var subjectGrades in Model.currentStudent.GetGradeBook())
             {
                 <tr class="sorting_1" role="row">
                     <td tabindex="0">

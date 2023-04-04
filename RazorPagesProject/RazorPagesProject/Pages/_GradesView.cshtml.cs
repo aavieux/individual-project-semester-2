@@ -12,19 +12,18 @@ namespace RazorPagesProject.Pages
     {
 		[BindProperty(SupportsGet = true)]
         internal int studentid { get; set; }
+
+		private StatisticsManager statisticsManager;
 		internal Student currentStudent { get; set; }
 
-        internal GradeManager gradeManager { get; set; }
-        internal UserManager UserManager { get; set; }
         public _GradesViewModel()
         {
-            gradeManager = new GradeManager();
-            UserManager = new UserManager();
+			this.statisticsManager = new StatisticsManager();
         }
         public void OnGet()
 		{
             studentid = int.Parse(Request.Query["userId"]);//tuka e problema nisht one mu se puska sled kato cukna da addna grade
-			currentStudent = UserManager.GetStudentById(studentid);
+			currentStudent = statisticsManager.GetStudentById(studentid);
 		}
 		public async Task<IActionResult> OnPostAddGrade(string Button1, string Button2, string Button3, string Button4,int SubjectGradesId, int UserId) 
 		{
@@ -51,7 +50,7 @@ namespace RazorPagesProject.Pages
 			try
 			{
 				Grade currentGrade = new Grade(Enum.Parse<GradeEnum>(buttonClicked));
-				gradeManager.AddGradeToSubjectGrades(currentSubjectGradesId, currentGrade);
+				currentStudent.AddGrade(currentSubjectGradesId, currentGrade);
 			}
 			catch (Exception)
 			{
@@ -63,10 +62,10 @@ namespace RazorPagesProject.Pages
 		}
 		public async Task<IActionResult> OnPostDeleteGrade(int GradeId, int SubjectGradesId, int UserId)
 		{
-			int currentSubjectGradesId = SubjectGradesId;
+			int currentSubjectGradesId = SubjectGradesId; // to be removed
 			try
 			{
-                gradeManager.DeleteGradeFromSubjectGrades(currentSubjectGradesId, GradeId);
+                currentStudent.DeleteGrade(GradeId);
 			}
 			catch (Exception)
 			{
@@ -76,21 +75,17 @@ namespace RazorPagesProject.Pages
 			return RedirectToPage("/_GradesView", new { userId = UserId });
 		}
 
-		public List<SubjectGrades> GetGradeBookFromStudent(Student currentStudent)
-		{
-			return gradeManager.GetGradeBookByUserId(currentStudent.Userid);
-		}
 		public List<Grade>? GetGradesFromSubjectGrades(SubjectGrades subjectGrades)
 		{
-			return gradeManager.GetGradesBySubjectGrades(subjectGrades);
-		}
-		public void PutGradesIntoSubjectGradesAndToStudent(List<Grade> grades, List<SubjectGrades> subjectGrades, Student student)
-		{
-			foreach (Grade grade in grades)
+			foreach (SubjectGrades subjectGrades1 in currentStudent.GetGradeBook())
 			{
-				
+				if (subjectGrades == subjectGrades1)
+				{
+					return (subjectGrades.GetGrades());
+				}
 			}
-		}
+			return null;
 
+		}
 	}
 }
