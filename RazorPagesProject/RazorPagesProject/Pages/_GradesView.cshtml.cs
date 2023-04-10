@@ -22,7 +22,8 @@ namespace RazorPagesProject.Pages
         }
         public void OnGet()
 		{
-			currentStudent = statisticsManager.GetStudentById(userId);
+            userId = int.Parse(Request.Query["userId"]);
+            currentStudent = statisticsManager.GetStudentById(userId);
 		}
 		public async Task<IActionResult> OnPostAddGrade(string Button1, string Button2, string Button3, string Button4,int SubjectGradesId, int UserId) 
 		{

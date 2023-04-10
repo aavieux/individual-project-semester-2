@@ -48,6 +48,7 @@
             firstName_txt = new TextBox();
             firstName_lbl = new Label();
             tabPage2 = new TabPage();
+            promoteUser_btn = new Button();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             SuspendLayout();
@@ -64,6 +65,7 @@
             // 
             // tabPage1
             // 
+            tabPage1.Controls.Add(promoteUser_btn);
             tabPage1.Controls.Add(saveChanges_btn);
             tabPage1.Controls.Add(deleteUser_btn);
             tabPage1.Controls.Add(updateDetails_btn);
@@ -263,6 +265,18 @@
             tabPage2.Text = "User Grades";
             tabPage2.UseVisualStyleBackColor = true;
             // 
+            // promoteUser_btn
+            // 
+            promoteUser_btn.FlatStyle = FlatStyle.Flat;
+            promoteUser_btn.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
+            promoteUser_btn.Location = new Point(648, 291);
+            promoteUser_btn.Name = "promoteUser_btn";
+            promoteUser_btn.Size = new Size(372, 109);
+            promoteUser_btn.TabIndex = 20;
+            promoteUser_btn.Text = "Promote User";
+            promoteUser_btn.UseVisualStyleBackColor = true;
+            promoteUser_btn.Click += promoteUser_btn_Click;
+            // 
             // userView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -300,5 +314,6 @@
         private Label lastName_lbl;
         private TextBox firstName_txt;
         private Button saveChanges_btn;
+        private Button promoteUser_btn;
     }
 }

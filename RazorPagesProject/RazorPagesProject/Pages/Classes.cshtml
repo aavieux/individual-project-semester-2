@@ -18,28 +18,32 @@
     <tbody>
         @foreach (var _class in Model.classes)
         {
-            <tr class="sorting_1" role="row">
-                <td tabindex="0">
-                    @_class.Name
-                </td>
-                <td tabindex="0">
-                    <a class="no-decoration" asp-page="./_ClassroomView" asp-route-className="@_class.Name">
-                        <i class="fa fa-eye"></i> Students
-                    </a>
-                </td>
-                <td tabindex="0">
-                    @if (_class.TeacherID == 0)
-                    {
-                        <span>No Teacher</span>
-                    }
-                    else
-                    {
-                        <a class="no-decoration" asp-page="./_UserView" asp-route-userId="@_class.TeacherID">
-                            <i class='fas fa-chalkboard-teacher'></i> @Model.GetTeacherNameById(_class.TeacherID)
+            if (_class.Name != 0)
+            {
+                <tr class="sorting_1" role="row">
+                    <td tabindex="0">
+                        @_class.Name
+                    </td>
+                    <td tabindex="0">
+                        <a class="no-decoration" asp-page="./_ClassroomView" asp-route-className="@_class.Name">
+                            <i class="fa fa-eye"></i> Students
                         </a>
-                    }
-                </td>
-            </tr>
+                    </td>
+                    <td tabindex="0">
+                        @if (_class.TeacherID == 0)
+                        {
+                            <span>No Teacher</span>
+                        }
+                        else
+                        {
+                            <a class="no-decoration" asp-page="./_UserView" asp-route-userId="@_class.TeacherID">
+                                <i class='fas fa-chalkboard-teacher'></i> @Model.GetTeacherNameById(_class.TeacherID)
+                            </a>
+                        }
+                    </td>
+                </tr>
+            }
+            
         }
     </tbody>
 </table>

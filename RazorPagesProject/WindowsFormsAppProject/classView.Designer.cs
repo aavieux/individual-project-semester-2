@@ -36,6 +36,7 @@
             changeTeacher_comboBox = new ComboBox();
             newClass_lbl = new Label();
             students_lbl = new Label();
+            delete_btn = new Button();
             SuspendLayout();
             // 
             // listBoxStudentsClass
@@ -118,11 +119,23 @@
             students_lbl.TabIndex = 8;
             students_lbl.Text = "Students";
             // 
+            // delete_btn
+            // 
+            delete_btn.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            delete_btn.Location = new Point(637, 9);
+            delete_btn.Name = "delete_btn";
+            delete_btn.Size = new Size(151, 37);
+            delete_btn.TabIndex = 9;
+            delete_btn.Text = "Delete";
+            delete_btn.UseVisualStyleBackColor = true;
+            delete_btn.Click += delete_btn_Click;
+            // 
             // classView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(delete_btn);
             Controls.Add(students_lbl);
             Controls.Add(newClass_lbl);
             Controls.Add(changeTeacher_comboBox);
@@ -147,5 +160,6 @@
         private ComboBox changeTeacher_comboBox;
         private Label newClass_lbl;
         private Label students_lbl;
+        private Button delete_btn;
     }
 }

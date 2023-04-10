@@ -21,6 +21,7 @@ namespace RazorPagesProject.Pages
         public void OnGet()
         {
             classes = statisticsManager.GetAllClasses();
+
         }
         public string GetTeacherNameById(int teacherId)
         {

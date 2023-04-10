@@ -23,6 +23,7 @@ namespace WindowsFormsAppProject
         {
             this.statisticsManager = new StatisticsManager();
             this.userId = userId;
+
             InitializeComponent();
             GenerateDropdowns();
             ClearFields();
@@ -76,6 +77,8 @@ namespace WindowsFormsAppProject
             saveChanges_btn.Visible = false;
             updateDetails_btn.Visible = true;
             deleteUser_btn.Visible = true;
+            promoteUser_btn.Visible = true;
+
         }
 
         private void updateDetails_btn_Click(object sender, EventArgs e)
@@ -90,6 +93,7 @@ namespace WindowsFormsAppProject
 
             updateDetails_btn.Visible = false;
             deleteUser_btn.Visible = false;
+            promoteUser_btn.Visible = false;
 
             saveChanges_btn.Visible = true;
         }
@@ -99,15 +103,19 @@ namespace WindowsFormsAppProject
             if (firstName_txt.Text != string.Empty &&
                 lastName_txt.Text != string.Empty &&
                 role_comboBox.SelectedIndex != -1 &&
-                class_comboBox.SelectedIndex != -1 &&
                 email_txt.Text != string.Empty &&
                 phone_txt.Text != string.Empty)
             {
+                int classId = 0;
+                if (class_comboBox.SelectedIndex != -1)
+                {
+                    classId = int.Parse(class_comboBox.SelectedItem.ToString());
+                }
                 ClassLibrary.Models.User currentUser = new ClassLibrary.Models.User(
                     firstName_txt.Text,
                     lastName_txt.Text,
                     Enum.Parse<Role>(role_comboBox.Text),
-                    int.Parse(class_comboBox.Text),
+                    classId,
                     email_txt.Text, phone_txt.Text,
                     int.Parse(userId_txt.Text));
 
@@ -129,8 +137,15 @@ namespace WindowsFormsAppProject
             {
                 this.Close();
             }
+        }
 
-
+        private void promoteUser_btn_Click(object sender, EventArgs e)
+        {
+            var user = statisticsManager.GetUserById(userId);
+            user.PromoteRole();
+            user.Update();
+            MessageBox.Show("Successfully promoted user!");
+            DisplayContent();
         }
     }
 }

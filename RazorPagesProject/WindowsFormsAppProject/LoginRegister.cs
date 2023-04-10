@@ -44,7 +44,7 @@ namespace Housing_Project
             this.Hide();
             connectedUser connectedUser = new connectedUser(manager);
             connectedUser.ShowDialog();
-            this.Close();
+            this.Show();
         }
 
         private void registerbtn_Click_1(object sender, EventArgs e)

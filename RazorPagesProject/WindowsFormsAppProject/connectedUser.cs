@@ -1,5 +1,6 @@
 ﻿using ClassLibrary.Controllers;
 using ClassLibrary.Models;
+using Microsoft.VisualBasic.ApplicationServices;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -130,6 +131,7 @@ namespace WindowsFormsAppProject
                 classView.ShowDialog();
                 DisplayClassData();
                 listBoxClasses.SelectedIndex = -1;
+                search_txt.Text = string.Empty;
                 this.Show();
             }
             catch (Exception) { }
@@ -156,7 +158,40 @@ namespace WindowsFormsAppProject
 
         private void addClass_btn_Click(object sender, EventArgs e)
         {
+            this.Hide();
+            addClass addClass = new addClass();
+            addClass.ShowDialog();
+            DisplayClassData();
+            this.Show();
+            DisplayUserData();
+        }
 
+        private void listBoxTeachers_MouseClick(object sender, MouseEventArgs e)
+        {
+            listBoxStudents.SelectedIndex = -1;
+        }
+
+        private void listBoxStudents_MouseClick(object sender, MouseEventArgs e)
+        {
+            listBoxTeachers.SelectedIndex = -1;
+        }
+
+        private void showAll_btn_Click(object sender, EventArgs e)
+        {
+            DisplayClassData();
+        }
+
+        private void search_txt_TextChanged(object sender, EventArgs e)
+        {
+            listBoxClasses.Items.Clear();
+            string search = search_txt.Text;
+            foreach (Class @class in statisticsManager.GetAllClasses())
+            {
+                if (@class.Name.ToString().Contains(search))
+                {
+                    listBoxClasses.Items.Add($"Class Name: {@class.Name}");
+                }
+            }
         }
     }
 }

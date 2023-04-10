@@ -5,6 +5,7 @@ using DataBaseClassLibrary.DTOs.DTOEnums;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,7 +36,13 @@ namespace DataBaseClassLibrary.DatabaseHelpers
                                     
                                     try
                                     {
-                                        ClassDTO _class = new ClassDTO((int)reader["name_class"], (int)reader["user_class"]);
+                                        int userClass = 0;
+                                        
+                                        if (reader["user_class"] != DBNull.Value)
+                                        {
+                                            userClass = (int)reader["user_class"];
+                                        }
+                                        ClassDTO _class = new ClassDTO((int)reader["name_class"], userClass);
                                         inClasses.Add(_class);
                                     }
                                     catch (Exception)
@@ -74,7 +81,7 @@ namespace DataBaseClassLibrary.DatabaseHelpers
                 try
                 {
                     connection.Open();
-                    string query = $"SELECT * FROM Users WHERE class_user = (SELECT class_user FROM Classes WHERE name_class = '{classId}') AND role_user = 'STUDENT';";
+                    string query = $"SELECT * FROM Users WHERE  role_user = 'STUDENT' AND class_user = '{classId}';";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
@@ -103,6 +110,36 @@ namespace DataBaseClassLibrary.DatabaseHelpers
                 {
                     Console.WriteLine("There was a problem in making a connection with the database!");
                     return null;
+                }
+            }
+        }
+
+        public bool CreateClass(ClassDTO classDTO)
+        {
+            using (SqlConnection connection =
+                   new SqlConnection("Server=localhost;Database=individual_project_semester2;Trusted_Connection=True;"))
+            {
+                connection.Open();
+                string query = $"INSERT INTO Classes (name_class, user_class) VALUES ('{classDTO.Name}', '{classDTO.TeacherID}');";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    try
+                    {
+                        command.ExecuteNonQuery();
+                        Console.WriteLine("-----------------------------------");
+                        Console.WriteLine("Records Inserted in DB Successfully");
+                        return true;
+                    }
+                    catch (SqlException e)
+                    {
+                        Console.WriteLine("Error Generated. Details: " + e.ToString());
+                        return false;
+                    }
+                    finally
+                    {
+                        connection.Close();
+                    }
                 }
             }
         }

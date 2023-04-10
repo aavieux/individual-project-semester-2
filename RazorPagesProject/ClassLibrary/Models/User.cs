@@ -69,6 +69,16 @@ namespace ClassLibrary.Models
                 Console.WriteLine($"Error Promoting User! The current role now is: {Role}");
             }
         }
+        public bool AddToClass(int classId)
+        {
+            if (this._class == 0)
+            {
+                this._class = classId;
+                return true;
+            }
+            return false;
+
+        }
         public bool Update()
         {
             User user = new User(this._firstname, this._lastname, this._role, this._class, this._email, this._phonenumber, this._idUser);

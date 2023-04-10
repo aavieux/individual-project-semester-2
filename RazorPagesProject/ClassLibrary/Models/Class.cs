@@ -11,6 +11,7 @@ namespace ClassLibrary.Models
 
         private int _nameClass;
         private int _teacherIdClass;
+
         private List<Student> _students = new List<Student>() {}; //TODO
 
         //private ClassManager classManager;
@@ -29,6 +30,13 @@ namespace ClassLibrary.Models
             //classManager = new ClassManager();
             this._nameClass = name;
             this._teacherIdClass = teacherid;
+        }
+        public Class(int name, int teacherid, List<Student> students)
+        {
+            //classManager = new ClassManager();
+            this._nameClass = name;
+            this._teacherIdClass = teacherid;
+            this._students = students;
         }
 
         public void ChangeTeacher(int newTeacherId)

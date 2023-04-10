@@ -171,5 +171,10 @@ namespace ClassLibrary.Controllers
             }
             return students;
         }
+
+        public bool CreateClass(Class currentClass)
+        {
+            return classDbHelper.CreateClass(classMapper.MapClassToClassDTO(currentClass));
+        }
     }
 }

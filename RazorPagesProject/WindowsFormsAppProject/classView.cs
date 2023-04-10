@@ -23,8 +23,25 @@ namespace WindowsFormsAppProject
             this.idClass = idClass;
             statisticsManager = new StatisticsManager();
             InitializeComponent();
-            DisplayData();
-            GenerateDropdowns();
+            if (idClass != 0)
+            {
+                DisplayData();
+                GenerateDropdowns();
+            }
+            else
+            {
+                changeClass_btn.Visible = false;
+                saveChanges_btn.Visible = false;
+                changeClass_comboBox.Visible = false;
+                changeTeacher_comboBox.Visible = false;
+                newClass_lbl.Visible = false;
+                teacherClass_lbl.Visible = false;
+                delete_btn.Visible = false;
+
+
+                MessageBox.Show("This class is for null referance only!");
+                //this.Close();
+            }
         }
         private void GenerateDropdowns()
         {
@@ -102,6 +119,11 @@ namespace WindowsFormsAppProject
 
             }
             catch (Exception) { }
+        }
+
+        private void delete_btn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

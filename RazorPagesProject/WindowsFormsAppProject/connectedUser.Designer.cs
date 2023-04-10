@@ -30,9 +30,13 @@
         {
             tabControlManager = new TabControl();
             manageUsers_tab = new TabPage();
+            teachers_lbl = new Label();
+            students_lbl = new Label();
             listBoxTeachers = new ListBox();
             listBoxStudents = new ListBox();
             manageClasses_tab = new TabPage();
+            search_lbl = new Label();
+            search_txt = new TextBox();
             addClass_btn = new Button();
             listBoxClasses = new ListBox();
             manageFeedbacks_tab = new TabPage();
@@ -57,6 +61,8 @@
             // 
             // manageUsers_tab
             // 
+            manageUsers_tab.Controls.Add(teachers_lbl);
+            manageUsers_tab.Controls.Add(students_lbl);
             manageUsers_tab.Controls.Add(listBoxTeachers);
             manageUsers_tab.Controls.Add(listBoxStudents);
             manageUsers_tab.Location = new Point(4, 24);
@@ -67,15 +73,36 @@
             manageUsers_tab.Text = "Manage Users";
             manageUsers_tab.UseVisualStyleBackColor = true;
             // 
+            // teachers_lbl
+            // 
+            teachers_lbl.AutoSize = true;
+            teachers_lbl.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
+            teachers_lbl.Location = new Point(323, 242);
+            teachers_lbl.Name = "teachers_lbl";
+            teachers_lbl.Size = new Size(94, 28);
+            teachers_lbl.TabIndex = 3;
+            teachers_lbl.Text = "Teachers";
+            // 
+            // students_lbl
+            // 
+            students_lbl.AutoSize = true;
+            students_lbl.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
+            students_lbl.Location = new Point(323, 13);
+            students_lbl.Name = "students_lbl";
+            students_lbl.Size = new Size(95, 28);
+            students_lbl.TabIndex = 2;
+            students_lbl.Text = "Students";
+            // 
             // listBoxTeachers
             // 
             listBoxTeachers.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             listBoxTeachers.FormattingEnabled = true;
             listBoxTeachers.ItemHeight = 28;
-            listBoxTeachers.Location = new Point(6, 232);
+            listBoxTeachers.Location = new Point(5, 273);
             listBoxTeachers.Name = "listBoxTeachers";
-            listBoxTeachers.Size = new Size(753, 228);
+            listBoxTeachers.Size = new Size(753, 172);
             listBoxTeachers.TabIndex = 1;
+            listBoxTeachers.MouseClick += listBoxTeachers_MouseClick;
             listBoxTeachers.MouseDoubleClick += listBoxTeachers_MouseDoubleClick;
             // 
             // listBoxStudents
@@ -83,14 +110,17 @@
             listBoxStudents.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             listBoxStudents.FormattingEnabled = true;
             listBoxStudents.ItemHeight = 28;
-            listBoxStudents.Location = new Point(6, 6);
+            listBoxStudents.Location = new Point(6, 44);
             listBoxStudents.Name = "listBoxStudents";
-            listBoxStudents.Size = new Size(753, 200);
+            listBoxStudents.Size = new Size(753, 172);
             listBoxStudents.TabIndex = 0;
+            listBoxStudents.MouseClick += listBoxStudents_MouseClick;
             listBoxStudents.MouseDoubleClick += listBoxStudents_MouseDoubleClick;
             // 
             // manageClasses_tab
             // 
+            manageClasses_tab.Controls.Add(search_lbl);
+            manageClasses_tab.Controls.Add(search_txt);
             manageClasses_tab.Controls.Add(addClass_btn);
             manageClasses_tab.Controls.Add(listBoxClasses);
             manageClasses_tab.Location = new Point(4, 24);
@@ -100,12 +130,31 @@
             manageClasses_tab.Text = "Manage Classes";
             manageClasses_tab.UseVisualStyleBackColor = true;
             // 
+            // search_lbl
+            // 
+            search_lbl.AutoSize = true;
+            search_lbl.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            search_lbl.Location = new Point(3, 16);
+            search_lbl.Name = "search_lbl";
+            search_lbl.Size = new Size(195, 28);
+            search_lbl.TabIndex = 4;
+            search_lbl.Text = "Search by class name";
+            // 
+            // search_txt
+            // 
+            search_txt.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            search_txt.Location = new Point(3, 47);
+            search_txt.Name = "search_txt";
+            search_txt.Size = new Size(758, 34);
+            search_txt.TabIndex = 2;
+            search_txt.TextChanged += search_txt_TextChanged;
+            // 
             // addClass_btn
             // 
             addClass_btn.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
-            addClass_btn.Location = new Point(429, 394);
+            addClass_btn.Location = new Point(3, 404);
             addClass_btn.Name = "addClass_btn";
-            addClass_btn.Size = new Size(332, 61);
+            addClass_btn.Size = new Size(327, 57);
             addClass_btn.TabIndex = 1;
             addClass_btn.Text = "Add a Class";
             addClass_btn.UseVisualStyleBackColor = true;
@@ -116,9 +165,9 @@
             listBoxClasses.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             listBoxClasses.FormattingEnabled = true;
             listBoxClasses.ItemHeight = 28;
-            listBoxClasses.Location = new Point(3, 3);
+            listBoxClasses.Location = new Point(3, 87);
             listBoxClasses.Name = "listBoxClasses";
-            listBoxClasses.Size = new Size(420, 452);
+            listBoxClasses.Size = new Size(758, 312);
             listBoxClasses.TabIndex = 0;
             listBoxClasses.MouseDoubleClick += listBoxClasses_MouseDoubleClick;
             // 
@@ -155,7 +204,9 @@
             Text = "connectedUser";
             tabControlManager.ResumeLayout(false);
             manageUsers_tab.ResumeLayout(false);
+            manageUsers_tab.PerformLayout();
             manageClasses_tab.ResumeLayout(false);
+            manageClasses_tab.PerformLayout();
             manageFeedbacks_tab.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -171,5 +222,9 @@
         private TabPage manageClasses_tab;
         private ListBox listBoxClasses;
         private Button addClass_btn;
+        private Label teachers_lbl;
+        private Label students_lbl;
+        private Label search_lbl;
+        private TextBox search_txt;
     }
 }
