@@ -5,6 +5,7 @@ using DataBaseClassLibrary.DTOs.DTOEnums;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -82,6 +83,36 @@ namespace DataBaseClassLibrary.DatabaseHelpers
 
             }
         }
+        public int AddUserToDB(UserDTO userDTO)
+        {
+            using (SqlConnection connection =
+                   new SqlConnection("Server=localhost;Database=individual_project_semester2;Trusted_Connection=True;"))
+            {
+                connection.Open();
+                string query = $"INSERT INTO Users (first_name_user, last_name_user, role_user, class_user, email_user, phonenumber_user) VALUES ('{userDTO.Firstname}', '{userDTO.Lastname}', '{userDTO.Role}', '{userDTO.Class}', '{userDTO.Email}', '{userDTO.PhoneNumber}'); SELECT SCOPE_IDENTITY() as new_id;";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    try
+                    {
+                        //command.ExecuteNonQuery();
+                        int newId = Convert.ToInt32(command.ExecuteScalar());
+                        Console.WriteLine("-----------------------------------");
+                        Console.WriteLine("Records Inserted in DB Successfully");
+                        return newId;
+                    }
+                    catch (SqlException e)
+                    {
+                        Console.WriteLine("Error Generated. Details: " + e.ToString());
+                        return 0;
+                    }
+                    finally
+                    {
+                        connection.Close();
+                    }
+                }
+            }
+        }
         public bool UpdateUserToDB(UserDTO user)
         {
             using (SqlConnection connection =
@@ -142,7 +173,7 @@ namespace DataBaseClassLibrary.DatabaseHelpers
                             {
                                 command.ExecuteNonQuery();
                                 Console.WriteLine("-----------------------------------");
-                                Console.WriteLine("Records Inserted in DB Successfully");
+                                Console.WriteLine("Deleted user from DB Successfully");
                                 return true;
                             }
                             catch (SqlException xException)

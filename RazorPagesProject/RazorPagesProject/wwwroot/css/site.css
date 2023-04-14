@@ -236,14 +236,13 @@ main.pb-3 {
 }
 input.contact, select, textarea {
     width: 100%;
-    padding: 13px;
     border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    margin-top: 6px;
-    margin-bottom: 16px;
-    resize:none;
     font-size: xx-large;
+    padding: 13px;
+}
+
+form.sortForm {
+    padding-right: 20px;
 }
 
 input[type=submit] {
@@ -280,8 +279,8 @@ p#support_text {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 /*CONTACT*/
-/*TEACHERS*/
-table.users_table {
+    /*TEACHERS*/
+    table .users_table {
     border: 1px solid #e7ecf1;
     width:-webkit-fill-available;
     clear: both;
@@ -294,7 +293,7 @@ table.users_table {
 
 .users_table th, .users_table td {
     width: 25%;
-    text-align: center;
+    text-align: unset;
     border-bottom: 1px;
     padding: 10px;
     border-style: inset;
@@ -308,7 +307,7 @@ a.no-decoration {
     color:#337ab7;
 }
 tr.border {
-    border-bottom: 5px;
+    border-bottom: 0px;
     border-style: solid;
     border-color: black;
     border-top: 0px;
@@ -406,8 +405,13 @@ div#shrink {
   color: white;
 }
 
+label.sortBylbl {
+    margin-right: 15px;
+    padding-top: 13px;
+}
 .topnav .search-container {
-  float: right;
+    float: right;
+    display: flex;
 }
 
 .topnav input[type=text] {
@@ -582,7 +586,7 @@ button[name="Button4"] {
 
     .plus-icon:hover .dropdown {
         /*background-color: rgba(0, 0, 0, 0.05);*/
-        display: grid;
+        display: flex;
     }
 
     .plus-icon:before {

@@ -20,7 +20,7 @@ namespace ClassLibrary.Mapper
         }
         internal GradeDTO MapGradeToGradeDTO(Grade grade)
         {
-            GradeDTO gradeDTO = new GradeDTO(grade.IdGrade,grade.IdSubjectGrades,Enum.Parse<DataBaseClassLibrary.DTOs.DTOEnums.GradeEnum>(grade.GradeEnum.ToString()));
+            GradeDTO gradeDTO = new GradeDTO(grade.IdSubjectGrades,Enum.Parse<DataBaseClassLibrary.DTOs.DTOEnums.GradeEnum>(grade.GradeEnum.ToString()));
             return gradeDTO;
         }
         internal SubjectGrades MapSubjectGradesDTOtoSubjectGrades(SubjectGradesDTO subjectGradesDTO)

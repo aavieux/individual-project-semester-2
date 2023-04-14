@@ -16,10 +16,10 @@ namespace WindowsFormsAppProject
     public partial class feedbackView : Form
     {
         private int idTicket;
-        private FeedbackManager feedbackManager;
+        private StatisticsManager statisticsManager;
         public feedbackView(int idTicket)
         {
-            feedbackManager = new FeedbackManager();
+            statisticsManager = new StatisticsManager();
             this.idTicket = idTicket;
             InitializeComponent();
             LockFields();
@@ -56,7 +56,7 @@ namespace WindowsFormsAppProject
             changeStatus_btn.Visible = true;
             changeStatus_comboBox.Visible = false;
 
-            Feedback feedback = feedbackManager.GetFeedbackById(idTicket);
+            Feedback feedback = statisticsManager.GetFeedbackById(idTicket);
 
             firstName_txt.Text = feedback.FirstNameContact;
             lastName_txt.Text = feedback.LastNameContact;
@@ -104,7 +104,7 @@ namespace WindowsFormsAppProject
                 subject_richTextBox.Text,
                 Enum.Parse<Status>(changeStatus_comboBox.SelectedItem.ToString()));
 
-                if (feedbackManager.UpdateFeedback(feedback) == false)
+                if (feedback.Update() == false)
                 {
                     DisplayError();
                 }

@@ -18,6 +18,7 @@ namespace RazorPagesProject.Pages
         private StatisticsManager statisticsManager;
         public StudentsModel()
         {
+
             this.statisticsManager = new StatisticsManager();
         }
         public void OnGet()

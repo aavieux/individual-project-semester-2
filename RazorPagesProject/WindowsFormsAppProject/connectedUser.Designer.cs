@@ -30,6 +30,7 @@
         {
             tabControlManager = new TabControl();
             manageUsers_tab = new TabPage();
+            addUser_btn = new Button();
             teachers_lbl = new Label();
             students_lbl = new Label();
             listBoxTeachers = new ListBox();
@@ -40,7 +41,15 @@
             addClass_btn = new Button();
             listBoxClasses = new ListBox();
             manageFeedbacks_tab = new TabPage();
-            listBoxFeedbacks = new ListBox();
+            label3 = new Label();
+            label2 = new Label();
+            listBoxFeedbacksClosed = new ListBox();
+            status3_lbl = new Label();
+            listBoxFeedbacksInProgress = new ListBox();
+            status2_lbl = new Label();
+            label1 = new Label();
+            status1_lbl = new Label();
+            listBoxFeedbacksOpen = new ListBox();
             tabControlManager.SuspendLayout();
             manageUsers_tab.SuspendLayout();
             manageClasses_tab.SuspendLayout();
@@ -61,6 +70,7 @@
             // 
             // manageUsers_tab
             // 
+            manageUsers_tab.Controls.Add(addUser_btn);
             manageUsers_tab.Controls.Add(teachers_lbl);
             manageUsers_tab.Controls.Add(students_lbl);
             manageUsers_tab.Controls.Add(listBoxTeachers);
@@ -73,11 +83,22 @@
             manageUsers_tab.Text = "Manage Users";
             manageUsers_tab.UseVisualStyleBackColor = true;
             // 
+            // addUser_btn
+            // 
+            addUser_btn.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            addUser_btn.Location = new Point(6, 388);
+            addUser_btn.Name = "addUser_btn";
+            addUser_btn.Size = new Size(246, 71);
+            addUser_btn.TabIndex = 4;
+            addUser_btn.Text = "Add User";
+            addUser_btn.UseVisualStyleBackColor = true;
+            addUser_btn.Click += addUser_btn_Click;
+            // 
             // teachers_lbl
             // 
             teachers_lbl.AutoSize = true;
             teachers_lbl.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
-            teachers_lbl.Location = new Point(323, 242);
+            teachers_lbl.Location = new Point(324, 207);
             teachers_lbl.Name = "teachers_lbl";
             teachers_lbl.Size = new Size(94, 28);
             teachers_lbl.TabIndex = 3;
@@ -98,9 +119,9 @@
             listBoxTeachers.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             listBoxTeachers.FormattingEnabled = true;
             listBoxTeachers.ItemHeight = 28;
-            listBoxTeachers.Location = new Point(5, 273);
+            listBoxTeachers.Location = new Point(6, 238);
             listBoxTeachers.Name = "listBoxTeachers";
-            listBoxTeachers.Size = new Size(753, 172);
+            listBoxTeachers.Size = new Size(753, 144);
             listBoxTeachers.TabIndex = 1;
             listBoxTeachers.MouseClick += listBoxTeachers_MouseClick;
             listBoxTeachers.MouseDoubleClick += listBoxTeachers_MouseDoubleClick;
@@ -112,7 +133,7 @@
             listBoxStudents.ItemHeight = 28;
             listBoxStudents.Location = new Point(6, 44);
             listBoxStudents.Name = "listBoxStudents";
-            listBoxStudents.Size = new Size(753, 172);
+            listBoxStudents.Size = new Size(753, 144);
             listBoxStudents.TabIndex = 0;
             listBoxStudents.MouseClick += listBoxStudents_MouseClick;
             listBoxStudents.MouseDoubleClick += listBoxStudents_MouseDoubleClick;
@@ -173,7 +194,15 @@
             // 
             // manageFeedbacks_tab
             // 
-            manageFeedbacks_tab.Controls.Add(listBoxFeedbacks);
+            manageFeedbacks_tab.Controls.Add(label3);
+            manageFeedbacks_tab.Controls.Add(label2);
+            manageFeedbacks_tab.Controls.Add(listBoxFeedbacksClosed);
+            manageFeedbacks_tab.Controls.Add(status3_lbl);
+            manageFeedbacks_tab.Controls.Add(listBoxFeedbacksInProgress);
+            manageFeedbacks_tab.Controls.Add(status2_lbl);
+            manageFeedbacks_tab.Controls.Add(label1);
+            manageFeedbacks_tab.Controls.Add(status1_lbl);
+            manageFeedbacks_tab.Controls.Add(listBoxFeedbacksOpen);
             manageFeedbacks_tab.Location = new Point(4, 24);
             manageFeedbacks_tab.Name = "manageFeedbacks_tab";
             manageFeedbacks_tab.Size = new Size(764, 464);
@@ -181,16 +210,110 @@
             manageFeedbacks_tab.Text = "Feedback Tickets";
             manageFeedbacks_tab.UseVisualStyleBackColor = true;
             // 
-            // listBoxFeedbacks
+            // label3
             // 
-            listBoxFeedbacks.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            listBoxFeedbacks.FormattingEnabled = true;
-            listBoxFeedbacks.ItemHeight = 28;
-            listBoxFeedbacks.Location = new Point(3, 3);
-            listBoxFeedbacks.Name = "listBoxFeedbacks";
-            listBoxFeedbacks.Size = new Size(758, 452);
-            listBoxFeedbacks.TabIndex = 0;
-            listBoxFeedbacks.MouseDoubleClick += listBoxFeedbacks_MouseDoubleClick;
+            label3.AutoSize = true;
+            label3.BackColor = Color.Maroon;
+            label3.BorderStyle = BorderStyle.FixedSingle;
+            label3.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.ForeColor = SystemColors.ActiveCaption;
+            label3.Location = new Point(148, 316);
+            label3.Name = "label3";
+            label3.Size = new Size(23, 21);
+            label3.TabIndex = 8;
+            label3.Text = "   ";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.BackColor = Color.Gold;
+            label2.BorderStyle = BorderStyle.FixedSingle;
+            label2.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.ForeColor = SystemColors.ActiveCaption;
+            label2.Location = new Point(191, 166);
+            label2.Name = "label2";
+            label2.Size = new Size(23, 21);
+            label2.TabIndex = 7;
+            label2.Text = "   ";
+            // 
+            // listBoxFeedbacksClosed
+            // 
+            listBoxFeedbacksClosed.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            listBoxFeedbacksClosed.FormattingEnabled = true;
+            listBoxFeedbacksClosed.ItemHeight = 28;
+            listBoxFeedbacksClosed.Location = new Point(3, 345);
+            listBoxFeedbacksClosed.Name = "listBoxFeedbacksClosed";
+            listBoxFeedbacksClosed.Size = new Size(758, 116);
+            listBoxFeedbacksClosed.TabIndex = 6;
+            listBoxFeedbacksClosed.MouseClick += listBoxFeedbacksClosed_MouseClick;
+            listBoxFeedbacksClosed.MouseDoubleClick += listBoxFeedbacksClosed_MouseDoubleClick;
+            // 
+            // status3_lbl
+            // 
+            status3_lbl.AutoSize = true;
+            status3_lbl.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
+            status3_lbl.Location = new Point(3, 309);
+            status3_lbl.Name = "status3_lbl";
+            status3_lbl.Size = new Size(139, 28);
+            status3_lbl.TabIndex = 5;
+            status3_lbl.Text = "Status Closed";
+            // 
+            // listBoxFeedbacksInProgress
+            // 
+            listBoxFeedbacksInProgress.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            listBoxFeedbacksInProgress.FormattingEnabled = true;
+            listBoxFeedbacksInProgress.ItemHeight = 28;
+            listBoxFeedbacksInProgress.Location = new Point(3, 190);
+            listBoxFeedbacksInProgress.Name = "listBoxFeedbacksInProgress";
+            listBoxFeedbacksInProgress.Size = new Size(758, 116);
+            listBoxFeedbacksInProgress.TabIndex = 4;
+            listBoxFeedbacksInProgress.MouseClick += listBoxFeedbacksInProgress_MouseClick;
+            listBoxFeedbacksInProgress.MouseDoubleClick += listBoxFeedbacksInProgress_MouseDoubleClick;
+            // 
+            // status2_lbl
+            // 
+            status2_lbl.AutoSize = true;
+            status2_lbl.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
+            status2_lbl.Location = new Point(3, 159);
+            status2_lbl.Name = "status2_lbl";
+            status2_lbl.Size = new Size(182, 28);
+            status2_lbl.TabIndex = 3;
+            status2_lbl.Text = "Status In Progress";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.Green;
+            label1.BorderStyle = BorderStyle.FixedSingle;
+            label1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.ForeColor = SystemColors.ActiveCaption;
+            label1.Location = new Point(136, 16);
+            label1.Name = "label1";
+            label1.Size = new Size(23, 21);
+            label1.TabIndex = 2;
+            label1.Text = "   ";
+            // 
+            // status1_lbl
+            // 
+            status1_lbl.AutoSize = true;
+            status1_lbl.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
+            status1_lbl.Location = new Point(3, 9);
+            status1_lbl.Name = "status1_lbl";
+            status1_lbl.Size = new Size(127, 28);
+            status1_lbl.TabIndex = 1;
+            status1_lbl.Text = "Status Open";
+            // 
+            // listBoxFeedbacksOpen
+            // 
+            listBoxFeedbacksOpen.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            listBoxFeedbacksOpen.FormattingEnabled = true;
+            listBoxFeedbacksOpen.ItemHeight = 28;
+            listBoxFeedbacksOpen.Location = new Point(3, 40);
+            listBoxFeedbacksOpen.Name = "listBoxFeedbacksOpen";
+            listBoxFeedbacksOpen.Size = new Size(758, 116);
+            listBoxFeedbacksOpen.TabIndex = 0;
+            listBoxFeedbacksOpen.MouseClick += listBoxFeedbacksOpen_MouseClick;
+            listBoxFeedbacksOpen.MouseDoubleClick += listBoxFeedbacks_MouseDoubleClick;
             // 
             // connectedUser
             // 
@@ -208,6 +331,7 @@
             manageClasses_tab.ResumeLayout(false);
             manageClasses_tab.PerformLayout();
             manageFeedbacks_tab.ResumeLayout(false);
+            manageFeedbacks_tab.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -218,7 +342,7 @@
         private ListBox listBoxStudents;
         private ListBox listBoxTeachers;
         private TabPage manageFeedbacks_tab;
-        private ListBox listBoxFeedbacks;
+        private ListBox listBoxFeedbacksOpen;
         private TabPage manageClasses_tab;
         private ListBox listBoxClasses;
         private Button addClass_btn;
@@ -226,5 +350,14 @@
         private Label students_lbl;
         private Label search_lbl;
         private TextBox search_txt;
+        private ListBox listBoxFeedbacksClosed;
+        private Label status3_lbl;
+        private ListBox listBoxFeedbacksInProgress;
+        private Label status2_lbl;
+        private Label label1;
+        private Label status1_lbl;
+        private Label label3;
+        private Label label2;
+        private Button addUser_btn;
     }
 }

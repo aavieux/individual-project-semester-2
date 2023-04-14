@@ -30,11 +30,10 @@ namespace ClassLibrary.Models
 		public string PhoneNumber { get { return _phonenumber; } }
 		public int Userid { get { return _idUser; } }
 
-		//UserManager userManager;
-
-		public User(string FirstName, string LastName, Role Role, int? Class, string Email, string PhoneNumber, int UserID)
+		public User(string FirstName, string LastName, Role Role, int? Class, string Email, string PhoneNumber, int UserID) 
 		{
-			this._firstname = FirstName;
+            // all others load
+            this._firstname = FirstName;
 			this._lastname = LastName;
 			this._role = Role;
 			this._class = Class;
@@ -42,27 +41,37 @@ namespace ClassLibrary.Models
 			this._phonenumber = PhoneNumber;
 			this._idUser = UserID;
         }
-
-        public User(int userID, string firstName, string lastName, string email)
+        public User(string FirstName, string LastName, Role Role, int? Class, string Email, string PhoneNumber)
         {
+            // all others write
+            this._firstname = FirstName;
+            this._lastname = LastName;
+            this._role = Role;
+            this._class = Class;
+            this._email = Email;
+            this._phonenumber = PhoneNumber;
+        }
+
+        public User(int userID, string firstName, string lastName, string email) 
+        {
+            // manager
             this._firstname = firstName;
             this._lastname = lastName;
             this._email = email;
             this._idUser = userID;
         }
-		
-		protected void UpdateRole(Role role) 
-		{ 
-			this._role = role; 
-
-		}
+        //private void SetId(int newId)
+        //{
+        //    this._idUser = newId;
+        //}
         public void PromoteRole()
         {
             if (this.Role != Role.DIRECTOR)
             {
                 Role newRole = Role;
                 newRole++;
-                UpdateRole(newRole);
+                this._role = newRole;
+                Update();
             }
             else
             {
@@ -74,10 +83,30 @@ namespace ClassLibrary.Models
             if (this._class == 0)
             {
                 this._class = classId;
+                Update();
                 return true;
             }
             return false;
 
+        }
+        public bool Create()
+        {
+            if (this._idUser == 0) // check if the user is loaded or now being created
+            {
+                User user = new User(this._firstname, this._lastname, this._role, this._class, this._email, this._phonenumber, this._idUser);
+                this._idUser = dbHelper.AddUserToDB(mapper.MapUserToUserDTO(user));
+                if (this._idUser != 0)
+                {
+                    return true;
+                }
+                return false;
+            }
+            else
+            {
+                return false;
+            }
+            
+            
         }
         public bool Update()
         {
@@ -99,6 +128,7 @@ namespace ClassLibrary.Models
         public void ChangeClass(int newClassId)
         {
             this._class = newClassId;
+            Update();
 			//add logic
         }
         public string GetFullName()

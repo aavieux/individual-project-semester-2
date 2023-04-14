@@ -13,7 +13,7 @@
 	<table>
 		<thead>
 			<tr>
-				<th>Subject Number</th>
+				<th>SubjectGrades Number</th>
 				<th>Subject</th>
 				<th>First Semester</th>
 				<th>Second Semester</th>
@@ -21,49 +21,52 @@
 			</tr>
 		</thead>
 		<tbody>
-			@foreach (SubjectGrades subjectGrades in Model.currentStudent.GetGradeBook())
+			
+			@if (Model.currentStudent.GetGradeBook().Count!= 0)
 			{
-				int i = 1;
-				<tr>
-					<td class="width70px">@i</td>
-					<td>@subjectGrades.Subject.ToString()</td>
-					<td>
-						@try
-						{
-							if (Model.GetGradesFromSubjectGrades(subjectGrades) != null)
+				foreach (SubjectGrades subjectGrades in Model.currentStudent.GetGradeBook())
+				{
+
+					<tr>
+						<td class="width70px">@subjectGrades.Id</td>
+						<td>@subjectGrades.Subject.ToString()</td>
+						<td>
+							@try
 							{
-								if (Model.GetGradesFromSubjectGrades(subjectGrades).Count != 0)
+								if (Model.GetGradesFromSubjectGrades(subjectGrades) != null)
 								{
-									@foreach (Grade grade in Model.GetGradesFromSubjectGrades(subjectGrades))
+									if (Model.GetGradesFromSubjectGrades(subjectGrades).Count != 0)
 									{
-										<form class="grade-value grade-details" method="post">
+										@foreach (Grade grade in Model.GetGradesFromSubjectGrades(subjectGrades))
+										{
+											<form class="grade-value grade-details" method="post">
 
-											<input type="hidden" name="SubjectGradesId" value="@subjectGrades.Id" />
-											<input type="hidden" name="UserId" value="@Model.currentStudent.Userid" />
+												<input type="hidden" name="SubjectGradesId" value="@subjectGrades.Id" />
+												<input type="hidden" name="UserId" value="@Model.currentStudent.Userid" />
 
-											@grade.GradeEnum.ToString()
-											<button class="x-icon" asp-page-handler="DeleteGrade" type="submit" name="GradeId" value="@grade.IdGrade">
-												<p class="x-text">
-													x
-												</p>
-											</button>
-										</form>
+												@grade.GradeEnum.ToString()
+												<button class="x-icon" asp-page-handler="DeleteGrade" type="submit" name="GradeId" value="@grade.IdGrade">
+													<p class="x-text">
+														x
+													</p>
+												</button>
+											</form>
+										}
 									}
-								}
-								
-							}
-							else
-							{
-								<p>No Grades Here!</p>
-							}
-							
-						}
-						catch (Exception)
-						{
-							<p>Something went wrong!</p>
-						}
 
-@*						<div class="plus-icon-container">*@
+								}
+								else
+								{
+									<p>No Grades Here!</p>
+								}
+
+							}
+							catch (Exception)
+							{
+								<p>Something went wrong!</p>
+							}
+
+							@*						<div class="plus-icon-container">*@
 							<span class="plus-icon">
 								+
 								<form class="dropdown" method="post">
@@ -71,7 +74,7 @@
 									<input type="hidden" name="SubjectGradesId" value="@subjectGrades.Id" />
 									<input type="hidden" name="UserId" value="@Model.currentStudent.Userid" />
 
-									<button class="grade-value grade-details" asp-page-handler="AddGrade" type="submit" value="Submit" name="Button1" >
+									<button class="grade-value grade-details" asp-page-handler="AddGrade" type="submit" value="Submit" name="Button1">
 										UNDEFINED
 									</button>
 
@@ -88,18 +91,23 @@
 									</button>
 								</form>
 							</span>
-							
-@*						</div>*@
-					</td>
-					<td>
-						@*<span class="grade-value">(SCND SEM GRADE)</span>*@
+
+							@*						</div>*@
+						</td>
+						<td>
+							@*<span class="grade-value">(SCND SEM GRADE)</span>*@
 							<p>No Grades Here!</p>
-						<span class="plus-icon">+</span>
-					</td>
-					<td>2023</td>
-				</tr>
-				i++;
+							<span class="plus-icon">+</span>
+						</td>
+						<td>2023</td>
+					</tr>
+				}
 			}
+			else
+			{
+				<td>No SubjectGrades for this student!</td>
+			}
+			
 		</tbody>
 	</table>
 	</div>

@@ -21,6 +21,9 @@ namespace ClassLibrary.Controllers
         private GradeDatabaseHelper gradeDbHelper;
         private GradeMapper gradeMapper;
 
+        private FeedbackDatabaseHelper feedbackDbHelper;
+        private FeedbackMapper feedbackMapper;
+
         public StatisticsManager()
         {
             this.classDbHelper = new ClassDatabaseHelper();
@@ -31,6 +34,9 @@ namespace ClassLibrary.Controllers
 
             this.gradeDbHelper = new GradeDatabaseHelper();
             this.gradeMapper = new GradeMapper();
+
+            this.feedbackDbHelper = new FeedbackDatabaseHelper();
+            this.feedbackMapper = new FeedbackMapper();
         }
 
         public List<Class> GetAllClasses()
@@ -172,9 +178,23 @@ namespace ClassLibrary.Controllers
             return students;
         }
 
-        public bool CreateClass(Class currentClass)
+        public List<Feedback> GetAllFeedbacks()
         {
-            return classDbHelper.CreateClass(classMapper.MapClassToClassDTO(currentClass));
+            List<Feedback> feedbacks = new List<Feedback>();
+            foreach (FeedbackDTO feedbackDTO in feedbackDbHelper.GetAllFeedbacksFromDB())
+            {
+                feedbacks.Add(feedbackMapper.MapFeedbackDTOtoFeedback(feedbackDTO));
+            }
+            return feedbacks;
+        }
+        public Feedback GetFeedbackById(int feedbackId)
+        {
+            var result = feedbackDbHelper.GetFeedbackByIdFromDB(feedbackId);
+            if (result != null)
+            {
+                return feedbackMapper.MapFeedbackDTOtoFeedback(result);
+            }
+            return null;
         }
     }
 }

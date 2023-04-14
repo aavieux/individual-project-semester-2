@@ -11,8 +11,10 @@ namespace DataBaseClassLibrary.DTOs
         private readonly string password;
 
         public string Password { get { return this.password; } }
+
         public ManagerDTO(int UserID, string FirstName, string LastName, string Email, string Password) : base(UserID, FirstName, LastName, Email)
         {
+            //to load
             this.password = Password;
         }
     }

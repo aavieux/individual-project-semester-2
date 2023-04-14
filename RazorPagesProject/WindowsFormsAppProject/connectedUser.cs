@@ -15,28 +15,36 @@ namespace WindowsFormsAppProject
 {
     public partial class connectedUser : Form
     {
-
-        FeedbackManager feedbackManager;
         StatisticsManager statisticsManager;
-
-        Manager currentManager;
         public connectedUser(Manager manager)
         {
-
-            feedbackManager = new FeedbackManager();
             statisticsManager = new StatisticsManager();
 
-            currentManager = manager;
             InitializeComponent();
             DisplayUserData();
             this.Text = $"Connected as {manager.GetFullName()}";
         }
         private void DisplayFeedbackData()
         {
-            listBoxFeedbacks.Items.Clear();
-            foreach (Feedback feedback in feedbackManager.GetAllFeedbacks())
+            listBoxFeedbacksOpen.Items.Clear();
+            listBoxFeedbacksInProgress.Items.Clear();
+            listBoxFeedbacksClosed.Items.Clear();
+
+            foreach (Feedback feedback in statisticsManager.GetAllFeedbacks())
             {
-                listBoxFeedbacks.Items.Add($"{feedback.IdTicket} - {feedback.FirstNameContact} {feedback.LastNameContact}, Subject: {feedback.SubjectContact}");
+                if (feedback.StatusContact == ClassLibrary.Models.Enums.Status.OPEN)
+                {
+                    listBoxFeedbacksOpen.Items.Add($"{feedback.IdTicket} - {feedback.FirstNameContact} {feedback.LastNameContact}, Subject: {feedback.SubjectContact}");
+                }
+                else if (feedback.StatusContact == ClassLibrary.Models.Enums.Status.IN_PROGRESS)
+                {
+                    listBoxFeedbacksInProgress.Items.Add($"{feedback.IdTicket} - {feedback.FirstNameContact} {feedback.LastNameContact}, Subject: {feedback.SubjectContact}");
+                }
+                else if (feedback.StatusContact == ClassLibrary.Models.Enums.Status.CLOSED)
+                {
+                    listBoxFeedbacksClosed.Items.Add($"{feedback.IdTicket} - {feedback.FirstNameContact} {feedback.LastNameContact}, Subject: {feedback.SubjectContact}");
+                }
+
             }
         }
         private void DisplayUserData()
@@ -98,17 +106,48 @@ namespace WindowsFormsAppProject
             }
         }
 
-        private void listBoxFeedbacks_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void listBoxFeedbacks_MouseDoubleClick(object sender, MouseEventArgs e) // open
         {
             try
             {
-                int idTicket = int.Parse(listBoxFeedbacks.SelectedItem.ToString().Substring(0, listBoxFeedbacks.SelectedItem.ToString().IndexOf(" ")));
+                int idTicket = int.Parse(listBoxFeedbacksOpen.SelectedItem.ToString().Substring(0, listBoxFeedbacksOpen.SelectedItem.ToString().IndexOf(" ")));
 
                 this.Hide();
                 feedbackView feedbackView = new feedbackView(idTicket);
                 feedbackView.ShowDialog();
                 DisplayFeedbackData();
-                listBoxFeedbacks.SelectedIndex = -1;
+                listBoxFeedbacksOpen.SelectedIndex = -1;
+                this.Show();
+            }
+            catch (Exception) { }
+        }
+        private void listBoxFeedbacksInProgress_MouseDoubleClick(object sender, MouseEventArgs e) // in progress
+        {
+            try
+            {
+                int idTicket = int.Parse(listBoxFeedbacksInProgress.SelectedItem.ToString().Substring(0, listBoxFeedbacksInProgress.SelectedItem.ToString().IndexOf(" ")));
+
+                this.Hide();
+                feedbackView feedbackView = new feedbackView(idTicket);
+                feedbackView.ShowDialog();
+                DisplayFeedbackData();
+                listBoxFeedbacksInProgress.SelectedIndex = -1;
+                this.Show();
+            }
+            catch (Exception) { }
+        }
+
+        private void listBoxFeedbacksClosed_MouseDoubleClick(object sender, MouseEventArgs e) // closed
+        {
+            try
+            {
+                int idTicket = int.Parse(listBoxFeedbacksClosed.SelectedItem.ToString().Substring(0, listBoxFeedbacksClosed.SelectedItem.ToString().IndexOf(" ")));
+
+                this.Hide();
+                feedbackView feedbackView = new feedbackView(idTicket);
+                feedbackView.ShowDialog();
+                DisplayFeedbackData();
+                listBoxFeedbacksClosed.SelectedIndex = -1;
                 this.Show();
             }
             catch (Exception) { }
@@ -192,6 +231,33 @@ namespace WindowsFormsAppProject
                     listBoxClasses.Items.Add($"Class Name: {@class.Name}");
                 }
             }
+        }
+
+        private void listBoxFeedbacksOpen_MouseClick(object sender, MouseEventArgs e)
+        {
+            listBoxFeedbacksInProgress.SelectedIndex = -1;
+            listBoxFeedbacksClosed.SelectedIndex = -1;
+        }
+
+        private void listBoxFeedbacksInProgress_MouseClick(object sender, MouseEventArgs e)
+        {
+            listBoxFeedbacksOpen.SelectedIndex = -1;
+            listBoxFeedbacksClosed.SelectedIndex = -1;
+        }
+
+        private void listBoxFeedbacksClosed_MouseClick(object sender, MouseEventArgs e)
+        {
+            listBoxFeedbacksOpen.SelectedIndex = -1;
+            listBoxFeedbacksInProgress.SelectedIndex = -1;
+        }
+
+        private void addUser_btn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            addUser addUser = new addUser();
+            addUser.ShowDialog();
+            DisplayUserData();
+            this.Show();
         }
     }
 }

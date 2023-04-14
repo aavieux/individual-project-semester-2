@@ -1,4 +1,6 @@
-﻿using ClassLibrary.Models.Enums;
+﻿using ClassLibrary.Mapper;
+using ClassLibrary.Models.Enums;
+using DataBaseClassLibrary.DatabaseHelpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +11,9 @@ namespace ClassLibrary.Models
 {
     public  class Feedback
     {
+        private FeedbackDatabaseHelper databaseHelper = new FeedbackDatabaseHelper();
+        private FeedbackMapper mapper = new FeedbackMapper();
+
         private int id_ticket;
         private string first_name_contact;
         private string last_name_contact;
@@ -28,7 +33,7 @@ namespace ClassLibrary.Models
 
         public Feedback(string first_name_contact,string last_name_contact,string school_contact,string email_contact,string subject_contact, Status status_contact)
         {
-            //this.id_ticket = id_ticket;
+            //to create
             this.first_name_contact = first_name_contact;
             this.last_name_contact =last_name_contact;
             this.school_contact = school_contact;
@@ -38,6 +43,7 @@ namespace ClassLibrary.Models
         }
         public Feedback(int id_ticket,string first_name_contact, string last_name_contact, string school_contact, string email_contact, string subject_contact, Status status_contact)
         {
+            //to load
             this.id_ticket = id_ticket;
             this.first_name_contact = first_name_contact;
             this.last_name_contact = last_name_contact;
@@ -45,6 +51,29 @@ namespace ClassLibrary.Models
             this.email_contact = email_contact;
             this.subject_contact = subject_contact;
             this.status_contact = status_contact;
+        }
+        public bool Create()
+        {
+            Feedback currentFeedback = new Feedback(this.first_name_contact, this.last_name_contact, this.school_contact, this.email_contact, this.subject_contact, this.status_contact);
+            if (databaseHelper.AddFeedbackToDB(mapper.MapFeedbackToFeedbackDTO(currentFeedback)))
+            {
+                return true;
+            }
+            return false;
+            
+        }
+        public bool Update()
+        {
+            Feedback currentFeedback = new Feedback(this.id_ticket,this.first_name_contact, this.last_name_contact, this.school_contact, this.email_contact, this.subject_contact, this.status_contact);
+            if (databaseHelper.UpdateFeedbackToDB(mapper.MapFeedbackToFeedbackDTO(currentFeedback)))
+            {
+                return true;
+            }
+            return false;
+        }
+        public void Delete(Feedback feedback)
+        {
+            databaseHelper.DeleteFeedbackFromDB(feedback.IdTicket);
         }
     }
 }

@@ -10,11 +10,6 @@ namespace RazorPagesProject.Pages
 {
     public class ContactModel : PageModel
     {
-        private FeedbackManager feedbackManager { get; set; }
-        public ContactModel() 
-        { 
-            feedbackManager = new FeedbackManager();
-        }
         //bool messageBox = false;
         [BindProperty]
         [Required(ErrorMessage = "Please enter your first name.")]
@@ -43,7 +38,7 @@ namespace RazorPagesProject.Pages
                 try
                 {
                     Feedback feedback = new Feedback(firstname,lastname,school_select,email,subject, Status.OPEN);
-                    feedbackManager.AddFeedback(feedback);
+                    feedback.Create();
                     DisplayMessage();
                 }
                 catch (Exception)

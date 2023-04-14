@@ -78,7 +78,7 @@ namespace DataBaseClassLibrary.DatabaseHelpers
             }
             return null;
         }
-        public void AddFeedbackToDB(FeedbackDTO feedbackDTO)
+        public bool AddFeedbackToDB(FeedbackDTO feedbackDTO)
         {
 
             using (SqlConnection connection = new SqlConnection("Server=localhost;Database=individual_project_semester2;Trusted_Connection=True;"))
@@ -90,11 +90,13 @@ namespace DataBaseClassLibrary.DatabaseHelpers
                     SqlCommand command = new SqlCommand($"INSERT INTO Contact (first_name_contact, last_name_contact, school_contact, email_contact, subject_contact, status_contact) VALUES ('{feedbackDTO.FirstNameContact}','{feedbackDTO.LastNameContact}','{feedbackDTO.SchoolContact}','{feedbackDTO.EmailContact}','{feedbackDTO.SubjectContact}','{feedbackDTO.StatusContact.ToString()}')", connection);
                     command.ExecuteNonQuery();
                     Console.WriteLine("Successfully updated the database!");
+                    return true;
 
                 }
                 catch (Exception)
                 {
                     Console.WriteLine("Error updating the database!");
+                    return false;
                 }
                 finally
                 {

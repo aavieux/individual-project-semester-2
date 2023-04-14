@@ -13,7 +13,8 @@ namespace ClassLibrary.Models
         public string Password { get { return this.password; } }
         public Manager(int UserID,string FirstName ,string LastName, string Email, string Password) : base(UserID, FirstName, LastName, Email) 
         { 
-        this.password = Password;
+            //to load
+            this.password = Password;
         } 
     }
 }

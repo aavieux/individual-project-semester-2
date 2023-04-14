@@ -16,9 +16,13 @@ namespace WindowsFormsAppProject
     public partial class addClass : Form
     {
         private StatisticsManager statisticsManager;
+        private DataBaseClassLibrary.DatabaseHelpers.ClassDatabaseHelper classDatabaseHelper;
+        private ClassMapper classMapper;
         public addClass()
         {
             statisticsManager = new StatisticsManager();
+            classDatabaseHelper = new DataBaseClassLibrary.DatabaseHelpers.ClassDatabaseHelper();
+            classMapper = new ClassMapper();
             InitializeComponent();
             GenerateDropdowns();
         }
@@ -35,7 +39,7 @@ namespace WindowsFormsAppProject
                     checkedListBoxStudents.Items.Add(student.GetFullName());
                 }
             }
-            if (checkedListBoxStudents.Items.Count == 0 )
+            if (checkedListBoxStudents.Items.Count == 0)
             {
                 checkedListBoxStudents.Items.Add("No available students");
                 checkedListBoxStudents.Enabled = false;
@@ -58,7 +62,7 @@ namespace WindowsFormsAppProject
 
         private void addClass_btn_Click(object sender, EventArgs e)
         {
-            if (checkedListBoxStudents.CheckedItems.Count != 0 && classteacher_cb.SelectedIndex!= -1 && className_txt.Text != string.Empty)
+            if (checkedListBoxStudents.CheckedItems.Count != 0 && classteacher_cb.SelectedIndex != -1 && className_txt.Text != string.Empty)
             {
                 List<string> checkedStudents = new List<string>();
                 for (int i = 0; i < checkedListBoxStudents.CheckedItems.Count; i++) // get student names
@@ -76,7 +80,7 @@ namespace WindowsFormsAppProject
                             Student student1 = student;
                             students.Add(student1);
                         }
-                    }   
+                    }
                 }
                 int teacherId = 0;
                 foreach (Teacher teacher in statisticsManager.GetAllTeachers()) // determine teacher
@@ -84,18 +88,21 @@ namespace WindowsFormsAppProject
                     if (teacher.GetFullName() == classteacher_cb.SelectedItem.ToString())
                     {
                         teacherId = teacher.Userid;
-                    } 
+                    }
                 }
-                Class newClass = new Class(int.Parse(className_txt.Text), teacherId, students);
+                Class newClass = new Class(int.Parse(className_txt.Text), teacherId);
                 try
                 {
-                    statisticsManager.CreateClass(newClass); // add class to DB
+                    newClass.Create(); // add class to DB
 
                     foreach (Student student in students)//add class to students
                     {
-                        if (student.AddToClass(newClass.Name))
+                        try
                         {
-                            student.Update();
+                            student.AddToClass(newClass.Name);
+                        }
+                        catch (Exception)
+                        {
                         }
 
                     }
@@ -103,7 +110,6 @@ namespace WindowsFormsAppProject
                     {
                         Teacher currentTeacher = statisticsManager.GetTeacherById(teacherId);
                         currentTeacher.ChangeClass(newClass.Name);
-                        currentTeacher.Update();
                     }
                     MessageBox.Show("Successfully added the students to the new class!");
                     GenerateDropdowns();
@@ -112,8 +118,8 @@ namespace WindowsFormsAppProject
                 {
                     MessageBox.Show(ex.Message);
                 }
-                
-                
+
+
             }
         }
     }

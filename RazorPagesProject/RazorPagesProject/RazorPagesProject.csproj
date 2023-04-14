@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Pages\Events.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="pictures\noname.png" />
   </ItemGroup>
 
@@ -16,6 +20,18 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ClassLibrary\ClassLibrary.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Pages\Events.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Pages\Events.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Pages\Events.cshtml" />
   </ItemGroup>
 
 </Project>

@@ -18,7 +18,7 @@ namespace ClassLibrary.Mapper
         }
         internal FeedbackDTO MapFeedbackToFeedbackDTO(Feedback feedback)
         {
-            FeedbackDTO feedbackDTO = new FeedbackDTO(feedback.IdTicket, feedback.FirstNameContact, feedback.LastNameContact, feedback.SchoolContact, feedback.EmailContact, feedback.SubjectContact, Enum.Parse<DataBaseClassLibrary.DTOs.DTOEnums.Status>(feedback.StatusContact.ToString()));
+            FeedbackDTO feedbackDTO = new FeedbackDTO(feedback.IdTicket,feedback.FirstNameContact, feedback.LastNameContact, feedback.SchoolContact, feedback.EmailContact, feedback.SubjectContact, Enum.Parse<DataBaseClassLibrary.DTOs.DTOEnums.Status>(feedback.StatusContact.ToString()));
             return feedbackDTO;
         }
     }

@@ -14,6 +14,18 @@
             <button type="submit" asp-page-handler="SearchByName" value="Submit"><i class="fa fa-search"></i></button>
         </form>
     </div>
+
+    <div class="search-container">
+        <label for="sort" class="sortBylbl">Sort By:</label>
+        <form method="post" class="sortForm">
+            <select id="sort" name="sort">
+                <option value="default">Default</option>
+                <option value="first-name">First Name</option>
+                <option value="last-name">Last Name</option>
+                <option value="class">Class</option>
+            </select>
+        </form>
+    </div>
 </div>
 
 <table class="users_table">

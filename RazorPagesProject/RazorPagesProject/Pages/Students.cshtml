@@ -8,19 +8,26 @@
     <p id="searchlabel">
         Enter a (part of) name of a student:
     </p>
-    @*<div id="myBtnContainer">
-      <button class="btn active" onclick="filterSelection('all')"> Show all</button>
-      <button class="btn" onclick="filterSelection('cars')"> Cars</button>
-      <button class="btn" onclick="filterSelection('animals')"> Animals</button>
-      <button class="btn" onclick="filterSelection('fruits')"> Fruits</button>
-      <button class="btn" onclick="filterSelection('colors')"> Colors</button>
-    </div>*@
     <div class="search-container">
         <form method ="post">
             <input class ="searchbar" type="text" placeholder="Search.." name="search">
             <button type="submit" asp-page-handler="SearchByName" value="Submit"><i class="fa fa-search"></i></button>
         </form>
     </div>
+    
+
+    <div class="search-container">
+        <label for="sort" class="sortBylbl">Sort By:</label>
+        <form method="post" class="sortForm">
+            <select id="sort" name="sort">
+                <option value="default">Default</option>
+                <option value="first-name">First Name</option>
+                <option value="last-name">Last Name</option>
+                <option value="class">Class</option>
+            </select>
+        </form>
+    </div>
+    
 </div>
 
 <table class="users_table">
@@ -30,7 +37,6 @@
             <th>Last name</th>
             <th>Class</th>
             <th>Role</th>
-            @*user number hidden*@
         </tr>
     </thead>
 
@@ -69,47 +75,3 @@
         
     </tbody>
 </table>
-@*<script>
-    filterSelection("all")
-    function filterSelection(c) {
-        var x, i;
-        x = document.getElementsByClassName("filterDiv");
-        if (c == "all") c = "";
-        for (i = 0; i < x.length; i++) {
-            w3RemoveClass(x[i], "show");
-            if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
-        }
-    }
-
-    function w3AddClass(element, name) {
-        var i, arr1, arr2;
-        arr1 = element.className.split(" ");
-        arr2 = name.split(" ");
-        for (i = 0; i < arr2.length; i++) {
-            if (arr1.indexOf(arr2[i]) == -1) { element.className += " " + arr2[i]; }
-        }
-    }
-
-    function w3RemoveClass(element, name) {
-        var i, arr1, arr2;
-        arr1 = element.className.split(" ");
-        arr2 = name.split(" ");
-        for (i = 0; i < arr2.length; i++) {
-            while (arr1.indexOf(arr2[i]) > -1) {
-                arr1.splice(arr1.indexOf(arr2[i]), 1);
-            }
-        }
-        element.className = arr1.join(" ");
-    }
-
-    // Add active class to the current button (highlight it)
-    var btnContainer = document.getElementById("myBtnContainer");
-    var btns = btnContainer.getElementsByClassName("btn");
-    for (var i = 0; i < btns.length; i++) {
-        btns[i].addEventListener("click", function () {
-            var current = document.getElementsByClassName("active");
-            current[0].className = current[0].className.replace(" active", "");
-            this.className += " active";
-        });
-    }
-</script>*@

@@ -7,37 +7,32 @@ namespace ClassLibrary.Models
     public class Class
     {
         DataBaseClassLibrary.DatabaseHelpers.ClassDatabaseHelper dbHelper = new DataBaseClassLibrary.DatabaseHelpers.ClassDatabaseHelper();
-        UserMapper mapper = new UserMapper();
+        UserMapper userMapper = new UserMapper();
+        ClassMapper classMapper = new ClassMapper();
 
         private int _nameClass;
         private int _teacherIdClass;
 
         private List<Student> _students = new List<Student>() {}; //TODO
 
-        //private ClassManager classManager;
-
         public int Name { get { return _nameClass; } }
         public int TeacherID { get { return this._teacherIdClass; } }
         public List<Student> Students { get { return this._students; } }
 
-        public Class(int name) 
-        {
-            //classManager = new ClassManager();
-            this._nameClass = name;
-        }
         public Class(int name, int teacherid)
         {
+            //to load and write
             //classManager = new ClassManager();
             this._nameClass = name;
             this._teacherIdClass = teacherid;
         }
-        public Class(int name, int teacherid, List<Student> students)
-        {
-            //classManager = new ClassManager();
-            this._nameClass = name;
-            this._teacherIdClass = teacherid;
-            this._students = students;
-        }
+        //public Class(int name, int teacherid, List<Student> students)
+        //{
+        //    //classManager = new ClassManager();
+        //    this._nameClass = name;
+        //    this._teacherIdClass = teacherid;
+        //    this._students = students;
+        //}
 
         public void ChangeTeacher(int newTeacherId)
         {
@@ -49,15 +44,19 @@ namespace ClassLibrary.Models
             List<Student> students = new List<Student>();
             foreach (StudentDTO studentDTO in dbHelper.GetClassStudentsFromDB(this._nameClass))
             {
-                students.Add((Student)mapper.MapStudentDTOtoStudent(studentDTO));
+                students.Add((Student)userMapper.MapStudentDTOtoStudent(studentDTO));
             }
             return students;
         }
+        public bool Create()
+        {
+            Class currentClass = new Class(this._nameClass, this._teacherIdClass);
 
-        //public List<int> GetStudentsIds() { return studentsIds; }//TODO
-        //internal List<Student> GetStudents()
-        //{
-        //    return Students; 
-        //}
+            if (dbHelper.CreateClass(classMapper.MapClassToClassDTO(currentClass)))
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

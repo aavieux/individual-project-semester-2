@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary.Mapper
 {
-    internal class ClassMapper
+    public class ClassMapper
     {
-        internal Class MapClassDTOtoClass(ClassDTO classDTO)
+        public Class MapClassDTOtoClass(ClassDTO classDTO)
         {
             Class currentClass = new Class(classDTO.Name, classDTO.TeacherID);
             return currentClass;
         }
-        internal ClassDTO MapClassToClassDTO(Class currentClass)
+        public ClassDTO MapClassToClassDTO(Class currentClass)
         {
             ClassDTO currentClassDTO = new ClassDTO(currentClass.Name, currentClass.TeacherID);
             return currentClassDTO;

@@ -49,6 +49,7 @@
             // 
             // checkedListBoxStudents
             // 
+            checkedListBoxStudents.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
             checkedListBoxStudents.FormattingEnabled = true;
             checkedListBoxStudents.Location = new Point(320, 56);
             checkedListBoxStudents.Name = "checkedListBoxStudents";
@@ -57,9 +58,10 @@
             // 
             // addClass_btn
             // 
-            addClass_btn.Location = new Point(12, 397);
+            addClass_btn.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
+            addClass_btn.Location = new Point(12, 367);
             addClass_btn.Name = "addClass_btn";
-            addClass_btn.Size = new Size(298, 41);
+            addClass_btn.Size = new Size(246, 71);
             addClass_btn.TabIndex = 3;
             addClass_btn.Text = "Add Class";
             addClass_btn.UseVisualStyleBackColor = true;

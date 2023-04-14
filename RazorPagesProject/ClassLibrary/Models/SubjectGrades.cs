@@ -26,20 +26,29 @@ namespace ClassLibrary.Models
 
         public SubjectGrades(int id, Subject subject, int idUser)
         {
+            //to load  // to fix
             //gradeManager = new GradeManager();
             this._idSubjectGrades = id;
             this._subject = subject;
             this._idUser = idUser;
         }
-        public SubjectGrades(int id, Subject subject, int idUser, List<Grade> Grades)
+        public SubjectGrades(Subject subject, int idUser)
         {
+            //to  write // to fix
             //gradeManager = new GradeManager();
-            this._idSubjectGrades = id;
             this._subject = subject;
             this._idUser = idUser;
-            this.grades = Grades;
         }
-        public void AddGrade(Grade grade)
+
+        //public SubjectGrades(int id, Subject subject, int idUser, List<Grade> Grades)
+        //{
+        //    //gradeManager = new GradeManager();
+        //    this._idSubjectGrades = id;
+        //    this._subject = subject;
+        //    this._idUser = idUser;
+        //    this.grades = Grades;
+        //}
+        public void AddGrade(Grade grade) // for display only
         {
             grades.Add(grade);
         }

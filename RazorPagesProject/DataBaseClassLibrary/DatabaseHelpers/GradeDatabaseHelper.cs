@@ -5,6 +5,7 @@ using DataBaseClassLibrary.DTOs.DTOEnums;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -182,7 +183,30 @@ namespace DataBaseClassLibrary.DatabaseHelpers
 		//}
 		public void AddSubjectGradesToDB(SubjectGradesDTO subjectGrades)
         {
-            //TODO
+            using (SqlConnection connection =
+                   new SqlConnection("Server=localhost;Database=individual_project_semester2;Trusted_Connection=True;"))
+            {
+                connection.Open();
+                string query = $"INSERT INTO SubjectGrades (subject, id_user) VALUES ('{subjectGrades.Subject.ToString()}', '{subjectGrades.IdUser}');";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    try
+                    {
+                        command.ExecuteNonQuery();
+                        Console.WriteLine("-----------------------------------");
+                        Console.WriteLine("Records Inserted in DB Successfully");
+                    }
+                    catch (SqlException e)
+                    {
+                        Console.WriteLine("Error Generated. Details: " + e.ToString());
+                    }
+                    finally
+                    {
+                        connection.Close();
+                    }
+                }
+            }
         }
         public void AddGradeToDB(int idSubjectGrades , GradeDTO grade)
         {
@@ -213,13 +237,13 @@ namespace DataBaseClassLibrary.DatabaseHelpers
 
         }
 
-        public void DeleteSubjectGradesFromDB(int GradeId)
+        public void DeleteSubjectGradesFromDB(SubjectGradesDTO subjectGradesDTO)
         {
             using (SqlConnection connection =
                    new SqlConnection("Server=localhost;Database=individual_project_semester2;Trusted_Connection=True;"))
             {
                 connection.Open();
-                string query = $"DELETE FROM Grades WHERE id_grade LIKE '{GradeId}'";
+                string query = $"DELETE FROM SubjectGrades WHERE id_subjectGrades LIKE '{subjectGradesDTO.Id}'";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {

@@ -27,6 +27,7 @@ namespace DataBaseClassLibrary.DTOs
 
         public UserDTO(string FirstName, string LastName, Role Role, int? Class, string Email, string PhoneNumber, int UserID)
         {
+            // for everyone else load
             this._firstname = FirstName;
             this._lastname = LastName;
             this._role = Role;
@@ -35,9 +36,20 @@ namespace DataBaseClassLibrary.DTOs
             this._phonenumber = PhoneNumber;
             this._idUser = UserID;
         }
-
-        public UserDTO(int userID, string firstName, string lastName, string email)
+        public UserDTO(string FirstName, string LastName, Role Role, int? Class, string Email, string PhoneNumber)
         {
+            // for everyone else write
+            this._firstname = FirstName;
+            this._lastname = LastName;
+            this._role = Role;
+            this._class = Class;
+            this._email = Email;
+            this._phonenumber = PhoneNumber;
+        }
+
+        public UserDTO(int userID, string firstName, string lastName, string email) 
+        {
+            // for manager
             this._firstname = firstName;
             this._lastname = lastName;
             this._email = email;

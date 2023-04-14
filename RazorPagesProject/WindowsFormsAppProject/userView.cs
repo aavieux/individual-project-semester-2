@@ -129,14 +129,40 @@ namespace WindowsFormsAppProject
 
         private void deleteUser_btn_Click(object sender, EventArgs e)
         {
-            if (statisticsManager.GetUserById(int.Parse(userId_txt.Text)).Delete() == false)
+            if (role_comboBox.SelectedItem.ToString() == Role.STUDENT.ToString())
             {
-                DisplayError();
+                if (statisticsManager.GetStudentById(int.Parse(userId_txt.Text)).DeleteSubjectGrades() == false)
+                {
+                    DisplayError();
+                }
+                else
+                {
+                    MessageBox.Show("Successfully deleted this user's SubjectGrades!");
+
+                }
+                if (statisticsManager.GetStudentById(int.Parse(userId_txt.Text)).Delete() == false)
+                {
+                    DisplayError();
+                }
+                else
+                {
+                    MessageBox.Show("Successfully deleted this user!");
+                    this.Close();
+                }
             }
             else
             {
-                this.Close();
+                if (statisticsManager.GetTeacherById(int.Parse(userId_txt.Text)).Delete() == false)
+                {
+                    DisplayError();
+                }
+                else
+                {
+                    MessageBox.Show("Successfully deleted this user!");
+
+                }
             }
+            
         }
 
         private void promoteUser_btn_Click(object sender, EventArgs e)

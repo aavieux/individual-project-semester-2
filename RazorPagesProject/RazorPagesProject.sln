@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClassLibrary", "ClassLibrar
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "Test\Test.csproj", "{2F06437C-B3DB-4128-9BBF-E1C8E24755E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseClassLibrary", "DataBaseClassLibrary\DataBaseClassLibrary.csproj", "{41C27E97-56A2-459F-957D-B1AD0C92E321}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataBaseClassLibrary", "DataBaseClassLibrary\DataBaseClassLibrary.csproj", "{41C27E97-56A2-459F-957D-B1AD0C92E321}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

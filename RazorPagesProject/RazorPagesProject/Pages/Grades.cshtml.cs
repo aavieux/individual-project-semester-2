@@ -24,6 +24,10 @@ namespace RazorPagesProject.Pages
         public async Task<IActionResult> OnPostSearchByName()
         {
             string search = Request.Form["search"];
+            if (string.IsNullOrEmpty(search))
+            {
+                return Page();
+            }
             currentStudents = new List<Student>();
             currentStudents = statisticsManager.GetStudentsByPartOfName(search);
             return Page();

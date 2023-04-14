@@ -1,0 +1,131 @@
+﻿@page
+@model RazorPagesProject.Pages.EventsModel
+@{
+    ViewData["Title"] = "Events";
+}
+
+<div id="calendar"></div>
+<script>
+    // Get the calendar element
+    var calendar = document.getElementById('calendar');
+
+    // Get the current date
+    var today = new Date();
+
+    // Build the calendar HTML
+    var calendarHTML = '<table>';
+
+    // Add the month and year header
+    calendarHTML += '<tr><th colspan="7">' + today.toLocaleString('default', { month: 'long' }) + ' ' + today.getFullYear() + '</th></tr>';
+
+    // Add the day headers
+    calendarHTML += '<tr><th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th></tr>';
+
+    // Get the first day of the month and the number of days in the month
+    var firstDay = new Date(today.getFullYear(), today.getMonth(), 1);
+    var lastDay = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+
+    // Calculate the number of days to display from the previous month
+    var prevDays = firstDay.getDay();
+
+    // Add the days from the previous month
+    var prevMonth = new Date(today.getFullYear(), today.getMonth() - 1, 1);
+    var prevLastDay = new Date(today.getFullYear(), today.getMonth(), 0);
+    for (var i = prevLastDay.getDate() - prevDays + 1; i <= prevLastDay.getDate(); i++) {
+        calendarHTML += '<td class="prev-month">' + i + '</td>';
+    }
+
+    // Add the days from the current month
+    for (var i = 1; i <= lastDay.getDate(); i++) {
+        // Add a new row at the beginning of each week
+        if (new Date(today.getFullYear(), today.getMonth(), i).getDay() === 0) {
+            calendarHTML += '<tr>';
+        }
+
+        // Add the day cell
+        var className = '';
+        if (i === today.getDate() && today.getMonth() === new Date().getMonth() && today.getFullYear() === new Date().getFullYear()) {
+            className = 'today';
+        }
+        calendarHTML += '<td class="' + className + '">' + i + '</td>';
+
+        // Add a new row at the end of each week
+        if (new Date(today.getFullYear(), today.getMonth(), i).getDay() === 6) {
+            calendarHTML += '</tr>';
+        }
+    }
+
+    // Calculate the number of days to display from the next month
+    var nextDays = 7 - new Date(today.getFullYear(), today.getMonth(), lastDay.getDate()).getDay() - 1;
+
+    // Add the days from the next month
+    // Add the days from the next month
+    for (var i = 1; i <= nextDays; i++) {
+        calendarHTML += '<td class="next-month">' + i + '</td>';
+    }
+
+    // Close the table
+    calendarHTML += '</table>';
+
+    // Add the calendar HTML to the calendar element
+    calendar.innerHTML = calendarHTML;
+
+    // Add click event listeners to each day cell
+    var cells = calendar.getElementsByTagName('td');
+    for (var i = 0; i < cells.length; i++) 
+    {
+        cells[i].addEventListener('click', function () 
+        {
+            // Remove the selected class from all cells
+            for (var j = 0; j < cells.length; j++) 
+            {
+                cells[j].classList.remove('selected');
+            }
+            this.classList.add('selected');
+        }
+    }
+
+</script>
+
+<style>
+    #calendar {
+        border: 1px solid #ccc;
+        width: 400px;
+        height: 400px;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+    }
+
+        #calendar table {
+            width: 100%;
+            height: 100%;
+            border-collapse: collapse;
+        }
+
+        #calendar th {
+            font-weight: bold;
+            text-align: center;
+            background-color: #eee;
+            padding: 5px;
+        }
+
+        #calendar td {
+            border: 1px solid #ccc;
+            text-align: center;
+            padding: 5px;
+        }
+
+            #calendar td:hover {
+                background-color: #f5f5f5;
+            }
+
+        #calendar .today {
+            background-color: #f00;
+            color: #fff;
+        }
+
+        #calendar .selected {
+            background-color: #00f;
+            color: #fff;
+        }
+</style>

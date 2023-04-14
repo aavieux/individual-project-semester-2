@@ -25,18 +25,9 @@ namespace DataBaseClassLibrary.DTOs
         public string SubjectContact { get { return _subjectContact; } }
         public Status StatusContact { get { return _statusContact; } }
 
-        //public FeedbackDTO(string firstNameContact, string lastNameContact, string schoolContact, string emailContact, string subjectContact, Status statusContact)
-        //{
-        //    _firstNameContact = firstNameContact;
-        //    _lastNameContact = lastNameContact;
-        //    _schoolContact = schoolContact;
-        //    _emailContact = emailContact;
-        //    _subjectContact = subjectContact;
-        //    _statusContact = statusContact;
-        //}
-
         public FeedbackDTO(int idTicket, string firstNameContact, string lastNameContact, string schoolContact, string emailContact, string subjectContact, Status statusContact)
         {
+            //to load
             _idTicket = idTicket;
             _firstNameContact = firstNameContact;
             _lastNameContact = lastNameContact;
@@ -45,6 +36,16 @@ namespace DataBaseClassLibrary.DTOs
             _subjectContact = subjectContact;
             _statusContact = statusContact;
         }
-        
+        public FeedbackDTO(string firstNameContact, string lastNameContact, string schoolContact, string emailContact, string subjectContact, Status statusContact)
+        {
+            // to write
+            _firstNameContact = firstNameContact;
+            _lastNameContact = lastNameContact;
+            _schoolContact = schoolContact;
+            _emailContact = emailContact;
+            _subjectContact = subjectContact;
+            _statusContact = statusContact;
+        }
+
     }
 }
