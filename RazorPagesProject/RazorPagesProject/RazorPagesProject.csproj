@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <Folder Include="Pages\Views\" />
+    <Folder Include="wwwroot\js\" />
   </ItemGroup>
 
   <ItemGroup>

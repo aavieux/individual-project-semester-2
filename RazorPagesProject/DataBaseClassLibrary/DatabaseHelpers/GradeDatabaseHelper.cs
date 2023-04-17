@@ -126,6 +126,61 @@ namespace DataBaseClassLibrary.DatabaseHelpers
                 }
             }
         }
+        public List<SubjectGradesDTO> GetSubjectGradesFromDB()
+        {
+            using (SqlConnection connection =
+                   new SqlConnection("Server=localhost;Database=individual_project_semester2;Trusted_Connection=True;"))
+            {
+                try
+                {
+                    connection.Open();
+                    string query = "SELECT * FROM SubjectGrades";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            try
+                            {
+                                List<SubjectGradesDTO> inGrades = new List<SubjectGradesDTO>();
+                                while (reader.Read())
+                                {
+                                    try
+                                    {
+                                        SubjectGradesDTO grade = new SubjectGradesDTO(
+                                            (int)reader["id_subjectGrades"],
+                                            Enum.Parse<Subject>((string)reader["subject"]),
+                                            (int)reader["id_user"]);
+
+                                        inGrades.Add(grade);
+                                    }
+                                    catch (Exception)
+                                    {
+                                        Console.WriteLine("Error getting grades from database!");
+                                    }
+                                }
+                                return inGrades;
+                            }
+                            catch (SqlException xException)
+                            {
+                                Console.WriteLine("Error loading grades from database!");
+                                return null;
+                            }
+                            finally
+                            {
+                                reader.Close();
+                                connection.Close();
+                            }
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("There was a problem in making a connection with the database!");
+                    return null;
+                }
+            }
+        }
   //      public List<GradeDTO> GetGradesBySubjectGradesFromDB(int subjectGradesId)
   //      {
 		//	using (SqlConnection connection =

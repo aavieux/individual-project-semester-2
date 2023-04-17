@@ -37,7 +37,7 @@ img#logo-img {
     width: 50%;
     right: 0px;
     position: absolute;
-    align-items: center;
+    /*align-items: center;*/
     display: inline-flex;
 }
 

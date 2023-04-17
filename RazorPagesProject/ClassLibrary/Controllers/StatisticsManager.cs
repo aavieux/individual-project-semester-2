@@ -1,5 +1,6 @@
 ﻿using ClassLibrary.Mapper;
 using ClassLibrary.Models;
+using ClassLibrary.Models.Enums;
 using DataBaseClassLibrary.DatabaseHelpers;
 using DataBaseClassLibrary.DTOs;
 using System;
@@ -70,7 +71,16 @@ namespace ClassLibrary.Controllers
             }
             return grades;
         }
+        public List<SubjectGrades> GetAllSubjectGrades()
+        {
+            List<SubjectGrades> subjectGrades = new List<SubjectGrades>();
 
+            foreach (SubjectGradesDTO subjectGrade in gradeDbHelper.GetSubjectGradesFromDB())
+            {
+                subjectGrades.Add(gradeMapper.MapSubjectGradesDTOtoSubjectGrades(subjectGrade));
+            }
+            return subjectGrades;
+        }
         public List<User> GetAllUsers()
         {
             List<User> users = new List<User>();
@@ -195,6 +205,80 @@ namespace ClassLibrary.Controllers
                 return feedbackMapper.MapFeedbackDTOtoFeedback(result);
             }
             return null;
+        }
+
+        public string GetAvgGradeForSubject(Subject subject)
+        {
+            double result = 0.0;
+            int numberOfGrades = 0;
+
+            foreach (SubjectGrades subjectGrade in (GetAllSubjectGrades()))
+            {
+                if (subjectGrade.Subject == subject)
+                {
+                    foreach (Grade grade in subjectGrade.GetGrades())
+                    {
+                        if (grade.GradeEnum == GradeEnum.UNDEFINED)
+                        {
+                            result += 1;
+                        }
+                        else if (grade.GradeEnum == GradeEnum.SUFFICIENT)
+                        {
+                            result += 2;
+                        }
+                        else if (grade.GradeEnum == GradeEnum.GOOD)
+                        {
+                            result += 3;
+                        }
+                        else if (grade.GradeEnum == GradeEnum.OUTSTANDING)
+                        {
+                            result += 4;
+                        }
+
+                        numberOfGrades++;
+                    }
+                }
+            }
+            double avgGrade = result / numberOfGrades;
+            if (avgGrade <= 1.9)
+            {
+                if (avgGrade >= 1.5)
+                {
+                    return "UNDEFINED / SUFFICIENT";
+                }
+                else return "UNDEFINED";
+
+            }
+            else if (avgGrade >= 2.0 && avgGrade <= 2.9)
+            {
+                if (avgGrade >= 2.5)
+                {
+                    return "SUFFICIENT / GOOD";
+                }
+                else return "SUFFICIENT";
+
+            }
+            else if (avgGrade >= 3.0 && avgGrade <= 3.9)
+            {
+                if (avgGrade >= 3.5)
+                {
+                    return "GOOD / ADVANCED";
+                }
+                else return "GOOD";
+
+            }
+            else if (avgGrade == 4.0)
+            {
+                return "ADVANCED";
+            }
+            else return "Error!";
+        }
+        public List<Student> GetBestStudents(int number)
+        {
+            foreach (Student student in GetAllStudents())
+            {
+                
+            }
         }
     }
 }

@@ -3,91 +3,151 @@
 @{
     ViewData["Title"] = "Home page";
 }
-
+@using ClassLibrary.Models.Enums;
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <div class="dashboard-main">
 
     <div class="container2">
-      <h2>Classes Statistics</h2>
-      <div class="stats">
-        <div class="average">
-          <h3>Average Grade for the School</h3>
-          <p id="avg"></p>
+        <h2>Classes Statistics</h2>
+        <div class="stats">
+            <div class="average">
+                <h3>Average Grade for the School</h3>
+                <p id="avg"></p>
+            </div>
+            <div class="best-performers">
+                <h3>Best Performing Students</h3>
+                <ul id="best">
+
+                </ul>
+            </div>
         </div>
-        <div class="best-performers">
-          <h3>Best Performing Students</h3>
-          <ul id="best"></ul>
-        </div>
-      </div>
     </div>
     <div class="container3">
-        <canvas id="myChart"></canvas>
+        <div id="bell-curve">
+            <div class="y-axis-labels">
+                <div class="y-axis-label">@Subject.ENGLISH</div>
+                <div class="y-axis-label">@Subject.BIOLOGY</div>
+                <div class="y-axis-label">@Subject.MATH</div>
+                <div class="y-axis-label">@Subject.HISTORY</div>
+                <div class="y-axis-label">@Subject.SCIENCE</div>
+                <div class="y-axis-label">@Subject.PE</div>
+            </div>
+
+            <div class="grid-container">
+            </div>
+
+            <div class="x-axis-labels">
+                <div class="x-axis-label">Undefined</div>
+                <div class="x-axis-label">Sufficient</div>
+                <div class="x-axis-label">Good</div>
+                <div class="x-axis-label">Outstanding</div>
+            </div>
+
+            
+        </div>
+
+        <style>
+            /* CSS for the grid */
+            #bell-curve {
+                display: flex;
+                flex-direction: row;
+                align-items: flex-end;
+                width: 600px;
+                height: 500px;
+                border: 1px solid gray;
+            }
+
+            .y-axis-labels {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                height: 100%;
+                font-size: 12px;
+                text-align: right;
+                font-family: Arial, sans-serif;
+                border-right: solid;
+                border-width: 1px;
+
+            }
+
+            .x-axis-labels {
+                display: flex;
+                justify-content: space-between;
+                width: -webkit-fill-available;
+                font-size: 12px;
+                font-family: Arial, sans-serif;
+                border-top: solid;
+                border-width: 1px;
+                height: 3%;
+
+            }
+
+            .x-axis-label {
+                padding-left: 70px;
+            }
+
+            .y-axis-label {
+                text-align: left;
+                padding-right: 10px;
+            }
+            .grid-container {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                grid-template-rows: repeat(6, 1fr);
+                grid-gap: 5px;
+                width: -webkit-fill-available;
+                height: -webkit-fill-available;
+                border-style:solid;
+            }
+
+            .cell {
+                background-color: white;
+                border: 1px solid gray;
+                position: relative;
+            }
+
+            /* CSS for the gray dots */
+            .dot {
+                background-color: gray;
+                border-radius: 50%;
+                width: 10px;
+                height: 10px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        </style>
     </div>
 </div>
 
-
-
-
 <script>
-    // Sample data
-    const data = [65, 68, 70, 72, 73, 75, 77, 78, 80, 82, 85, 88, 90, 92, 94, 96, 98];
+    // JS code to generate the grid and gray dots
+    const xLabels = ["Undefined", "Sufficient", "Good", "Outstanding"];
+    const yLabels = ["@Subject.ENGLISH", "@Subject.BIOLOGY", "@Subject.MATH", "@Subject.HISTORY", "@Subject.SCIENCE", "@Subject.PE"];
+    const grid = document.querySelector('.grid-container');
 
-    // Calculate mean and standard deviation
-    const mean = data.reduce((sum, x) => sum + x) / data.length;
-    const sd = Math.sqrt(data.reduce((sum, x) => sum + Math.pow(x - mean, 2)) / (data.length - 1));
+    for (let y = 0; y < yLabels.length; y++) {
+        for (let x = 0; x < xLabels.length; x++) {
+            const cell = document.createElement('div');
+            cell.classList.add('cell');
+            cell.dataset.x = xLabels[x];
+            cell.dataset.y = yLabels[y];
 
-    // Generate x-axis labels
-    const labels = [];
-    for (let i = Math.min(...data); i <= Math.max(...data); i++) {
-        labels.push(i);
+            // Custom function that returns true or false
+            // Replace this with your own function
+            const isGray = (x, y) => {
+                // your custom method here
+            }
+
+            if (isGray(xLabels[x], yLabels[y])) {
+                const dot = document.createElement('div');
+                dot.classList.add('dot');
+                cell.appendChild(dot);
+                grid.appendChild(cell);
+            }
+        }
     }
-
-    // Generate y-axis data
-    const dataPoints = labels.map((x) => {
-        return {
-            x: x,
-            y: (1 / (sd * Math.sqrt(2 * Math.PI))) * Math.exp(-0.5 * Math.pow((x - mean) / sd, 2)),
-        };
-    });
-
-    // Create chart
-    const ctx = document.getElementById('myChart').getContext('2d');
-    new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: labels,
-            datasets: [
-                {
-                    label: 'Bell Curve',
-                    data: dataPoints,
-                    fill: false,
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    pointRadius: 0,
-                    lineTension: 0.1,
-                    spanGaps: true,
-                },
-            ],
-        },
-        options: {
-            scales: {
-                xAxes: [
-                    {
-                        scaleLabel: {
-                            display: true,
-                            labelString: 'Grade',
-                        },
-                    },
-                ],
-                yAxes: [
-                    {
-                        scaleLabel: {
-                            display: true,
-                            labelString: 'Density',
-                        },
-                    },
-                ],
-            },
-        },
-    });
 </script>
+
