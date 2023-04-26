@@ -171,7 +171,6 @@ namespace DataBaseClassLibrary.DatabaseHelpers
                         {
                             try
                             {
-                                command.ExecuteNonQuery();
                                 Console.WriteLine("-----------------------------------");
                                 Console.WriteLine("Deleted user from DB Successfully");
                                 return true;
@@ -189,8 +188,9 @@ namespace DataBaseClassLibrary.DatabaseHelpers
                         }
                     }
                 }
-                catch
+                catch (Exception ex)
                 {
+                    Console.WriteLine(ex);
                     Console.WriteLine("Could not open a connection to the database!");
                     return false;
                 }

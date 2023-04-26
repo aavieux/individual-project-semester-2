@@ -19,5 +19,10 @@ namespace RazorPagesProject.Pages
         {
             
         }
+        internal List<Student> GetBestStudents(int number)
+        {
+            return statisticsManager.GetBestStudents(number);
+
+		}
     }
 }

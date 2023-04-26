@@ -37,17 +37,13 @@ namespace ClassLibrary.Models
             }
             foreach (SubjectGrades subjectGrades in gradebook)
             {
-                foreach (GradeDTO gradeDTO in gradeDbHelper.GetGradesFromDB())
-                {
-                    if (subjectGrades.Id == gradeDTO.IdSubjectGrades)
-                    {
-                        subjectGrades.AddGrade(gradeMapper.MapGradeDTOtoGrade(gradeDTO));//USE STUDENT.ADDGRADE TO ADD TO DATABASE, USE SUBJECTGRADES.ADDGRADE TO ADD LOCALLY
-                    }
-                }
+                subjectGrades.GetGrades();
             }
             return gradebook;
         }
-        public void AddSubjectGrades(SubjectGrades subjectGrades)
+
+        //MANAGE SUBJECTGRADES
+        public void AddEmptySubjectGrades(SubjectGrades subjectGrades)
         {
             if (subjectGrades.IdUser == Userid)
             {
@@ -59,23 +55,128 @@ namespace ClassLibrary.Models
                 Console.WriteLine("The SubjectGrades Id and userId do not match!");
             }
         }
-            
-        public bool DeleteSubjectGrades()
+        public bool DeleteSubjectGradesWithGrades(SubjectGrades subjectGrades) // one subject Grade
         {
-            //delete subjectgrades
-            //also delete grades
-            return false;
+            try
+            {
+				if (gradeDbHelper.DeleteSubjectGradesFromDB(gradeMapper.MapSubjectGradestoSubjectGradesDTO(subjectGrades))
+                    && DeleteAllGradesFromSubjectGrades(subjectGrades))
+
+				{
+					return true;
+				}
+                return false;
+				
+			}
+            catch (Exception ex)
+            {
+				return false;
+			}
+            
+        }
+		public bool DeleteAllSubjectGradesWithGrades() //all Subject grades
+        {
+			try
+			{
+                if (DeleteAllGradesForStudent())
+                {
+                    foreach (SubjectGrades subjectGrades in GetGradeBook())
+                    {
+                        if (DeleteSubjectGradesWithGrades(subjectGrades)) { }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                    return true;
+                }
+                else return false;
+                
+
+				
+			}
+			catch (Exception)
+			{
+				return false;
+			}
+		}
+
+        //MANAGE GRADES
+        public bool DeleteAllGradesFromSubjectGrades(SubjectGrades subjectGrades)
+        {
+            try 
+            {
+                foreach (Grade grade in subjectGrades.GetGrades())
+                {
+                    DeleteGradeById(grade.IdGrade);
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+		public bool DeleteAllGradesForStudent()
+        {
+            try
+            {
+				foreach (SubjectGrades subjectGrades in GetGradeBook())
+				{
+					foreach (Grade grade in subjectGrades.GetGrades())
+					{
+						DeleteGradeById(grade.IdGrade);
+					}
+				}
+                return true;
+			}
+            catch (Exception)
+            {
+                return false;
+            }
+            
+            
         }
         public void AddGrade(int idSubjectGrades, Grade grade)//USE STUDENT.ADDGRADE TO ADD TO DATABASE, USE SUBJECTGRADES.ADDGRADE TO ADD LOCALLY
         {
             gradeDbHelper.AddGradeToDB(idSubjectGrades, gradeMapper.MapGradeToGradeDTO(grade));
             Console.WriteLine($"Successfully added Grade with id:{grade.GradeEnum} into SubjectGrades with id: {idSubjectGrades}");
         }
-        public void DeleteGrade(int gradeId)
+        public void DeleteGradeById(int gradeId)
         {
             gradeDbHelper.DeleteGradeByIdFromDB(gradeId);
             Console.WriteLine($"Successfully deleted Grade with id:{gradeId}");
         }
-        
+        public double GetAvgGrades()
+        {
+            double result = 0.0;
+            int numberOfGrades = 0;
+
+            foreach (SubjectGrades subjectGrades in GetGradeBook())
+            {
+                foreach (Grade grade in subjectGrades.GetGrades())
+                {
+                    if (grade.GradeEnum == GradeEnum.UNDEFINED)
+                    {
+                        result += 1;
+                    }
+                    else if (grade.GradeEnum == GradeEnum.SUFFICIENT)
+                    {
+                        result += 2;
+                    }
+                    else if (grade.GradeEnum == GradeEnum.GOOD)
+                    {
+                        result += 3;
+                    }
+                    else if (grade.GradeEnum == GradeEnum.OUTSTANDING)
+                    {
+                        result += 4;
+                    }
+
+                    numberOfGrades++;
+                }   
+            }
+            return result / numberOfGrades;
+        }
     }
 }

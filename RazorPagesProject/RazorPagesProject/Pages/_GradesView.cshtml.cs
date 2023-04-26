@@ -65,7 +65,7 @@ namespace RazorPagesProject.Pages
 			int currentSubjectGradesId = SubjectGradesId; // to be removed
 			try
 			{
-                statisticsManager.GetStudentById(UserId).DeleteGrade(GradeId);
+                statisticsManager.GetStudentById(UserId).DeleteGradeById(GradeId);
 			}
 			catch (Exception)
 			{
@@ -75,17 +75,17 @@ namespace RazorPagesProject.Pages
 			return RedirectToPage("/_GradesView", new { userId = UserId });
 		}
 
-		public List<Grade>? GetGradesFromSubjectGrades(SubjectGrades subjectGrades)
-		{
-			foreach (SubjectGrades subjectGrades1 in currentStudent.GetGradeBook())
-			{
-				if (subjectGrades.Id == subjectGrades1.Id)
-				{
-					return (subjectGrades.GetGrades());
-				}
-			}
-			return null;
+		//public List<Grade>? GetGradesFromSubjectGrades(SubjectGrades subjectGrades)
+		//{
+		//	foreach (SubjectGrades subjectGrades1 in currentStudent.GetGradeBook())
+		//	{
+		//		if (subjectGrades.Id == subjectGrades1.Id)
+		//		{
+		//			return (subjectGrades.GetGrades());
+		//		}
+		//	}
+		//	return null;
 
-		}
+		//}
 	}
 }

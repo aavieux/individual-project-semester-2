@@ -78,14 +78,11 @@ namespace WindowsFormsAppProject
                 int start = listBoxStudents.SelectedItem.ToString().IndexOf(":") + 2; // Adding 2 to exclude the ": " characters
                 int end = listBoxStudents.SelectedItem.ToString().IndexOf(" -");
                 int userId = int.Parse(listBoxStudents.SelectedItem.ToString().Substring(start, end - start));
-
-                this.Hide();
                 userView userView = new userView(userId);
                 userView.ShowDialog();
                 DisplayUserData();
                 listBoxStudents.SelectedIndex = -1;
                 listBoxTeachers.SelectedIndex = -1;
-                this.Show();
             }
             catch (Exception) { }
         }
@@ -112,12 +109,10 @@ namespace WindowsFormsAppProject
             {
                 int idTicket = int.Parse(listBoxFeedbacksOpen.SelectedItem.ToString().Substring(0, listBoxFeedbacksOpen.SelectedItem.ToString().IndexOf(" ")));
 
-                this.Hide();
                 feedbackView feedbackView = new feedbackView(idTicket);
                 feedbackView.ShowDialog();
                 DisplayFeedbackData();
                 listBoxFeedbacksOpen.SelectedIndex = -1;
-                this.Show();
             }
             catch (Exception) { }
         }
@@ -126,13 +121,10 @@ namespace WindowsFormsAppProject
             try
             {
                 int idTicket = int.Parse(listBoxFeedbacksInProgress.SelectedItem.ToString().Substring(0, listBoxFeedbacksInProgress.SelectedItem.ToString().IndexOf(" ")));
-
-                this.Hide();
                 feedbackView feedbackView = new feedbackView(idTicket);
                 feedbackView.ShowDialog();
                 DisplayFeedbackData();
                 listBoxFeedbacksInProgress.SelectedIndex = -1;
-                this.Show();
             }
             catch (Exception) { }
         }
@@ -143,12 +135,10 @@ namespace WindowsFormsAppProject
             {
                 int idTicket = int.Parse(listBoxFeedbacksClosed.SelectedItem.ToString().Substring(0, listBoxFeedbacksClosed.SelectedItem.ToString().IndexOf(" ")));
 
-                this.Hide();
                 feedbackView feedbackView = new feedbackView(idTicket);
                 feedbackView.ShowDialog();
                 DisplayFeedbackData();
                 listBoxFeedbacksClosed.SelectedIndex = -1;
-                this.Show();
             }
             catch (Exception) { }
         }
@@ -164,14 +154,11 @@ namespace WindowsFormsAppProject
 
                 int idClass = int.Parse(result);
 
-                this.Hide();
-
                 classView classView = new classView(idClass);
                 classView.ShowDialog();
                 DisplayClassData();
                 listBoxClasses.SelectedIndex = -1;
                 search_txt.Text = string.Empty;
-                this.Show();
             }
             catch (Exception) { }
         }
@@ -184,24 +171,20 @@ namespace WindowsFormsAppProject
                 int end = listBoxTeachers.SelectedItem.ToString().IndexOf(" -");
                 int userId = int.Parse(listBoxTeachers.SelectedItem.ToString().Substring(start, end - start));
 
-                this.Hide();
                 userView userView = new userView(userId);
                 userView.ShowDialog();
                 DisplayUserData();
                 listBoxStudents.SelectedIndex = -1;
                 listBoxTeachers.SelectedIndex = -1;
-                this.Show();
             }
             catch (Exception) { }
         }
 
         private void addClass_btn_Click(object sender, EventArgs e)
         {
-            this.Hide();
             addClass addClass = new addClass();
             addClass.ShowDialog();
             DisplayClassData();
-            this.Show();
             DisplayUserData();
         }
 
@@ -253,11 +236,34 @@ namespace WindowsFormsAppProject
 
         private void addUser_btn_Click(object sender, EventArgs e)
         {
-            this.Hide();
             addUser addUser = new addUser();
             addUser.ShowDialog();
             DisplayUserData();
-            this.Show();
+        }
+
+        private void searchByName_txt_TextChanged(object sender, EventArgs e)
+        {
+            listBoxStudents.Items.Clear();
+            listBoxTeachers.Items.Clear();
+
+            string search = searchByName_txt.Text;
+
+            foreach (Student student in statisticsManager.GetAllStudents())
+            {
+                if (student.GetFullName().ToLower().Contains(search.ToLower()))
+                {
+                    listBoxStudents.Items.Add($"UserID: {student.Userid} - {student.GetFullName()} - {student.Role} - Class: {student.Class}");
+                }
+            }
+
+            foreach (Teacher teacher in statisticsManager.GetAllTeachers())
+            {
+                if (teacher.GetFullName().ToLower().Contains(search.ToLower()))
+                {
+                    listBoxTeachers.Items.Add($"UserID: {teacher.Userid} - {teacher.GetFullName()} - {teacher.Role} - Class: {teacher.Class}");
+                }
+            }
+
         }
     }
 }

@@ -235,7 +235,8 @@ main.pb-3 {
     right: 0px;
 }
 input.contact, select, textarea {
-    width: 100%;
+    width: -webkit-fill-available;
+   /* width: 100%;*/
     border: 1px solid #ccc;
     font-size: xx-large;
     padding: 13px;

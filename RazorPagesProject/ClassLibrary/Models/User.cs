@@ -91,7 +91,7 @@ namespace ClassLibrary.Models
         }
         public bool Create()
         {
-            if (this._idUser == 0) // check if the user is loaded or now being created
+            if (this._idUser == 0) // check if the user is loaded or now being created(when the id is 0 means that the user exist only in the business logic)
             {
                 User user = new User(this._firstname, this._lastname, this._role, this._class, this._email, this._phonenumber, this._idUser);
                 this._idUser = dbHelper.AddUserToDB(mapper.MapUserToUserDTO(user));

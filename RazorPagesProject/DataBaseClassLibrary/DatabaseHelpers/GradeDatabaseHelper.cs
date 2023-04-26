@@ -292,7 +292,7 @@ namespace DataBaseClassLibrary.DatabaseHelpers
 
         }
 
-        public void DeleteSubjectGradesFromDB(SubjectGradesDTO subjectGradesDTO)
+        public bool DeleteSubjectGradesFromDB(SubjectGradesDTO subjectGradesDTO)
         {
             using (SqlConnection connection =
                    new SqlConnection("Server=localhost;Database=individual_project_semester2;Trusted_Connection=True;"))
@@ -307,10 +307,12 @@ namespace DataBaseClassLibrary.DatabaseHelpers
                         command.ExecuteNonQuery();
                         Console.WriteLine("-----------------------------------");
                         Console.WriteLine("Records Deleted From DB Successfully");
+                        return true;
                     }
                     catch (SqlException e)
                     {
                         Console.WriteLine("Error Generated. Details: " + e.ToString());
+                        return false;
                     }
                     finally
                     {

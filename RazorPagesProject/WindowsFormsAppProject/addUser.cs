@@ -76,7 +76,7 @@ namespace WindowsFormsAppProject
                         }
                         foreach (SubjectGrades subjectGrades1 in checkedSubjectGrades)
                         {
-                            currentStudent.AddSubjectGrades(subjectGrades1);
+                            currentStudent.AddEmptySubjectGrades(subjectGrades1);
                         }
                         MessageBox.Show("User created successfully!");
 

@@ -8,6 +8,7 @@
 <html>
 <head>
 	<title>Student Grades</title>
+	<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 </head>
 	<div class="grades-container">
 	<table>
@@ -29,15 +30,31 @@
 
 					<tr>
 						<td class="width70px">@subjectGrades.Id</td>
-						<td>@subjectGrades.Subject.ToString()</td>
+						@if (subjectGrades.Subject == ClassLibrary.Models.Enums.Subject.ENGLISH)
+						{
+							<td>@subjectGrades.Subject.ToString()</td>
+						}
+						else if (subjectGrades.Subject == ClassLibrary.Models.Enums.Subject.MATH)
+						{
+							<td>@subjectGrades.Subject.ToString() <i class='fas fa-square-root-alt' style='font-size:36px'></i></td>
+						}
+						else if (subjectGrades.Subject == ClassLibrary.Models.Enums.Subject.PE)
+						{
+							<td>@subjectGrades.Subject.ToString() <i class='fas fa-running' style='font-size:36px'></i></td>
+						}
+						else
+						{
+							<td>@subjectGrades.Subject.ToString()</td>
+						}
+						
 						<td>
 							@try
 							{
-								if (Model.GetGradesFromSubjectGrades(subjectGrades) != null)
+								if (subjectGrades.GetGrades() != null)
 								{
-									if (Model.GetGradesFromSubjectGrades(subjectGrades).Count != 0)
+									if (subjectGrades.GetGrades().Count != 0)
 									{
-										@foreach (Grade grade in Model.GetGradesFromSubjectGrades(subjectGrades))
+										@foreach (Grade grade in subjectGrades.GetGrades())
 										{
 											<form class="grade-value grade-details" method="post">
 
@@ -53,7 +70,6 @@
 											</form>
 										}
 									}
-
 								}
 								else
 								{

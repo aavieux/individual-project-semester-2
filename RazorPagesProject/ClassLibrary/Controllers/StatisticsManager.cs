@@ -273,12 +273,23 @@ namespace ClassLibrary.Controllers
             }
             else return "Error!";
         }
+
         public List<Student> GetBestStudents(int number)
         {
-            foreach (Student student in GetAllStudents())
+            List<Student> currentStudents = GetAllStudents();
+            currentStudents.Sort((s1, s2) => s1.GetAvgGrades().CompareTo(s2.GetAvgGrades()));
+
+            List<Student> result = new List<Student>();
+            int studentsNumber = GetAllStudents().Count;
+            if (number> studentsNumber)
             {
-                
+                number = studentsNumber;
             }
+            for (int i = 0; i < number; i++)
+            {
+                result.Add(currentStudents[i]);
+            }
+            return result;
         }
     }
 }

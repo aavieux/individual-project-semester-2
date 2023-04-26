@@ -30,6 +30,11 @@
         {
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
+            cancel_btn = new Button();
+            saveSG_btn = new Button();
+            subject_clb = new CheckedListBox();
+            addSG_btn = new Button();
+            promoteUser_btn = new Button();
             saveChanges_btn = new Button();
             deleteUser_btn = new Button();
             updateDetails_btn = new Button();
@@ -48,7 +53,6 @@
             firstName_txt = new TextBox();
             firstName_lbl = new Label();
             tabPage2 = new TabPage();
-            promoteUser_btn = new Button();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             SuspendLayout();
@@ -60,11 +64,15 @@
             tabControl1.Location = new Point(12, 12);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(1300, 564);
+            tabControl1.Size = new Size(1061, 564);
             tabControl1.TabIndex = 0;
             // 
             // tabPage1
             // 
+            tabPage1.Controls.Add(cancel_btn);
+            tabPage1.Controls.Add(saveSG_btn);
+            tabPage1.Controls.Add(subject_clb);
+            tabPage1.Controls.Add(addSG_btn);
             tabPage1.Controls.Add(promoteUser_btn);
             tabPage1.Controls.Add(saveChanges_btn);
             tabPage1.Controls.Add(deleteUser_btn);
@@ -86,16 +94,73 @@
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(1292, 536);
+            tabPage1.Size = new Size(1053, 536);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "User Info";
             tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // cancel_btn
+            // 
+            cancel_btn.FlatStyle = FlatStyle.Flat;
+            cancel_btn.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
+            cancel_btn.Location = new Point(854, 382);
+            cancel_btn.Name = "cancel_btn";
+            cancel_btn.Size = new Size(171, 125);
+            cancel_btn.TabIndex = 35;
+            cancel_btn.Text = "Cancel";
+            cancel_btn.UseVisualStyleBackColor = true;
+            cancel_btn.Click += cancel_btn_Click;
+            // 
+            // saveSG_btn
+            // 
+            saveSG_btn.FlatStyle = FlatStyle.Flat;
+            saveSG_btn.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
+            saveSG_btn.Location = new Point(653, 382);
+            saveSG_btn.Name = "saveSG_btn";
+            saveSG_btn.Size = new Size(171, 125);
+            saveSG_btn.TabIndex = 34;
+            saveSG_btn.Text = "Save";
+            saveSG_btn.UseVisualStyleBackColor = true;
+            saveSG_btn.Click += saveSG_btn_Click;
+            // 
+            // subject_clb
+            // 
+            subject_clb.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            subject_clb.FormattingEnabled = true;
+            subject_clb.Location = new Point(653, 24);
+            subject_clb.Name = "subject_clb";
+            subject_clb.Size = new Size(372, 352);
+            subject_clb.TabIndex = 33;
+            // 
+            // addSG_btn
+            // 
+            addSG_btn.FlatStyle = FlatStyle.Flat;
+            addSG_btn.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
+            addSG_btn.Location = new Point(653, 398);
+            addSG_btn.Name = "addSG_btn";
+            addSG_btn.Size = new Size(372, 109);
+            addSG_btn.TabIndex = 21;
+            addSG_btn.Text = "Add SubjectGrades\r\n";
+            addSG_btn.UseVisualStyleBackColor = true;
+            addSG_btn.Click += addSG_btn_Click;
+            // 
+            // promoteUser_btn
+            // 
+            promoteUser_btn.FlatStyle = FlatStyle.Flat;
+            promoteUser_btn.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
+            promoteUser_btn.Location = new Point(653, 270);
+            promoteUser_btn.Name = "promoteUser_btn";
+            promoteUser_btn.Size = new Size(372, 109);
+            promoteUser_btn.TabIndex = 20;
+            promoteUser_btn.Text = "Promote User";
+            promoteUser_btn.UseVisualStyleBackColor = true;
+            promoteUser_btn.Click += promoteUser_btn_Click;
             // 
             // saveChanges_btn
             // 
             saveChanges_btn.FlatStyle = FlatStyle.Flat;
             saveChanges_btn.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
-            saveChanges_btn.Location = new Point(648, 30);
+            saveChanges_btn.Location = new Point(653, 24);
             saveChanges_btn.Name = "saveChanges_btn";
             saveChanges_btn.Size = new Size(372, 107);
             saveChanges_btn.TabIndex = 19;
@@ -107,7 +172,7 @@
             // 
             deleteUser_btn.FlatStyle = FlatStyle.Flat;
             deleteUser_btn.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
-            deleteUser_btn.Location = new Point(648, 155);
+            deleteUser_btn.Location = new Point(653, 145);
             deleteUser_btn.Name = "deleteUser_btn";
             deleteUser_btn.Size = new Size(372, 109);
             deleteUser_btn.TabIndex = 18;
@@ -119,7 +184,7 @@
             // 
             updateDetails_btn.FlatStyle = FlatStyle.Popup;
             updateDetails_btn.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
-            updateDetails_btn.Location = new Point(648, 30);
+            updateDetails_btn.Location = new Point(653, 24);
             updateDetails_btn.Name = "updateDetails_btn";
             updateDetails_btn.Size = new Size(372, 107);
             updateDetails_btn.TabIndex = 17;
@@ -260,28 +325,16 @@
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(1292, 536);
+            tabPage2.Size = new Size(1053, 536);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "User Grades";
             tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // promoteUser_btn
-            // 
-            promoteUser_btn.FlatStyle = FlatStyle.Flat;
-            promoteUser_btn.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
-            promoteUser_btn.Location = new Point(648, 291);
-            promoteUser_btn.Name = "promoteUser_btn";
-            promoteUser_btn.Size = new Size(372, 109);
-            promoteUser_btn.TabIndex = 20;
-            promoteUser_btn.Text = "Promote User";
-            promoteUser_btn.UseVisualStyleBackColor = true;
-            promoteUser_btn.Click += promoteUser_btn_Click;
             // 
             // userView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1112, 595);
+            ClientSize = new Size(1088, 595);
             Controls.Add(tabControl1);
             MaximizeBox = false;
             Name = "userView";
@@ -315,5 +368,9 @@
         private TextBox firstName_txt;
         private Button saveChanges_btn;
         private Button promoteUser_btn;
+        private Button addSG_btn;
+        private Button cancel_btn;
+        private Button saveSG_btn;
+        private CheckedListBox subject_clb;
     }
 }

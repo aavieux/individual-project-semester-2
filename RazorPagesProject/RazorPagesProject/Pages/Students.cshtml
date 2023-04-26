@@ -55,7 +55,7 @@
             <tr class="sorting_1" role="row">
                 <td tabindex="0">
                     <a class="no-decoration" asp-page="./_UserView" asp-route-userId="@student.Userid">
-                        <i class='fas fa-chalkboard-teacher'></i> @student.Firstname
+                        <i class='fas fa-user-graduate'></i> @student.Firstname
                     </a>
                 </td>
                 <td tabindex="0">
@@ -63,9 +63,17 @@
                 </td>
                 
                 <td tabindex="0">
-                    <a class="no-decoration" asp-page="./_ClassroomView" asp-route-className="@student.Class">
-                        @student.Class
-                    </a>
+                    @if (student.Class == 0)
+                    {
+                        <span > No class </span>
+                    }
+                    else
+                    {
+                        <a class="no-decoration" asp-page="./_ClassroomView" asp-route-className="@student.Class">
+                            @student.Class
+                        </a>
+                    }
+                    
                 </td>
                 <td tabindex="0">
                     @student.Role

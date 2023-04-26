@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace WindowsFormsAppProject
 {
@@ -25,6 +26,8 @@ namespace WindowsFormsAppProject
             this.userId = userId;
 
             InitializeComponent();
+
+
             GenerateDropdowns();
             ClearFields();
             DisplayContent();
@@ -43,6 +46,29 @@ namespace WindowsFormsAppProject
             {
                 role_comboBox.Items.Add(role.ToString());
             }
+            if (statisticsManager.GetUserById(userId).Role == Role.STUDENT)
+            {
+                subject_clb.Items.Clear();
+
+                //Get available subjects that can be added (excluding the existing ones)
+                Subject[] availableSubjectsToAdd = (Subject[])Enum.GetValues(typeof(Subject));
+                foreach (Subject subject in Enum.GetValues(typeof(Subject)))
+                {
+                    foreach (SubjectGrades subjectGrades in statisticsManager.GetStudentById(userId).GetGradeBook())
+                    {
+                        if (subjectGrades.Subject == subject)
+                        {
+                            availableSubjectsToAdd = availableSubjectsToAdd.Where(x => x != subject).ToArray(); // remove the ones that already exist
+
+                        }
+                    }
+                }
+                foreach (Subject subject1 in availableSubjectsToAdd)
+                {
+                    subject_clb.Items.Add(subject1.ToString());
+                }
+            }
+
         }
         private void ClearFields()
         {
@@ -79,6 +105,18 @@ namespace WindowsFormsAppProject
             deleteUser_btn.Visible = true;
             promoteUser_btn.Visible = true;
 
+            if (statisticsManager.GetUserById(userId).Role == Role.STUDENT)
+            {
+                addSG_btn.Visible = true;
+            }
+            else
+            {
+                addSG_btn.Visible = false;
+            }
+            subject_clb.Visible = false;
+            saveSG_btn.Visible = false;
+            cancel_btn.Visible = false;
+
         }
 
         private void updateDetails_btn_Click(object sender, EventArgs e)
@@ -96,6 +134,7 @@ namespace WindowsFormsAppProject
             promoteUser_btn.Visible = false;
 
             saveChanges_btn.Visible = true;
+            addSG_btn.Visible = false;
         }
 
         private void saveChanges_btn_Click(object sender, EventArgs e)
@@ -131,8 +170,9 @@ namespace WindowsFormsAppProject
         {
             if (role_comboBox.SelectedItem.ToString() == Role.STUDENT.ToString())
             {
-                if (statisticsManager.GetStudentById(int.Parse(userId_txt.Text)).DeleteSubjectGrades() == false)
+                if (statisticsManager.GetStudentById(int.Parse(userId_txt.Text)).DeleteAllSubjectGradesWithGrades() == false)
                 {
+                    MessageBox.Show("Could not delete this user's Subject Grades!");
                     DisplayError();
                 }
                 else
@@ -142,6 +182,7 @@ namespace WindowsFormsAppProject
                 }
                 if (statisticsManager.GetStudentById(int.Parse(userId_txt.Text)).Delete() == false)
                 {
+                    MessageBox.Show("Could not delete this user!");
                     DisplayError();
                 }
                 else
@@ -154,6 +195,7 @@ namespace WindowsFormsAppProject
             {
                 if (statisticsManager.GetTeacherById(int.Parse(userId_txt.Text)).Delete() == false)
                 {
+                    MessageBox.Show("Could not delete this user!");
                     DisplayError();
                 }
                 else
@@ -162,15 +204,69 @@ namespace WindowsFormsAppProject
 
                 }
             }
-            
+
         }
 
         private void promoteUser_btn_Click(object sender, EventArgs e)
         {
             var user = statisticsManager.GetUserById(userId);
             user.PromoteRole();
-            user.Update();
             MessageBox.Show("Successfully promoted user!");
+            DisplayContent();
+        }
+
+        private void addSG_btn_Click(object sender, EventArgs e)
+        {
+            firstName_txt.Enabled = false;
+            lastName_txt.Enabled = false;
+            role_comboBox.Enabled = false;
+            class_comboBox.Enabled = false;
+            email_txt.Enabled = false;
+            phone_txt.Enabled = false;
+            userId_txt.Enabled = false;
+
+            saveChanges_btn.Visible = false;
+            updateDetails_btn.Visible = false;
+            deleteUser_btn.Visible = false;
+            promoteUser_btn.Visible = false;
+            addSG_btn.Visible = false;
+
+            saveSG_btn.Visible = true;
+            cancel_btn.Visible = true;
+            subject_clb.Visible = true;
+        }
+
+        private void saveSG_btn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                List<Subject> subjectsToAdd = new List<Subject>();
+                for (int i = 0; i < subject_clb.CheckedItems.Count; i++) // get student names
+                {
+                    subjectsToAdd.Add(Enum.Parse<Subject>(subject_clb.CheckedItems[i].ToString()));
+                }
+                foreach (Subject subject in subjectsToAdd)
+                {
+                    SubjectGrades subjectGrades = new SubjectGrades(subject, userId);
+                    statisticsManager.GetStudentById(userId).AddEmptySubjectGrades(subjectGrades);
+                }
+                MessageBox.Show("Successfully added the Subjects to the Gradebook!");
+                GenerateDropdowns();
+                
+            }
+            catch (Exception)
+            {
+                DisplayError();
+            }
+            finally
+            {
+                DisplayContent();
+            }
+            
+        }
+
+        private void cancel_btn_Click(object sender, EventArgs e)
+        {
             DisplayContent();
         }
     }

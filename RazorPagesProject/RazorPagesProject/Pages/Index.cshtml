@@ -4,6 +4,7 @@
     ViewData["Title"] = "Home page";
 }
 @using ClassLibrary.Models.Enums;
+@using ClassLibrary.Models;
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <div class="dashboard-main">
@@ -17,9 +18,12 @@
             </div>
             <div class="best-performers">
                 <h3>Best Performing Students</h3>
-                <ul id="best">
-
-                </ul>
+                @foreach (Student student in Model.GetBestStudents(3))
+                {
+                    <ul id="best">
+                        @student.GetFullName() : @student.GetAvgGrades()
+                    </ul>
+                }
             </div>
         </div>
     </div>
