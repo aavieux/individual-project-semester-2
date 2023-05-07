@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Shop.Helpers
+namespace ClassLibrary.Helpers
 {
     //Exeption Methods
     public static class ExceptionMessages

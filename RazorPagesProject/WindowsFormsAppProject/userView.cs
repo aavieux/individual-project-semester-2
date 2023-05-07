@@ -18,11 +18,13 @@ namespace WindowsFormsAppProject
     public partial class userView : Form
     {
         private StatisticsManager statisticsManager;
+        private UserManager userManager;
         int userId;
 
         public userView(int userId)
         {
             this.statisticsManager = new StatisticsManager();
+            this.userManager = new UserManager();
             this.userId = userId;
 
             InitializeComponent();
@@ -180,7 +182,7 @@ namespace WindowsFormsAppProject
                     MessageBox.Show("Successfully deleted this user's SubjectGrades!");
 
                 }
-                if (statisticsManager.GetStudentById(int.Parse(userId_txt.Text)).Delete() == false)
+                if ( userManager.Delete(statisticsManager.GetStudentById(int.Parse(userId_txt.Text))) == false)//USERMANAGER_CREATE
                 {
                     MessageBox.Show("Could not delete this user!");
                     DisplayError();
@@ -193,7 +195,7 @@ namespace WindowsFormsAppProject
             }
             else
             {
-                if (statisticsManager.GetTeacherById(int.Parse(userId_txt.Text)).Delete() == false)
+                if (userManager.Delete(statisticsManager.GetTeacherById(int.Parse(userId_txt.Text))) == false)//USERMANAGER_CREATE
                 {
                     MessageBox.Show("Could not delete this user!");
                     DisplayError();
@@ -201,6 +203,7 @@ namespace WindowsFormsAppProject
                 else
                 {
                     MessageBox.Show("Successfully deleted this user!");
+                    this.Close();
 
                 }
             }

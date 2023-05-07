@@ -28,130 +28,31 @@
         </div>
     </div>
     <div class="container3">
-        <div id="bell-curve">
-            <div class="y-axis-labels">
-                <div class="y-axis-label">@Subject.ENGLISH</div>
-                <div class="y-axis-label">@Subject.BIOLOGY</div>
-                <div class="y-axis-label">@Subject.MATH</div>
-                <div class="y-axis-label">@Subject.HISTORY</div>
-                <div class="y-axis-label">@Subject.SCIENCE</div>
-                <div class="y-axis-label">@Subject.PE</div>
-            </div>
-
-            <div class="grid-container">
-            </div>
-
-            <div class="x-axis-labels">
-                <div class="x-axis-label">Undefined</div>
-                <div class="x-axis-label">Sufficient</div>
-                <div class="x-axis-label">Good</div>
-                <div class="x-axis-label">Outstanding</div>
-            </div>
-
-            
+        <div>
+            <canvas id="myChart"></canvas>
         </div>
-
-        <style>
-            /* CSS for the grid */
-            #bell-curve {
-                display: flex;
-                flex-direction: row;
-                align-items: flex-end;
-                width: 600px;
-                height: 500px;
-                border: 1px solid gray;
-            }
-
-            .y-axis-labels {
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                height: 100%;
-                font-size: 12px;
-                text-align: right;
-                font-family: Arial, sans-serif;
-                border-right: solid;
-                border-width: 1px;
-
-            }
-
-            .x-axis-labels {
-                display: flex;
-                justify-content: space-between;
-                width: -webkit-fill-available;
-                font-size: 12px;
-                font-family: Arial, sans-serif;
-                border-top: solid;
-                border-width: 1px;
-                height: 3%;
-
-            }
-
-            .x-axis-label {
-                padding-left: 70px;
-            }
-
-            .y-axis-label {
-                text-align: left;
-                padding-right: 10px;
-            }
-            .grid-container {
-                display: grid;
-                grid-template-columns: repeat(4, 1fr);
-                grid-template-rows: repeat(6, 1fr);
-                grid-gap: 5px;
-                width: -webkit-fill-available;
-                height: -webkit-fill-available;
-                border-style:solid;
-            }
-
-            .cell {
-                background-color: white;
-                border: 1px solid gray;
-                position: relative;
-            }
-
-            /* CSS for the gray dots */
-            .dot {
-                background-color: gray;
-                border-radius: 50%;
-                width: 10px;
-                height: 10px;
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-            }
-        </style>
     </div>
 </div>
 
 <script>
-    // JS code to generate the grid and gray dots
-    const xLabels = ["Undefined", "Sufficient", "Good", "Outstanding"];
-    const yLabels = ["@Subject.ENGLISH", "@Subject.BIOLOGY", "@Subject.MATH", "@Subject.HISTORY", "@Subject.SCIENCE", "@Subject.PE"];
-    const grid = document.querySelector('.grid-container');
+    const ctx = document.getElementById('myChart');
 
-    for (let y = 0; y < yLabels.length; y++) {
-        for (let x = 0; x < xLabels.length; x++) {
-            const cell = document.createElement('div');
-            cell.classList.add('cell');
-            cell.dataset.x = xLabels[x];
-            cell.dataset.y = yLabels[y];
-
-            // Custom function that returns true or false
-            // Replace this with your own function
-            const isGray = (x, y) => {
-                // your custom method here
-            }
-
-            if (isGray(xLabels[x], yLabels[y])) {
-                const dot = document.createElement('div');
-                dot.classList.add('dot');
-                cell.appendChild(dot);
-                grid.appendChild(cell);
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            datasets: [{
+                label: '# of Votes',
+                data: [12, 19, 3, 5, 2, 3],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
             }
         }
-    }
+    });
 </script>
-

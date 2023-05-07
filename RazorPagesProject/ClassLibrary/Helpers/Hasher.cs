@@ -2,7 +2,7 @@
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Shop.Helpers
+namespace ClassLibrary.Helpers
 {
     public class Hasher
     {

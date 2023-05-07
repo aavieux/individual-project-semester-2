@@ -16,9 +16,11 @@ namespace WindowsFormsAppProject
     public partial class addUser : Form
     {
         private StatisticsManager statisticsManager;
+        private UserManager userManager;
         public addUser()
         {
             statisticsManager = new StatisticsManager();
+            userManager = new UserManager();
             InitializeComponent();
             GenerateDropdowns();
         }
@@ -66,7 +68,7 @@ namespace WindowsFormsAppProject
                         email_txt.Text,
                         phone_txt.Text);
 
-                        currentStudent.Create();
+                        userManager.CreateUser(currentStudent); //USERMANAGER_CREATE
 
                         List<SubjectGrades> checkedSubjectGrades = new List<SubjectGrades>();
                         for (int i = 0; i < subject_clb.CheckedItems.Count; i++) // get student names
@@ -91,7 +93,7 @@ namespace WindowsFormsAppProject
                         email_txt.Text,
                         phone_txt.Text);
 
-                        currentTeacher.Create();
+                        userManager.CreateUser(currentTeacher); //USERMANAGER_CREATE
                         MessageBox.Show("User created successfully!");
                     }
                 }

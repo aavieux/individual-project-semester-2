@@ -89,25 +89,25 @@ namespace ClassLibrary.Models
             return false;
 
         }
-        public bool Create()
-        {
-            if (this._idUser == 0) // check if the user is loaded or now being created(when the id is 0 means that the user exist only in the business logic)
-            {
-                User user = new User(this._firstname, this._lastname, this._role, this._class, this._email, this._phonenumber, this._idUser);
-                this._idUser = dbHelper.AddUserToDB(mapper.MapUserToUserDTO(user));
-                if (this._idUser != 0)
-                {
-                    return true;
-                }
-                return false;
-            }
-            else
-            {
-                return false;
-            }
+        //public bool Create()
+        //{
+        //    if (this._idUser == 0) // check if the user is loaded or now being created(when the id is 0 means that the user exist only in the business logic)
+        //    {
+        //        User user = new User(this._firstname, this._lastname, this._role, this._class, this._email, this._phonenumber, this._idUser);
+        //        this._idUser = dbHelper.AddUserToDB(mapper.MapUserToUserDTO(user));
+        //        if (this._idUser != 0)
+        //        {
+        //            return true;
+        //        }
+        //        return false;
+        //    }
+        //    else
+        //    {
+        //        return false;
+        //    }
             
             
-        }
+        //}
         public bool Update()
         {
             User user = new User(this._firstname, this._lastname, this._role, this._class, this._email, this._phonenumber, this._idUser);
@@ -117,14 +117,14 @@ namespace ClassLibrary.Models
             }
             return false;
         }
-        public bool Delete()
-        {
-            if (dbHelper.DeleteUserFromDB(this._idUser))
-            {
-                return true;
-            }
-            return false;
-        }
+        //public bool Delete()
+        //{
+        //    if (dbHelper.DeleteUserFromDB(this._idUser))
+        //    {
+        //        return true;
+        //    }
+        //    return false;
+        //}
         public void ChangeClass(int newClassId)
         {
             this._class = newClassId;
@@ -135,5 +135,9 @@ namespace ClassLibrary.Models
 		{
 			return $"{_firstname} {_lastname}";
 		}
+        public void SetId(int id)
+        {
+            this._idUser = id;
+        }
 	}
 }
