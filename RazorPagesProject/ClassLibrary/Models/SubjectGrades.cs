@@ -13,10 +13,10 @@ using DataBaseClassLibrary.DTOs;
 namespace ClassLibrary.Models
 {
 	public class SubjectGrades
-
 	{
         private GradeDatabaseHelper gradeDbHelper;
         private GradeMapper gradeMapper;
+
 		private int _idSubjectGrades;
 		private Subject _subject;
 		private int _idUser;
@@ -28,22 +28,26 @@ namespace ClassLibrary.Models
 		public Subject Subject { get { return _subject; } }
 		public int IdUser { get { return _idUser; }}
 
-        public SubjectGrades(int id, Subject subject, int idUser)
+        public SubjectGrades(GradeDatabaseHelper gradeDbHelper, int id, Subject subject, int idUser)
         {
             //to load  // to fix
             //gradeManager = new GradeManager();
+            this.gradeMapper = new GradeMapper(gradeDbHelper);
             this._idSubjectGrades = id;
             this._subject = subject;
             this._idUser = idUser;
-            this.gradeDbHelper = new GradeDatabaseHelper();
-            this.gradeMapper = new GradeMapper();
+
+            this.gradeDbHelper = gradeDbHelper;
         }
-        public SubjectGrades(Subject subject, int idUser)
+        public SubjectGrades(GradeDatabaseHelper gradeDbHelper, Subject subject, int idUser)
         {
             //to  write // to fix
             //gradeManager = new GradeManager();
+            this.gradeMapper = new GradeMapper(gradeDbHelper);
             this._subject = subject;
             this._idUser = idUser;
+
+            this.gradeDbHelper = gradeDbHelper;          
         }
 
         //public SubjectGrades(int id, Subject subject, int idUser, List<Grade> Grades)

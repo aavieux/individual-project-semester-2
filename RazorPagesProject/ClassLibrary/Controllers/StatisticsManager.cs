@@ -25,19 +25,29 @@ namespace ClassLibrary.Controllers
         private FeedbackDatabaseHelper feedbackDbHelper;
         private FeedbackMapper feedbackMapper;
 
-        public StatisticsManager()
+        public StatisticsManager
+            (
+            ClassDatabaseHelper classDbHelper, 
+            ClassMapper classMapper, 
+            UserDatabaseHelper userDbHelper, 
+            UserMapper userMapper, 
+            GradeDatabaseHelper gradeDbHelper,
+            GradeMapper gradeMapper,
+            FeedbackDatabaseHelper feedbackDbHelper,
+            FeedbackMapper feedbackMapper
+            )
         {
-            this.classDbHelper = new ClassDatabaseHelper();
-            this.classMapper = new ClassMapper();
+            this.classDbHelper = classDbHelper;
+            this.classMapper = classMapper;
 
-            this.userDbHelper = new UserDatabaseHelper();
-            this.userMapper = new UserMapper();
+            this.userDbHelper = userDbHelper;
+            this.userMapper = userMapper;
 
-            this.gradeDbHelper = new GradeDatabaseHelper();
-            this.gradeMapper = new GradeMapper();
+            this.gradeDbHelper = gradeDbHelper;
+            this.gradeMapper = gradeMapper;
 
-            this.feedbackDbHelper = new FeedbackDatabaseHelper();
-            this.feedbackMapper = new FeedbackMapper();
+            this.feedbackDbHelper = feedbackDbHelper;
+            this.feedbackMapper = feedbackMapper;
         }
 
         public List<Class> GetAllClasses()

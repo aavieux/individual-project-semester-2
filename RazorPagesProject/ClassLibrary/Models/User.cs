@@ -1,6 +1,8 @@
 ﻿using ClassLibrary.Controllers;
 using ClassLibrary.Mapper;
 using ClassLibrary.Models.Enums;
+using ClassLibrary.Models.Interfaces;
+using DataBaseClassLibrary.DatabaseHelpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,17 +11,19 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary.Models
 {
-	public class User
+	public class User : IUser
 	{
-		private DataBaseClassLibrary.DatabaseHelpers.UserDatabaseHelper dbHelper = new DataBaseClassLibrary.DatabaseHelpers.UserDatabaseHelper();
-		private UserMapper mapper = new UserMapper();
+		private UserDatabaseHelper userDbHelper;
+		private UserMapper userMapper;
+
+        private GradeDatabaseHelper gradeDbHelper;
 
 		private string _firstname;
 		private string _lastname;
 		private Role _role;
 		private int? _class;
-		private string? _email;
-		private string? _phonenumber;
+		private string _email;
+		private string _phonenumber;
 		private int _idUser;
 
 		public string Firstname { get { return _firstname; } }
@@ -30,9 +34,12 @@ namespace ClassLibrary.Models
 		public string PhoneNumber { get { return _phonenumber; } }
 		public int Userid { get { return _idUser; } }
 
-		public User(string FirstName, string LastName, Role Role, int? Class, string Email, string PhoneNumber, int UserID) 
+		public User(UserDatabaseHelper userDbHelper, GradeDatabaseHelper gradeDbHelper, string FirstName, string LastName, Role Role, int? Class, string Email, string PhoneNumber, int UserID) 
 		{
             // all others load
+            this.userDbHelper = userDbHelper;
+            this.gradeDbHelper = gradeDbHelper;
+            userMapper = new UserMapper(userDbHelper, gradeDbHelper);
             this._firstname = FirstName;
 			this._lastname = LastName;
 			this._role = Role;
@@ -41,9 +48,13 @@ namespace ClassLibrary.Models
 			this._phonenumber = PhoneNumber;
 			this._idUser = UserID;
         }
-        public User(string FirstName, string LastName, Role Role, int? Class, string Email, string PhoneNumber)
+        public User(UserDatabaseHelper dbHelper, GradeDatabaseHelper gradeDbHelper, string FirstName, string LastName, Role Role, int? Class, string Email, string PhoneNumber)
         {
             // all others write
+
+            this.userDbHelper = dbHelper;
+            userMapper = new UserMapper(userDbHelper, gradeDbHelper);
+
             this._firstname = FirstName;
             this._lastname = LastName;
             this._role = Role;
@@ -52,9 +63,13 @@ namespace ClassLibrary.Models
             this._phonenumber = PhoneNumber;
         }
 
-        public User(int userID, string firstName, string lastName, string email) 
+        public User( int userID, string firstName, string lastName, string email) 
         {
             // manager
+
+            //this.userDbHelper = dbHelper;
+            //userMapper = new UserMapper(userDbHelper, gradeDbHelper);
+
             this._firstname = firstName;
             this._lastname = lastName;
             this._email = email;
@@ -110,8 +125,8 @@ namespace ClassLibrary.Models
         //}
         public bool Update()
         {
-            User user = new User(this._firstname, this._lastname, this._role, this._class, this._email, this._phonenumber, this._idUser);
-            if (dbHelper.UpdateUserToDB(mapper.MapUserToUserDTO(user)))
+            User user = new User(userDbHelper,gradeDbHelper, this._firstname, this._lastname, this._role, this._class, this._email, this._phonenumber, this._idUser);
+            if (userDbHelper.UpdateUserToDB(userMapper.MapUserToUserDTO(user)))
             {
                 return true;
             }

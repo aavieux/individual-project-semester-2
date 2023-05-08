@@ -1,6 +1,7 @@
 ﻿using ClassLibrary.Controllers;
 using ClassLibrary.Models;
 using ClassLibrary.Models.Enums;
+using DataBaseClassLibrary.DatabaseHelpers;
 using Microsoft.VisualBasic.ApplicationServices;
 using System;
 using System.Collections.Generic;
@@ -19,17 +20,19 @@ namespace WindowsFormsAppProject
     {
         private StatisticsManager statisticsManager;
         private UserManager userManager;
+        private UserDatabaseHelper userDatabaseHelper;
+        private GradeDatabaseHelper gradeDatabaseHelper;
         int userId;
 
-        public userView(int userId)
+        public userView(StatisticsManager statisticsManager,UserManager userManager,UserDatabaseHelper userDatabaseHelper,GradeDatabaseHelper gradeDatabaseHelper, int userId)
         {
-            this.statisticsManager = new StatisticsManager();
-            this.userManager = new UserManager();
+            this.statisticsManager = statisticsManager;
+            this.userManager = userManager;
+            this.userDatabaseHelper = userDatabaseHelper;
+            this.gradeDatabaseHelper = gradeDatabaseHelper;
             this.userId = userId;
 
             InitializeComponent();
-
-
             GenerateDropdowns();
             ClearFields();
             DisplayContent();
@@ -153,6 +156,7 @@ namespace WindowsFormsAppProject
                     classId = int.Parse(class_comboBox.SelectedItem.ToString());
                 }
                 ClassLibrary.Models.User currentUser = new ClassLibrary.Models.User(
+                    userDatabaseHelper,
                     firstName_txt.Text,
                     lastName_txt.Text,
                     Enum.Parse<Role>(role_comboBox.Text),
@@ -250,7 +254,7 @@ namespace WindowsFormsAppProject
                 }
                 foreach (Subject subject in subjectsToAdd)
                 {
-                    SubjectGrades subjectGrades = new SubjectGrades(subject, userId);
+                    SubjectGrades subjectGrades = new SubjectGrades(gradeDatabaseHelper, subject, userId);
                     statisticsManager.GetStudentById(userId).AddEmptySubjectGrades(subjectGrades);
                 }
                 MessageBox.Show("Successfully added the Subjects to the Gradebook!");

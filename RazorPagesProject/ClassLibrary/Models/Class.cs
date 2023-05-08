@@ -1,14 +1,18 @@
 ﻿using ClassLibrary.Controllers;
 using ClassLibrary.Mapper;
+using DataBaseClassLibrary.DatabaseHelpers;
 using DataBaseClassLibrary.DTOs;
 
 namespace ClassLibrary.Models
 {
     public class Class
     {
-        DataBaseClassLibrary.DatabaseHelpers.ClassDatabaseHelper dbHelper = new DataBaseClassLibrary.DatabaseHelpers.ClassDatabaseHelper();
-        UserMapper userMapper = new UserMapper();
-        ClassMapper classMapper = new ClassMapper();
+        ClassDatabaseHelper classDbHelper;
+        UserDatabaseHelper userDbHelper;
+        GradeDatabaseHelper gradeDbHelper;
+
+        UserMapper userMapper;
+        ClassMapper classMapper;
 
         private int _nameClass;
         private int _teacherIdClass;
@@ -19,12 +23,25 @@ namespace ClassLibrary.Models
         public int TeacherID { get { return this._teacherIdClass; } }
         public List<Student> Students { get { return this._students; } }
 
-        public Class(int name, int teacherid)
+        public Class(
+            ClassDatabaseHelper classDbHelper, 
+            UserDatabaseHelper userDbHelper, 
+            GradeDatabaseHelper gradeDbHelper, 
+            int name, 
+            int teacherid)
         {
             //to load and write
             //classManager = new ClassManager();
+            
             this._nameClass = name;
             this._teacherIdClass = teacherid;
+
+            this.classDbHelper = classDbHelper;
+            this.userDbHelper = userDbHelper;
+            this.gradeDbHelper = gradeDbHelper;
+
+            this.userMapper = new UserMapper(userDbHelper,gradeDbHelper);
+            this.classMapper = new ClassMapper(classDbHelper, userDbHelper, gradeDbHelper);
         }
         //public Class(int name, int teacherid, List<Student> students)
         //{
@@ -42,7 +59,7 @@ namespace ClassLibrary.Models
         public List<Student> GetStudents()
         {
             List<Student> students = new List<Student>();
-            foreach (StudentDTO studentDTO in dbHelper.GetClassStudentsFromDB(this._nameClass))
+            foreach (StudentDTO studentDTO in classDbHelper.GetClassStudentsFromDB(this._nameClass))
             {
                 students.Add((Student)userMapper.MapStudentDTOtoStudent(studentDTO));
             }
@@ -50,9 +67,9 @@ namespace ClassLibrary.Models
         }
         public bool Create()
         {
-            Class currentClass = new Class(this._nameClass, this._teacherIdClass);
+            Class currentClass = new Class(classDbHelper,userDbHelper,gradeDbHelper,this._nameClass, this._teacherIdClass);
 
-            if (dbHelper.CreateClass(classMapper.MapClassToClassDTO(currentClass)))
+            if (classDbHelper.CreateClass(classMapper.MapClassToClassDTO(currentClass)))
             {
                 return true;
             }

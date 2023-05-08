@@ -8,18 +8,23 @@ namespace ClassLibrary.Models
 {
     public class Student : User
     {
-        private GradeDatabaseHelper gradeDbHelper = new GradeDatabaseHelper();
-        private GradeMapper gradeMapper = new GradeMapper();
+
+        private GradeDatabaseHelper gradeDbHelper;
+        private GradeMapper gradeMapper;
 
         //UserManager userManager;
         //GradeManager gradeManager;
 
-        public Student(string FirstName, string LastName, Role Role, int? Class, string Email, string PhoneNumber, int UserID) : base(FirstName, LastName, Role, Class, Email, PhoneNumber, UserID)
+        public Student(UserDatabaseHelper userDbHelper, GradeDatabaseHelper gradeDbHelper, string FirstName, string LastName, Role Role, int? Class, string Email, string PhoneNumber, int UserID) : base(userDbHelper, gradeDbHelper, FirstName, LastName, Role, Class, Email, PhoneNumber, UserID)
         {
+            this.gradeDbHelper = gradeDbHelper;
+            this.gradeMapper = new GradeMapper(gradeDbHelper);
             //to load
         }
-        public Student(string FirstName, string LastName, Role Role, int? Class, string Email, string PhoneNumber) : base(FirstName, LastName, Role, Class, Email, PhoneNumber)
+        public Student(UserDatabaseHelper dbHelper, GradeDatabaseHelper gradeDbHelper, string FirstName, string LastName, Role Role, int? Class, string Email, string PhoneNumber) : base(dbHelper, gradeDbHelper, FirstName, LastName, Role, Class, Email, PhoneNumber)
         {
+            this.gradeDbHelper = gradeDbHelper;
+            this.gradeMapper = new GradeMapper(gradeDbHelper);
             //to write
         }
 

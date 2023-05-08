@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary.Models.Interfaces
 {
-    internal interface IUser
+    public interface IUser
     {
+        public void PromoteRole();
+        public bool AddToClass(int classId);
+        public void ChangeClass(int newClassId);
+        public string GetFullName();
+        public void SetId(int id);
+        public bool Update();
     }
 }
