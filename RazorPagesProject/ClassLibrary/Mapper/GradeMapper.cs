@@ -3,6 +3,7 @@ using ClassLibrary.Models.Enums;
 using DataBaseClassLibrary.DatabaseHelpers;
 using DataBaseClassLibrary.DTOs;
 using DataBaseClassLibrary.DTOs.DTOEnums;
+using DataBaseClassLibrary.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -14,8 +15,11 @@ namespace ClassLibrary.Mapper
 {
     public class GradeMapper
     {
-        private GradeDatabaseHelper gradeDbHelper;
-        public GradeMapper(GradeDatabaseHelper gradeDbHelper) { this.gradeDbHelper = gradeDbHelper;}
+        private IGradeDbHelper gradeDbHelper;
+        public GradeMapper(IGradeDbHelper gradeDbHelper) 
+        { 
+            this.gradeDbHelper = gradeDbHelper;
+        }
         internal Grade MapGradeDTOtoGrade(GradeDTO gradeDTO)
         {
             Grade grade = new Grade(gradeDTO.IdGrade ,gradeDTO.IdSubjectGrades, Enum.Parse<Models.Enums.GradeEnum>(gradeDTO.GradeEnum.ToString()));

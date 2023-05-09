@@ -2,6 +2,7 @@
 using ClassLibrary.Models;
 using DataBaseClassLibrary.DatabaseHelpers;
 using DataBaseClassLibrary.DTOs;
+using DataBaseClassLibrary.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,13 +13,13 @@ namespace ClassLibrary.Controllers
 {
     public class FeedbackManager
     {
-        private FeedbackDatabaseHelper feedbackDbHelper;
+        private IFeedbackDbHelper feedbackDbHelper;
         private FeedbackMapper feedbackMapper;
 
-        public FeedbackManager(FeedbackDatabaseHelper feedbackDbHelper)
+        public FeedbackManager(IFeedbackDbHelper feedbackDbHelper, FeedbackMapper feedbackMapper)
         {
             this.feedbackDbHelper = feedbackDbHelper;
-            this.feedbackMapper = new FeedbackMapper(feedbackDbHelper);
+            this.feedbackMapper = feedbackMapper;
         }
         public List<Feedback> GetAllFeedbacks()
         {

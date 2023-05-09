@@ -2,6 +2,7 @@
 //using ClassLibrary.Models.Enums;
 using DataBaseClassLibrary.DTOs;
 using DataBaseClassLibrary.DTOs.DTOEnums;
+using DataBaseClassLibrary.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -13,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace DataBaseClassLibrary.DatabaseHelpers
 {
-    public class ClassDatabaseHelper
+    public class ClassDatabaseHelper : IClassDbHelper
     {
         public List<ClassDTO> GetClassesFromDB()
         {

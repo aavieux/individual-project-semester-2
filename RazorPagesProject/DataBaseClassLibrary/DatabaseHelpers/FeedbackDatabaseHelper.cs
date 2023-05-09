@@ -2,6 +2,7 @@
 //using ClassLibrary.Models.Enums;
 using DataBaseClassLibrary.DTOs;
 using DataBaseClassLibrary.DTOs.DTOEnums;
+using DataBaseClassLibrary.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -12,7 +13,7 @@ using System.Xml.Linq;
 
 namespace DataBaseClassLibrary.DatabaseHelpers
 {
-    public class FeedbackDatabaseHelper
+    public class FeedbackDatabaseHelper : IFeedbackDbHelper
     {
         public List<FeedbackDTO> GetAllFeedbacksFromDB()
         { 

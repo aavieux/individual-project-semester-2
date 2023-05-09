@@ -3,6 +3,7 @@ using ClassLibrary.Models.Enums;
 using DataBaseClassLibrary.DatabaseHelpers;
 using DataBaseClassLibrary.DTOs;
 using DataBaseClassLibrary.DTOs.DTOEnums;
+using DataBaseClassLibrary.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,14 +14,14 @@ namespace ClassLibrary.Mapper
 {
     public class UserMapper
     {
-        private UserDatabaseHelper userDbHelper;
-        private GradeDatabaseHelper gradeDbHelper;
-        public UserMapper(UserDatabaseHelper userDbHelper, GradeDatabaseHelper gradeDbHelper) 
+        private IUserDbHelper userDbHelper;
+        private IGradeDbHelper gradeDbHelper;
+        public UserMapper(IUserDbHelper userDbHelper, IGradeDbHelper gradeDbHelper) 
         {
             this.userDbHelper = userDbHelper;
             this.gradeDbHelper = gradeDbHelper;
         }
-        public UserMapper(UserDatabaseHelper userDatabaseHelper) // for admins and managers in log in form
+        public UserMapper(IUserDbHelper userDatabaseHelper) // for admins and managers in log in form
         {
             this.userDbHelper = userDatabaseHelper;
             //this.gradeDatabaseHelper = new GradeDatabaseHelper();
@@ -53,8 +54,5 @@ namespace ClassLibrary.Mapper
             Manager manager = new Manager(managerDTO.Userid,managerDTO.Firstname, managerDTO.Lastname, managerDTO.Email, managerDTO.Password);
             return manager;
         }
-
-
-
     }
 }

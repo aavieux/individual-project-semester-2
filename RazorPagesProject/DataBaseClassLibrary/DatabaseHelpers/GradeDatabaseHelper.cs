@@ -2,6 +2,7 @@
 //using ClassLibrary.Models;
 using DataBaseClassLibrary.DTOs;
 using DataBaseClassLibrary.DTOs.DTOEnums;
+using DataBaseClassLibrary.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -12,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace DataBaseClassLibrary.DatabaseHelpers
 {
-    public class GradeDatabaseHelper
+    public class GradeDatabaseHelper : IGradeDbHelper
     {
         public List<SubjectGradesDTO> GetGradeBooksFromDB()
         {

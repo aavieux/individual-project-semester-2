@@ -3,6 +3,7 @@ using ClassLibrary.Mapper;
 using ClassLibrary.Models.Enums;
 using ClassLibrary.Models.Interfaces;
 using DataBaseClassLibrary.DatabaseHelpers;
+using DataBaseClassLibrary.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +14,10 @@ namespace ClassLibrary.Models
 {
 	public class User : IUser
 	{
-		private UserDatabaseHelper userDbHelper;
+		private IUserDbHelper userDbHelper;
 		private UserMapper userMapper;
 
-        private GradeDatabaseHelper gradeDbHelper;
+        private IGradeDbHelper gradeDbHelper;
 
 		private string _firstname;
 		private string _lastname;
@@ -34,7 +35,7 @@ namespace ClassLibrary.Models
 		public string PhoneNumber { get { return _phonenumber; } }
 		public int Userid { get { return _idUser; } }
 
-		public User(UserDatabaseHelper userDbHelper, GradeDatabaseHelper gradeDbHelper, string FirstName, string LastName, Role Role, int? Class, string Email, string PhoneNumber, int UserID) 
+		public User(IUserDbHelper userDbHelper, IGradeDbHelper gradeDbHelper, string FirstName, string LastName, Role Role, int? Class, string Email, string PhoneNumber, int UserID) 
 		{
             // all others load
             this.userDbHelper = userDbHelper;
@@ -48,7 +49,7 @@ namespace ClassLibrary.Models
 			this._phonenumber = PhoneNumber;
 			this._idUser = UserID;
         }
-        public User(UserDatabaseHelper dbHelper, GradeDatabaseHelper gradeDbHelper, string FirstName, string LastName, Role Role, int? Class, string Email, string PhoneNumber)
+        public User(IUserDbHelper dbHelper, IGradeDbHelper gradeDbHelper, string FirstName, string LastName, Role Role, int? Class, string Email, string PhoneNumber)
         {
             // all others write
 

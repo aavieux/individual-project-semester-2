@@ -36,7 +36,7 @@ namespace WindowsFormsAppProject
             this.userDbHelper = userDbHelper;
             this.gradeDbHelper = gradeDbHelper;
 
-            userManager = new UserManager(userDbHelper,gradeDbHelper,userMapper);
+            userManager = new UserManager(userDbHelper,userMapper);
 
             InitializeComponent();
             GenerateDropdowns();

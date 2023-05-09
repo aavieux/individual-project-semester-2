@@ -163,9 +163,7 @@ namespace Housing_Project
                 if (foundUser == false)
                 {
                     loginwrongcredentialslbl.Visible = true;
-                }
-
-                   
+                }      
             }
             else
             {

@@ -1,6 +1,7 @@
 ﻿using ClassLibrary.Models;
 using DataBaseClassLibrary.DatabaseHelpers;
 using DataBaseClassLibrary.DTOs;
+using DataBaseClassLibrary.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,10 +12,10 @@ namespace ClassLibrary.Mapper
 {
     public class ClassMapper
     {
-        ClassDatabaseHelper classDbHelper;
-        UserDatabaseHelper userDbHelper;
-        GradeDatabaseHelper gradeDbHelper;
-        public ClassMapper(ClassDatabaseHelper classDbHelper, UserDatabaseHelper userDbHelper, GradeDatabaseHelper gradeDbHelper) 
+        IClassDbHelper classDbHelper;
+        IUserDbHelper userDbHelper;
+        IGradeDbHelper gradeDbHelper;
+        public ClassMapper(IClassDbHelper classDbHelper, IUserDbHelper userDbHelper, IGradeDbHelper gradeDbHelper) 
         {
             this.userDbHelper = userDbHelper;
             this.classDbHelper = classDbHelper;

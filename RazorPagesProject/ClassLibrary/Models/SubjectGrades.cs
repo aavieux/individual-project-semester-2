@@ -9,12 +9,13 @@ using ClassLibrary.Mapper;
 using ClassLibrary.Models.Enums;
 using DataBaseClassLibrary.DatabaseHelpers;
 using DataBaseClassLibrary.DTOs;
+using DataBaseClassLibrary.Interfaces;
 
 namespace ClassLibrary.Models
 {
 	public class SubjectGrades
 	{
-        private GradeDatabaseHelper gradeDbHelper;
+        private IGradeDbHelper gradeDbHelper;
         private GradeMapper gradeMapper;
 
 		private int _idSubjectGrades;
@@ -28,7 +29,7 @@ namespace ClassLibrary.Models
 		public Subject Subject { get { return _subject; } }
 		public int IdUser { get { return _idUser; }}
 
-        public SubjectGrades(GradeDatabaseHelper gradeDbHelper, int id, Subject subject, int idUser)
+        public SubjectGrades(IGradeDbHelper gradeDbHelper, int id, Subject subject, int idUser)
         {
             //to load  // to fix
             //gradeManager = new GradeManager();
@@ -39,7 +40,7 @@ namespace ClassLibrary.Models
 
             this.gradeDbHelper = gradeDbHelper;
         }
-        public SubjectGrades(GradeDatabaseHelper gradeDbHelper, Subject subject, int idUser)
+        public SubjectGrades(IGradeDbHelper gradeDbHelper, Subject subject, int idUser)
         {
             //to  write // to fix
             //gradeManager = new GradeManager();

@@ -25,8 +25,9 @@ namespace WindowsFormsAppProject
         internal UserMapper userMapper;
         internal ClassMapper classMapper;
         internal GradeMapper gradeMapper;
-        internal FeedbackManager feedbackManager;
+        internal FeedbackMapper feedbackMapper;
 
+        internal FeedbackManager feedbackManager;
         internal StatisticsManager statisticsManager;
 
         public connectedUser(Manager manager)
@@ -39,9 +40,11 @@ namespace WindowsFormsAppProject
             this.classMapper = new ClassMapper(classDbHelper, userDbHelper, gradeDbHelper);
             this.userMapper = new UserMapper(userDbHelper, gradeDbHelper);
             this.gradeMapper = new GradeMapper(gradeDbHelper);
-            this.feedbackManager = new FeedbackManager(feedbackDbHelper);
+            this.feedbackMapper = new FeedbackMapper(feedbackDbHelper);
 
+            this.feedbackManager = new FeedbackManager(feedbackDbHelper,feedbackMapper);
             statisticsManager = new StatisticsManager(classDbHelper, classMapper, userDbHelper, userMapper, gradeDbHelper, gradeMapper);
+
             InitializeComponent();
             DisplayUserData();
             this.Text = $"Connected as {manager.GetFullName()}";
@@ -131,7 +134,7 @@ namespace WindowsFormsAppProject
             {
                 int idTicket = int.Parse(listBoxFeedbacksOpen.SelectedItem.ToString().Substring(0, listBoxFeedbacksOpen.SelectedItem.ToString().IndexOf(" ")));
 
-                feedbackView feedbackView = new feedbackView(feedbackDbHelper, feedbackManager, statisticsManager, idTicket);
+                feedbackView feedbackView = new feedbackView(feedbackDbHelper, feedbackManager, idTicket);
                 feedbackView.ShowDialog();
                 DisplayFeedbackData();
                 listBoxFeedbacksOpen.SelectedIndex = -1;
@@ -143,7 +146,7 @@ namespace WindowsFormsAppProject
             try
             {
                 int idTicket = int.Parse(listBoxFeedbacksInProgress.SelectedItem.ToString().Substring(0, listBoxFeedbacksInProgress.SelectedItem.ToString().IndexOf(" ")));
-                feedbackView feedbackView = new feedbackView(feedbackDbHelper,feedbackManager,statisticsManager,idTicket);
+                feedbackView feedbackView = new feedbackView(feedbackDbHelper,feedbackManager, idTicket);
                 feedbackView.ShowDialog();
                 DisplayFeedbackData();
                 listBoxFeedbacksInProgress.SelectedIndex = -1;
@@ -157,7 +160,7 @@ namespace WindowsFormsAppProject
             {
                 int idTicket = int.Parse(listBoxFeedbacksClosed.SelectedItem.ToString().Substring(0, listBoxFeedbacksClosed.SelectedItem.ToString().IndexOf(" ")));
 
-                feedbackView feedbackView = new feedbackView(feedbackDbHelper, feedbackManager, statisticsManager, idTicket);
+                feedbackView feedbackView = new feedbackView(feedbackDbHelper, feedbackManager, idTicket);
                 feedbackView.ShowDialog();
                 DisplayFeedbackData();
                 listBoxFeedbacksClosed.SelectedIndex = -1;

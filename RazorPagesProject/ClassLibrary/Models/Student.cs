@@ -3,25 +3,26 @@ using ClassLibrary.Mapper;
 using ClassLibrary.Models.Enums;
 using DataBaseClassLibrary.DatabaseHelpers;
 using DataBaseClassLibrary.DTOs;
+using DataBaseClassLibrary.Interfaces;
 
 namespace ClassLibrary.Models
 {
     public class Student : User
     {
 
-        private GradeDatabaseHelper gradeDbHelper;
+        private IGradeDbHelper gradeDbHelper;
         private GradeMapper gradeMapper;
 
         //UserManager userManager;
         //GradeManager gradeManager;
 
-        public Student(UserDatabaseHelper userDbHelper, GradeDatabaseHelper gradeDbHelper, string FirstName, string LastName, Role Role, int? Class, string Email, string PhoneNumber, int UserID) : base(userDbHelper, gradeDbHelper, FirstName, LastName, Role, Class, Email, PhoneNumber, UserID)
+        public Student(IUserDbHelper userDbHelper, IGradeDbHelper gradeDbHelper, string FirstName, string LastName, Role Role, int? Class, string Email, string PhoneNumber, int UserID) : base(userDbHelper, gradeDbHelper, FirstName, LastName, Role, Class, Email, PhoneNumber, UserID)
         {
             this.gradeDbHelper = gradeDbHelper;
             this.gradeMapper = new GradeMapper(gradeDbHelper);
             //to load
         }
-        public Student(UserDatabaseHelper dbHelper, GradeDatabaseHelper gradeDbHelper, string FirstName, string LastName, Role Role, int? Class, string Email, string PhoneNumber) : base(dbHelper, gradeDbHelper, FirstName, LastName, Role, Class, Email, PhoneNumber)
+        public Student(IUserDbHelper dbHelper, IGradeDbHelper gradeDbHelper, string FirstName, string LastName, Role Role, int? Class, string Email, string PhoneNumber) : base(dbHelper, gradeDbHelper, FirstName, LastName, Role, Class, Email, PhoneNumber)
         {
             this.gradeDbHelper = gradeDbHelper;
             this.gradeMapper = new GradeMapper(gradeDbHelper);

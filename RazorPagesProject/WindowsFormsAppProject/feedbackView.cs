@@ -18,12 +18,10 @@ namespace WindowsFormsAppProject
     {
         private int idTicket;
         private FeedbackDatabaseHelper feedbackDbHelper;
-        private StatisticsManager statisticsManager;
         private FeedbackManager feedbackManager;
-        public feedbackView(FeedbackDatabaseHelper feedbackDbHelper,FeedbackManager feedbackManager,StatisticsManager statisticsManager, int idTicket)
+        public feedbackView(FeedbackDatabaseHelper feedbackDbHelper,FeedbackManager feedbackManager, int idTicket)
         {
             this.feedbackDbHelper = feedbackDbHelper;
-            this.statisticsManager = statisticsManager;
             this.feedbackManager = feedbackManager;
             this.idTicket = idTicket;
             InitializeComponent();

@@ -1,6 +1,7 @@
 ﻿using ClassLibrary.Mapper;
 using ClassLibrary.Models;
 using DataBaseClassLibrary.DatabaseHelpers;
+using DataBaseClassLibrary.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,10 +12,10 @@ namespace ClassLibrary.Controllers
 {
 	public class UserManager
 	{
-        UserDatabaseHelper userDbHelper;
+        IUserDbHelper userDbHelper;
         UserMapper userMapper;
         //GradeDatabaseHelper gradeDbHelper;
-        public UserManager(UserDatabaseHelper userDbHelper, UserMapper userMapper) 
+        public UserManager(IUserDbHelper userDbHelper, UserMapper userMapper) 
         {
             this.userDbHelper = userDbHelper;
             this.userMapper = userMapper;

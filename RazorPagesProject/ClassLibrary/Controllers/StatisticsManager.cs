@@ -3,6 +3,7 @@ using ClassLibrary.Models;
 using ClassLibrary.Models.Enums;
 using DataBaseClassLibrary.DatabaseHelpers;
 using DataBaseClassLibrary.DTOs;
+using DataBaseClassLibrary.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,21 +14,16 @@ namespace ClassLibrary.Controllers
 {
     public class StatisticsManager
     {
-        private ClassDatabaseHelper classDbHelper;
+        private IClassDbHelper classDbHelper;
         private ClassMapper classMapper;
 
-        private UserDatabaseHelper userDbHelper;
+        private IUserDbHelper userDbHelper;
         private UserMapper userMapper;
 
-        private GradeDatabaseHelper gradeDbHelper;
+        private IGradeDbHelper gradeDbHelper;
         private GradeMapper gradeMapper;
-        public StatisticsManager(
-            ClassDatabaseHelper classDbHelper, 
-            ClassMapper classMapper, 
-            UserDatabaseHelper userDbHelper, 
-            UserMapper userMapper, 
-            GradeDatabaseHelper gradeDbHelper,
-            GradeMapper gradeMapper)
+
+        public StatisticsManager(IClassDbHelper classDbHelper, ClassMapper classMapper, IUserDbHelper userDbHelper, UserMapper userMapper, IGradeDbHelper gradeDbHelper,GradeMapper gradeMapper)
         {
             this.classDbHelper = classDbHelper;
             this.classMapper = classMapper;

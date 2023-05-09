@@ -1,6 +1,7 @@
 ﻿using ClassLibrary.Mapper;
 using ClassLibrary.Models;
 using DataBaseClassLibrary.DatabaseHelpers;
+using DataBaseClassLibrary.Interfaces;
 using DataBaseClassLibrary.DTOs;
 using System;
 using System.Collections.Generic;
@@ -12,9 +13,9 @@ namespace ClassLibrary.Controllers
 {
     public class AdminManager
     {
-        private UserDatabaseHelper userDbHelper;
+        private IUserDbHelper userDbHelper;
         private UserMapper userMapper;
-        public AdminManager(UserDatabaseHelper userDbHelper, UserMapper userMapper) 
+        public AdminManager(IUserDbHelper userDbHelper, UserMapper userMapper) 
         {
             this.userDbHelper = userDbHelper;
             this.userMapper = userMapper;

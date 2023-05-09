@@ -2,14 +2,15 @@
 using ClassLibrary.Mapper;
 using DataBaseClassLibrary.DatabaseHelpers;
 using DataBaseClassLibrary.DTOs;
+using DataBaseClassLibrary.Interfaces;
 
 namespace ClassLibrary.Models
 {
     public class Class
     {
-        ClassDatabaseHelper classDbHelper;
-        UserDatabaseHelper userDbHelper;
-        GradeDatabaseHelper gradeDbHelper;
+        IClassDbHelper classDbHelper;
+        IUserDbHelper userDbHelper;
+        IGradeDbHelper gradeDbHelper;
 
         UserMapper userMapper;
         ClassMapper classMapper;
@@ -24,9 +25,9 @@ namespace ClassLibrary.Models
         public List<Student> Students { get { return this._students; } }
 
         public Class(
-            ClassDatabaseHelper classDbHelper, 
-            UserDatabaseHelper userDbHelper, 
-            GradeDatabaseHelper gradeDbHelper, 
+            IClassDbHelper classDbHelper,
+            IUserDbHelper userDbHelper,
+            IGradeDbHelper gradeDbHelper, 
             int name, 
             int teacherid)
         {

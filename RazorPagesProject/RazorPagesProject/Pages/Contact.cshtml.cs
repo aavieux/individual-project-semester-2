@@ -36,11 +36,14 @@ namespace RazorPagesProject.Pages
 
         internal FeedbackManager FeedbackManager;
         internal FeedbackDatabaseHelper feedbackDbHelper;
+        internal FeedbackMapper feedbackMapper;
 
         public ContactModel()
         {
             this.feedbackDbHelper = new FeedbackDatabaseHelper();
-            FeedbackManager = new FeedbackManager (feedbackDbHelper);
+            this.feedbackMapper = new FeedbackMapper(feedbackDbHelper);
+
+            FeedbackManager = new FeedbackManager (feedbackDbHelper, feedbackMapper);
         }
         public void OnPost()
         {

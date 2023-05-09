@@ -1,6 +1,7 @@
 ﻿using ClassLibrary.Mapper;
 using ClassLibrary.Models.Enums;
 using DataBaseClassLibrary.DatabaseHelpers;
+using DataBaseClassLibrary.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace ClassLibrary.Models
 {
     public  class Feedback
     {
-        private FeedbackDatabaseHelper feedbackDbHelper;
+        private IFeedbackDbHelper feedbackDbHelper;
         private FeedbackMapper feedbackMapper;
 
         private int id_ticket;
@@ -31,7 +32,7 @@ namespace ClassLibrary.Models
         public Status StatusContact { get { return this.status_contact; } }
 
 
-        public Feedback(FeedbackDatabaseHelper databaseHelper, string first_name_contact,string last_name_contact,string school_contact,string email_contact,string subject_contact, Status status_contact)
+        public Feedback(IFeedbackDbHelper databaseHelper, string first_name_contact,string last_name_contact,string school_contact,string email_contact,string subject_contact, Status status_contact)
         {
             //to create
             this.feedbackDbHelper = databaseHelper;
@@ -45,7 +46,7 @@ namespace ClassLibrary.Models
             this.subject_contact = subject_contact;
             this.status_contact = status_contact;
         }
-        public Feedback(FeedbackDatabaseHelper databaseHelper, int id_ticket,string first_name_contact, string last_name_contact, string school_contact, string email_contact, string subject_contact, Status status_contact)
+        public Feedback(IFeedbackDbHelper databaseHelper, int id_ticket,string first_name_contact, string last_name_contact, string school_contact, string email_contact, string subject_contact, Status status_contact)
         {
             //to load
             
