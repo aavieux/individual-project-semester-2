@@ -13,16 +13,21 @@ namespace ClassLibrary.Mapper
 {
     public class UserMapper
     {
-        private UserDatabaseHelper userDatabaseHelper;
-        private GradeDatabaseHelper gradeDatabaseHelper;
-        public UserMapper(UserDatabaseHelper userDatabaseHelper, GradeDatabaseHelper gradeDatabaseHelper) 
+        private UserDatabaseHelper userDbHelper;
+        private GradeDatabaseHelper gradeDbHelper;
+        public UserMapper(UserDatabaseHelper userDbHelper, GradeDatabaseHelper gradeDbHelper) 
         {
-            this.userDatabaseHelper = userDatabaseHelper;
-            this.gradeDatabaseHelper = gradeDatabaseHelper;
+            this.userDbHelper = userDbHelper;
+            this.gradeDbHelper = gradeDbHelper;
+        }
+        public UserMapper(UserDatabaseHelper userDatabaseHelper) // for admins and managers in log in form
+        {
+            this.userDbHelper = userDatabaseHelper;
+            //this.gradeDatabaseHelper = new GradeDatabaseHelper();
         }
         public User MapUserDTOtoUser(UserDTO userDTO)
         {
-            User user = new User(userDatabaseHelper, gradeDatabaseHelper, userDTO.Firstname, userDTO.Lastname, Enum.Parse<ClassLibrary.Models.Enums.Role>(userDTO.Role.ToString()), userDTO.Class, userDTO.Email, userDTO.PhoneNumber,userDTO.Userid);
+            User user = new User(userDbHelper, gradeDbHelper, userDTO.Firstname, userDTO.Lastname, Enum.Parse<ClassLibrary.Models.Enums.Role>(userDTO.Role.ToString()), userDTO.Class, userDTO.Email, userDTO.PhoneNumber,userDTO.Userid);
             return user;
         }
         public UserDTO MapUserToUserDTO(User user)
@@ -33,13 +38,13 @@ namespace ClassLibrary.Mapper
 
         public Student MapStudentDTOtoStudent(UserDTO userDTO)
         {
-            Student student = new Student(userDatabaseHelper,gradeDatabaseHelper, userDTO.Firstname, userDTO.Lastname, Enum.Parse<ClassLibrary.Models.Enums.Role>(userDTO.Role.ToString()), userDTO.Class, userDTO.Email, userDTO.PhoneNumber, userDTO.Userid);
+            Student student = new Student(userDbHelper,gradeDbHelper, userDTO.Firstname, userDTO.Lastname, Enum.Parse<ClassLibrary.Models.Enums.Role>(userDTO.Role.ToString()), userDTO.Class, userDTO.Email, userDTO.PhoneNumber, userDTO.Userid);
             return student;
         }
         //
         public Teacher MapTeacherDTOtoTeacher(UserDTO userDTO)
         {
-            Teacher teacher = new Teacher(userDatabaseHelper,gradeDatabaseHelper,userDTO.Firstname, userDTO.Lastname, Enum.Parse<ClassLibrary.Models.Enums.Role>(userDTO.Role.ToString()), userDTO.Class, userDTO.Email, userDTO.PhoneNumber, userDTO.Userid);
+            Teacher teacher = new Teacher(userDbHelper,gradeDbHelper,userDTO.Firstname, userDTO.Lastname, Enum.Parse<ClassLibrary.Models.Enums.Role>(userDTO.Role.ToString()), userDTO.Class, userDTO.Email, userDTO.PhoneNumber, userDTO.Userid);
             return teacher;
         }
         //

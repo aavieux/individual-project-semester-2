@@ -1,6 +1,8 @@
 ﻿using ClassLibrary.Controllers;
+using ClassLibrary.Mapper;
 using ClassLibrary.Models;
 using ClassLibrary.Models.Enums;
+using DataBaseClassLibrary.DatabaseHelpers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,12 +17,27 @@ namespace WindowsFormsAppProject
 {
     public partial class addUser : Form
     {
+
         private StatisticsManager statisticsManager;
+        private UserDatabaseHelper userDbHelper;
+        private GradeDatabaseHelper gradeDbHelper;
+
         private UserManager userManager;
-        public addUser()
+        
+        public addUser(
+            StatisticsManager statisticsManager,
+            UserDatabaseHelper userDbHelper,
+            GradeDatabaseHelper gradeDbHelper,
+            UserMapper userMapper
+            )
         {
-            statisticsManager = new StatisticsManager();
-            userManager = new UserManager();
+            this.statisticsManager = statisticsManager;
+
+            this.userDbHelper = userDbHelper;
+            this.gradeDbHelper = gradeDbHelper;
+
+            userManager = new UserManager(userDbHelper,gradeDbHelper,userMapper);
+
             InitializeComponent();
             GenerateDropdowns();
         }
@@ -60,7 +77,7 @@ namespace WindowsFormsAppProject
                 {
                     if (role_comboBox.SelectedItem.ToString() == Role.STUDENT.ToString())
                     {
-                        Student currentStudent = new Student(
+                        Student currentStudent = new Student(userDbHelper,gradeDbHelper,
                         firstName_txt.Text,
                         lastName_txt.Text,
                         Enum.Parse<Role>(role_comboBox.SelectedIndex.ToString()),
@@ -73,7 +90,7 @@ namespace WindowsFormsAppProject
                         List<SubjectGrades> checkedSubjectGrades = new List<SubjectGrades>();
                         for (int i = 0; i < subject_clb.CheckedItems.Count; i++) // get student names
                         {
-                            SubjectGrades subjectGrades = new SubjectGrades(Enum.Parse<Subject>(subject_clb.CheckedItems[i].ToString()), currentStudent.Userid);
+                            SubjectGrades subjectGrades = new SubjectGrades(gradeDbHelper,Enum.Parse<Subject>(subject_clb.CheckedItems[i].ToString()), currentStudent.Userid);
                             checkedSubjectGrades.Add(subjectGrades);
                         }
                         foreach (SubjectGrades subjectGrades1 in checkedSubjectGrades)
@@ -85,7 +102,7 @@ namespace WindowsFormsAppProject
                     }
                     else
                     {
-                        Teacher currentTeacher = new Teacher(
+                        Teacher currentTeacher = new Teacher(userDbHelper,gradeDbHelper,
                         firstName_txt.Text,
                         lastName_txt.Text,
                         Enum.Parse<Role>(role_comboBox.SelectedIndex.ToString()),

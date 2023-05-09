@@ -10,19 +10,39 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DataBaseClassLibrary.DatabaseHelpers;
 
 namespace WindowsFormsAppProject
 {
     public partial class addClass : Form
     {
         private StatisticsManager statisticsManager;
-        private DataBaseClassLibrary.DatabaseHelpers.ClassDatabaseHelper classDatabaseHelper;
-        private ClassMapper classMapper;
-        public addClass()
+
+        private ClassDatabaseHelper classDbHelper;
+        private UserDatabaseHelper userDbHelper;
+        private GradeDatabaseHelper gradeDbHelper;
+
+        //private ClassMapper classMapper;
+        //private UserMapper userMapper;
+        //private GradeMapper gradeMapper;
+
+        
+        public addClass
+            (
+            StatisticsManager statisticsManager, 
+            ClassDatabaseHelper classDbHelper, 
+            UserDatabaseHelper userDbHelper, 
+            GradeDatabaseHelper gradeDbHelper
+            )
         {
-            statisticsManager = new StatisticsManager();
-            classDatabaseHelper = new DataBaseClassLibrary.DatabaseHelpers.ClassDatabaseHelper();
-            classMapper = new ClassMapper();
+            this.statisticsManager = statisticsManager;
+
+            this.classDbHelper = classDbHelper;
+            this.userDbHelper = userDbHelper;
+            this.gradeDbHelper = gradeDbHelper;
+
+            //classMapper = new ClassMapper(classDbHelper, userDbHelper, gradeDbHelper);
+
             InitializeComponent();
             GenerateDropdowns();
         }
@@ -90,7 +110,7 @@ namespace WindowsFormsAppProject
                         teacherId = teacher.Userid;
                     }
                 }
-                Class newClass = new Class(int.Parse(className_txt.Text), teacherId);
+                Class newClass = new Class(classDbHelper,userDbHelper,gradeDbHelper,int.Parse(className_txt.Text), teacherId);
                 try
                 {
                     newClass.Create(); // add class to DB

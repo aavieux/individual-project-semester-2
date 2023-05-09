@@ -17,11 +17,11 @@ namespace WindowsFormsAppProject
         int idClass;
         private StatisticsManager statisticsManager;
 
-        string currentStudentEdit;
-        public classView(int idClass)
+        string currentStudentEdit = string.Empty;
+        public classView(StatisticsManager statisticsManager, int idClass)
         {
             this.idClass = idClass;
-            statisticsManager = new StatisticsManager();
+            this.statisticsManager = statisticsManager;
             InitializeComponent();
             if (idClass != 0)
             {

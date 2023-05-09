@@ -1,5 +1,7 @@
 ﻿using ClassLibrary.Controllers;
+using ClassLibrary.Mapper;
 using ClassLibrary.Models;
+using DataBaseClassLibrary.DatabaseHelpers;
 using Microsoft.VisualBasic.ApplicationServices;
 using System;
 using System.Collections.Generic;
@@ -15,11 +17,31 @@ namespace WindowsFormsAppProject
 {
     public partial class connectedUser : Form
     {
-        StatisticsManager statisticsManager;
+        internal UserDatabaseHelper userDbHelper;
+        internal ClassDatabaseHelper classDbHelper;
+        internal GradeDatabaseHelper gradeDbHelper;
+        internal FeedbackDatabaseHelper feedbackDbHelper;
+
+        internal UserMapper userMapper;
+        internal ClassMapper classMapper;
+        internal GradeMapper gradeMapper;
+        internal FeedbackManager feedbackManager;
+
+        internal StatisticsManager statisticsManager;
+
         public connectedUser(Manager manager)
         {
-            statisticsManager = new StatisticsManager();
+            this.classDbHelper = new ClassDatabaseHelper();
+            this.userDbHelper = new UserDatabaseHelper();
+            this.gradeDbHelper = new GradeDatabaseHelper();
+            this.feedbackDbHelper = new FeedbackDatabaseHelper();
 
+            this.classMapper = new ClassMapper(classDbHelper, userDbHelper, gradeDbHelper);
+            this.userMapper = new UserMapper(userDbHelper, gradeDbHelper);
+            this.gradeMapper = new GradeMapper(gradeDbHelper);
+            this.feedbackManager = new FeedbackManager(feedbackDbHelper);
+
+            statisticsManager = new StatisticsManager(classDbHelper, classMapper, userDbHelper, userMapper, gradeDbHelper, gradeMapper);
             InitializeComponent();
             DisplayUserData();
             this.Text = $"Connected as {manager.GetFullName()}";
@@ -30,7 +52,7 @@ namespace WindowsFormsAppProject
             listBoxFeedbacksInProgress.Items.Clear();
             listBoxFeedbacksClosed.Items.Clear();
 
-            foreach (Feedback feedback in statisticsManager.GetAllFeedbacks())
+            foreach (Feedback feedback in feedbackManager.GetAllFeedbacks())
             {
                 if (feedback.StatusContact == ClassLibrary.Models.Enums.Status.OPEN)
                 {
@@ -78,7 +100,7 @@ namespace WindowsFormsAppProject
                 int start = listBoxStudents.SelectedItem.ToString().IndexOf(":") + 2; // Adding 2 to exclude the ": " characters
                 int end = listBoxStudents.SelectedItem.ToString().IndexOf(" -");
                 int userId = int.Parse(listBoxStudents.SelectedItem.ToString().Substring(start, end - start));
-                userView userView = new userView(userId);
+                userView userView = new userView(statisticsManager, userDbHelper, gradeDbHelper,userId);
                 userView.ShowDialog();
                 DisplayUserData();
                 listBoxStudents.SelectedIndex = -1;
@@ -109,7 +131,7 @@ namespace WindowsFormsAppProject
             {
                 int idTicket = int.Parse(listBoxFeedbacksOpen.SelectedItem.ToString().Substring(0, listBoxFeedbacksOpen.SelectedItem.ToString().IndexOf(" ")));
 
-                feedbackView feedbackView = new feedbackView(idTicket);
+                feedbackView feedbackView = new feedbackView(feedbackDbHelper, feedbackManager, statisticsManager, idTicket);
                 feedbackView.ShowDialog();
                 DisplayFeedbackData();
                 listBoxFeedbacksOpen.SelectedIndex = -1;
@@ -121,7 +143,7 @@ namespace WindowsFormsAppProject
             try
             {
                 int idTicket = int.Parse(listBoxFeedbacksInProgress.SelectedItem.ToString().Substring(0, listBoxFeedbacksInProgress.SelectedItem.ToString().IndexOf(" ")));
-                feedbackView feedbackView = new feedbackView(idTicket);
+                feedbackView feedbackView = new feedbackView(feedbackDbHelper,feedbackManager,statisticsManager,idTicket);
                 feedbackView.ShowDialog();
                 DisplayFeedbackData();
                 listBoxFeedbacksInProgress.SelectedIndex = -1;
@@ -135,7 +157,7 @@ namespace WindowsFormsAppProject
             {
                 int idTicket = int.Parse(listBoxFeedbacksClosed.SelectedItem.ToString().Substring(0, listBoxFeedbacksClosed.SelectedItem.ToString().IndexOf(" ")));
 
-                feedbackView feedbackView = new feedbackView(idTicket);
+                feedbackView feedbackView = new feedbackView(feedbackDbHelper, feedbackManager, statisticsManager, idTicket);
                 feedbackView.ShowDialog();
                 DisplayFeedbackData();
                 listBoxFeedbacksClosed.SelectedIndex = -1;
@@ -154,7 +176,7 @@ namespace WindowsFormsAppProject
 
                 int idClass = int.Parse(result);
 
-                classView classView = new classView(idClass);
+                classView classView = new classView(statisticsManager, idClass);
                 classView.ShowDialog();
                 DisplayClassData();
                 listBoxClasses.SelectedIndex = -1;
@@ -171,7 +193,7 @@ namespace WindowsFormsAppProject
                 int end = listBoxTeachers.SelectedItem.ToString().IndexOf(" -");
                 int userId = int.Parse(listBoxTeachers.SelectedItem.ToString().Substring(start, end - start));
 
-                userView userView = new userView(userId);
+                userView userView = new userView(statisticsManager, userDbHelper, gradeDbHelper, userId);
                 userView.ShowDialog();
                 DisplayUserData();
                 listBoxStudents.SelectedIndex = -1;
@@ -182,7 +204,7 @@ namespace WindowsFormsAppProject
 
         private void addClass_btn_Click(object sender, EventArgs e)
         {
-            addClass addClass = new addClass();
+            addClass addClass = new addClass(statisticsManager, classDbHelper, userDbHelper, gradeDbHelper);
             addClass.ShowDialog();
             DisplayClassData();
             DisplayUserData();
@@ -236,7 +258,7 @@ namespace WindowsFormsAppProject
 
         private void addUser_btn_Click(object sender, EventArgs e)
         {
-            addUser addUser = new addUser();
+            addUser addUser = new addUser(statisticsManager,userDbHelper,gradeDbHelper,userMapper);
             addUser.ShowDialog();
             DisplayUserData();
         }

@@ -21,21 +21,13 @@ namespace ClassLibrary.Controllers
 
         private GradeDatabaseHelper gradeDbHelper;
         private GradeMapper gradeMapper;
-
-        private FeedbackDatabaseHelper feedbackDbHelper;
-        private FeedbackMapper feedbackMapper;
-
-        public StatisticsManager
-            (
+        public StatisticsManager(
             ClassDatabaseHelper classDbHelper, 
             ClassMapper classMapper, 
             UserDatabaseHelper userDbHelper, 
             UserMapper userMapper, 
             GradeDatabaseHelper gradeDbHelper,
-            GradeMapper gradeMapper,
-            FeedbackDatabaseHelper feedbackDbHelper,
-            FeedbackMapper feedbackMapper
-            )
+            GradeMapper gradeMapper)
         {
             this.classDbHelper = classDbHelper;
             this.classMapper = classMapper;
@@ -45,9 +37,6 @@ namespace ClassLibrary.Controllers
 
             this.gradeDbHelper = gradeDbHelper;
             this.gradeMapper = gradeMapper;
-
-            this.feedbackDbHelper = feedbackDbHelper;
-            this.feedbackMapper = feedbackMapper;
         }
 
         public List<Class> GetAllClasses()
@@ -124,15 +113,7 @@ namespace ClassLibrary.Controllers
             }
             return students;
         } // because there are students amongst teachers in users
-        public List<Manager> GetAllManagers()
-        {
-            List<Manager> managers = new List<Manager>();
-            foreach (ManagerDTO managerDTO in userDbHelper.GetAllManagersFromDB())
-            {
-                managers.Add((Manager)userMapper.MapManagerDTOtoManager(managerDTO));
-            }
-            return managers;
-        } // to do mapping
+        
 
         public User GetUserById(int userId)
         {
@@ -198,108 +179,6 @@ namespace ClassLibrary.Controllers
             return students;
         }
 
-        public List<Feedback> GetAllFeedbacks()
-        {
-            List<Feedback> feedbacks = new List<Feedback>();
-            foreach (FeedbackDTO feedbackDTO in feedbackDbHelper.GetAllFeedbacksFromDB())
-            {
-                feedbacks.Add(feedbackMapper.MapFeedbackDTOtoFeedback(feedbackDTO));
-            }
-            return feedbacks;
-        }
-        public Feedback GetFeedbackById(int feedbackId)
-        {
-            var result = feedbackDbHelper.GetFeedbackByIdFromDB(feedbackId);
-            if (result != null)
-            {
-                return feedbackMapper.MapFeedbackDTOtoFeedback(result);
-            }
-            return null;
-        }
 
-        public string GetAvgGradeForSubject(Subject subject)
-        {
-            double result = 0.0;
-            int numberOfGrades = 0;
-
-            foreach (SubjectGrades subjectGrade in (GetAllSubjectGrades()))
-            {
-                if (subjectGrade.Subject == subject)
-                {
-                    foreach (Grade grade in subjectGrade.GetGrades())
-                    {
-                        if (grade.GradeEnum == GradeEnum.UNDEFINED)
-                        {
-                            result += 1;
-                        }
-                        else if (grade.GradeEnum == GradeEnum.SUFFICIENT)
-                        {
-                            result += 2;
-                        }
-                        else if (grade.GradeEnum == GradeEnum.GOOD)
-                        {
-                            result += 3;
-                        }
-                        else if (grade.GradeEnum == GradeEnum.OUTSTANDING)
-                        {
-                            result += 4;
-                        }
-
-                        numberOfGrades++;
-                    }
-                }
-            }
-            double avgGrade = result / numberOfGrades;
-            if (avgGrade <= 1.9)
-            {
-                if (avgGrade >= 1.5)
-                {
-                    return "UNDEFINED / SUFFICIENT";
-                }
-                else return "UNDEFINED";
-
-            }
-            else if (avgGrade >= 2.0 && avgGrade <= 2.9)
-            {
-                if (avgGrade >= 2.5)
-                {
-                    return "SUFFICIENT / GOOD";
-                }
-                else return "SUFFICIENT";
-
-            }
-            else if (avgGrade >= 3.0 && avgGrade <= 3.9)
-            {
-                if (avgGrade >= 3.5)
-                {
-                    return "GOOD / ADVANCED";
-                }
-                else return "GOOD";
-
-            }
-            else if (avgGrade == 4.0)
-            {
-                return "ADVANCED";
-            }
-            else return "Error!";
-        }
-
-        public List<Student> GetBestStudents(int number)
-        {
-            List<Student> currentStudents = GetAllStudents();
-            currentStudents.Sort((s1, s2) => s1.GetAvgGrades().CompareTo(s2.GetAvgGrades()));
-
-            List<Student> result = new List<Student>();
-            int studentsNumber = GetAllStudents().Count;
-            if (number> studentsNumber)
-            {
-                number = studentsNumber;
-            }
-            for (int i = 0; i < number; i++)
-            {
-                result.Add(currentStudents[i]);
-            }
-            return result;
-        }
     }
 }

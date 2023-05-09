@@ -13,14 +13,12 @@ namespace ClassLibrary.Controllers
 	{
         UserDatabaseHelper userDbHelper;
         UserMapper userMapper;
-        GradeDatabaseHelper gradeDbHelper;
-        public UserManager(UserDatabaseHelper userDbHelper, GradeDatabaseHelper gradeDatabaseHelper, UserMapper userMapper) 
+        //GradeDatabaseHelper gradeDbHelper;
+        public UserManager(UserDatabaseHelper userDbHelper, UserMapper userMapper) 
         {
             this.userDbHelper = userDbHelper;
-            this.gradeDbHelper = gradeDatabaseHelper;
-            userMapper = new UserMapper(userDbHelper, gradeDbHelper);
-            
             this.userMapper = userMapper;
+            // this.gradeDbHelper = gradeDatabaseHelper;
         }
         
         public bool CreateUser(User user)

@@ -1,6 +1,7 @@
 ﻿using ClassLibrary.Controllers;
 using ClassLibrary.Models;
 using ClassLibrary.Models.Enums;
+using DataBaseClassLibrary.DatabaseHelpers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,10 +17,14 @@ namespace WindowsFormsAppProject
     public partial class feedbackView : Form
     {
         private int idTicket;
+        private FeedbackDatabaseHelper feedbackDbHelper;
         private StatisticsManager statisticsManager;
-        public feedbackView(int idTicket)
+        private FeedbackManager feedbackManager;
+        public feedbackView(FeedbackDatabaseHelper feedbackDbHelper,FeedbackManager feedbackManager,StatisticsManager statisticsManager, int idTicket)
         {
-            statisticsManager = new StatisticsManager();
+            this.feedbackDbHelper = feedbackDbHelper;
+            this.statisticsManager = statisticsManager;
+            this.feedbackManager = feedbackManager;
             this.idTicket = idTicket;
             InitializeComponent();
             LockFields();
@@ -56,7 +61,7 @@ namespace WindowsFormsAppProject
             changeStatus_btn.Visible = true;
             changeStatus_comboBox.Visible = false;
 
-            Feedback feedback = statisticsManager.GetFeedbackById(idTicket);
+            Feedback feedback = feedbackManager.GetFeedbackById(idTicket);
 
             firstName_txt.Text = feedback.FirstNameContact;
             lastName_txt.Text = feedback.LastNameContact;
@@ -95,7 +100,7 @@ namespace WindowsFormsAppProject
         {
             try
             {
-                Feedback feedback = new Feedback(
+                Feedback feedback = new Feedback(feedbackDbHelper,
                 int.Parse(idTicket_txt.Text),
                 firstName_txt.Text,
                 lastName_txt.Text,

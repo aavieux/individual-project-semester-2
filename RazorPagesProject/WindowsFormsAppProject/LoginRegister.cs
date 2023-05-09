@@ -1,6 +1,8 @@
 
 using ClassLibrary.Controllers;
+using ClassLibrary.Mapper;
 using ClassLibrary.Models;
+using DataBaseClassLibrary.DatabaseHelpers;
 using Microsoft.VisualBasic.ApplicationServices;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -13,11 +15,18 @@ namespace Housing_Project
 {
     public partial class LoginRegister : Form
     {
-        StatisticsManager statisticsManager;
+        AdminManager adminManager;
+        UserDatabaseHelper userDbHelper;
+        
+        UserMapper userMapper;
         public LoginRegister()
         {
-            statisticsManager = new StatisticsManager();
+            userDbHelper = new UserDatabaseHelper();
+            userMapper = new UserMapper(userDbHelper);
+            adminManager = new AdminManager(userDbHelper,userMapper);
+
             InitializeComponent();
+
             tabControlLoginRegister.SelectTab("tabPageLogin");
             loginwrongcredentialslbl.Visible = false;
             registerlbl.Visible = false;
@@ -142,7 +151,7 @@ namespace Housing_Project
 
             if (email.Contains("@managers.garkov.com"))
             {
-                foreach (Manager manager in statisticsManager.GetAllManagers())
+                foreach (Manager manager in adminManager.GetAllManagers())
                 {
                     if (manager.Email == email && manager.Password == password)
                     {
