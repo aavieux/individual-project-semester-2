@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "/Index"
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
@@ -21,7 +21,7 @@
                 @foreach (Student student in Model.GetBestStudents(3))
                 {
                     <ul id="best">
-                        @student.GetFullName() : @student.GetAvgGrades()
+                        @student.GetFullName() : @student.GetAvgGrades() score
                     </ul>
                 }
             </div>

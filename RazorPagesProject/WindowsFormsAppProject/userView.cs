@@ -24,7 +24,7 @@ namespace WindowsFormsAppProject
         private GradeDatabaseHelper gradeDbHelper;
         int userId;
 
-        public userView(StatisticsManager statisticsManager,UserDatabaseHelper userDatabaseHelper,GradeDatabaseHelper gradeDatabaseHelper, int userId)
+        public userView(StatisticsManager statisticsManager, UserDatabaseHelper userDatabaseHelper, GradeDatabaseHelper gradeDatabaseHelper, int userId)
         {
             this.statisticsManager = statisticsManager;
             //this.userManager = userManager;
@@ -187,7 +187,7 @@ namespace WindowsFormsAppProject
                     MessageBox.Show("Successfully deleted this user's SubjectGrades!");
 
                 }
-                if ( userManager.Delete(statisticsManager.GetStudentById(int.Parse(userId_txt.Text))) == false)//USERMANAGER_CREATE
+                if (userManager.Delete(statisticsManager.GetStudentById(int.Parse(userId_txt.Text))) == false)//USERMANAGER_CREATE
                 {
                     MessageBox.Show("Could not delete this user!");
                     DisplayError();
@@ -260,7 +260,7 @@ namespace WindowsFormsAppProject
                 }
                 MessageBox.Show("Successfully added the Subjects to the Gradebook!");
                 GenerateDropdowns();
-                
+
             }
             catch (Exception)
             {
@@ -270,7 +270,7 @@ namespace WindowsFormsAppProject
             {
                 DisplayContent();
             }
-            
+
         }
 
         private void cancel_btn_Click(object sender, EventArgs e)

@@ -23,7 +23,7 @@ namespace DataBaseClassLibrary.DatabaseHelpers
                 try
                 {
                     connection.Open();
-                    string query = "SELECT * FROM Users";
+                    string query = "SELECT * FROM [User]";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
@@ -90,7 +90,7 @@ namespace DataBaseClassLibrary.DatabaseHelpers
                    new SqlConnection("Server=localhost;Database=individual_project_semester2;Trusted_Connection=True;"))
             {
                 connection.Open();
-                string query = $"INSERT INTO Users (first_name_user, last_name_user, role_user, class_user, email_user, phonenumber_user) VALUES ('{userDTO.Firstname}', '{userDTO.Lastname}', '{userDTO.Role}', '{userDTO.Class}', '{userDTO.Email}', '{userDTO.PhoneNumber}'); SELECT SCOPE_IDENTITY() as new_id;";
+                string query = $"INSERT INTO [User] (first_name_user, last_name_user, role_user, class_user, email_user, phonenumber_user) VALUES ('{userDTO.Firstname}', '{userDTO.Lastname}', '{userDTO.Role}', '{userDTO.Class}', '{userDTO.Email}', '{userDTO.PhoneNumber}'); SELECT SCOPE_IDENTITY() as new_id;";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -122,7 +122,7 @@ namespace DataBaseClassLibrary.DatabaseHelpers
                 try
                 {
                     connection.Open();
-                    string query = $"UPDATE Users SET first_name_user = '{user.Firstname}', last_name_user = '{user.Lastname}', role_user = '{user.Role}', class_user = '{user.Class.ToString()}', email_user = '{user.Email}', phonenumber_user = '{user.PhoneNumber}' WHERE id_user = '{user.Userid}'";
+                    string query = $"UPDATE [User] SET first_name_user = '{user.Firstname}', last_name_user = '{user.Lastname}', role_user = '{user.Role}', class_user = '{user.Class.ToString()}', email_user = '{user.Email}', phonenumber_user = '{user.PhoneNumber}' WHERE id_user = '{user.Userid}'";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
@@ -164,7 +164,7 @@ namespace DataBaseClassLibrary.DatabaseHelpers
                 try
                 {
                     connection.Open();
-                    string query = $"DELETE FROM Users WHERE id_user LIKE '{userId}';";
+                    string query = $"DELETE FROM [User] WHERE id_user LIKE '{userId}';";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
@@ -207,7 +207,7 @@ namespace DataBaseClassLibrary.DatabaseHelpers
                 try
                 {
                     connection.Open();
-                    string query = "SELECT * FROM Managers";
+                    string query = "SELECT * FROM Manager";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {

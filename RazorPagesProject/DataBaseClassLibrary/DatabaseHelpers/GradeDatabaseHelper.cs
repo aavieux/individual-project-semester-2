@@ -79,7 +79,7 @@ namespace DataBaseClassLibrary.DatabaseHelpers
                 try
                 {
                     connection.Open();
-                    string query = "SELECT * FROM Grades";
+                    string query = "SELECT * FROM Grade";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
@@ -270,7 +270,7 @@ namespace DataBaseClassLibrary.DatabaseHelpers
                    new SqlConnection("Server=localhost;Database=individual_project_semester2;Trusted_Connection=True;"))
             {
                 connection.Open();
-                string query = $"INSERT INTO Grades (id_subjectGrades, grade) VALUES ('{idSubjectGrades}', '{grade.GradeEnum.ToString()}');";
+                string query = $"INSERT INTO Grade (id_subjectGrades, grade) VALUES ('{idSubjectGrades}', '{grade.GradeEnum.ToString()}');";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -328,7 +328,7 @@ namespace DataBaseClassLibrary.DatabaseHelpers
                    new SqlConnection("Server=localhost;Database=individual_project_semester2;Trusted_Connection=True;"))
             {
                 connection.Open();
-                string query = $"DELETE FROM Grades WHERE id_grade LIKE '{GradeId}'";
+                string query = $"DELETE FROM Grade WHERE id_grade LIKE '{GradeId}'";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {

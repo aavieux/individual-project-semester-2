@@ -28,6 +28,12 @@ namespace ClassLibrary.Models
             this.gradeMapper = new GradeMapper(gradeDbHelper);
             //to write
         }
+        ////Mock
+        //public Student(string FirstName, string LastName, Role Role, int? Class, string Email, string PhoneNumber, int UserID) : base(FirstName, LastName, Role, Class, Email, PhoneNumber, UserID)
+        //{
+            
+        //    //to load
+        //}
 
         public List<SubjectGrades> GetGradeBook()
         {
@@ -182,7 +188,7 @@ namespace ClassLibrary.Models
                     numberOfGrades++;
                 }   
             }
-            return result / numberOfGrades;
+            return Math.Round((result / numberOfGrades),2);
         }
     }
 }

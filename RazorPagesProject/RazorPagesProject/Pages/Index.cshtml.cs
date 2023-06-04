@@ -7,6 +7,7 @@ using System.Text;
 using ClassLibrary.Controllers;
 using ClassLibrary.Mapper;
 using DataBaseClassLibrary.DatabaseHelpers;
+using DataBaseClassLibrary.Interfaces;
 
 namespace RazorPagesProject.Pages
 {
@@ -22,7 +23,7 @@ namespace RazorPagesProject.Pages
         internal UserMapper userMapper;
         internal GradeMapper gradeMapper;
 
-        internal Calculator calculator;
+        internal CalculatorHigh calculator;
 
 
         public IndexModel()
@@ -38,7 +39,7 @@ namespace RazorPagesProject.Pages
 
             statisticsManager = new StatisticsManager(classDbHelper, classMapper, userDbHelper, userMapper, gradeDbHelper, gradeMapper);
 
-            calculator = new Calculator(statisticsManager);
+            calculator = new CalculatorHigh(statisticsManager);
         }
         public void OnGet()
         {

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Diagnostics;
 using System.Reflection;
+using DataBaseClassLibrary.Interfaces;
 
 namespace RazorPagesProject.Pages
 {

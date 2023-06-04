@@ -103,9 +103,9 @@
             // 
             cancel_btn.FlatStyle = FlatStyle.Flat;
             cancel_btn.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
-            cancel_btn.Location = new Point(854, 382);
+            cancel_btn.Location = new Point(854, 398);
             cancel_btn.Name = "cancel_btn";
-            cancel_btn.Size = new Size(171, 125);
+            cancel_btn.Size = new Size(171, 109);
             cancel_btn.TabIndex = 35;
             cancel_btn.Text = "Cancel";
             cancel_btn.UseVisualStyleBackColor = true;
@@ -115,9 +115,9 @@
             // 
             saveSG_btn.FlatStyle = FlatStyle.Flat;
             saveSG_btn.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
-            saveSG_btn.Location = new Point(653, 382);
+            saveSG_btn.Location = new Point(653, 398);
             saveSG_btn.Name = "saveSG_btn";
-            saveSG_btn.Size = new Size(171, 125);
+            saveSG_btn.Size = new Size(171, 109);
             saveSG_btn.TabIndex = 34;
             saveSG_btn.Text = "Save";
             saveSG_btn.UseVisualStyleBackColor = true;
@@ -150,7 +150,7 @@
             promoteUser_btn.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
             promoteUser_btn.Location = new Point(653, 270);
             promoteUser_btn.Name = "promoteUser_btn";
-            promoteUser_btn.Size = new Size(372, 109);
+            promoteUser_btn.Size = new Size(372, 106);
             promoteUser_btn.TabIndex = 20;
             promoteUser_btn.Text = "Promote User";
             promoteUser_btn.UseVisualStyleBackColor = true;

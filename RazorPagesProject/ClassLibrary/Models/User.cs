@@ -63,7 +63,17 @@ namespace ClassLibrary.Models
             this._email = Email;
             this._phonenumber = PhoneNumber;
         }
-
+        ////Mock
+        //public User(string FirstName, string LastName, Role Role, int? Class, string Email, string PhoneNumber, int UserID)
+        //{
+        //    this._firstname = FirstName;
+        //    this._lastname = LastName;
+        //    this._role = Role;
+        //    this._class = Class;
+        //    this._email = Email;
+        //    this._phonenumber = PhoneNumber;
+        //    this._idUser = UserID;
+        //}
         public User( int userID, string firstName, string lastName, string email) 
         {
             // manager
@@ -80,18 +90,28 @@ namespace ClassLibrary.Models
         //{
         //    this._idUser = newId;
         //}
-        public void PromoteRole()
+        public bool PromoteRole()
         {
             if (this.Role != Role.DIRECTOR)
             {
-                Role newRole = Role;
-                newRole++;
-                this._role = newRole;
-                Update();
+                if (Update() == true)
+                {
+                    Role newRole = Role;
+                    newRole++;
+                    this._role = newRole;
+
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+                
             }
             else
             {
                 Console.WriteLine($"Error Promoting User! The current role now is: {Role}");
+                return false;
             }
         }
         public bool AddToClass(int classId)

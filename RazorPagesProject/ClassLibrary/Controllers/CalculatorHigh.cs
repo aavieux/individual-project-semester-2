@@ -1,5 +1,6 @@
 ﻿using ClassLibrary.Models;
 using ClassLibrary.Models.Enums;
+using ClassLibrary.Models.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary.Controllers
 {
-    public class Calculator
+    public class CalculatorHigh : ICalculator
     {
         private StatisticsManager statisticsManager;
-        public Calculator(StatisticsManager statisticsManager) 
+        public CalculatorHigh(StatisticsManager statisticsManager) 
         {
             this.statisticsManager = statisticsManager;
         }
@@ -96,6 +97,7 @@ namespace ClassLibrary.Controllers
             for (int i = 0; i < number; i++)
             {
                 result.Add(currentStudents[i]);
+                result.Reverse();
             }
             return result;
         }

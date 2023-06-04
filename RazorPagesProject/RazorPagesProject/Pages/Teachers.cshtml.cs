@@ -4,6 +4,7 @@ using ClassLibrary.Models;
 using DataBaseClassLibrary.DatabaseHelpers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using DataBaseClassLibrary.Interfaces;
 
 namespace RazorPagesProject.Pages
 {

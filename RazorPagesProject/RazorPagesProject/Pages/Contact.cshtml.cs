@@ -7,6 +7,7 @@ using ClassLibrary.Models;
 using ClassLibrary.Models.Enums;
 using ClassLibrary.Mapper;
 using DataBaseClassLibrary.DatabaseHelpers;
+using DataBaseClassLibrary.Interfaces;
 
 namespace RazorPagesProject.Pages
 {

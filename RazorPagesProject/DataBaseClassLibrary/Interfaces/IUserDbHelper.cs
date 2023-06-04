@@ -1,4 +1,5 @@
 ﻿using DataBaseClassLibrary.DTOs;
+using DataBaseClassLibrary.DTOs.DTOEnums;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -13,7 +14,8 @@ namespace DataBaseClassLibrary.Interfaces
         public List<UserDTO> GetAllUsersFromDB();
 
         public int AddUserToDB(UserDTO userDTO);
-
+        
+        
         public bool UpdateUserToDB(UserDTO user);
         public bool DeleteUserFromDB(int userId);
         public List<ManagerDTO> GetAllManagersFromDB();

@@ -1,0 +1,121 @@
+﻿@page "/"
+@model RazorPagesProject.Pages.LogInModel
+@{
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        /*.container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }*/
+
+        h1 {
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .error-message {
+            color: red;
+            margin-top: 5px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #fc5c64;
+            font-weight: bolder;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            .submit-btn:hover {
+                background-color: #fc5c64;
+                font-weight: bolder;
+                
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Login</h1>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <div class="error-message" id="usernameError"></div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <div class="error-message" id="passwordError"></div>
+            </div>
+            <div class="form-group">
+                <input type="submit" class="submit-btn" value="Login">
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Clear previous error messages
+            document.getElementById('usernameError').textContent = '';
+            document.getElementById('passwordError').textContent = '';
+
+            // Get form values
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+
+            // Perform validation
+            if (username.trim() === '') {
+                document.getElementById('usernameError').textContent = 'Username is required';
+                return;
+            }
+
+            if (password.trim() === '') {
+                document.getElementById('passwordError').textContent = 'Password is required';
+                return;
+            }
+
+            // Perform login logic here (e.g., send AJAX request)
+
+            // If login is successful, redirect to another page
+            // Replace "targetPage.html" with your desired page
+            window.location.href = 'targetPage.html';
+        });
+    </script>
+</body>
+</html>

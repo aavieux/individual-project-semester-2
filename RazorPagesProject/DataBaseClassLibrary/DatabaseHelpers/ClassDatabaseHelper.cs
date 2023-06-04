@@ -24,7 +24,7 @@ namespace DataBaseClassLibrary.DatabaseHelpers
                 try
                 {
                     connection.Open();
-                    string query = "SELECT * FROM Classes";
+                    string query = "SELECT * FROM Class";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
@@ -83,7 +83,7 @@ namespace DataBaseClassLibrary.DatabaseHelpers
                 try
                 {
                     connection.Open();
-                    string query = $"SELECT * FROM Users WHERE  role_user = 'STUDENT' AND class_user = '{classId}';";
+                    string query = $"SELECT * FROM [User] WHERE  role_user = 'STUDENT' AND class_user = '{classId}';";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
@@ -122,7 +122,7 @@ namespace DataBaseClassLibrary.DatabaseHelpers
                    new SqlConnection("Server=localhost;Database=individual_project_semester2;Trusted_Connection=True;"))
             {
                 connection.Open();
-                string query = $"INSERT INTO Classes (name_class, user_class) VALUES ('{classDTO.Name}', '{classDTO.TeacherID}');";
+                string query = $"INSERT INTO Class (name_class, user_class) VALUES ('{classDTO.Name}', '{classDTO.TeacherID}');";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
