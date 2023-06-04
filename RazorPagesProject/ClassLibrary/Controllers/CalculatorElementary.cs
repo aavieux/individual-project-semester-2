@@ -16,7 +16,6 @@ namespace ClassLibrary.Controllers
         {
             this.statisticsManager = statisticsManager;
         }
-
         public string GetAvgGradeForSubject(Subject subject)
         {
             double result = 0.0;

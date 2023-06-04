@@ -82,7 +82,6 @@ namespace ClassLibrary.Controllers
             }
             else return "Error!";
         }
-
         public List<Student> GetBestStudents(int number)
         {
             List<Student> currentStudents = statisticsManager.GetAllStudents();

@@ -10,7 +10,7 @@ namespace ClassLibrary.Models.Interfaces
     {
         public bool PromoteRole();
         public bool AddToClass(int classId);
-        public void ChangeClass(int newClassId);
+        public bool ChangeClass(int newClassId);
        
         public string GetFullName();
         public void SetId(int id);

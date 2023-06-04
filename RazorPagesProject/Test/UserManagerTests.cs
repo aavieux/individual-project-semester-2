@@ -12,6 +12,8 @@ namespace Test
 {
     public class UserManagerTests
     {
+        FakeUserDatabaseHelper userDbHelperMock = new FakeUserDatabaseHelper();
+        FakeGradeDatabaseHelper gradeDbHelperMock = new FakeGradeDatabaseHelper();
         [SetUp]
         public void Setup()
         {
@@ -21,9 +23,8 @@ namespace Test
         public void CreateUser_WhenUserDoesNotExist_ShouldCreateUserAndReturnTrue() // create user
         {
             // Arrange
-            FakeUserDatabaseHelper userDbHelperMock = new FakeUserDatabaseHelper();
-            FakeGradeDatabaseHelper gradeDbHelperMock = new FakeGradeDatabaseHelper();
-            UserMapper userMapperMock = new UserMapper(userDbHelperMock,gradeDbHelperMock);
+
+            UserMapper userMapperMock = new UserMapper(userDbHelperMock, gradeDbHelperMock);
             UserManager userManager = new UserManager(userDbHelperMock, userMapperMock);
 
             User user = new User(userDbHelperMock,gradeDbHelperMock,"Aleksandar", "Garkov", ClassLibrary.Models.Enums.Role.STUDENT, 1, "aleksandar.gvarkov@gmail.com","0895676656"); // User does not exist in the database
@@ -39,8 +40,6 @@ namespace Test
         public void Delete_WhenUserExists_ShouldDeleteUserAndReturnTrue() // delete existing user
         {
             // Arrange
-            FakeUserDatabaseHelper userDbHelperMock = new FakeUserDatabaseHelper();
-            FakeGradeDatabaseHelper gradeDbHelperMock = new FakeGradeDatabaseHelper();
             UserMapper userMapperMock = new UserMapper(userDbHelperMock, gradeDbHelperMock);
             UserManager userManager = new UserManager(userDbHelperMock, userMapperMock);
             User user = new User(userDbHelperMock, gradeDbHelperMock, "Aleksandar", "Garkov", ClassLibrary.Models.Enums.Role.STUDENT, 8, "aleksandar.gvarkov@gmail.com", "0895676656",1); // User does not exist in the database
@@ -55,8 +54,6 @@ namespace Test
         public void Delete_WhenUserDoesNotExist_ShouldNotDeleteUserAndReturnFalse() // delete non- existing user
         {
             // Arrange
-            FakeUserDatabaseHelper userDbHelperMock = new FakeUserDatabaseHelper();
-            FakeGradeDatabaseHelper gradeDbHelperMock = new FakeGradeDatabaseHelper();
             UserMapper userMapperMock = new UserMapper(userDbHelperMock, gradeDbHelperMock);
             UserManager userManager = new UserManager(userDbHelperMock, userMapperMock);
             User user = new User(userDbHelperMock, gradeDbHelperMock, "Aleksandar", "Garkov", ClassLibrary.Models.Enums.Role.STUDENT, 1, "aleksandar.gvarkov@gmail.com", "0895676656",8); // User does not exist in the database
