@@ -27,7 +27,7 @@ namespace Test.FakeDatabaseHelpers
             new ManagerDTO(3, "Bob", "Johnson", "bob@example.com", "password789")
         };
 
-        public FakeUserDatabaseHelper() 
+        public FakeUserDatabaseHelper()
         {
             
         }

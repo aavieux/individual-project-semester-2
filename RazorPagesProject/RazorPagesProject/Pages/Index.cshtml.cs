@@ -23,7 +23,7 @@ namespace RazorPagesProject.Pages
         internal UserMapper userMapper;
         internal GradeMapper gradeMapper;
 
-        internal CalculatorHigh calculator;
+        internal IClaculator calculator; // TODO
 
 
         public IndexModel()

@@ -138,14 +138,17 @@ namespace ClassLibrary.Models
         
         public bool ChangeClass(int newClassId)
         {
-            this._class = newClassId;
+            int? oldClass = this._class;
+
             if (this._class != newClassId)
             {
+                this._class = newClassId;
                 if (Update())
                 {
                     return true;
                 }
                 return false;
+                this._class = oldClass;
             }
             else
             {
