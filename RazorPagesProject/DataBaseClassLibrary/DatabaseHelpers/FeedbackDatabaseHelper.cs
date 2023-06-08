@@ -3,6 +3,7 @@
 using DataBaseClassLibrary.DTOs;
 using DataBaseClassLibrary.DTOs.DTOEnums;
 using DataBaseClassLibrary.Interfaces;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -15,10 +16,18 @@ namespace DataBaseClassLibrary.DatabaseHelpers
 {
     public class FeedbackDatabaseHelper : IFeedbackDbHelper
     {
+        private readonly IConfiguration _configuration;
+        private readonly string connectionString;
+
+        public FeedbackDatabaseHelper(IConfiguration configuration)
+        {
+            _configuration = configuration;
+            connectionString = _configuration.GetConnectionString("DefaultConnectionString");
+        }
         public List<FeedbackDTO> GetAllFeedbacksFromDB()
         { 
             using (SqlConnection connection =
-                  new SqlConnection("Server=localhost;Database=individual_project_semester2;Trusted_Connection=True;"))
+                  new SqlConnection(connectionString))
             {
                 try
                 {
@@ -82,7 +91,7 @@ namespace DataBaseClassLibrary.DatabaseHelpers
         public bool AddFeedbackToDB(FeedbackDTO feedbackDTO)
         {
 
-            using (SqlConnection connection = new SqlConnection("Server=localhost;Database=individual_project_semester2;Trusted_Connection=True;"))
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 try
                 {
@@ -109,7 +118,7 @@ namespace DataBaseClassLibrary.DatabaseHelpers
         {
             
             using (SqlConnection connection =
-                    new SqlConnection("Server=localhost;Database=individual_project_semester2;Trusted_Connection=True;"))
+                    new SqlConnection(connectionString))
             {
                 try
                 {

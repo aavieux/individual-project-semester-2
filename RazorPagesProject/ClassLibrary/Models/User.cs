@@ -94,16 +94,18 @@ namespace ClassLibrary.Models
         {
             if (this.Role != Role.DIRECTOR)
             {
+                Role oldRole = this._role;
+                Role newRole = Role;
+                newRole++;
+                this._role = newRole;
+
                 if (Update() == true)
                 {
-                    Role newRole = Role;
-                    newRole++;
-                    this._role = newRole;
-
                     return true;
                 }
                 else
                 {
+                    this._role = oldRole;
                     return false;
                 }
                 

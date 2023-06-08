@@ -40,3 +40,5 @@ C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\Razo
 C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\RazorPagesProject\bin\Debug\net6.0\ClassLibrary.pdb
 C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\RazorPagesProject\bin\Debug\net6.0\DataBaseClassLibrary.dll
 C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\RazorPagesProject\bin\Debug\net6.0\DataBaseClassLibrary.pdb
+C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\RazorPagesProject\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\RazorPagesProject\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll

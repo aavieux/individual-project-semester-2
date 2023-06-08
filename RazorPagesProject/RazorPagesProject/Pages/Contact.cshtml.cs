@@ -38,10 +38,11 @@ namespace RazorPagesProject.Pages
         internal FeedbackManager FeedbackManager;
         internal FeedbackDatabaseHelper feedbackDbHelper;
         internal FeedbackMapper feedbackMapper;
-
-        public ContactModel()
+        internal IConfiguration configuration;
+        public ContactModel(IConfiguration configuration)
         {
-            this.feedbackDbHelper = new FeedbackDatabaseHelper();
+            this.configuration = configuration;
+            this.feedbackDbHelper = new FeedbackDatabaseHelper(configuration);
             this.feedbackMapper = new FeedbackMapper(feedbackDbHelper);
 
             FeedbackManager = new FeedbackManager (feedbackDbHelper, feedbackMapper);

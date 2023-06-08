@@ -218,8 +218,15 @@ namespace WindowsFormsAppProject
         private void promoteUser_btn_Click(object sender, EventArgs e)
         {
             var user = statisticsManager.GetUserById(userId);
-            user.PromoteRole();
-            MessageBox.Show("Successfully promoted user!");
+            if (user.PromoteRole())
+            {
+                MessageBox.Show("Successfully promoted user!");
+            }
+            else
+            {
+                MessageBox.Show("Error promoting user!");
+            }
+            
             DisplayContent();
         }
 

@@ -6,6 +6,7 @@ using System.Text.Json;
 using System.Text;
 using ClassLibrary.Controllers;
 using ClassLibrary.Mapper;
+using ClassLibrary.Models.Interfaces;
 using DataBaseClassLibrary.DatabaseHelpers;
 using DataBaseClassLibrary.Interfaces;
 
@@ -23,14 +24,15 @@ namespace RazorPagesProject.Pages
         internal UserMapper userMapper;
         internal GradeMapper gradeMapper;
 
-        internal IClaculator calculator; // TODO
+        internal ICalculator calculator;
+        internal IConfiguration configuration;
 
-
-        public IndexModel()
+        public IndexModel(IConfiguration configuration)
         {
-            this.classDbHelper = new ClassDatabaseHelper();
-            this.userDbHelper = new UserDatabaseHelper();
-            this.gradeDbHelper = new GradeDatabaseHelper();
+            this.configuration = configuration;
+            this.classDbHelper = new ClassDatabaseHelper(configuration);
+            this.userDbHelper = new UserDatabaseHelper(configuration);
+            this.gradeDbHelper = new GradeDatabaseHelper(configuration);
 
             this.classMapper = new ClassMapper(classDbHelper, userDbHelper, gradeDbHelper);
             this.userMapper = new UserMapper(userDbHelper, gradeDbHelper);

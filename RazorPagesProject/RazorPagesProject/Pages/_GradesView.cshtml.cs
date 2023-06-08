@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Diagnostics;
 using System.Reflection;
 using DataBaseClassLibrary.Interfaces;
+using System.Runtime.CompilerServices;
 
 namespace RazorPagesProject.Pages
 {
@@ -28,14 +29,15 @@ namespace RazorPagesProject.Pages
         internal ClassMapper classMapper;
         internal UserMapper userMapper;
         internal GradeMapper gradeMapper;
+		internal IConfiguration configuration;
 
 
-
-        public _GradesViewModel()
+        public _GradesViewModel(IConfiguration configuration)
         {
-            this.classDbHelper = new ClassDatabaseHelper();
-            this.userDbHelper = new UserDatabaseHelper();
-            this.gradeDbHelper = new GradeDatabaseHelper();
+            this.configuration = configuration;
+            this.classDbHelper = new ClassDatabaseHelper(configuration);
+            this.userDbHelper = new UserDatabaseHelper(configuration);
+            this.gradeDbHelper = new GradeDatabaseHelper(configuration);
 
 
             this.classMapper = new ClassMapper(classDbHelper, userDbHelper, gradeDbHelper);

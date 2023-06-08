@@ -3,6 +3,7 @@
 using DataBaseClassLibrary.DTOs;
 using DataBaseClassLibrary.DTOs.DTOEnums;
 using DataBaseClassLibrary.Interfaces;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -13,12 +14,21 @@ using System.Threading.Tasks;
 
 namespace DataBaseClassLibrary.DatabaseHelpers
 {
+    
     public class UserDatabaseHelper : IUserDbHelper
     {
+        private readonly IConfiguration _configuration;
+        private readonly string connectionString;
+
+        public UserDatabaseHelper(IConfiguration configuration) {
+            _configuration = configuration;
+            connectionString = _configuration.GetConnectionString("DefaultConnectionString");
+        }
+        
         public List<UserDTO> GetAllUsersFromDB()
         {
             using (SqlConnection connection =
-                   new SqlConnection("Server=localhost;Database=individual_project_semester2;Trusted_Connection=True;"))
+                   new SqlConnection(connectionString))
             {
                 try
                 {
@@ -87,7 +97,7 @@ namespace DataBaseClassLibrary.DatabaseHelpers
         public int AddUserToDB(UserDTO userDTO)
         {
             using (SqlConnection connection =
-                   new SqlConnection("Server=localhost;Database=individual_project_semester2;Trusted_Connection=True;"))
+                   new SqlConnection(connectionString))
             {
                 connection.Open();
                 string query = $"INSERT INTO [User] (first_name_user, last_name_user, role_user, class_user, email_user, phonenumber_user) VALUES ('{userDTO.Firstname}', '{userDTO.Lastname}', '{userDTO.Role}', '{userDTO.Class}', '{userDTO.Email}', '{userDTO.PhoneNumber}'); SELECT SCOPE_IDENTITY() as new_id;";
@@ -117,7 +127,7 @@ namespace DataBaseClassLibrary.DatabaseHelpers
         public bool UpdateUserToDB(UserDTO user)
         {
             using (SqlConnection connection =
-                   new SqlConnection("Server=localhost;Database=individual_project_semester2;Trusted_Connection=True;"))
+                   new SqlConnection(connectionString))
             {
                 try
                 {
@@ -159,7 +169,7 @@ namespace DataBaseClassLibrary.DatabaseHelpers
         public bool DeleteUserFromDB(int userId)
         {
             using (SqlConnection connection =
-                   new SqlConnection("Server=localhost;Database=individual_project_semester2;Trusted_Connection=True;"))
+                   new SqlConnection(connectionString))
             {
                 try
                 {
@@ -202,7 +212,7 @@ namespace DataBaseClassLibrary.DatabaseHelpers
         public List<ManagerDTO> GetAllManagersFromDB()
         {
             using (SqlConnection connection =
-                  new SqlConnection("Server=localhost;Database=individual_project_semester2;Trusted_Connection=True;"))
+                  new SqlConnection(connectionString))
             {
                 try
                 {

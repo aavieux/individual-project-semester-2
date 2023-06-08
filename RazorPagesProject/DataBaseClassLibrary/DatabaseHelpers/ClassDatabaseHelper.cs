@@ -3,6 +3,7 @@
 using DataBaseClassLibrary.DTOs;
 using DataBaseClassLibrary.DTOs.DTOEnums;
 using DataBaseClassLibrary.Interfaces;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -16,10 +17,18 @@ namespace DataBaseClassLibrary.DatabaseHelpers
 {
     public class ClassDatabaseHelper : IClassDbHelper
     {
+        private readonly IConfiguration _configuration;
+        private readonly string connectionString;
+        
+        public ClassDatabaseHelper(IConfiguration configuration)
+        {
+            _configuration = configuration;
+            connectionString = _configuration.GetConnectionString("DefaultConnectionString");
+        }
         public List<ClassDTO> GetClassesFromDB()
         {
             using (SqlConnection connection =
-                   new SqlConnection("Server=localhost;Database=individual_project_semester2;Trusted_Connection=True;"))
+                   new SqlConnection(connectionString))
             {
                 try
                 {
@@ -35,11 +44,11 @@ namespace DataBaseClassLibrary.DatabaseHelpers
                                 List<ClassDTO> inClasses = new List<ClassDTO>();
                                 while (reader.Read())
                                 {
-                                    
+
                                     try
                                     {
                                         int userClass = 0;
-                                        
+
                                         if (reader["user_class"] != DBNull.Value)
                                         {
                                             userClass = (int)reader["user_class"];
@@ -51,7 +60,7 @@ namespace DataBaseClassLibrary.DatabaseHelpers
                                     {
 
                                     }
-                                    
+
                                 }
                                 return inClasses;
                             }
@@ -78,7 +87,7 @@ namespace DataBaseClassLibrary.DatabaseHelpers
         public List<StudentDTO> GetClassStudentsFromDB(int classId)
         {
             using (SqlConnection connection =
-                   new SqlConnection("Server=localhost;Database=individual_project_semester2;Trusted_Connection=True;"))
+                   new SqlConnection(connectionString))
             {
                 try
                 {
@@ -119,7 +128,7 @@ namespace DataBaseClassLibrary.DatabaseHelpers
         public bool CreateClass(ClassDTO classDTO)
         {
             using (SqlConnection connection =
-                   new SqlConnection("Server=localhost;Database=individual_project_semester2;Trusted_Connection=True;"))
+                   new SqlConnection(connectionString))
             {
                 connection.Open();
                 string query = $"INSERT INTO Class (name_class, user_class) VALUES ('{classDTO.Name}', '{classDTO.TeacherID}');";
