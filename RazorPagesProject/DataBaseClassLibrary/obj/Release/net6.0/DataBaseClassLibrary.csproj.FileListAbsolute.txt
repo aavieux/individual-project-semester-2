@@ -1,0 +1,12 @@
+C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\DataBaseClassLibrary\bin\Release\net6.0\DataBaseClassLibrary.deps.json
+C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\DataBaseClassLibrary\bin\Release\net6.0\DataBaseClassLibrary.dll
+C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\DataBaseClassLibrary\bin\Release\net6.0\DataBaseClassLibrary.pdb
+C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\DataBaseClassLibrary\obj\Release\net6.0\DataBaseClassLibrary.csproj.AssemblyReference.cache
+C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\DataBaseClassLibrary\obj\Release\net6.0\DataBaseClassLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\DataBaseClassLibrary\obj\Release\net6.0\DataBaseClassLibrary.AssemblyInfoInputs.cache
+C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\DataBaseClassLibrary\obj\Release\net6.0\DataBaseClassLibrary.AssemblyInfo.cs
+C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\DataBaseClassLibrary\obj\Release\net6.0\DataBaseClassLibrary.csproj.CoreCompileInputs.cache
+C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\DataBaseClassLibrary\obj\Release\net6.0\DataBaseClassLibrary.dll
+C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\DataBaseClassLibrary\obj\Release\net6.0\refint\DataBaseClassLibrary.dll
+C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\DataBaseClassLibrary\obj\Release\net6.0\DataBaseClassLibrary.pdb
+C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\DataBaseClassLibrary\obj\Release\net6.0\ref\DataBaseClassLibrary.dll

@@ -1,0 +1,685 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+img#logo-img {
+    width: 150px;
+    height: 150px;
+    padding-left: 50px;
+}
+/*DASHBOARD*/
+.dashboard-main {
+    display: inline-flex;
+}
+.container2 {
+    margin: 0 auto;
+    text-align: center;
+    height: -webkit-fill-available;
+    position: absolute;
+    width: 50%;
+}
+.container3 {
+    height: -webkit-fill-available;
+    width: 50%;
+    right: 0px;
+    position: absolute;
+    /*align-items: center;*/
+    display: inline-flex;
+}
+
+.stats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.average,
+.best-performers {
+    width: 45%;
+    margin: 0 20px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f8f8f8;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+    .average h3,
+    .best-performers h3 {
+        margin-top: 0;
+    }
+
+    .best-performers ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .best-performers li {
+        margin-bottom: 10px;
+    }
+
+
+/* Style the canvas element */
+canvas#myChart {
+    position: absolute;
+    right: 0px;
+    left: 0px;
+}
+#myChart {
+    display: block;
+    margin: 0 auto;
+    max-width: 600px;
+    height: auto;
+}
+
+/* Style the chart title */
+.chart-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Style the legend */
+.legend {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Style the legend items */
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+
+/* Style the legend color circles */
+.legend-color {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+/* Style the legend labels */
+.legend-label {
+    font-size: 14px;
+}
+main.pb-3.flex {
+    display: inline-block;
+}
+/*DASHBOARD*/
+/*NAVIGATION BAR*/
+.sidenav {
+    height: -webkit-fill-available;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #fc5c64;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    -ms-overflow-style: none; /* for Internet Explorer, Edge */
+    scrollbar-width: none;
+    overflow-y: scroll;
+}
+
+.sidenav a {
+    padding: 76px 8px 8px 30px;
+    text-decoration: none;
+    font-size: 40px;
+    color: #ffffff;
+    display: block;
+    transition: 0.3s;
+    border-bottom: 4px;
+    border-top: 0px;
+    border-right: 0px;
+    border-left: 0px;
+    border-color: white;
+    border-style: groove;
+}
+.sidenav::-webkit-scrollbar {
+    display: none;
+}
+
+.sidenav a:hover {
+    background-color: #f44049;
+}
+.sidenav .closebtn:hover {
+    background-color: transparent;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: -55px;
+    right: 25px;
+    font-size: 60px;
+    margin-left: 50px;
+    border-bottom: 0px;
+
+}
+
+#main {
+    transition: margin-left .5s;
+    padding: 25px;
+    background-color: slategray;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+
+    .sidenav a {
+        font-size: 18px;
+    }
+}
+/*NAVIGATION BAR*/
+/*CONTACT*/
+.container {
+    /*background-color: black;*/
+    position: absolute;
+    height: -webkit-fill-available;
+    width: -webkit-fill-available;
+    /*margin-left: 250px;*/
+    /*margin-right: 8px;*/
+    transition: margin-left .5s;
+}
+main.pb-3 {
+    /*background-color: yellow;*/
+    position: absolute;
+    height: -webkit-fill-available;
+    width: -webkit-fill-available;
+    /*margin-left: 8px;*/
+    margin-right: 8px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+.devision1 {
+    /*background-color: red;*/
+    position: absolute;
+    height: -webkit-fill-available;
+    width: 49%;
+    margin-left: 8px;
+    margin-right: 8px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+.devision2 {
+    /*background-color: #823030;*/
+    position: absolute;
+    height: -webkit-fill-available;
+    width: 49%;
+    margin-left: 8px;
+    margin-right: 8px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    right: 0px;
+}
+input.contact, select, textarea {
+    width: -webkit-fill-available;
+   /* width: 100%;*/
+    border: 1px solid #ccc;
+    font-size: xx-large;
+    padding: 13px;
+}
+
+form.sortForm {
+    padding-right: 20px;
+}
+
+input[type=submit] {
+    background-color: #04AA6D;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+label {
+    font-size: xx-large;
+}
+img#support_image {
+    width: -webkit-fill-available;
+    position: relative;
+    margin-top: 200px;
+    overflow: overlay;
+}
+p#support_text {
+    font-size: 26px;
+    font-family: 'EB Garamond', serif;
+    color: blue;
+    line-height: 1.5;
+    margin: 0;
+    padding: 20px;
+    background-color: #f2f2f2;
+    border: 2px solid blue;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+/*CONTACT*/
+    /*TEACHERS*/
+    table .users_table {
+    border: 1px solid #e7ecf1;
+    width:-webkit-fill-available;
+    clear: both;
+    border-collapse: separate;
+    border-spacing: 0;
+    box-sizing: content-box;
+    border-bottom: 1px solid #111;
+    transition: margin-left 0.5s;
+}
+
+.users_table th, .users_table td {
+    width: 25%;
+    text-align: unset;
+    border-bottom: 1px;
+    padding: 10px;
+    border-style: inset;
+    border-top: 0px;
+    border-right: 0px;
+    border-left: 0px;
+    padding-right: 30px;
+}
+a.no-decoration {
+    text-decoration: none;
+    color:#337ab7;
+}
+tr.border {
+    border-bottom: 0px;
+    border-style: solid;
+    border-color: black;
+    border-top: 0px;
+    border-right: 0px;
+    border-left: 0px;
+    transition: margin-left 0.5s ease;
+}
+tr.sorting_1 {
+    font-size: x-large;
+}
+/*TEACHERS*/
+/*USERVIEW*/
+.profile-content {
+    display: inline-block;
+}
+.image-div {
+    width: 50%;
+    right: 0px;
+    position: absolute;
+    top: 0px;
+    height: -webkit-fill-available;
+}
+.portlet-title.sticky {
+/*    background-color: yellow;*/
+    height: 100px;
+    position: absolute;
+    top: 0px;
+    width: -webkit-fill-available;
+}
+.tab-content.no-space {
+    height: -webkit-fill-available;
+    /* background-color: red; */
+    position: relative;
+    /* bottom: 0px; */
+    width: 50%;
+    margin-top: 100px;
+}
+.form-group {
+    display: list-item;
+    padding-left: 20px;
+}
+label.label-info {
+    width: 144.88px;
+
+}
+.value-info {
+    font-size: xx-large;
+    color: cornflowerblue;
+}
+.caption {
+    float: left;
+    display: inline-block;
+    font-size: 18px;
+    line-height: 18px;
+    padding: 10px 0;
+    font-size: xxx-large;
+    padding-left: 20px;
+    padding-top: 37px;
+}
+
+/*CLASSROOM VIEW*/
+.users_table th.width20 {
+    width: 20%;
+}
+/*GRADES*/
+.topnav {
+    overflow: hidden;
+    background-color: #e9e9e9;
+}
+div#shrink {
+    transition: margin-left .5s;
+    border-style: outset;
+    border-width: 1px;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+}
+.topnav a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #2196F3;
+  color: white;
+}
+
+label.sortBylbl {
+    margin-right: 15px;
+    padding-top: 13px;
+}
+.topnav .search-container {
+    float: right;
+    display: flex;
+}
+
+.topnav input[type=text] {
+    padding: 13px;
+    border: 1px solid #ccc;
+/*    margin-bottom: 16px;*/
+    font-size: xx-large;
+}
+
+.topnav .search-container button {
+    float: right;
+    padding: 6px 10px;
+    /* margin-top: 8px; */
+    /* margin-right: 16px; */
+    background: #ddd;
+    font-size: 25px;
+    border: none;
+    cursor: pointer;
+    padding: 13px;
+    /* padding-top: 15px; */
+    height: 65px;
+}
+
+.topnav .search-container button:hover {
+  background: #ccc;
+}
+
+@media screen and (max-width: 600px) {
+  .topnav .search-container {
+    float: none;
+  }
+    .topnav a, .topnav input[type=text], .topnav .search-container button {
+        float: none;
+        display: block;
+        text-align: left;
+        width: 100%;
+        margin: 0;
+        padding: 14px;
+        margin-top: 8px;
+        font-size: 25px;
+        border: none;
+        width: max-content;
+    }
+  .topnav input[type=text] {
+    border: 1px solid #ccc;  
+  }
+}
+/*input[type="text"] {
+
+}*/
+p#searchlabel {
+    margin-bottom: auto;
+    /* width: 50%; */
+    /* margin: -11px; */
+    position: relative;
+    /* margin-left: 63%; */
+    font-size: xx-large;
+    /* text-align: -webkit-auto; */
+    margin-top: 11px;
+    right: 0px;
+    float: left;
+    margin-left: 20px;
+}
+/*GRADES view*/
+
+.grades-container{
+    display:block;
+}
+table {
+    font-family: Arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #a6a6a6;
+    text-align: left;
+    padding: 8px;
+    overflow: visible;
+}
+/*table td:first-child {
+    width: 70px;
+}*/
+.width70px {
+    width: 70px;
+}
+
+
+th {
+    background-color: #dddddd;
+}
+
+.grade-value {
+    font-weight: bold;
+    display: inline-block;
+    width: unset;
+    margin-right: 5px;
+    line-height: 20px;
+    text-align: center;
+    /*color: #2c6714;*/
+    color: gray;
+    border: 2px solid #cccbcb;
+    border-radius: 3px;
+    /*border-color: seagreen;*/
+    padding: inherit;
+    margin-bottom: 2px;
+    background-color: white;
+}
+    .grade-value:hover {
+        transition: background-color 0.3s ease;
+        background-color: darkgray;
+        color: white;
+        border-color: darkgray;
+        cursor: pointer;
+    }
+
+
+button[name="Button1"] {
+    border: 2px solid #cccbcb;
+    border-color: dimgray;
+    color: dimgray;
+}
+    button[name="Button1"]:hover {
+        background-color: dimgray;
+        border-color: rgba(15, 0, 0, 0.3);
+    }
+
+button[name="Button2"] {
+    border: 2px solid;
+    border-color: gold;
+    color: darkgoldenrod;
+}
+    button[name="Button2"]:hover {
+        background-color: gold;
+        border-color: darkgoldenrod;
+    }
+
+button[name="Button3"] {
+    border: 2px solid #cccbcb;
+    border-color: seagreen;
+}
+    button[name="Button3"]:hover {
+        background-color: seagreen;
+    }
+
+button[name="Button4"] {
+    border-color: darkred;
+    color: darkred;
+}
+    button[name="Button4"]:hover {
+        background-color: darkred;
+        border-color: rgba(93, 0, 0, 1);
+        color: white;
+    }
+
+
+
+.plus-icon {
+    display: inline-block;
+    position: relative;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    color: #2c6714;
+    border: 2px solid #cccbcb;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    padding: inherit;
+}
+
+    .plus-icon:hover .dropdown {
+        /*background-color: rgba(0, 0, 0, 0.05);*/
+        display: flex;
+    }
+
+    .plus-icon:before {
+        /*content: "+";*/
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        font-size: 14px;
+    }
+
+.dropdown {
+    position: absolute;
+    top: -10px;
+    height: auto;
+    left: -10px;
+    display: none;
+    padding: 8px;
+}
+
+.dropdown-item {
+    cursor: pointer;
+    padding: 9px;
+    border: solid;
+    border-width: 1px;
+    border-radius: 0%;
+}
+
+.details-icon {
+    display: inline-block;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    color: #fff;
+    background-color: red;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 1;
+    transition: transform 0.3s ease;
+}
+
+    .details-icon:hover {
+        transform: rotate(45deg);
+    }
+
+.grade-details.active::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-top: none;
+    z-index: 2;
+}
+
+.x-icon {
+    position: relative;
+    width: 17px;
+    height: 17px;
+    font-size: 11px;
+    border: 2px solid #cccbcb;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    /*display: inline-grid;*/
+    top: -15px;
+    right: -15px;
+    color: #fff;
+    background-color: red;
+    border-radius: 50%;
+    display: none;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+}
+.x-text {
+    position: relative;
+    top: -12px;
+    left: -2px;
+}
+
+.grade-value:hover .x-icon {
+    display: inline-block;
+    opacity: 1;
+}
+
+
+/*GRADES view*/

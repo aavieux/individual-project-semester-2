@@ -1,0 +1,93 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = RazorPagesProject
+build_property.RootNamespace = RazorPagesProject
+build_property.ProjectDir = C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\RazorPagesProject\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\RazorPagesProject
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/sando/Repositories/individual-project-semester-2/RazorPagesProject/RazorPagesProject/Pages/Classes.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2xhc3Nlcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sando/Repositories/individual-project-semester-2/RazorPagesProject/RazorPagesProject/Pages/Contact.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29udGFjdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sando/Repositories/individual-project-semester-2/RazorPagesProject/RazorPagesProject/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sando/Repositories/individual-project-semester-2/RazorPagesProject/RazorPagesProject/Pages/Grades.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZGVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sando/Repositories/individual-project-semester-2/RazorPagesProject/RazorPagesProject/Pages/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sando/Repositories/individual-project-semester-2/RazorPagesProject/RazorPagesProject/Pages/LogIn.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9nSW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sando/Repositories/individual-project-semester-2/RazorPagesProject/RazorPagesProject/Pages/Logout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9nb3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sando/Repositories/individual-project-semester-2/RazorPagesProject/RazorPagesProject/Pages/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sando/Repositories/individual-project-semester-2/RazorPagesProject/RazorPagesProject/Pages/Received_Info.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVjZWl2ZWRfSW5mby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sando/Repositories/individual-project-semester-2/RazorPagesProject/RazorPagesProject/Pages/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sando/Repositories/individual-project-semester-2/RazorPagesProject/RazorPagesProject/Pages/Students.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3R1ZGVudHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sando/Repositories/individual-project-semester-2/RazorPagesProject/RazorPagesProject/Pages/Teachers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGVhY2hlcnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sando/Repositories/individual-project-semester-2/RazorPagesProject/RazorPagesProject/Pages/_ClassroomView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0NsYXNzcm9vbVZpZXcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sando/Repositories/individual-project-semester-2/RazorPagesProject/RazorPagesProject/Pages/_GradesView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0dyYWRlc1ZpZXcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sando/Repositories/individual-project-semester-2/RazorPagesProject/RazorPagesProject/Pages/_SubjectGradesView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1N1YmplY3RHcmFkZXNWaWV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sando/Repositories/individual-project-semester-2/RazorPagesProject/RazorPagesProject/Pages/_UserView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1VzZXJWaWV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sando/Repositories/individual-project-semester-2/RazorPagesProject/RazorPagesProject/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sando/Repositories/individual-project-semester-2/RazorPagesProject/RazorPagesProject/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/sando/Repositories/individual-project-semester-2/RazorPagesProject/RazorPagesProject/Pages/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-4y989rou7m
