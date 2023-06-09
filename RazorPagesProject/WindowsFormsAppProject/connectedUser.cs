@@ -2,6 +2,7 @@
 using ClassLibrary.Mapper;
 using ClassLibrary.Models;
 using DataBaseClassLibrary.DatabaseHelpers;
+using Microsoft.Extensions.Configuration;
 using Microsoft.VisualBasic.ApplicationServices;
 using System;
 using System.Collections.Generic;
@@ -29,7 +30,7 @@ namespace WindowsFormsAppProject
 
         internal FeedbackManager feedbackManager;
         internal StatisticsManager statisticsManager;
-
+        internal IConfiguration configuration;
         public connectedUser(Manager manager)
         {
             this.classDbHelper = new ClassDatabaseHelper();

@@ -23,13 +23,12 @@ namespace RazorPagesProject.Pages
         internal ClassMapper classMapper;
         internal UserMapper userMapper;
         internal GradeMapper gradeMapper;
-        internal IConfiguration configuration;
-        public _ClassroomViewModel(IConfiguration configuration)
+        private readonly SqlService sqlService;
+        public _ClassroomViewModel()
         {
-            this.configuration = configuration;
-            this.classDbHelper = new ClassDatabaseHelper(configuration);
-            this.userDbHelper = new UserDatabaseHelper(configuration);
-            this.gradeDbHelper = new GradeDatabaseHelper(configuration);
+            this.classDbHelper = new ClassDatabaseHelper();
+            this.userDbHelper = new UserDatabaseHelper();
+            this.gradeDbHelper = new GradeDatabaseHelper();
 
 
             this.classMapper = new ClassMapper(classDbHelper,userDbHelper,gradeDbHelper);

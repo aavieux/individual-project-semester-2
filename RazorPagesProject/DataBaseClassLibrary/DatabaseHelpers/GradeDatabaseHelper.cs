@@ -16,18 +16,15 @@ namespace DataBaseClassLibrary.DatabaseHelpers
 {
     public class GradeDatabaseHelper : IGradeDbHelper
     {
-        private readonly IConfiguration _configuration;
-        private readonly string connectionString;
-
-        public GradeDatabaseHelper(IConfiguration configuration)
+        private readonly SqlService sqlService;
+        public GradeDatabaseHelper()
         {
-            _configuration = configuration;
-            connectionString = _configuration.GetConnectionString("DefaultConnectionString");
+            sqlService = new SqlService();
         }
         public List<SubjectGradesDTO> GetGradeBooksFromDB()
         {
             using (SqlConnection connection =
-                   new SqlConnection(connectionString))
+                   sqlService.connectionFactory())
             {
 
                 try
@@ -83,7 +80,7 @@ namespace DataBaseClassLibrary.DatabaseHelpers
         public List<GradeDTO> GetGradesFromDB()
         {
             using (SqlConnection connection =
-                   new SqlConnection(connectionString))
+                   sqlService.connectionFactory())
             {
                 try
                 {
@@ -139,7 +136,7 @@ namespace DataBaseClassLibrary.DatabaseHelpers
         public List<SubjectGradesDTO> GetSubjectGradesFromDB()
         {
             using (SqlConnection connection =
-                   new SqlConnection(connectionString))
+                   sqlService.connectionFactory())
             {
                 try
                 {
@@ -249,7 +246,7 @@ namespace DataBaseClassLibrary.DatabaseHelpers
 		public void AddSubjectGradesToDB(SubjectGradesDTO subjectGrades)
         {
             using (SqlConnection connection =
-                   new SqlConnection(connectionString))
+                   sqlService.connectionFactory())
             {
                 connection.Open();
                 string query = $"INSERT INTO SubjectGrades (subject, id_user) VALUES ('{subjectGrades.Subject.ToString()}', '{subjectGrades.IdUser}');";
@@ -276,7 +273,7 @@ namespace DataBaseClassLibrary.DatabaseHelpers
         public void AddGradeToDB(int idSubjectGrades , GradeDTO grade)
         {
             using (SqlConnection connection =
-                   new SqlConnection(_configuration.GetConnectionString("DefaultConnectionString")))
+                   sqlService.connectionFactory())
             {
                 connection.Open();
                 string query = $"INSERT INTO Grade (id_subjectGrades, grade) VALUES ('{idSubjectGrades}', '{grade.GradeEnum.ToString()}');";
@@ -305,7 +302,7 @@ namespace DataBaseClassLibrary.DatabaseHelpers
         public bool DeleteSubjectGradesFromDB(SubjectGradesDTO subjectGradesDTO)
         {
             using (SqlConnection connection =
-                   new SqlConnection(connectionString))
+                   sqlService.connectionFactory())
             {
                 connection.Open();
                 string query = $"DELETE FROM SubjectGrades WHERE id_subjectGrades LIKE '{subjectGradesDTO.Id}'";
@@ -334,7 +331,7 @@ namespace DataBaseClassLibrary.DatabaseHelpers
         public void DeleteGradeByIdFromDB(int GradeId)
         {
             using (SqlConnection connection =
-                   new SqlConnection(connectionString))
+                   sqlService.connectionFactory())
             {
                 connection.Open();
                 string query = $"DELETE FROM Grade WHERE id_grade LIKE '{GradeId}'";

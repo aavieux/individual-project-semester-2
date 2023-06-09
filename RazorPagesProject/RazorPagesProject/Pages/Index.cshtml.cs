@@ -27,14 +27,13 @@ namespace RazorPagesProject.Pages
         internal GradeMapper gradeMapper;
 
         internal ICalculator calculator;
-        internal IConfiguration configuration;
 
         public IndexModel(IConfiguration configuration)
         {
-            this.configuration = configuration;
-            this.classDbHelper = new ClassDatabaseHelper(configuration);
-            this.userDbHelper = new UserDatabaseHelper(configuration);
-            this.gradeDbHelper = new GradeDatabaseHelper(configuration);
+
+            this.classDbHelper = new ClassDatabaseHelper();
+            this.userDbHelper = new UserDatabaseHelper();
+            this.gradeDbHelper = new GradeDatabaseHelper();
 
             this.classMapper = new ClassMapper(classDbHelper, userDbHelper, gradeDbHelper);
             this.userMapper = new UserMapper(userDbHelper, gradeDbHelper);

@@ -17,18 +17,15 @@ namespace DataBaseClassLibrary.DatabaseHelpers
 {
     public class ClassDatabaseHelper : IClassDbHelper
     {
-        private readonly IConfiguration _configuration;
-        private readonly string connectionString;
-        
-        public ClassDatabaseHelper(IConfiguration configuration)
+        private readonly SqlService sqlService;
+        public ClassDatabaseHelper()
         {
-            _configuration = configuration;
-            connectionString = _configuration.GetConnectionString("DefaultConnectionString");
+            this.sqlService = new SqlService();
         }
         public List<ClassDTO> GetClassesFromDB()
         {
             using (SqlConnection connection =
-                   new SqlConnection(connectionString))
+                   sqlService.connectionFactory())
             {
                 try
                 {
@@ -86,8 +83,7 @@ namespace DataBaseClassLibrary.DatabaseHelpers
         }
         public List<StudentDTO> GetClassStudentsFromDB(int classId)
         {
-            using (SqlConnection connection =
-                   new SqlConnection(connectionString))
+            using (SqlConnection connection = sqlService.connectionFactory())
             {
                 try
                 {
@@ -128,7 +124,7 @@ namespace DataBaseClassLibrary.DatabaseHelpers
         public bool CreateClass(ClassDTO classDTO)
         {
             using (SqlConnection connection =
-                   new SqlConnection(connectionString))
+                   sqlService.connectionFactory())
             {
                 connection.Open();
                 string query = $"INSERT INTO Class (name_class, user_class) VALUES ('{classDTO.Name}', '{classDTO.TeacherID}');";

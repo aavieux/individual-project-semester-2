@@ -16,18 +16,15 @@ namespace DataBaseClassLibrary.DatabaseHelpers
 {
     public class FeedbackDatabaseHelper : IFeedbackDbHelper
     {
-        private readonly IConfiguration _configuration;
-        private readonly string connectionString;
-
-        public FeedbackDatabaseHelper(IConfiguration configuration)
+        private readonly SqlService sqlService;
+        public FeedbackDatabaseHelper()
         {
-            _configuration = configuration;
-            connectionString = _configuration.GetConnectionString("DefaultConnectionString");
+            sqlService = new SqlService();
         }
         public List<FeedbackDTO> GetAllFeedbacksFromDB()
         { 
             using (SqlConnection connection =
-                  new SqlConnection(connectionString))
+                  sqlService.connectionFactory())
             {
                 try
                 {
@@ -91,7 +88,7 @@ namespace DataBaseClassLibrary.DatabaseHelpers
         public bool AddFeedbackToDB(FeedbackDTO feedbackDTO)
         {
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = sqlService.connectionFactory())
             {
                 try
                 {
@@ -118,7 +115,7 @@ namespace DataBaseClassLibrary.DatabaseHelpers
         {
             
             using (SqlConnection connection =
-                    new SqlConnection(connectionString))
+                    sqlService.connectionFactory())
             {
                 try
                 {

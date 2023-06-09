@@ -13,16 +13,14 @@ namespace RazorPagesProject.Pages
 {
     public class LogInModel : PageModel
     {
-        private readonly IConfiguration configuration;
 
         private const string RememberMeCookiename = "RememberMe";
 
         [BindProperty]
         public CredentialsViewModel Credentials { get; set; }
         
-        public LogInModel(IConfiguration configuration)
+        public LogInModel()
         {
-            this.configuration = configuration;
         }
 
         public IActionResult OnGet()
