@@ -2,7 +2,7 @@
 @model RazorPagesProject.Pages.LogInModel
 @{
 }
-<!DOCTYPE html>
+@*<!DOCTYPE html>
 <html>
 <head>
     <title>Login Page</title>
@@ -119,3 +119,31 @@
     </script>
 </body>
 </html>
+*@
+<div class="form_container">
+    <header class="content_header">Login</header>
+    <form method="post">
+
+        <div class="field-validation-error">@ViewData["ErrorMessage"]</div>
+
+        <label>E-Mail:<sup>*</sup></label>
+        <span asp-validation-for="Credentials.Email"></span>
+        <input asp-for="Credentials.Email">
+
+        <label>Password:<sup>*</sup></label>
+        <span asp-validation-for="Credentials.Password"></span>
+        <input asp-for="Credentials.Password">
+
+        <label asp-for="Credentials.RememberMe">Remember me</label>
+        <input asp-for="Credentials.RememberMe">
+
+        <div>
+            <input type="submit" value="Login">
+        </div>
+        <sub>*: Required fields</sub>
+    </form>
+</div>
+
+@section scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -9,9 +9,11 @@ using ClassLibrary.Mapper;
 using ClassLibrary.Models.Interfaces;
 using DataBaseClassLibrary.DatabaseHelpers;
 using DataBaseClassLibrary.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 
 namespace RazorPagesProject.Pages
 {
+    [Authorize]
     public class IndexModel : PageModel
     {
         internal StatisticsManager statisticsManager;

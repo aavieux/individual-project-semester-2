@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "PdOj4yozUlnyskrZXNypFJ+0HXiOmcqYUdObfdUuoYI=",
+  "Hash": "abW2jcgnAV7mr/ELu7dGGP8MCE0+6ZMeJtlJu6GGiMk=",
   "Source": "RazorPagesProject",
   "BasePath": "_content/RazorPagesProject",
   "Mode": "Default",
@@ -1052,6 +1052,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Identity": "C:\\Users\\sando\\Repositories\\individual-project-semester-2\\RazorPagesProject\\RazorPagesProject\\wwwroot\\pictures\\logout.png",
+      "SourceId": "RazorPagesProject",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\sando\\Repositories\\individual-project-semester-2\\RazorPagesProject\\RazorPagesProject\\wwwroot\\",
+      "BasePath": "_content/RazorPagesProject",
+      "RelativePath": "pictures/logout.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\pictures\\logout.png"
     }
   ]
 }

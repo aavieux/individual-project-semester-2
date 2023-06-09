@@ -1,15 +1,21 @@
-using ClassLibrary.Models;
-using System.Text.Json;
-using System.Text;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // SERVICES
 builder.Services.AddRazorPages();
+
+
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddSession(); // Add session service
 //builder.Services.AddSingleton<Administration>();// add singleton
 builder.Services.AddDistributedMemoryCache();
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options => {
+    options.LoginPath = new PathString("/LogIn");
+    options.AccessDeniedPath = new PathString("/Error");
+}
+);
 
 //builder.Services.AddSession(options =>
 //{
@@ -30,17 +36,12 @@ if (!app.Environment.IsDevelopment())
 //app.UseSession();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
 app.UseRouting();
+
+app.UseAuthentication();
 app.UseAuthorization();
+
 app.MapRazorPages();
 
-
-//var administration = app.Services.GetRequiredService<Administration>();
-
-//var session = app.Services.GetRequiredService<IHttpContextAccessor>().HttpContext.Session;
-
-//if (administration != null)
-//{
-//    session.Set("Administration", Encoding.UTF8.GetBytes(JsonSerializer.Serialize(administration)));
-//}
 app.Run();

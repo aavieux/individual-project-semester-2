@@ -4,26 +4,103 @@
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2681/2681880.png">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    @*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">*@
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <title>@ViewData["Title"] - RazorPagesProject</title>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 </head>
+<style>
+    .logout {
+        font-size: .8em;
+        font-family: 'Oswald', sans-serif;
+        position: relative;
+        right: -18px;
+        bottom: -4px;
+        overflow: hidden;
+        letter-spacing: 3px;
+        opacity: 0;
+        transition: opacity .45s;
+        -webkit-transition: opacity .35s;
+    }
+    .logoutbtn
+    {
+        text-decoration: none;
+        float: right;
+        padding: 12px;
+        /* margin: 15px; */
+        padding-bottom: 16px;
+        color: white;
+        width: 30px;
+        font-weight: bolder;
+        background-color: #fc5c64;
+        transition: width .35s;
+        -webkit-transition: width .35s;
+        overflow: hidden;
+        border-radius: 6px;
+/*        border-style: solid;
+        border-color: black;*/
+        top: 50px;
+        position: relative;
+        top: -11px;
+        font-size: x-large;
+        padding-top: 15px;
+    }
+
+    a.logoutbtn:hover {
+        width: 160px;
+        font-size: x-large;
+        padding-top: 15px;
+    }
+
+        a.logoutbtn:hover .logout {
+            opacity: .9;
+        }
+
+    a.logoutbtn {
+        text-decoration: none;
+    }
+    .invert{
+        filter: invert(100%);
+    }
+
+</style>
 <body>
     @*NAVIGATION BAR*@
-    <div id="mySidenav" class="sidenav">
-        <img id="logo-img" src="https://cdn-icons-png.flaticon.com/512/2681/2681880.png">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a asp-page="./Index">Dashboard</a>
-        <a asp-page="./Students">Students</a>
-        <a asp-page="./Grades">Grades</a>
-        <a asp-page="./Classes">Classes</a>
-        <a asp-page="./Teachers">Teachers</a>
-        <a asp-page="./Events">Events</a>
-        <a asp-page="./Contact">Contact</a>
-    </div>
+    @if (User.Identity.IsAuthenticated)
+    {
+        @*<AuthorizeView>*@
+            <div id="mySidenav" class="sidenav">
+                <img id="logo-img" src="https://cdn-icons-png.flaticon.com/512/2681/2681880.png">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a asp-page="./Index">Dashboard</a>
+                <a asp-page="./Students">Students</a>
+                <a asp-page="./Grades">Grades</a>
+                <a asp-page="./Classes">Classes</a>
+                <a asp-page="./Teachers">Teachers</a>
+                <a asp-page="./Events">Events</a>
+                <a asp-page="./Contact">Contact</a>
+            </div>
+        @*</AuthorizeView>*@
+        
+    }
+    
+    @if (User.Identity.IsAuthenticated)
+    {
+        <div id="main">
+            <span style="font-size:30px;cursor:pointer;color: #fc5c64;font-weight: bolder;" onclick="openNav()">&#9776;</span>
+            @*<a asp-page="./Logout" class="logoutbtn">
+                <span class="glyphicon glyphicon-log-out"></span> Log out
+            </a>*@
+            <a asp-page="./Logout" class="logoutbtn">
+                @*<img src="https://pbs.twimg.com/profile_images/378800000639740507/fc0aaad744734cd1dbc8aeb3d51f8729_400x400.jpeg">*@
+                <img class="invert" src="~/pictures/logout.png" style="width: 30px; float:left; "></img>
+                <div class="logout">LOGOUT</div>
 
-    <div id="main">
-        <span style="font-size:30px;cursor:pointer;color: #fc5c64;font-weight: bolder;" onclick="openNav()">&#9776;</span>
-    </div>
+            </a>
+            
+        </div>
+    }
 
     <script>
         function openNav() {
