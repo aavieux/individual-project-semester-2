@@ -4,8 +4,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 -->
 <Project>
   <PropertyGroup>
-    <_PublishTargetUrl>C:\Users\sando\Repositories\individual-project-semester-2\RazorPagesProject\RazorPagesProject\bin\Release\net6.0\publish\</_PublishTargetUrl>
-    <History>True|2023-06-09T11:57:01.1568356Z;</History>
+    <History>True|2023-06-09T12:55:56.5561253Z;False|2023-06-09T14:55:46.6374203+02:00;</History>
     <LastFailureDetails />
   </PropertyGroup>
 </Project>
